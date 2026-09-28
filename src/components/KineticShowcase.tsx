@@ -54,14 +54,14 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left Column: Menu Typography & Specs */}
-          <div className="lg:col-span-5 order-1 flex flex-col justify-center">
-            <AnimatePresence mode="wait" initial={false}>
+          <div className="lg:col-span-5 order-1 relative flex flex-col justify-center">
+            <AnimatePresence mode="popLayout" initial={false}>
               <motion.div
                 key={currentItem.id}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2, ease: 'easeOut' }}
+                exit={{ opacity: 0, y: -24 }}
+                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                 className="space-y-5"
               >
                 <p className="font-display text-xl sm:text-2xl text-[#F6C94B]">#AutoHappy Setiap Hari</p>
@@ -80,13 +80,13 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                 </p>
 
                 {/* Dual Action CTA Buttons */}
-                <div className="pt-4 flex flex-wrap items-center gap-4">
+                <div className="pt-4 flex flex-wrap items-center gap-3">
                   <a
                     href="https://wa.me/6285863646267"
                     target="_blank"
                     rel="noreferrer"
                     style={{ backgroundColor: currentItem.accentColor }}
-                    className="px-6 py-3.5 rounded-full text-[#283920] font-extrabold text-sm flex items-center gap-2 shadow-[0_5px_0_rgba(22,36,18,0.3)] hover:-translate-y-0.5 active:translate-y-0 transition-all"
+                    className="px-5 py-3.5 rounded-full text-[#283920] font-extrabold text-sm flex items-center gap-2 shadow-[0_5px_0_rgba(22,36,18,0.3)] hover:-translate-y-0.5 active:translate-y-0 transition-all"
                   >
                     <MessageCircle className="w-4 h-4 stroke-[2.5]" />
                     Tanya & pesan via WhatsApp
@@ -94,7 +94,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
 
                   <a
                     href="#locations"
-                    className="px-5 py-3.5 rounded-full bg-[#FFF9ED]/10 hover:bg-[#FFF9ED]/20 text-[#FFF9ED] font-bold text-sm border border-[#FFF9ED]/35 flex items-center gap-2 transition-all"
+                    className="px-4 py-3.5 rounded-full bg-[#FFF9ED]/10 hover:bg-[#FFF9ED]/20 text-[#FFF9ED] font-bold text-sm border border-[#FFF9ED]/35 flex items-center gap-2 transition-all"
                   >
                     <MapPin className="w-4 h-4 text-[#F6C94B]" />
                     Cari gerai terdekat
@@ -112,10 +112,10 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                   key={currentItem.id}
                   custom={direction}
                   initial={{
-                    opacity: 0.7,
-                    scale: 0.96,
-                    rotate: direction >= 0 ? -4 : 4,
-                    x: direction >= 0 ? 20 : -20,
+                    opacity: 0,
+                    scale: 0.82,
+                    rotate: direction >= 0 ? -15 : 15,
+                    x: direction >= 0 ? 90 : -90,
                   }}
                   animate={{
                     opacity: 1,
@@ -125,13 +125,13 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                   }}
                   exit={{
                     opacity: 0,
-                    scale: 0.96,
-                    rotate: direction >= 0 ? 4 : -4,
-                    x: direction >= 0 ? -20 : 20,
+                    scale: 0.85,
+                    rotate: direction >= 0 ? 15 : -15,
+                    x: direction >= 0 ? -90 : 90,
                   }}
                   transition={{
-                    duration: 0.22,
-                    ease: 'easeOut',
+                    duration: 0.55,
+                    ease: [0.16, 1, 0.3, 1],
                   }}
                   className="absolute inset-0 flex items-center justify-center"
                 >
