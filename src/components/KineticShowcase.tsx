@@ -41,11 +41,19 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
   return (
     <section
       id="showcase"
-      className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden transition-colors duration-700 pt-28 pb-10"
-      style={{
-        background: `radial-gradient(circle at 65% 50%, ${currentItem.bgGradient.from} 0%, ${currentItem.bgGradient.via} 50%, ${currentItem.bgGradient.to} 100%)`,
-      }}
+      className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-[#283920] pt-28 pb-10"
     >
+      <AnimatePresence initial={false}>
+        <motion.div
+          key={`background-${currentItem.id}`}
+          initial={{ opacity: 0, scale: 1.06 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.97 }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: `radial-gradient(circle at 65% 50%, ${currentItem.bgGradient.from} 0%, ${currentItem.bgGradient.via} 48%, ${currentItem.bgGradient.to} 100%)` }}
+        />
+      </AnimatePresence>
       <div className="absolute -right-24 top-16 w-[520px] h-[520px] rounded-full bg-[#FFF9ED]/[0.07] pointer-events-none" />
       <div className="absolute -left-32 bottom-2 w-80 h-80 rounded-full border-[40px] border-[#F6C94B]/10 pointer-events-none" />
 
@@ -55,13 +63,13 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
           
           {/* Left Column: Menu Typography & Specs */}
           <div className="lg:col-span-5 order-1 relative flex flex-col justify-center">
-            <AnimatePresence mode="popLayout" initial={false}>
+            <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={currentItem.id}
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -24 }}
-                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                exit={{ opacity: 0, y: -24, transition: { duration: 0.26, ease: 'easeIn' } }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 className="space-y-5"
               >
                 <p className="font-display text-xl sm:text-2xl text-[#F6C94B]">#AutoHappy Setiap Hari</p>
@@ -107,7 +115,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
           {/* Right Column: Hero Dish 3D Kinetic Plate */}
           <div className="lg:col-span-7 order-2 flex items-center justify-center relative py-6">
             <div className="relative w-72 h-72 sm:w-96 sm:h-96 md:w-[460px] md:h-[460px]">
-              <AnimatePresence initial={false} custom={direction}>
+              <AnimatePresence mode="wait" initial={false} custom={direction}>
                 <motion.div
                   key={currentItem.id}
                   custom={direction}
@@ -128,9 +136,10 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                     scale: 0.85,
                     rotate: direction >= 0 ? 15 : -15,
                     x: direction >= 0 ? -90 : 90,
+                    transition: { duration: 0.28, ease: 'easeIn' },
                   }}
                   transition={{
-                    duration: 0.55,
+                    duration: 0.52,
                     ease: [0.16, 1, 0.3, 1],
                   }}
                   className="absolute inset-0 flex items-center justify-center"
