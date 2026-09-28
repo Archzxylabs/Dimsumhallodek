@@ -28,11 +28,9 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#121214] text-white">
-      {/* Navbar with dynamic accent color */}
+    <div className="min-h-screen bg-[#FFF9ED] text-[#35462B]">
       <Navbar
         onOpenCustomizer={() => handleOpenCustomizer()}
-        accentColor={activeItem.accentColor}
       />
 
       {/* Main Kinetic Showcase (The Core "Warmindo-style" Experience) */}

@@ -43,44 +43,20 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
   return (
     <section
       id="showcase"
-      className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden transition-colors duration-700 select-none pt-24 pb-8"
+      className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden transition-colors duration-700 pt-28 pb-10"
       style={{
         background: `radial-gradient(circle at 65% 50%, ${currentItem.bgGradient.from} 0%, ${currentItem.bgGradient.via} 50%, ${currentItem.bgGradient.to} 100%)`,
       }}
     >
-      {/* Dynamic Ambient Blur Glows */}
-      <div
-        className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full blur-[140px] opacity-35 pointer-events-none transition-colors duration-700"
-        style={{ backgroundColor: currentItem.accentColor }}
-      />
-      <div
-        className="absolute bottom-10 left-10 w-80 h-80 rounded-full blur-[120px] opacity-25 pointer-events-none transition-colors duration-700"
-        style={{ backgroundColor: currentItem.secondaryColor }}
-      />
-
-      {/* Massive Watermark Typography in Background */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden z-0">
-        <AnimatePresence mode="wait" custom={direction}>
-          <motion.div
-            key={currentItem.watermark}
-            custom={direction}
-            initial={{ opacity: 0, x: direction >= 0 ? 100 : -100, scale: 0.95 }}
-            animate={{ opacity: 0.08, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: direction >= 0 ? -100 : 100, scale: 1.05 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display font-black text-[18vw] leading-none tracking-tighter text-white whitespace-nowrap uppercase select-none text-center"
-          >
-            {currentItem.watermark}
-          </motion.div>
-        </AnimatePresence>
-      </div>
+      <div className="absolute -right-24 top-16 w-[520px] h-[520px] rounded-full bg-[#FFF9ED]/[0.07] pointer-events-none" />
+      <div className="absolute -left-32 bottom-2 w-80 h-80 rounded-full border-[40px] border-[#F6C94B]/10 pointer-events-none" />
 
       {/* Main Content Area */}
       <div className="relative z-20 max-w-7xl mx-auto w-full px-6 lg:px-12 flex-1 flex flex-col justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left Column: Menu Typography & Specs */}
-          <div className="lg:col-span-5 order-2 lg:order-1 flex flex-col justify-center">
+          <div className="lg:col-span-5 order-1 flex flex-col justify-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentItem.id}
@@ -88,20 +64,20 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -24 }}
                 transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                className="space-y-4"
+                className="space-y-5"
               >
-                {/* Category Badge */}
-                <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-black tracking-wider uppercase bg-black/40 border border-white/15 text-white backdrop-blur-md">
+                <p className="font-display text-xl sm:text-2xl text-[#F6C94B]">Hangat, gurih, bikin happy.</p>
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-extrabold bg-[#F6C94B] text-[#35462B]">
                   {currentItem.badge}
                 </div>
 
                 {/* Big Bold Headline */}
-                <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[0.95] drop-shadow-sm">
+                <h1 className="font-display font-semibold text-5xl sm:text-6xl lg:text-7xl text-[#FFF9ED] tracking-tight leading-[1.02]">
                   {currentItem.name}
                 </h1>
 
                 {/* Tagline */}
-                <p className="text-white/80 font-medium text-lg leading-relaxed max-w-md">
+                <p className="text-[#FFF9ED]/85 font-semibold text-lg leading-relaxed max-w-md">
                   {currentItem.tagline}
                 </p>
 
@@ -110,7 +86,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                   {currentItem.flavorNotes.map((note, idx) => (
                     <span
                       key={idx}
-                      className="px-2.5 py-1 rounded-md text-xs font-semibold bg-white/10 text-white/90 border border-white/10"
+                      className="px-3 py-1.5 rounded-full text-xs font-bold bg-[#FFF9ED]/10 text-[#FFF9ED] border border-[#FFF9ED]/20"
                     >
                       {note}
                     </span>
@@ -119,10 +95,10 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
 
                 {/* Price Display */}
                 <div className="pt-2 flex items-baseline gap-3">
-                  <span className="font-display font-black text-3xl sm:text-4xl text-white">
+                  <span className="font-display font-semibold text-3xl sm:text-4xl text-[#F6C94B]">
                     {currentItem.priceFormatted}
                   </span>
-                  <span className="text-xs text-white/60 tracking-wider uppercase font-semibold">
+                  <span className="text-sm text-[#FFF9ED]/70 font-semibold">
                     / {currentItem.specs.portion}
                   </span>
                 </div>
@@ -132,18 +108,18 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                   <button
                     onClick={() => onOpenCustomizer(currentItem)}
                     style={{ backgroundColor: currentItem.accentColor }}
-                    className="px-6 py-3.5 rounded-2xl text-black font-black text-sm tracking-wider uppercase flex items-center gap-2 shadow-xl hover:scale-105 active:scale-95 transition-all"
+                    className="px-6 py-3.5 rounded-full text-[#283920] font-extrabold text-sm flex items-center gap-2 shadow-[0_5px_0_rgba(22,36,18,0.3)] hover:-translate-y-0.5 active:translate-y-0 transition-all"
                   >
                     <SlidersHorizontal className="w-4 h-4 stroke-[2.5]" />
-                    Racik Dimsum Dek →
+                    Racik Dimsumku →
                   </button>
 
                   <a
                     href="#locations"
-                    className="px-5 py-3.5 rounded-2xl bg-black/40 hover:bg-black/60 text-white font-bold text-sm tracking-wider uppercase border border-white/20 backdrop-blur-md flex items-center gap-2 transition-all"
+                    className="px-5 py-3.5 rounded-full bg-[#FFF9ED]/10 hover:bg-[#FFF9ED]/20 text-[#FFF9ED] font-bold text-sm border border-[#FFF9ED]/35 flex items-center gap-2 transition-all"
                   >
-                    <MapPin className="w-4 h-4 text-amber-400" />
-                    Cari di Gerai Terdekat
+                    <MapPin className="w-4 h-4 text-[#F6C94B]" />
+                    Cari gerai terdekat
                   </a>
                 </div>
               </motion.div>
@@ -151,7 +127,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
           </div>
 
           {/* Right Column: Hero Dish 3D Kinetic Plate */}
-          <div className="lg:col-span-7 order-1 lg:order-2 flex items-center justify-center relative py-6">
+          <div className="lg:col-span-7 order-2 flex items-center justify-center relative py-6">
             <div className="relative w-72 h-72 sm:w-96 sm:h-96 md:w-[460px] md:h-[460px]">
               <AnimatePresence mode="wait" custom={direction}>
                 <motion.div
@@ -181,23 +157,19 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                   }}
                   className="w-full h-full flex items-center justify-center relative"
                 >
-                  {/* Outer Glow Halo Ring */}
-                  <div
-                    className="absolute inset-4 rounded-full blur-2xl opacity-40 transition-colors duration-700"
-                    style={{ backgroundColor: currentItem.accentColor }}
-                  />
+                  <div className="absolute inset-1 rounded-full bg-[#F6C94B]/80 scale-105" />
 
                   {/* Circular Plate Presentation */}
                   <motion.div
                     animate={{
-                      y: [0, -10, 0],
+                      y: [0, -5, 0],
                     }}
                     transition={{
                       duration: 4.5,
                       repeat: Infinity,
                       ease: 'easeInOut',
                     }}
-                    className="relative w-full h-full rounded-full shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] border-4 border-white/20 p-2 bg-gradient-to-b from-white/15 to-transparent backdrop-blur-sm z-10"
+                    className="relative w-full h-full rounded-full shadow-[0_24px_45px_-22px_rgba(11,25,9,0.55)] border-[10px] border-[#FFF9ED] p-1 bg-[#FFF9ED] z-10"
                   >
                     <img
                       src={currentItem.image}
@@ -207,9 +179,9 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
 
                     {/* Torched Floating Badge on Plate */}
                     {currentItem.specs.torched && (
-                      <div className="absolute top-4 right-4 bg-orange-600/90 text-white text-[11px] font-black tracking-widest uppercase px-3 py-1.5 rounded-full shadow-lg border border-orange-400/50 flex items-center gap-1 backdrop-blur-md">
-                        <Flame className="w-3.5 h-3.5 fill-amber-300" />
-                        TORCHED SMOKY
+                      <div className="absolute top-3 right-1 bg-[#E96B2B] text-white text-xs font-extrabold px-3 py-2 rounded-full shadow-md flex items-center gap-1">
+                        <Flame className="w-3.5 h-3.5 fill-[#F6C94B]" />
+                        Panggang harum
                       </div>
                     )}
                   </motion.div>
@@ -226,30 +198,30 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
 
       {/* Bottom Bar: Controllers & Pagination Pills */}
       <div className="relative z-30 max-w-7xl mx-auto w-full px-6 lg:px-12 pt-8">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-white/10 pt-6">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-[#FFF9ED]/25 pt-6">
           
           {/* Arrow Controllers & Index Counter */}
           <div className="flex items-center gap-4">
             <button
               onClick={handlePrev}
-              aria-label="Previous menu"
-              className="w-12 h-12 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center border border-white/10 transition-all hover:scale-105 active:scale-95 backdrop-blur-md outline-none focus:outline-none"
+              aria-label="Menu sebelumnya"
+              className="w-12 h-12 rounded-full bg-[#FFF9ED]/15 hover:bg-[#FFF9ED]/25 text-white flex items-center justify-center border border-[#FFF9ED]/30 transition-all"
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
 
             <button
               onClick={handleNext}
-              aria-label="Next menu"
-              className="w-12 h-12 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center border border-white/10 transition-all hover:scale-105 active:scale-95 backdrop-blur-md outline-none focus:outline-none"
+              aria-label="Menu berikutnya"
+              className="w-12 h-12 rounded-full bg-[#FFF9ED]/15 hover:bg-[#FFF9ED]/25 text-white flex items-center justify-center border border-[#FFF9ED]/30 transition-all"
             >
               <ArrowRight className="w-5 h-5" />
             </button>
 
             {/* Numerical Counter */}
-            <div className="font-mono font-bold text-sm tracking-wider text-white/80 pl-2">
-              <span className="text-white text-lg">{currentItem.index}</span>
-              <span className="text-white/40"> / 0{items.length}</span>
+            <div className="font-display font-semibold text-sm text-[#FFF9ED]/80 pl-2">
+              <span className="text-[#F6C94B] text-lg">{currentItem.index}</span>
+              <span> / 0{items.length}</span>
             </div>
           </div>
 
@@ -266,10 +238,10 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                       onSelectIndex(idx);
                     }
                   }}
-                  className={`px-3 py-2 text-xs font-black tracking-wide uppercase transition-all whitespace-nowrap outline-none focus:outline-none flex items-center gap-1.5 ${
+                  className={`px-3 py-2 text-xs font-extrabold transition-all whitespace-nowrap flex items-center gap-1.5 ${
                     isActive
-                      ? 'text-white border-b-2'
-                      : 'text-white/45 hover:text-white/80 border-b-2 border-transparent'
+                      ? 'text-[#F6C94B] border-b-2'
+                      : 'text-[#FFF9ED]/65 hover:text-[#FFF9ED] border-b-2 border-transparent'
                   }`}
                   style={isActive ? { borderColor: currentItem.accentColor } : {}}
                 >

@@ -29,22 +29,22 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     id: 'dimsum-mix-mentai-tartar',
     index: '01',
-    name: 'MIX MENTAI TARTAR.',
+    name: 'Mix Mentai Tartar',
     watermark: 'MENTAI.',
     tagline: 'Gurih creamy saus mentai ditorch harum berpadu tartar segar.',
-    badge: 'SIGNATURE BEST SELLER',
+    badge: 'Paling banyak dipesan',
     price: 18000,
     priceFormatted: 'Rp 18.000',
     description: 'Dimsum full daging ayam lembut diselimuti kombinasi saus mentai gurih-creamy dan saus tartar segar, ditorch ringan menghasilkan sensasi smoky khas.',
     image: '/assets/processed_dishes/mentai_tartar.png',
     bgGradient: {
-      from: '#7c2d12', // orange-900
-      via: '#431407', // orange-950
-      to: '#1c0a00',
+      from: '#52683c',
+      via: '#35462b',
+      to: '#283920',
     },
-    accentColor: '#f97316', // orange-500
-    secondaryColor: '#fdba74',
-    flavorNotes: ['Creamy Mentai', 'Fresh Tartar', 'Light Torched', '100% Ayam'],
+    accentColor: '#e96b2b',
+    secondaryColor: '#f6c94b',
+    flavorNotes: ['Mentai gurih', 'Tartar segar', 'Panggang harum', 'Full ayam'],
     specs: {
       portion: '4 Pcs / Tray',
       torched: true,
@@ -55,22 +55,22 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     id: 'dimsum-carbonara',
     index: '02',
-    name: 'DIMSUM CARBONARA.',
+    name: 'Dimsum Carbonara',
     watermark: 'CHEESY.',
     tagline: 'Perpaduan gurih cheesy ala western fusion dengan taburan nori.',
-    badge: 'CHEESY & CREAMY',
+    badge: 'Favorit pencinta keju',
     price: 18000,
     priceFormatted: 'Rp 18.000',
     description: 'Dimsum ayam juicy berlumur saus carbonara creamy pekat, gurih keju lumer yang meleleh di mulut, disempurnakan serpihan nori premium.',
     image: '/assets/processed_dishes/carbonara.png',
     bgGradient: {
-      from: '#713f12', // yellow-900
-      via: '#3f2003', // warm ochre
-      to: '#180d02',
+      from: '#586d40',
+      via: '#3d502e',
+      to: '#293a22',
     },
-    accentColor: '#eab308', // yellow-500
-    secondaryColor: '#fef08a',
-    flavorNotes: ['Cheesy Melt', 'Rich Carbonara', 'Nori Flakes', 'Smoky Aroma'],
+    accentColor: '#f6c94b',
+    secondaryColor: '#fff0a7',
+    flavorNotes: ['Keju lumer', 'Saus creamy', 'Taburan nori', 'Harum panggang'],
     specs: {
       portion: '4 Pcs / Tray',
       torched: true,
@@ -81,22 +81,22 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     id: 'dimsum-hot-lava-mentai',
     index: '03',
-    name: 'HOT LAVA MENTAI.',
+    name: 'Hot Lava Mentai',
     watermark: 'PEDAS.',
     tagline: 'Sensasi pedas membakar selera seimbang dengan saus mentai gurih.',
-    badge: 'EXTRA HOT LAVA',
+    badge: 'Buat pencinta pedas',
     price: 18000,
     priceFormatted: 'Rp 18.000',
     description: 'Dimsum full daging ayam disiram saus Hot Lava pedas nampol dipadukan kelembutan saus mentai gurih manis dan taburan nori.',
     image: '/assets/processed_dishes/hot_lava.png',
     bgGradient: {
-      from: '#881337', // rose-900
-      via: '#4c0519', // rose-950
-      to: '#190007',
+      from: '#53683c',
+      via: '#35462b',
+      to: '#283920',
     },
-    accentColor: '#f43f5e', // rose-500
-    secondaryColor: '#fda4af',
-    flavorNotes: ['Hot Lava Pedas', 'Creamy Mentai', 'Gurih Nagih', 'Nori Flakes'],
+    accentColor: '#e96b2b',
+    secondaryColor: '#f6c94b',
+    flavorNotes: ['Pedas nampol', 'Mentai creamy', 'Gurih nagih', 'Taburan nori'],
     specs: {
       portion: '4 Pcs / Tray',
       torched: true,
@@ -107,22 +107,22 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     id: 'dimsum-cake-tower',
     index: '04',
-    name: 'DIMSUM CAKE TOWER.',
+    name: 'Dimsum Cake Tower',
     watermark: 'PARTY.',
     tagline: 'Alternatif kue ulang tahun bertingkat dengan topping saus pesta.',
-    badge: 'CELEBRATION TOWER',
+    badge: 'Serunya buat perayaan',
     price: 125000,
     priceFormatted: 'Rp 125.000',
     description: 'Kreasi tower kue perayaan unik dari susunan puluhan dimsum hangat bertingkat, dihias saus mentai torched melimpah, lilin, dan kartu ucapan spesial.',
     image: '/assets/processed_dishes/cake_tower.png',
     bgGradient: {
-      from: '#581c87', // purple-900
-      via: '#2e1065', // purple-950
-      to: '#110326',
+      from: '#617145',
+      via: '#435531',
+      to: '#293a22',
     },
-    accentColor: '#c084fc', // purple-400
-    secondaryColor: '#f3e8ff',
-    flavorNotes: ['Party Size', 'Multi-Sauce', 'Custom Topper', 'Lilin Included'],
+    accentColor: '#f6c94b',
+    secondaryColor: '#fff0a7',
+    flavorNotes: ['Porsi rame-rame', 'Aneka saus', 'Hiasan spesial', 'Sudah dengan lilin'],
     specs: {
       portion: '25-30 Pcs Tower',
       torched: true,
@@ -133,22 +133,22 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     id: 'dimsum-platter-16',
     index: '05',
-    name: 'PLATTER 16 MENTAI.',
+    name: 'Platter 16 Mentai',
     watermark: 'SHARING.',
     tagline: 'Satu box besar buat kumpul rame-rame bareng teman dan keluarga.',
-    badge: 'SHARING PLATTER',
+    badge: 'Enak buat berbagi',
     price: 68000,
     priceFormatted: 'Rp 68.000',
     description: 'Paket baki besar isi 16 pcs dimsum kukus dengan baluran full saus mentai torched dan nori. Paling pas buat arisan, nobar, atau traktiran kantor.',
     image: '/assets/processed_dishes/platter_16.png',
     bgGradient: {
-      from: '#1e293b', // slate-800
-      via: '#0f172a', // slate-900
-      to: '#020617',
+      from: '#52683c',
+      via: '#35462b',
+      to: '#283920',
     },
-    accentColor: '#38bdf8', // sky-400
-    secondaryColor: '#bae6fd',
-    flavorNotes: ['16 Pcs Full Box', 'Full Mentai Torched', 'Sharing Platter', 'Hemat Berdua-Tiga'],
+    accentColor: '#e96b2b',
+    secondaryColor: '#f6c94b',
+    flavorNotes: ['Isi 16 pcs', 'Mentai melimpah', 'Buat berbagi', 'Lebih hemat'],
     specs: {
       portion: '16 Pcs Big Box',
       torched: true,

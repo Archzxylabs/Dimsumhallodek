@@ -71,23 +71,23 @@ export const DimsumCustomizer: React.FC<DimsumCustomizerProps> = ({
   };
 
   return (
-    <section id="customizer" className="relative py-24 bg-[#141417] border-t border-white/10 overflow-hidden">
+    <section id="customizer" className="relative py-24 bg-[#FFF9ED] border-t border-[#35462B]/10 overflow-hidden">
       {/* Background Watermark Text */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 font-display font-black text-[14vw] text-white/[0.03] select-none pointer-events-none whitespace-nowrap">
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 font-display font-semibold text-[14vw] text-[#35462B]/[0.04] select-none pointer-events-none whitespace-nowrap">
         RACIK SESUKAMU.
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header Title */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-          <div className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/20">
-            Interactive Customizer
+          <div className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-[#F6C94B] text-[#35462B] border border-[#E5B634]">
+            Bikin sesuai seleramu
           </div>
-          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight">
-            RACIK DIMSUM DEK-MU.
+          <h2 className="font-display font-semibold text-3xl sm:text-4xl lg:text-5xl text-[#35462B] tracking-tight">
+            Racik dimsum favoritmu
           </h2>
-          <p className="text-white/60 text-sm sm:text-base">
-            Bebas mix saus lumer favorit, atur jumlah porsi, dan tambahkan topping panggang sesuai seleramu.
+          <p className="text-[#35462B]/60 text-sm sm:text-base">
+            Pilih porsi, saus, dan topping yang paling kamu suka. Lihat racikannya sebelum pesan ke Minsum.
           </p>
         </div>
 
@@ -100,13 +100,13 @@ export const DimsumCustomizer: React.FC<DimsumCustomizerProps> = ({
             {/* Step 1: Base Porsi */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="font-display font-extrabold text-white text-lg tracking-wide flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-full bg-amber-500 text-black text-xs font-black flex items-center justify-center">
+                <h3 className="font-display font-extrabold text-[#35462B] text-lg tracking-wide flex items-center gap-2">
+                  <span className="w-6 h-6 rounded-full bg-[#F6C94B] text-[#35462B] text-xs font-semibold flex items-center justify-center">
                     1
                   </span>
                   Pilih Porsi Dimsum
                 </h3>
-                <span className="text-xs text-white/50">100% Full Daging Ayam</span>
+                <span className="text-xs text-[#35462B]/50">100% Full Daging Ayam</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -118,16 +118,16 @@ export const DimsumCustomizer: React.FC<DimsumCustomizerProps> = ({
                       onClick={() => setSelectedBase(base)}
                       className={`p-4 rounded-2xl text-left border transition-all ${
                         isSelected
-                          ? 'bg-amber-500/15 border-amber-500 shadow-[0_0_20px_rgba(245,158,11,0.2)]'
-                          : 'bg-zinc-900/60 hover:bg-zinc-800/80 border-white/10'
+                          ? 'bg-[#FFF1D5] border-[#E96B2B] shadow-sm'
+                          : 'bg-white hover:bg-[#FFF4DE] border-[#35462B]/15'
                       }`}
                     >
                       <div className="flex justify-between items-start">
                         <div>
-                          <p className="font-bold text-white text-sm">{base.name}</p>
-                          <p className="text-xs text-white/60 mt-0.5">{base.desc}</p>
+                          <p className="font-bold text-[#35462B] text-sm">{base.name}</p>
+                          <p className="text-xs text-[#35462B]/60 mt-0.5">{base.desc}</p>
                         </div>
-                        <span className="text-xs font-mono font-bold text-amber-400">
+                        <span className="text-xs font-sans font-bold text-[#C45120]">
                           Rp {base.price.toLocaleString('id-ID')}
                         </span>
                       </div>
@@ -140,13 +140,13 @@ export const DimsumCustomizer: React.FC<DimsumCustomizerProps> = ({
             {/* Step 2: Signature Sauces */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="font-display font-extrabold text-white text-lg tracking-wide flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-full bg-amber-500 text-black text-xs font-black flex items-center justify-center">
+                <h3 className="font-display font-extrabold text-[#35462B] text-lg tracking-wide flex items-center gap-2">
+                  <span className="w-6 h-6 rounded-full bg-[#F6C94B] text-[#35462B] text-xs font-semibold flex items-center justify-center">
                     2
                   </span>
                   Pilih Saus Lumer (Bisa Mix)
                 </h3>
-                <span className="text-xs text-amber-400 font-medium">Bisa pilih lebih dari satu</span>
+                <span className="text-xs text-[#C45120] font-medium">Bisa pilih lebih dari satu</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -158,8 +158,8 @@ export const DimsumCustomizer: React.FC<DimsumCustomizerProps> = ({
                       onClick={() => toggleSauce(sauce.id)}
                       className={`p-4 rounded-2xl text-left border flex items-center justify-between transition-all ${
                         isSelected
-                          ? 'bg-orange-500/15 border-orange-500 shadow-[0_0_20px_rgba(249,115,22,0.2)]'
-                          : 'bg-zinc-900/60 hover:bg-zinc-800/80 border-white/10'
+                          ? 'bg-[#FFF1D5] border-[#E96B2B] shadow-sm'
+                          : 'bg-white hover:bg-[#FFF4DE] border-[#35462B]/15'
                       }`}
                     >
                       <div className="flex items-center gap-3">
@@ -167,13 +167,13 @@ export const DimsumCustomizer: React.FC<DimsumCustomizerProps> = ({
                           className="w-3.5 h-3.5 rounded-full"
                           style={{ backgroundColor: sauce.color }}
                         />
-                        <span className="font-bold text-white text-sm">{sauce.name}</span>
+                        <span className="font-bold text-[#35462B] text-sm">{sauce.name}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-mono text-white/60">
+                        <span className="text-xs font-sans text-[#35462B]/60">
                           {sauce.price > 0 ? `+Rp ${sauce.price.toLocaleString('id-ID')}` : 'Gratis'}
                         </span>
-                        {isSelected && <Check className="w-4 h-4 text-orange-400 font-bold" />}
+                        {isSelected && <Check className="w-4 h-4 text-[#C45120] font-bold" />}
                       </div>
                     </button>
                   );
@@ -184,13 +184,13 @@ export const DimsumCustomizer: React.FC<DimsumCustomizerProps> = ({
             {/* Step 3: Toppings */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="font-display font-extrabold text-white text-lg tracking-wide flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-full bg-amber-500 text-black text-xs font-black flex items-center justify-center">
+                <h3 className="font-display font-extrabold text-[#35462B] text-lg tracking-wide flex items-center gap-2">
+                  <span className="w-6 h-6 rounded-full bg-[#F6C94B] text-[#35462B] text-xs font-semibold flex items-center justify-center">
                     3
                   </span>
                   Ekstra Topping & Taburan
                 </h3>
-                <span className="text-xs text-white/50">Ditorch panggang smoky</span>
+                <span className="text-xs text-[#35462B]/65">Dipanggang hingga harum</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -202,19 +202,19 @@ export const DimsumCustomizer: React.FC<DimsumCustomizerProps> = ({
                       onClick={() => toggleTopping(top.id)}
                       className={`p-4 rounded-2xl text-left border flex items-center justify-between transition-all ${
                         isSelected
-                          ? 'bg-yellow-500/15 border-yellow-500 shadow-[0_0_20px_rgba(234,179,8,0.2)]'
-                          : 'bg-zinc-900/60 hover:bg-zinc-800/80 border-white/10'
+                          ? 'bg-[#FFF1D5] border-[#E96B2B] shadow-sm'
+                          : 'bg-white hover:bg-[#FFF4DE] border-[#35462B]/15'
                       }`}
                     >
                       <div>
-                        <p className="font-bold text-white text-sm">{top.name}</p>
-                        <p className="text-xs text-white/60 mt-0.5">{top.desc}</p>
+                        <p className="font-bold text-[#35462B] text-sm">{top.name}</p>
+                        <p className="text-xs text-[#35462B]/60 mt-0.5">{top.desc}</p>
                       </div>
                       <div className="flex items-center gap-2 pl-2">
-                        <span className="text-xs font-mono text-amber-400 whitespace-nowrap">
+                        <span className="text-xs font-sans text-[#C45120] whitespace-nowrap">
                           +Rp {top.price.toLocaleString('id-ID')}
                         </span>
-                        {isSelected && <Check className="w-4 h-4 text-amber-400 font-bold" />}
+                        {isSelected && <Check className="w-4 h-4 text-[#C45120] font-bold" />}
                       </div>
                     </button>
                   );
@@ -226,52 +226,52 @@ export const DimsumCustomizer: React.FC<DimsumCustomizerProps> = ({
 
           {/* Live Preview & Summary Card (Right) */}
           <div className="lg:col-span-5 sticky top-28">
-            <div className="rounded-3xl p-6 sm:p-8 bg-zinc-900/90 border border-white/15 backdrop-blur-2xl shadow-2xl space-y-6">
+            <div className="rounded-3xl p-6 sm:p-8 bg-white border border-[#35462B]/15 shadow-[0_16px_40px_rgba(40,57,32,0.10)] space-y-6">
               
               {/* Plate Visual Render */}
-              <div className="relative aspect-square w-full max-w-[280px] mx-auto rounded-full p-2 border-2 border-white/20 bg-gradient-to-b from-white/10 to-transparent flex items-center justify-center overflow-hidden">
+              <div className="relative aspect-square w-full max-w-[280px] mx-auto rounded-full p-2 border-2 border-[#35462B]/20 bg-[#FFF9ED] flex items-center justify-center overflow-hidden">
                 <img
                   src="/assets/processed_dishes/mentai_tartar.png"
-                  alt="Custom Plate Preview"
+                  alt="Ilustrasi dimsum untuk racikanmu"
                   className="w-full h-full object-cover rounded-full shadow-inner"
                 />
 
                 {/* Overlaid Animated Badges for selected sauces */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none p-4 text-center">
-                  <div className="bg-black/85 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 text-[11px] font-black tracking-widest text-amber-300 shadow-xl uppercase">
+                  <div className="bg-[#35462B] px-4 py-1.5 rounded-full border border-[#35462B]/20 text-[11px] font-extrabold text-[#FFF9ED] shadow-md">
                     {selectedBase.pieces} PCS DIMSUM
                   </div>
                 </div>
               </div>
 
               {/* Recipe Summary List */}
-              <div className="border-t border-white/10 pt-4 space-y-2 text-sm">
-                <div className="flex justify-between text-white/80">
+              <div className="border-t border-[#35462B]/10 pt-4 space-y-2 text-sm">
+                <div className="flex justify-between text-[#35462B]/80">
                   <span>Base: {selectedBase.name}</span>
-                  <span className="font-mono">Rp {selectedBase.price.toLocaleString('id-ID')}</span>
+                  <span className="font-sans">Rp {selectedBase.price.toLocaleString('id-ID')}</span>
                 </div>
-                <div className="flex justify-between text-white/80">
+                <div className="flex justify-between text-[#35462B]/80">
                   <span>Saus ({selectedSauces.length} varian)</span>
-                  <span className="font-mono">+{saucesCost.toLocaleString('id-ID')}</span>
+                  <span className="font-sans">+{saucesCost.toLocaleString('id-ID')}</span>
                 </div>
-                <div className="flex justify-between text-white/80">
+                <div className="flex justify-between text-[#35462B]/80">
                   <span>Topping ({selectedToppings.length} varian)</span>
-                  <span className="font-mono">+{toppingsCost.toLocaleString('id-ID')}</span>
+                  <span className="font-sans">+{toppingsCost.toLocaleString('id-ID')}</span>
                 </div>
               </div>
 
               {/* Total Price Section */}
-              <div className="border-t border-white/10 pt-4 flex items-baseline justify-between">
+              <div className="border-t border-[#35462B]/10 pt-4 flex items-baseline justify-between">
                 <div>
-                  <p className="text-xs uppercase tracking-wider text-white/50 font-bold">Total Racikan</p>
-                  <p className="font-display font-black text-3xl sm:text-4xl text-amber-400">
+                  <p className="text-xs uppercase tracking-wider text-[#35462B]/50 font-bold">Total Racikan</p>
+                  <p className="font-display font-semibold text-3xl sm:text-4xl text-[#C45120]">
                     Rp {totalPrice.toLocaleString('id-ID')}
                   </p>
                 </div>
 
                 <button
                   onClick={handleReset}
-                  className="text-xs text-white/50 hover:text-white flex items-center gap-1 transition-colors"
+                  className="text-xs text-[#35462B]/50 hover:text-[#35462B] flex items-center gap-1 transition-colors"
                 >
                   <RotateCcw className="w-3 h-3" />
                   Reset
@@ -281,7 +281,7 @@ export const DimsumCustomizer: React.FC<DimsumCustomizerProps> = ({
               {/* Action: Open Digital Receipt */}
               <button
                 onClick={handleProceed}
-                className="w-full py-4 rounded-2xl bg-gradient-to-r from-amber-400 to-orange-500 text-black font-black text-sm tracking-wider uppercase flex items-center justify-center gap-2 shadow-xl hover:opacity-95 active:scale-[0.98] transition-all"
+                className="w-full py-4 rounded-full bg-[#E96B2B] hover:bg-[#C45120] text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-[0_5px_0_#B84E20] active:scale-[0.98] transition-all"
               >
                 Lihat Nota Racikanku →
               </button>
