@@ -55,13 +55,13 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
           
           {/* Left Column: Menu Typography & Specs */}
           <div className="lg:col-span-5 order-1 flex flex-col justify-center">
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={currentItem.id}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -24 }}
-                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
                 className="space-y-5"
               >
                 <p className="font-display text-xl sm:text-2xl text-[#F6C94B]">#AutoHappy Setiap Hari</p>
@@ -107,15 +107,15 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
           {/* Right Column: Hero Dish 3D Kinetic Plate */}
           <div className="lg:col-span-7 order-2 flex items-center justify-center relative py-6">
             <div className="relative w-72 h-72 sm:w-96 sm:h-96 md:w-[460px] md:h-[460px]">
-              <AnimatePresence mode="wait" custom={direction}>
+              <AnimatePresence initial={false} custom={direction}>
                 <motion.div
                   key={currentItem.id}
                   custom={direction}
                   initial={{
-                    opacity: 0,
-                    scale: 0.82,
-                    rotate: direction >= 0 ? -15 : 15,
-                    x: direction >= 0 ? 90 : -90,
+                    opacity: 0.7,
+                    scale: 0.96,
+                    rotate: direction >= 0 ? -4 : 4,
+                    x: direction >= 0 ? 20 : -20,
                   }}
                   animate={{
                     opacity: 1,
@@ -125,15 +125,15 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                   }}
                   exit={{
                     opacity: 0,
-                    scale: 0.85,
-                    rotate: direction >= 0 ? 15 : -15,
-                    x: direction >= 0 ? -90 : 90,
+                    scale: 0.96,
+                    rotate: direction >= 0 ? 4 : -4,
+                    x: direction >= 0 ? -20 : 20,
                   }}
                   transition={{
-                    duration: 0.55,
-                    ease: [0.16, 1, 0.3, 1],
+                    duration: 0.22,
+                    ease: 'easeOut',
                   }}
-                  className="w-full h-full flex items-center justify-center relative"
+                  className="absolute inset-0 flex items-center justify-center"
                 >
                   <div className="absolute inset-1 rounded-full bg-[#F6C94B]/80 scale-105" />
 
@@ -152,6 +152,11 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                     <img
                       src={currentItem.image}
                       alt={currentItem.name}
+                      width={846}
+                      height={699}
+                      loading="eager"
+                      decoding="async"
+                      fetchPriority="high"
                       className="w-full h-full object-cover rounded-full drop-shadow-2xl select-none"
                     />
 
