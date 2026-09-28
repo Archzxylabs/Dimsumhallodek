@@ -57,6 +57,22 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
       <div className="absolute -right-24 top-16 w-[520px] h-[520px] rounded-full bg-[#FFF9ED]/[0.07] pointer-events-none" />
       <div className="absolute -left-32 bottom-2 w-80 h-80 rounded-full border-[40px] border-[#F6C94B]/10 pointer-events-none" />
 
+      <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden pointer-events-none" aria-hidden="true">
+        <AnimatePresence mode="wait" initial={false} custom={direction}>
+          <motion.div
+            key={currentItem.watermark}
+            custom={direction}
+            initial={{ opacity: 0, x: direction >= 0 ? 100 : -100, scale: 0.95 }}
+            animate={{ opacity: 0.08, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: direction >= 0 ? -100 : 100, scale: 1.05, transition: { duration: 0.26, ease: 'easeIn' } }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="select-none whitespace-nowrap text-center font-display text-[18vw] font-bold uppercase leading-none tracking-tighter text-white"
+          >
+            {currentItem.watermark}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
       {/* Main Content Area */}
       <div className="relative z-20 max-w-7xl mx-auto w-full px-6 lg:px-12 flex-1 flex flex-col justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
