@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ArrowRight, SlidersHorizontal, MapPin, Flame } from 'lucide-react';
+import { ArrowLeft, ArrowRight, MessageCircle, MapPin, Flame } from 'lucide-react';
 import { MenuItem } from '../data/menuData';
 import { FloatingGarnishes } from './FloatingGarnishes';
 
@@ -8,14 +8,12 @@ interface KineticShowcaseProps {
   items: MenuItem[];
   currentIndex: number;
   onSelectIndex: (index: number) => void;
-  onOpenCustomizer: (item: MenuItem) => void;
 }
 
 export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
   items,
   currentIndex,
   onSelectIndex,
-  onOpenCustomizer,
 }) => {
   const currentItem = items[currentIndex];
   const [direction, setDirection] = useState<number>(1);
@@ -66,9 +64,9 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                 transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                 className="space-y-5"
               >
-                <p className="font-display text-xl sm:text-2xl text-[#F6C94B]">Hangat, gurih, bikin happy.</p>
+                <p className="font-display text-xl sm:text-2xl text-[#F6C94B]">#AutoHappy Setiap Hari</p>
                 <div className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-extrabold bg-[#F6C94B] text-[#35462B]">
-                  {currentItem.badge}
+                  Menu Unggulan
                 </div>
 
                 {/* Big Bold Headline */}
@@ -78,41 +76,21 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
 
                 {/* Tagline */}
                 <p className="text-[#FFF9ED]/85 font-semibold text-lg leading-relaxed max-w-md">
-                  {currentItem.tagline}
+                  {currentItem.description}
                 </p>
-
-                {/* Flavor Notes Tags */}
-                <div className="flex flex-wrap gap-2 pt-1">
-                  {currentItem.flavorNotes.map((note, idx) => (
-                    <span
-                      key={idx}
-                      className="px-3 py-1.5 rounded-full text-xs font-bold bg-[#FFF9ED]/10 text-[#FFF9ED] border border-[#FFF9ED]/20"
-                    >
-                      {note}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Price Display */}
-                <div className="pt-2 flex items-baseline gap-3">
-                  <span className="font-display font-semibold text-3xl sm:text-4xl text-[#F6C94B]">
-                    {currentItem.priceFormatted}
-                  </span>
-                  <span className="text-sm text-[#FFF9ED]/70 font-semibold">
-                    / {currentItem.specs.portion}
-                  </span>
-                </div>
 
                 {/* Dual Action CTA Buttons */}
                 <div className="pt-4 flex flex-wrap items-center gap-4">
-                  <button
-                    onClick={() => onOpenCustomizer(currentItem)}
+                  <a
+                    href="https://wa.me/6285863646267"
+                    target="_blank"
+                    rel="noreferrer"
                     style={{ backgroundColor: currentItem.accentColor }}
                     className="px-6 py-3.5 rounded-full text-[#283920] font-extrabold text-sm flex items-center gap-2 shadow-[0_5px_0_rgba(22,36,18,0.3)] hover:-translate-y-0.5 active:translate-y-0 transition-all"
                   >
-                    <SlidersHorizontal className="w-4 h-4 stroke-[2.5]" />
-                    Racik Dimsumku →
-                  </button>
+                    <MessageCircle className="w-4 h-4 stroke-[2.5]" />
+                    Tanya & pesan via WhatsApp
+                  </a>
 
                   <a
                     href="#locations"
@@ -178,7 +156,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                     />
 
                     {/* Torched Floating Badge on Plate */}
-                    {currentItem.specs.torched && (
+                    {currentItem.torched && (
                       <div className="absolute top-3 right-1 bg-[#E96B2B] text-white text-xs font-extrabold px-3 py-2 rounded-full shadow-md flex items-center gap-1">
                         <Flame className="w-3.5 h-3.5 fill-[#F6C94B]" />
                         Panggang harum

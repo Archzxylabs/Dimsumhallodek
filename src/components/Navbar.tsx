@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 
-interface NavbarProps {
-  onOpenCustomizer: () => void;
-}
-
 const links = [
   { href: '#showcase', label: 'Menu Favorit' },
+  { href: '#events', label: 'Event & Party' },
   { href: '#locations', label: 'Cari Gerai' },
   { href: '#franchise', label: 'Jadi Mitra' },
 ];
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenCustomizer }) => {
+export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -29,7 +26,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCustomizer }) => {
 
         <nav className="hidden lg:flex items-center gap-7 text-sm font-extrabold text-[#35462B]">
           {links.map((link) => <a key={link.href} href={link.href} className="hover:text-[#D85D22] transition-colors">{link.label}</a>)}
-          <button onClick={onOpenCustomizer} className="hover:text-[#D85D22] transition-colors">Racik Dimsum</button>
         </nav>
 
         <a href="https://wa.me/+6285863646267?text=Halo%20Minsum!%20Aku%20mau%20tanya%20menu%20dan%20pesan%20dimsum" target="_blank" rel="noreferrer" className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#E96B2B] hover:bg-[#CF5720] text-white font-extrabold text-sm shadow-[0_5px_0_#B84E20] transition-colors">
@@ -44,7 +40,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCustomizer }) => {
       {mobileMenuOpen && (
         <nav className="lg:hidden px-6 pb-6 pt-3 bg-[#FFF9ED] border-t border-[#35462B]/10 flex flex-col gap-4 text-[#35462B] font-extrabold">
           {links.map((link) => <a key={link.href} href={link.href} onClick={() => setMobileMenuOpen(false)}>{link.label}</a>)}
-          <button onClick={() => { setMobileMenuOpen(false); onOpenCustomizer(); }} className="text-left">Racik Dimsum</button>
           <a href="https://wa.me/+6285863646267?text=Halo%20Minsum!%20Aku%20mau%20pesan%20dimsum" target="_blank" rel="noreferrer" className="text-center rounded-full bg-[#E96B2B] text-white py-3">Pesan via WhatsApp</a>
         </nav>
       )}

@@ -17,8 +17,7 @@ export const StoreLocator: React.FC = () => {
     const matchSearch =
       searchQuery.trim() === '' ||
       outlet.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      outlet.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (outlet.landmark && outlet.landmark.toLowerCase().includes(searchQuery.toLowerCase()));
+      outlet.address.toLowerCase().includes(searchQuery.toLowerCase());
     return matchRegion && matchSearch;
   });
 
@@ -104,11 +103,6 @@ export const StoreLocator: React.FC = () => {
                 <p className="text-[#35462B]/70 text-xs leading-relaxed line-clamp-2">
                   {outlet.address}
                 </p>
-                {outlet.landmark && (
-                  <p className="text-[11px] text-[#35462B]/55 italic">
-                    📍 Landmark: {outlet.landmark}
-                  </p>
-                )}
               </div>
 
               <div className="pt-4 mt-4 border-t border-[#35462B]/10">
