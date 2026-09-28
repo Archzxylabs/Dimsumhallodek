@@ -1,0 +1,139 @@
+import React, { useState } from 'react';
+import { Search, MapPin, ExternalLink, Navigation } from 'lucide-react';
+import { REGIONS_DATA, OutletLocation } from '../data/locationsData';
+
+export const StoreLocator: React.FC = () => {
+  const [selectedRegion, setSelectedRegion] = useState<string>('All');
+  const [searchQuery, setSearchQuery] = useState<string>('');
+
+  // Collect all outlets
+  const allOutlets: (OutletLocation & { region: string })[] = REGIONS_DATA.flatMap((group) =>
+    group.outlets.map((o) => ({ ...o, region: group.region }))
+  );
+
+  // Filter outlets by region and search query
+  const filteredOutlets = allOutlets.filter((outlet) => {
+    const matchRegion = selectedRegion === 'All' || outlet.region === selectedRegion;
+    const matchSearch =
+      searchQuery.trim() === '' ||
+      outlet.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      outlet.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (outlet.landmark && outlet.landmark.toLowerCase().includes(searchQuery.toLowerCase()));
+    return matchRegion && matchSearch;
+  });
+
+  return (
+    <section id="locations" className="py-24 bg-[#0e0e11] border-t border-white/10 relative">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-black uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/20">
+            <MapPin className="w-3.5 h-3.5" />
+            Jaringan Outlet
+          </div>
+          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight">
+            LOKASI 27+ GERAI AKTIF
+          </h2>
+          <p className="text-white/60 text-sm sm:text-base">
+            Temukan gerai Dimsum Hallo Dek terdekat di kotamu. Klik untuk langsung membuka petunjuk arah di Google Maps.
+          </p>
+        </div>
+
+        {/* Search & Region Filter Bar */}
+        <div className="max-w-4xl mx-auto mb-12 space-y-4">
+          
+          {/* Search Input */}
+          <div className="relative">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
+            <input
+              type="text"
+              placeholder="Cari kecamatan, nama jalan, atau gerai (contoh: Cibubur, Cisaat, Sukaraja, Kranggan)..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-12 pr-4 py-4 rounded-2xl bg-zinc-900 border border-white/15 text-white placeholder-white/40 text-sm focus:outline-none focus:border-amber-400 transition-colors shadow-lg"
+            />
+          </div>
+
+          {/* Region Tabs */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+            <button
+              onClick={() => setSelectedRegion('All')}
+              className={`px-4 py-2 rounded-xl text-xs font-extrabold tracking-wide uppercase transition-all whitespace-nowrap ${
+                selectedRegion === 'All'
+                  ? 'bg-amber-400 text-black shadow-md'
+                  : 'bg-zinc-900/80 hover:bg-zinc-800 text-white/70 border border-white/10'
+              }`}
+            >
+              Semua Gerai ({allOutlets.length})
+            </button>
+            {REGIONS_DATA.map((group) => (
+              <button
+                key={group.region}
+                onClick={() => setSelectedRegion(group.region)}
+                className={`px-4 py-2 rounded-xl text-xs font-extrabold tracking-wide uppercase transition-all whitespace-nowrap ${
+                  selectedRegion === group.region
+                    ? 'bg-amber-400 text-black shadow-md'
+                    : 'bg-zinc-900/80 hover:bg-zinc-800 text-white/70 border border-white/10'
+                }`}
+              >
+                {group.region} ({group.count})
+              </button>
+            ))}
+          </div>
+
+        </div>
+
+        {/* Outlet Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {filteredOutlets.map((outlet, idx) => (
+            <div
+              key={idx}
+              className="p-6 rounded-2xl bg-zinc-900/60 hover:bg-zinc-900 border border-white/10 hover:border-amber-400/40 transition-all flex flex-col justify-between group shadow-lg"
+            >
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-bold text-amber-400 tracking-wider uppercase">
+                    {outlet.region}
+                  </span>
+                  <span className="text-[11px] font-mono text-white/40">#{idx + 1}</span>
+                </div>
+                <h4 className="font-display font-black text-white text-lg group-hover:text-amber-300 transition-colors">
+                  {outlet.name}
+                </h4>
+                <p className="text-white/60 text-xs leading-relaxed line-clamp-2">
+                  {outlet.address}
+                </p>
+                {outlet.landmark && (
+                  <p className="text-[11px] text-white/40 italic">
+                    📍 Landmark: {outlet.landmark}
+                  </p>
+                )}
+              </div>
+
+              <div className="pt-4 mt-4 border-t border-white/10">
+                <a
+                  href={outlet.mapsUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full py-2.5 rounded-xl bg-white/5 hover:bg-amber-400 hover:text-black text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-1.5 transition-all border border-white/10 group-hover:border-transparent"
+                >
+                  <Navigation className="w-3.5 h-3.5" />
+                  Buka di Google Maps
+                  <ExternalLink className="w-3 h-3 opacity-60" />
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {filteredOutlets.length === 0 && (
+          <div className="text-center py-12 text-white/50 text-sm">
+            Tidak ada gerai yang cocok dengan kata kunci pencarian. Coba ketik nama daerah lain.
+          </div>
+        )}
+
+      </div>
+    </section>
+  );
+};

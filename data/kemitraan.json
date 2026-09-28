@@ -1,0 +1,70 @@
+{
+  "brand": "Dimsum Hallo Dek (DHD)",
+  "company": "PT Merza Perintis Sukses",
+  "tagline": "#AutoHappy Setiap Hari",
+  "system": "Autopilot 100% (Dikelola penuh oleh manajemen pusat)",
+  "key_benefits": [
+    "Pendapatan pasif bulanan tanpa repot operasional",
+    "Laporan keuangan transparan & terpusat",
+    "Operasional all-in oleh pusat: rekrutmen, training, stok harian, QC, marketing",
+    "Waktu mitra lebih bebas dan fleksibel"
+  ],
+  "financial_terms": {
+    "contract_duration": "3 Tahun",
+    "extension_fee": "Rp 15.000.000",
+    "profit_sharing": "70% Manajemen : 30% Mitra",
+    "payment_initial": "Dilunasi di awal (DP 80% maksimal 7 hari, pelunasan H-7 Grand Opening)",
+    "preparation_time": "Maksimal 3 bulan sebelum opening",
+    "royalty_fee": "Sudah termasuk dalam skema bagi hasil (No hidden royalty)"
+  },
+  "investment_packages": [
+    {
+      "package_name": "Paket Premium Booth Container Gerobak (Radius <= 15 KM)",
+      "price": 28000000,
+      "price_formatted": "Rp 28.000.000",
+      "radius": "<= 15 km dari area produksi Cileungsi"
+    },
+    {
+      "package_name": "Paket Premium Booth Container Gerobak (Radius > 25 KM)",
+      "price": 35000000,
+      "price_formatted": "Rp 35.000.000",
+      "radius": "> 25 km dari area produksi Cileungsi"
+    }
+  ],
+  "booth_specs": {
+    "dimensions": "150 cm x 60 cm x 200 cm",
+    "included_equipment": [
+      "Booth container eksklusif Dimsum Hallo Dek",
+      "Kompor gas panggang 2 in 1",
+      "Panci kukusan stainless steel",
+      "Botol saus & capitan",
+      "Menu lightbox & banner display",
+      "Perlengkapan dapur, tabung gas, dan torch burner",
+      "Bahan baku awal: 500 pcs Dimsum + seluruh varian saus lengkap",
+      "Kemasan, stiker branding, tusukan, atribut gerai",
+      "Tablet POS Kasir + Aplikasi Kasir terintegrasi"
+    ]
+  },
+  "simulation": {
+    "monthly_revenue_est": 25000000,
+    "monthly_opex_est": 10000000,
+    "monthly_net_profit_est": 15000000,
+    "partner_share_30": 4500000,
+    "management_share_70": 10500000,
+    "note": "Estimasi konservatif per outlet. BEP rata-rata diproyeksikan dalam hitungan beberapa bulan operasional."
+  },
+  "onboarding_steps": [
+    "1. Konsultasi & Pemilihan Lokasi",
+    "2. Pembayaran Biaya Franchise (DP 80%)",
+    "3. Persiapan Booth dan Equipment",
+    "4. Rekrutmen & Training Karyawan Standar SOP",
+    "5. Grand Opening Outlet",
+    "6. Monitoring & Laporan Keuangan Rutin Tiap Bulan"
+  ],
+  "contacts": {
+    "whatsapp_sales": "+62 858-6364-6267",
+    "whatsapp_partnerships": "+62 858-0285-4744",
+    "office_address": "Jl. Raya Permata Cibubur No.3 Blok B4 (Ruko Permata Cibubur Blok G5 No. 03), Cileungsi, Kab. Bogor, Jawa Barat 16820",
+    "operating_hours": "Senin - Sabtu, 08:00 - 16:00 (Chat WA 08:00 - 22:00)"
+  }
+}

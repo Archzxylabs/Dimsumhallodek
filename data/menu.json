@@ -1,0 +1,65 @@
+[
+  {
+    "id": "dimsum-mix-mentai-tartar",
+    "name": "Dimsum Mix Mentai Tartar",
+    "badge": "Recommended",
+    "description": "Dimsum full daging ayam disajikan dengan saus mentai + saus tartar gurih, creamy, lembut dan segar, ditorch ringan beraroma nikmat.",
+    "image": "assets/images/WhatsApp-Image-2026-01-20-at-23.14.04-1.jpeg",
+    "flavor_notes": [
+      "Gurih",
+      "Creamy",
+      "Fresh Tartar",
+      "Light Torched"
+    ]
+  },
+  {
+    "id": "dimsum-carbonara",
+    "name": "Dimsum Carbonara",
+    "badge": "Cheesy + Creamy",
+    "description": "Dimsum full daging ayam disajikan dengan saus carbonara cheesy, gurih, creamy lembut + taburan nori. Rasakan aroma smokynya.",
+    "image": "assets/images/WhatsApp-Image-2026-01-20-at-23.14.03.jpeg",
+    "flavor_notes": [
+      "Cheesy",
+      "Creamy Lembut",
+      "Nori Flakes",
+      "Smoky Aroma"
+    ]
+  },
+  {
+    "id": "dimsum-hot-lava-mentai",
+    "name": "Dimsum Hot Lava Mentai",
+    "badge": "Spicy + Creamy",
+    "description": "Dimsum full daging ayam disajikan dengan saus hot lava pedas menggugah selera + saus mentai creamy, gurih, dan lezat + taburan nori.",
+    "image": "assets/images/WhatsApp-Image-2026-01-20-at-23.14.04-1-1.jpeg",
+    "flavor_notes": [
+      "Pedas Hot Lava",
+      "Creamy Mentai",
+      "Gurih Nagih",
+      "Nori Flakes"
+    ]
+  },
+  {
+    "id": "dimsum-cake-tower",
+    "name": "Dimsum Cake / Birthday Tower",
+    "badge": "Special Event",
+    "description": "Kreasi kue ulang tahun unik dari susunan dimsum lezat bertingkat dengan aneka topping saus premium, cocok untuk surprise party & perayaan.",
+    "image": "assets/images/ChatGPT-Image-Jun-5-2026-01_22_12-PM-Copy.png",
+    "flavor_notes": [
+      "Party Size",
+      "Custom Topping",
+      "Birthday Cake Alternative"
+    ]
+  },
+  {
+    "id": "dimsum-platter-16",
+    "name": "Dimsum Platter Isi 16 Mentai",
+    "badge": "Best Sharing",
+    "description": "Paket dimsum rame-rame isi 16 pcs dengan baluran full saus mentai torched dan nori. Pilihan pas buat kumpul keluarga atau nongkrong.",
+    "image": "assets/images/dimsum-isi-16-mentai.png",
+    "flavor_notes": [
+      "16 Pcs",
+      "Full Mentai Torched",
+      "Sharing Platter"
+    ]
+  }
+]
