@@ -1,0 +1,13 @@
+:{$PORT} {
+  handle /api/archava/* {
+    reverse_proxy https://minsum-api-production.up.railway.app {
+      header_up Host {upstream_hostport}
+    }
+  }
+
+  handle {
+    root * /srv
+    try_files {path} /index.html
+    file_server
+  }
+}

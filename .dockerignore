@@ -1,0 +1,14 @@
+.git
+.vercel
+.env
+.env.*
+node_modules
+dist
+scratch
+/assets
+/data
+/raw_content
+/backend
+/server
+/hallo
+/*.md

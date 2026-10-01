@@ -6,7 +6,7 @@ import { config as loadEnv } from 'dotenv';
 loadEnv({ path: process.env.ARCHAVA_ENV_FILE || '.env' });
 
 const port = Number(process.env.PORT || process.env.AVATAR_API_PORT || 5005);
-const webOrigin = process.env.WEB_ORIGIN || 'http://localhost:5174';
+const webOrigins = new Set((process.env.WEB_ORIGIN || 'http://localhost:5174').split(',').map((origin) => origin.trim()).filter(Boolean));
 const livekitUrl = process.env.LIVEKIT_URL || '';
 const key = process.env.LIVEKIT_API_KEY || '';
 const secret = process.env.LIVEKIT_API_SECRET || '';
@@ -41,7 +41,7 @@ async function closeSession(ticket) {
 
 const server = http.createServer(async (req, res) => {
   const origin = req.headers.origin;
-  if (origin && origin !== webOrigin) return respond(res, 403, { error: 'Origin tidak diizinkan.' });
+  if (origin && !webOrigins.has(origin)) return respond(res, 403, { error: 'Origin tidak diizinkan.' });
   const path = new URL(req.url || '/', 'http://localhost').pathname;
   if (req.method === 'GET' && path === '/api/archava/config') {
     return respond(res, 200, { ready: enabled, appId: enabled ? appId : '', avatarId: enabled ? avatarId : '', durationSeconds });
