@@ -33,6 +33,14 @@ Frontend dipublikasikan di `https://dimsumhallodek.vercel.app/` dan terhubung ke
 Worker memerlukan pustaka sistem `libopus0`; `backend/railpack.json` memasangnya pada image Railway.
 `WEB_ORIGIN` menerima beberapa origin yang dipisahkan koma, misalnya domain Vercel dan Railway. URL demo cadangan adalah `https://minsum-web-production.up.railway.app/`. Integrasi Railway ke repo GitHub belum diaktifkan; rilis ketiga service Railway dilakukan lewat CLI.
 
+Jalankan deploy dari root repo dengan path service yang tepat. `--service` memilih tujuan deploy, sedangkan `--path-as-root` memastikan konfigurasi dan dependensi service diambil dari foldernya:
+
+```bash
+railway up server --path-as-root --service minsum-api --detach
+railway up backend --path-as-root --service minsum-worker --detach
+railway up --service minsum-web --detach
+```
+
 Harga pada kartu produk dan paket kemitraan adalah angka dummy untuk presentasi, bukan penawaran resmi. File video demo tidak disertakan karena akan dibuat terpisah.
 
 Kit lengkap ekstraksi data, konten, aset media, dan blueprint UI/UX dari domain **`https://merzaperintissukses.com/`**.

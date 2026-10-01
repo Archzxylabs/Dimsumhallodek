@@ -7,7 +7,6 @@ from pathlib import Path
 from dotenv import load_dotenv
 from livekit import agents
 from livekit.agents import Agent, AgentSession, room_io
-from livekit.agents.metrics import AvatarMetrics, RealtimeModelMetrics
 from livekit.plugins import google, spatius
 from google.genai import types as genai_types
 
@@ -59,9 +58,9 @@ async def entrypoint(ctx: agents.JobContext) -> None:
     @session.on('metrics_collected')
     def log_latency(event) -> None:
         metric = event.metrics
-        if isinstance(metric, RealtimeModelMetrics):
+        if metric.type == 'realtime_model_metrics':
             logger.info('gemini_first_audio_s=%.3f', metric.ttft)
-        elif isinstance(metric, AvatarMetrics):
+        elif metric.type == 'avatar_metrics':
             logger.info('spatius_playback_s=%.3f', metric.playback_latency)
 
     avatar = spatius.AvatarSession(
