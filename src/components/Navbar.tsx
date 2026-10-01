@@ -3,9 +3,10 @@ import { Menu, X, Phone } from 'lucide-react';
 
 const links = [
   { href: '#showcase', label: 'Menu Favorit' },
-  { href: '#events', label: 'Event & Party' },
-  { href: '#locations', label: 'Cari Gerai' },
+  { href: '#products', label: 'Produk' },
+  { href: '#events', label: 'Event' },
   { href: '#franchise', label: 'Jadi Mitra' },
+  { href: '#locations', label: 'Cari Gerai' },
 ];
 
 export const Navbar: React.FC = () => {

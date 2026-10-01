@@ -1,5 +1,37 @@
 # 🥟 Dimsum Hallo Dek (PT Merza Perintis Sukses) - Web Content & UI/UX Rebuild Kit
 
+## Jalankan demo website dan avatar
+
+```bash
+npm install
+npm run dev
+```
+
+Website terbuka di `http://localhost:5174`. Tombol **Talk to Minsum** selalu berada di kanan bawah, termasuk saat slide menu berganti. Saat diklik, panel avatar terbuka di sisi kanan. Panduan teks dapat dicoba tanpa backend.
+
+Untuk percakapan suara live, salin `.env.example` menjadi `.env` lalu isi kredensial LiveKit, Gemini, dan Spatius di server. Set `AVATAR_DEMO_ENABLED=true`. Jalankan API dan worker secara terpisah:
+
+```bash
+npm run avatar:api
+python -m pip install -r backend/requirements.txt
+npm run avatar:worker
+```
+
+Browser memerlukan Chrome atau Edge terbaru dan izin mikrofon. Sesi demo berlangsung dua menit. Kredensial tidak boleh dimasukkan ke variabel `VITE_*` atau kode frontend. API dan worker harus tersedia saat situs dipublikasikan agar mode suara live berfungsi; build statis saja menyediakan panduan teks.
+
+## Deployment
+
+Frontend dipublikasikan di Vercel. Aturan di `vercel.json` meneruskan `/api/archava/*` ke service `minsum-api` di Railway. Project Railway `dimsumhallodek` menjalankan dua service dari repo yang sama:
+
+| Service | Root directory | Secret dan konfigurasi |
+| --- | --- | --- |
+| `minsum-api` | `/server` | `LIVEKIT_URL`, `LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET`, `SPATIUS_APP_ID`, `SPATIUS_AVATAR_ID`, `AVATAR_DEMO_ENABLED=true`, `WEB_ORIGIN=https://dimsumhallodek.vercel.app` |
+| `minsum-worker` | `/backend` | `LIVEKIT_URL`, `LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET`, `GEMINI_API_KEY`, `GEMINI_MODEL`, `GEMINI_VOICE`, `SPATIUS_API_KEY`, `SPATIUS_APP_ID`, `SPATIUS_AVATAR_ID` |
+
+`PORT` disediakan Railway otomatis untuk API. Simpan semua nilai credential di Railway Variables masing-masing service; file `.env` hanya untuk pengembangan lokal dan tidak di-commit. Saat mengganti URL Vercel atau domain API, sesuaikan `WEB_ORIGIN` dan aturan rewrite.
+
+Harga pada kartu produk dan paket kemitraan adalah angka dummy untuk presentasi, bukan penawaran resmi. File video demo tidak disertakan karena akan dibuat terpisah.
+
 Kit lengkap ekstraksi data, konten, aset media, dan blueprint UI/UX dari domain **`https://merzaperintissukses.com/`**.
 
 ---

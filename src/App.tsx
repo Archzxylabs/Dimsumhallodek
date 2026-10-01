@@ -6,6 +6,8 @@ import { EventServices } from './components/EventServices';
 import { StoreLocator } from './components/StoreLocator';
 import { FranchiseAutopilot } from './components/FranchiseAutopilot';
 import { Footer } from './components/Footer';
+import { SignatureProducts } from './components/SignatureProducts';
+import { ArchavaConcierge } from './components/ArchavaConcierge';
 
 export function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -15,11 +17,13 @@ export function App() {
       <Navbar />
       <main>
         <KineticShowcase items={MENU_ITEMS} currentIndex={currentIndex} onSelectIndex={setCurrentIndex} />
+        <SignatureProducts />
         <EventServices />
-        <StoreLocator />
         <FranchiseAutopilot />
+        <StoreLocator />
       </main>
       <Footer />
+      <ArchavaConcierge />
     </div>
   );
 }

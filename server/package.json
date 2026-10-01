@@ -1,0 +1,13 @@
+{
+  "name": "dimsumhallodek-avatar-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node avatar.mjs"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.5",
+    "livekit-server-sdk": "^2.19.1"
+  }
+}

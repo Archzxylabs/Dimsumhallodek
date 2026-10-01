@@ -1,0 +1,4 @@
+livekit-agents==1.7.1
+livekit-plugins-google==1.7.1
+livekit-plugins-spatius==1.7.1
+python-dotenv
