@@ -19,7 +19,7 @@ export async function prepareSpatiusAvatar(appId: string, avatarId: string): Pro
   await initialization;
   let loading = avatars.get(avatarId);
   if (!loading) {
-    loading = AvatarManager.shared.load(avatarId).catch((error: unknown) => {
+    loading = AvatarManager.shared.load(avatarId, undefined, true).catch((error: unknown) => {
       avatars.delete(avatarId);
       throw error;
     });
