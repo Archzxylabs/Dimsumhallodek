@@ -7,7 +7,7 @@ npm install
 npm run dev
 ```
 
-Website terbuka di `http://localhost:5174`. Tombol **Talk to Minsum** selalu berada di kanan bawah, termasuk saat slide menu berganti. Saat diklik, panel avatar terbuka di sisi kanan. Panduan teks dapat dicoba tanpa backend.
+Website terbuka di `http://localhost:5174`. Tombol **Talk to Minsum** selalu berada di kanan bawah, termasuk saat slide menu berganti. Saat diklik, panel avatar Spatius terbuka di sisi kanan dan sesi suara langsung disiapkan. Tidak ada form chat teks.
 
 Untuk percakapan suara live, salin `.env.example` menjadi `.env` lalu isi kredensial LiveKit, Gemini, dan Spatius di server. Set `AVATAR_DEMO_ENABLED=true`. Jalankan API dan worker secara terpisah:
 
@@ -17,7 +17,7 @@ python -m pip install -r backend/requirements.txt
 npm run avatar:worker
 ```
 
-Browser memerlukan Chrome atau Edge terbaru dan izin mikrofon. Sesi demo berlangsung dua menit. Kredensial tidak boleh dimasukkan ke variabel `VITE_*` atau kode frontend. API dan worker harus tersedia saat situs dipublikasikan agar mode suara live berfungsi; build statis saja menyediakan panduan teks.
+Browser memerlukan Chrome atau Edge terbaru dan izin mikrofon. Sesi demo berlangsung dua menit. Kredensial tidak boleh dimasukkan ke variabel `VITE_*` atau kode frontend. API dan worker harus tersedia agar avatar live berfungsi.
 
 ## Deployment
 
