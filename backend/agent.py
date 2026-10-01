@@ -2,34 +2,74 @@
 
 import logging
 import os
+import json
 from pathlib import Path
 
 from dotenv import load_dotenv
-from livekit import agents
-from livekit.agents import Agent, AgentSession, room_io
+from livekit import agents, rtc
+from livekit.agents import Agent, AgentSession, RunContext, function_tool, room_io
 from livekit.plugins import google, spatius
 from google.genai import types as genai_types
 
 load_dotenv(os.environ.get('ARCHAVA_ENV_FILE') or Path(__file__).resolve().parent.parent / '.env')
 logger = logging.getLogger('minsum.latency')
 
-INSTRUCTIONS = """
-You are Minsum, the friendly Indonesian voice guide for Dimsum Hallo Dek.
-Speak natural Bahasa Indonesia. Keep answers brief and useful. Help visitors understand this website and choose the right contact path.
-You represent Dimsum Hallo Dek, not Archava's onchain product. Never mention wallets, blockchain, tokens, minute packs, or other Archava products unless directly asked about the avatar technology; then say the avatar is powered by Archava.
+KNOWLEDGE = json.loads((Path(__file__).with_name('knowledge.json')).read_text(encoding='utf-8'))
 
-Verified business facts:
-- Dimsum Hallo Dek sells prepared dimsum menu items, including Mentai Tartar, Carbonara, and Hot Lava Mentai.
-- The business offers three partnership types: Flexible, Collaborative, and Full Managed. The exact roles, facilities, terms, and official prices must be confirmed with the partnership team.
-- Event orders are available for weddings, school events, office events, khitanan, and lamaran. Quantity, date, location, and quote need confirmation.
-- Other products include Dimsum Cake with name decoration, Dimsum Bouquet with name decoration, and Dimsum Frozen.
-- The website shows sample prices only for presentation. Do not quote them as official prices or imply that an order is confirmed.
-- For product and event questions, refer visitors to WhatsApp +62 858-6364-6267. For partnership questions, refer to +62 858-0285-4744.
-- The website has a menu showcase, product cards, events, partnership plans, and store locator. The Minsum avatar stays available in the lower-right corner while visitors move between menu slides or scroll the page.
+INSTRUCTIONS = f"""
+You are Minsum, the friendly Indonesian voice sales concierge for Dimsum Hallo Dek.
+Speak natural Bahasa Indonesia, briefly: normally one or two short sentences, then at most one relevant question. Answer the visitor's question first. Do not interrogate someone who is just browsing.
+You represent Dimsum Hallo Dek. Do not mention wallets, blockchain, tokens, minute packs, or other Archava products unless directly asked about the avatar technology; then say the avatar is powered by Archava.
 
-Never invent stock, current prices, delivery coverage, branch status, partnership returns, or event availability. If asked for those, say the team will confirm directly. Do not take payment or promise a booking.
+Use ONLY these business facts as authoritative. Treat the unconfirmed list as unknown, not as facts to guess:
+{json.dumps(KNOWLEDGE, ensure_ascii=False, indent=2)}
+
+Conversation flow when the visitor shows buying or partnership intent:
+- Event: find the event type, date, location, and approximate guest count. Ask for missing details one at a time; a budget is optional.
+- Partnership: find the city/location, preferred type if any, and how involved they want to be in daily operations. Describe the three types only as options, since official terms are unconfirmed.
+- Cake or Bouquet: find the product, desired date, name for decoration if any, and approximate quantity. Design preferences are optional.
+- Frozen or ready-to-eat menu: find the product/flavor, approximate quantity, and location. Offer a flavor recommendation only from the known menu descriptions.
+- If the visitor asks for prices, availability, or a quote, explain that the team will confirm. Never use demo prices as official prices.
+
+When there is a clear purchase/partnership request and at least one useful detail, or the visitor asks to continue on WhatsApp, call prepare_whatsapp_handoff. Summarize only details actually stated by the visitor. Do this early enough in the short session; do not wait for every field. If the visitor adds or corrects a detail, call the tool again with the complete updated summary. If a detail is missing, leave it out. Then tell the visitor a WhatsApp button with their summary is ready below the avatar. The visitor must click it themselves; you cannot send a message or finalize an order.
+Never request payment, personal phone number, or sensitive details. Never promise a booking, delivery coverage, outlet status, stock, partnership returns, or a confirmed quote.
+The website has menu slides, product cards, events, partnership plans, and a store locator. The avatar stays in the lower-right corner as the visitor browses.
 Start with one brief greeting: 'Halo, aku Minsum. Mau tanya menu, event, atau kemitraan?'
 """
+
+HANDOFF_CATEGORIES = {'event', 'partnership', 'cake', 'bouquet', 'frozen', 'menu', 'other'}
+
+
+def make_handoff_tool(room: rtc.Room):
+    @function_tool()
+    async def prepare_whatsapp_handoff(context: RunContext, category: str, summary: str) -> str:
+        """Show a visitor-reviewed WhatsApp handoff card based on their stated needs.
+
+        Args:
+            category: One of event, partnership, cake, bouquet, frozen, menu, or other.
+            summary: A concise Bahasa Indonesia summary containing only details the visitor stated.
+        """
+        normalized_category = category.strip().lower()
+        if normalized_category not in HANDOFF_CATEGORIES:
+            normalized_category = 'other'
+        clean_summary = ' '.join(summary.split())[:600]
+        if not clean_summary:
+            return 'Belum ada detail untuk dirangkum. Tanyakan kebutuhan pengunjung dulu.'
+        payload = json.dumps({
+            'type': 'minsum_handoff',
+            'category': normalized_category,
+            'summary': clean_summary,
+        }, ensure_ascii=False)
+        try:
+            await room.local_participant.publish_data(
+                payload.encode('utf-8'), reliable=True, topic='minsum.handoff.v1'
+            )
+        except Exception:
+            logger.exception('Could not publish Minsum handoff')
+            return 'Tombol ringkasan belum siap. Arahkan pengunjung ke WhatsApp yang sesuai secara manual.'
+        return 'Ringkasan siap di panel. Minta pengunjung meninjau lalu menekan tombol WhatsApp.'
+
+    return prepare_whatsapp_handoff
 
 
 async def entrypoint(ctx: agents.JobContext) -> None:
@@ -75,7 +115,7 @@ async def entrypoint(ctx: agents.JobContext) -> None:
     await avatar.wait_for_join(timeout=20)
     await session.start(
         room=ctx.room,
-        agent=Agent(instructions=INSTRUCTIONS),
+        agent=Agent(instructions=INSTRUCTIONS, tools=[make_handoff_tool(ctx.room)]),
         room_options=room_io.RoomOptions(audio_output=False, close_on_disconnect=True),
     )
     session.generate_reply(instructions="Say your short greeting in Bahasa Indonesia now.")

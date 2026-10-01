@@ -1,0 +1,39 @@
+{
+  "brand": "Dimsum Hallo Dek",
+  "menu": [
+    {
+      "name": "Dimsum Mix Mentai Tartar",
+      "description": "Dimsum ayam dengan saus mentai dan tartar; rasa gurih, creamy, dan segar."
+    },
+    {
+      "name": "Dimsum Carbonara",
+      "description": "Dimsum ayam dengan saus carbonara yang cheesy dan creamy, ditambah nori."
+    },
+    {
+      "name": "Dimsum Hot Lava Mentai",
+      "description": "Dimsum ayam dengan saus hot lava pedas dan mentai creamy, ditambah nori."
+    },
+    {
+      "name": "Dimsum Platter Isi 16 Mentai",
+      "description": "Paket berbagi isi 16 dimsum dengan saus mentai dan nori; tercantum di katalog website."
+    }
+  ],
+  "products": [
+    "Dimsum Cake dengan pilihan dekorasi nama",
+    "Dimsum Bouquet dengan pilihan dekorasi nama",
+    "Dimsum Frozen"
+  ],
+  "events": ["wedding", "acara sekolah", "acara kantor", "khitanan", "lamaran"],
+  "partnership_types": ["Flexible", "Collaborative", "Full Managed"],
+  "contact": {
+    "sales_whatsapp": "+62 858-6364-6267",
+    "partnership_whatsapp": "+62 858-0285-4744"
+  },
+  "unconfirmed": [
+    "Harga di website adalah contoh untuk demo, bukan harga resmi.",
+    "Harga, paket, minimum pesanan, stok, jadwal, jangkauan pengiriman, dan ketersediaan event harus dikonfirmasi tim.",
+    "Detail peran, fasilitas, biaya, keuntungan, dan syarat tiap tipe kemitraan harus dikonfirmasi tim.",
+    "Komposisi lengkap, alergen, daya simpan, dan cara memasak produk frozen belum tersedia sebagai informasi resmi.",
+    "Status dan jam buka outlet dapat berubah; arahkan pengunjung ke daftar lokasi di website dan minta mereka memastikan ke tim."
+  ]
+}

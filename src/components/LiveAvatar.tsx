@@ -1,13 +1,27 @@
 import { useEffect, useRef, useState } from 'react';
 import { Mic, MicOff, PhoneOff } from 'lucide-react';
 import { LiveKitRoom, RoomAudioRenderer, StartAudio, useLocalParticipant, useRoomContext } from '@livekit/components-react';
+import { RoomEvent } from 'livekit-client';
 import { prepareSpatiusAvatar } from '../lib/spatius';
 import type { AvatarSession } from '../lib/avatarTypes';
+import { HANDOFF_TOPIC, parseMinsumHandoff, type MinsumHandoff } from '../lib/minsumHandoff';
 
-function AvatarSurface({ session, onError }: { session: AvatarSession; onError: (message: string) => void }) {
+function AvatarSurface({ session, onError, onHandoff }: { session: AvatarSession; onError: (message: string) => void; onHandoff: (handoff: MinsumHandoff) => void }) {
   const room = useRoomContext();
   const canvas = useRef<HTMLDivElement>(null);
   const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const onDataReceived = (payload: Uint8Array, _participant?: unknown, _kind?: unknown, topic?: string) => {
+      if (topic !== HANDOFF_TOPIC) return;
+      try {
+        const handoff = parseMinsumHandoff(JSON.parse(new TextDecoder().decode(payload)));
+        if (handoff) onHandoff(handoff);
+      } catch { /* Ignore malformed packets. */ }
+    };
+    room.on(RoomEvent.DataReceived, onDataReceived);
+    return () => { room.off(RoomEvent.DataReceived, onDataReceived); };
+  }, [room, onHandoff]);
 
   useEffect(() => {
     let cancelled = false;
@@ -88,11 +102,11 @@ function CallControls({ session, onClose }: { session: AvatarSession; onClose: (
   );
 }
 
-export function LiveAvatar({ session, onClose, onError }: { session: AvatarSession; onClose: () => void; onError: (message: string) => void }) {
+export function LiveAvatar({ session, onClose, onError, onHandoff }: { session: AvatarSession; onClose: () => void; onError: (message: string) => void; onHandoff: (handoff: MinsumHandoff) => void }) {
   return (
     <LiveKitRoom token={session.token} serverUrl={session.serverUrl} connect={false} audio video={false} options={{ singlePeerConnection: false }} onDisconnected={onClose} className="flex h-full flex-col">
       <RoomAudioRenderer />
-      <div className="min-h-0 flex-1"><AvatarSurface session={session} onError={onError} /></div>
+      <div className="min-h-0 flex-1"><AvatarSurface session={session} onError={onError} onHandoff={onHandoff} /></div>
       <CallControls session={session} onClose={onClose} />
     </LiveKitRoom>
   );
