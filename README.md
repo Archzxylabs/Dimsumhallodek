@@ -29,6 +29,7 @@ Frontend dipublikasikan di Vercel. Aturan di `vercel.json` meneruskan `/api/arch
 | `minsum-worker` | `/backend` | `LIVEKIT_URL`, `LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET`, `GEMINI_API_KEY`, `GEMINI_MODEL`, `GEMINI_VOICE`, `SPATIUS_API_KEY`, `SPATIUS_APP_ID`, `SPATIUS_AVATAR_ID` |
 
 `PORT` disediakan Railway otomatis untuk API. Simpan semua nilai credential di Railway Variables masing-masing service; file `.env` hanya untuk pengembangan lokal dan tidak di-commit. Saat mengganti URL Vercel atau domain API, sesuaikan `WEB_ORIGIN` dan aturan rewrite.
+Worker memerlukan pustaka sistem `libopus0`; `backend/railpack.json` memasangnya pada image Railway.
 
 Harga pada kartu produk dan paket kemitraan adalah angka dummy untuk presentasi, bukan penawaran resmi. File video demo tidak disertakan karena akan dibuat terpisah.
 
