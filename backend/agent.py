@@ -1,15 +1,18 @@
 """Dimsum Hallo Dek voice host using the avatar part of Archava, with no onchain flow."""
 
+import logging
 import os
 from pathlib import Path
 
 from dotenv import load_dotenv
 from livekit import agents
 from livekit.agents import Agent, AgentSession, room_io
+from livekit.agents.metrics import AvatarMetrics, RealtimeModelMetrics
 from livekit.plugins import google, spatius
 from google.genai import types as genai_types
 
 load_dotenv(os.environ.get('ARCHAVA_ENV_FILE') or Path(__file__).resolve().parent.parent / '.env')
+logger = logging.getLogger('minsum.latency')
 
 INSTRUCTIONS = """
 You are Minsum, the friendly Indonesian voice guide for Dimsum Hallo Dek.
@@ -37,8 +40,30 @@ async def entrypoint(ctx: agents.JobContext) -> None:
         voice=os.getenv('GEMINI_VOICE', 'Kore'),
         api_key=os.environ['GEMINI_API_KEY'],
         thinking_config=genai_types.ThinkingConfig(thinking_budget=0),
+        realtime_input_config=genai_types.RealtimeInputConfig(
+            automatic_activity_detection=genai_types.AutomaticActivityDetection(
+                silence_duration_ms=500,
+            ),
+        ),
         instructions=INSTRUCTIONS,
     ))
+
+    @session.on('user_state_changed')
+    def log_user_state(event) -> None:
+        logger.info('user_state=%s', event.new_state)
+
+    @session.on('agent_state_changed')
+    def log_agent_state(event) -> None:
+        logger.info('agent_state=%s', event.new_state)
+
+    @session.on('metrics_collected')
+    def log_latency(event) -> None:
+        metric = event.metrics
+        if isinstance(metric, RealtimeModelMetrics):
+            logger.info('gemini_first_audio_s=%.3f', metric.ttft)
+        elif isinstance(metric, AvatarMetrics):
+            logger.info('spatius_playback_s=%.3f', metric.playback_latency)
+
     avatar = spatius.AvatarSession(
         api_key=os.environ['SPATIUS_API_KEY'],
         app_id=os.environ['SPATIUS_APP_ID'],
