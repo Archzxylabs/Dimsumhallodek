@@ -34,18 +34,21 @@ Start with one brief greeting: 'Halo, aku Minsum. Mau tanya menu, event, atau ke
 
 async def entrypoint(ctx: agents.JobContext) -> None:
     await ctx.connect()
-    session = AgentSession(llm=google.realtime.RealtimeModel(
-        model=os.getenv('GEMINI_MODEL', 'gemini-2.5-flash-native-audio-preview-12-2025'),
+    model = os.getenv('GEMINI_MODEL', 'gemini-3.8-live')
+    model_options = dict(
+        model=model,
         voice=os.getenv('GEMINI_VOICE', 'Kore'),
         api_key=os.environ['GEMINI_API_KEY'],
-        thinking_config=genai_types.ThinkingConfig(thinking_budget=0),
         realtime_input_config=genai_types.RealtimeInputConfig(
             automatic_activity_detection=genai_types.AutomaticActivityDetection(
                 silence_duration_ms=500,
             ),
         ),
         instructions=INSTRUCTIONS,
-    ))
+    )
+    if model.startswith('gemini-2.5'):
+        model_options['thinking_config'] = genai_types.ThinkingConfig(thinking_budget=0)
+    session = AgentSession(llm=google.realtime.RealtimeModel(**model_options))
 
     @session.on('user_state_changed')
     def log_user_state(event) -> None:
