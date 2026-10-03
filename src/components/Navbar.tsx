@@ -8,8 +8,11 @@ export function Navbar() {
   const toggleRef = useRef<HTMLButtonElement>(null);
   const navigationRef = useRef<HTMLElement>(null);
   const location = useLocation();
+  const previousPage = useRef(`${location.pathname}${location.hash}`);
   useEffect(() => {
-    setOpen(false);
+    const page = `${location.pathname}${location.hash}`;
+    if (previousPage.current !== page) setOpen(false);
+    previousPage.current = page;
   }, [location.pathname, location.hash]);
   useEffect(() => {
     if (!open) return;
