@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useSessionState } from '../lib/useSessionState';
 import { Link } from "react-router";
 import { ArrowUpRight, MapPin } from "lucide-react";
 import { MENU_ITEMS } from "../data/menuData";
@@ -13,7 +13,7 @@ import {
 } from "../components/DesignElements";
 
 export function HomePage() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useSessionState('menu-slide', 0, (v): v is number => Number.isInteger(v) && typeof v === 'number' && v >= 0 && v < MENU_ITEMS.length);
   return (
     <>
       <KineticShowcase
@@ -21,6 +21,13 @@ export function HomePage() {
         currentIndex={currentIndex}
         onSelectIndex={setCurrentIndex}
       />
+      <nav className="home-shortcuts page-width" aria-label="Jelajahi Dimsum Hallo Dek">
+        <span>Mau cari apa?</span>
+        <Link to="/produk#cake">Cake & Bouquet <ArrowUpRight size={16} /></Link>
+        <Link to="/produk#frozen">Dimsum Frozen <ArrowUpRight size={16} /></Link>
+        <Link to="/event">Dimsum untuk event <ArrowUpRight size={16} /></Link>
+        <Link to="/kemitraan">Jadi mitra <ArrowUpRight size={16} /></Link>
+      </nav>
       <Marquee />
       <section className="home-intro page-width section-space">
         <Reveal>
@@ -56,7 +63,10 @@ export function HomePage() {
             </div>
             <div className="tile-photo">
               <img
-                src="/assets/images/ChatGPT-Image-Jun-5-2026-01_22_12-PM-Copy.png"
+                src="/assets/optimized/cake-800.webp"
+                    srcSet="/assets/optimized/cake-480.webp 480w, /assets/optimized/cake-800.webp 800w, /assets/optimized/cake-1200.webp 930w"
+                    sizes="(max-width: 767px) calc(100vw - 40px), 45vw"
+                    decoding="async"
                 alt="Sajian dimsum dengan aneka saus"
                 loading="lazy"
               />
@@ -94,6 +104,13 @@ export function HomePage() {
           </Link>
         </Reveal>
       </section>
+      <section className="page-width home-frozen">
+        <Link to="/produk#frozen">
+          <Dumpling />
+          <div><p className="eyebrow">Untuk stok di rumah</p><h3>Dimsum Frozen</h3><p>Kenali pilihan kemasan dan rencanakan pesananmu.</p></div>
+          <span>Lihat frozen <ArrowUpRight size={20} /></span>
+        </Link>
+      </section>
       <section className="home-event section-space">
         <div className="page-width home-event-layout">
           <Reveal>
@@ -115,7 +132,10 @@ export function HomePage() {
           </Reveal>
           <Reveal className="home-event-photo" delay={0.1}>
             <img
-              src="/assets/images/dimsum-isi-16-mentai.png"
+              src="/assets/optimized/platter-800.webp"
+                srcSet="/assets/optimized/platter-480.webp 480w, /assets/optimized/platter-800.webp 768w"
+                sizes="(max-width: 767px) calc(100vw - 40px), 45vw"
+                decoding="async"
               alt="Dimsum mentai untuk dinikmati bersama"
               loading="lazy"
             />
@@ -168,7 +188,7 @@ export function HomePage() {
                   <br />
                   gerai favoritmu?
                 </p>
-                <ArrowLink to="/gerai">Cari gerai terdekat</ArrowLink>
+                <ArrowLink to="/gerai#locations">Cari alamat gerai</ArrowLink>
               </div>
             </div>
           </Reveal>

@@ -35,7 +35,7 @@ export function Navbar() {
         }
       }
     };
-    const desktop = window.matchMedia("(min-width: 768px)");
+    const desktop = window.matchMedia("(min-width: 1024px)");
     const onResize = () => {
       if (desktop.matches) setOpen(false);
     };
@@ -60,7 +60,7 @@ export function Navbar() {
           aria-label="Dimsum Hallo Dek — beranda"
         >
           <img
-            src="/assets/images/cropped-cropped-Desain-tanpa-judul-2.png"
+            src="/assets/optimized/logo-192.webp"
             alt=""
             width="46"
             height="46"
@@ -84,7 +84,7 @@ export function Navbar() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Lagi pengin dimsum?
+          Pesan via WhatsApp
           <ArrowUpRight size={18} />
         </a>
         <button

@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, MessageCircle, MapPin, Flame } from 'lucide-react';
 import { MenuItem } from '../data/menuData';
 import { FloatingGarnishes } from './FloatingGarnishes';
+import { Link } from 'react-router';
+import { whatsappUrl } from '../lib/business';
 
 interface KineticShowcaseProps {
   items: MenuItem[];
@@ -31,6 +33,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
   // Keyboard navigation support
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.target as HTMLElement)?.closest('input, textarea, select, button, a, [contenteditable], #avatar') || document.getElementById('mobile-navigation')) return;
       if (e.key === 'ArrowRight') handleNext();
       if (e.key === 'ArrowLeft') handlePrev();
     };
@@ -106,7 +109,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                 {/* Dual Action CTA Buttons */}
                 <div className="pt-4 flex flex-wrap items-center gap-3">
                   <a
-                    href="https://wa.me/6285863646267"
+                    href={whatsappUrl(`Halo Minsum, saya ingin tanya dan pesan ${currentItem.name}. Mohon pilihan isi dan harga resminya.`)}
                     target="_blank"
                     rel="noreferrer"
                     style={{ backgroundColor: currentItem.accentColor }}
@@ -116,13 +119,13 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                     Tanya & pesan via WhatsApp
                   </a>
 
-                  <a
-                    href="#locations"
+                  <Link
+                    to="/gerai#locations"
                     className="px-4 py-3.5 rounded-full bg-[#FFF9ED]/10 hover:bg-[#FFF9ED]/20 text-[#FFF9ED] font-bold text-sm border border-[#FFF9ED]/35 flex items-center gap-2 transition-all"
                   >
                     <MapPin className="w-4 h-4 text-[#F6C94B]" />
-                    Cari gerai terdekat
-                  </a>
+                    Cari gerai
+                  </Link>
                 </div>
               </motion.div>
             </AnimatePresence>

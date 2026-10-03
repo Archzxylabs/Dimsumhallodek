@@ -8,6 +8,7 @@
     "avatar:api": "node server/avatar.mjs",
     "avatar:worker": "python backend/agent.py dev",
     "build": "tsc && vite build",
+    "test:avatar-api": "node tests/avatar-api.mjs",
     "preview": "vite preview --host"
   },
   "keywords": [],

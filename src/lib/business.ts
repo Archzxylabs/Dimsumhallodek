@@ -5,14 +5,14 @@ export function whatsappUrl(message: string, partnership = false) {
 export const sitePages = [
   {
     path: "/",
-    label: "Menu Favorit",
+    label: "Menu Dimsum",
     title: "Menu Favorit",
     description:
       "Kenalan dengan Mix Mentai Tartar, Carbonara, dan Hot Lava Mentai dari Dimsum Hallo Dek.",
   },
   {
     path: "/produk",
-    label: "Produk",
+    label: "Hadiah & Frozen",
     title: "Cake, Bouquet & Frozen",
     description:
       "Dimsum untuk hadiah, perayaan, dan stok di rumah. Temukan Dimsum Cake, Bouquet, dan Frozen.",
@@ -26,7 +26,7 @@ export const sitePages = [
   },
   {
     path: "/kemitraan",
-    label: "Jadi Mitra",
+    label: "Kemitraan",
     title: "Kemitraan",
     description:
       "Kenali pilihan kemitraan Flexible, Collaborative, dan Full Managed Dimsum Hallo Dek.",

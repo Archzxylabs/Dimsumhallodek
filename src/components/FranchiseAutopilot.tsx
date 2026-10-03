@@ -1,7 +1,9 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { ArrowDown, ArrowUpRight, Minus, Plus } from "lucide-react";
 import { Dumpling, Faq, Marquee, Reveal, Spark } from "./DesignElements";
 import { whatsappUrl } from "../lib/business";
+import { isStringRecord, useSessionState } from '../lib/useSessionState';
+import { InquiryFeedback } from './InquiryFeedback';
 
 const packages = [
   {
@@ -42,26 +44,34 @@ const packages = [
   },
 ];
 
+const emptyDraft = { model: 'Belum menentukan', city: '', involvement: 'Belum menentukan' };
+type PartnerDraft = typeof emptyDraft;
+
 export function FranchiseAutopilot() {
-  const [selected, setSelected] = useState(0);
-  const [city, setCity] = useState("");
-  const [involvement, setInvolvement] = useState("Belum menentukan");
+  const [expanded, setExpanded] = useState<number | null>(null);
+  const [draft, setDraft] = useSessionState('partnership', emptyDraft, (v): v is PartnerDraft => isStringRecord(v, Object.keys(emptyDraft)) && (v.model === 'Belum menentukan' || packages.some((p) => p.name === v.model)));
+  const { model, city, involvement } = draft;
+  const [preparedUrl, setPreparedUrl] = useState('');
+  useEffect(() => { setPreparedUrl(''); }, [draft]);
+  const update = (field: keyof PartnerDraft, value: string) => setDraft((previous) => ({ ...previous, [field]: value }));
   const submit = (event: FormEvent) => {
     event.preventDefault();
     const message = [
       "Halo tim kemitraan Dimsum Hallo Dek, saya ingin konsultasi.",
-      `Pilihan yang ingin dibahas: ${packages[selected].name}`,
-      `Rencana kota/lokasi: ${city.trim()}`,
+      `Pilihan yang ingin dibahas: ${model}`,
+      `Rencana kota/lokasi: ${city.trim() || 'Belum menentukan'}`,
       `Keterlibatan operasional: ${involvement}`,
       "Mohon informasi peran, fasilitas, syarat, dan penawaran resmi yang terbaru.",
     ].join("\n");
-    window.open(whatsappUrl(message, true), "_blank", "noopener,noreferrer");
+    const url = whatsappUrl(message, true);
+    setPreparedUrl(url);
+    window.open(url, "_blank", "noopener,noreferrer");
   };
   return (
     <>
       <section className="page-hero page-width partnership-hero">
         <Reveal>
-          <p className="eyebrow">03 / Good food. Growing together.</p>
+          <p className="eyebrow">03 / Tiga pilihan kemitraan</p>
           <h1 className="hero-title">
             BIKIN
             <br />
@@ -79,15 +89,16 @@ export function FranchiseAutopilot() {
             Mulai dari cara kerja yang cocok buat kamu.
           </p>
           <a href="#pilihan-kemitraan" className="button button-green">
-            Kenali pilihanmu
+            Bandingkan model
             <ArrowDown size={18} />
           </a>
+          <a href="#konsultasi-mitra" className="partner-direct-link">Belum yakin? Konsultasi dulu <ArrowUpRight size={16} /></a>
         </Reveal>
         <Reveal className="partnership-art" delay={0.1}>
           <div className="partner-orbit orbit-one" />
           <div className="partner-orbit orbit-two" />
           <img
-            src="/assets/images/cropped-cropped-Desain-tanpa-judul-2.png"
+            src="/assets/optimized/logo-192.webp"
             alt="Dimsum Hallo Dek"
           />
           <span className="orbit-label label-one">Flexible</span>
@@ -110,9 +121,9 @@ export function FranchiseAutopilot() {
           <div>
             <p className="eyebrow">Temukan cara bermitramu</p>
             <h2 className="editorial-heading">
-              Your business.
+              Pilih cara
               <br />
-              Your kind of happy.
+              bermitramu.
             </h2>
           </div>
           <p>
@@ -120,25 +131,34 @@ export function FranchiseAutopilot() {
             dan penawaran dibahas langsung bersama tim.
           </p>
         </Reveal>
+        <p className="demo-notice">Gambaran model dan harga untuk demo. Peran, fasilitas, investasi, biaya lanjutan, dan syarat resmi dikonfirmasi oleh tim.</p>
+        <div className="partner-comparison" aria-label="Perbandingan gambaran model kemitraan">
+          {packages.map((plan, index) => <article key={plan.name}>
+            <p className="eyebrow">0{index + 1} / Gambaran demo</p><h3>{plan.name}</h3><p>{plan.description}</p>
+            <dl><div><dt>Arah keterlibatan mitra</dt><dd>{['Lebih aktif mengelola sehari-hari', 'Berbagi pengelolaan dengan tim', 'Pengelolaan lebih banyak oleh tim'][index]}</dd></div><div><dt>Contoh investasi</dt><dd>{plan.price} <span>· harga demo</span></dd></div></dl>
+            <a className="button button-green" href="#konsultasi-mitra" onClick={() => update('model', plan.name)}>Bahas {plan.name} <ArrowUpRight size={16} /></a>
+          </article>)}
+        </div>
+        <h3 className="plan-discussion-heading">Lihat hal yang dibahas bersama tim</h3>
         <div className="partnership-list">
           {packages.map((plan, index) => (
             <article
               key={plan.name}
-              className={selected === index ? "is-expanded" : ""}
+              className={expanded === index ? "is-expanded" : ""}
             >
               <button
                 type="button"
-                aria-expanded={selected === index}
+                aria-expanded={expanded === index}
                 aria-controls={`plan-${index}`}
-                onClick={() => setSelected(index)}
+                onClick={() => setExpanded(expanded === index ? null : index)}
               >
                 <span className="plan-number">0{index + 1}</span>
                 <h3>{plan.name}</h3>
                 <span className="plan-toggle">
-                  {selected === index ? <Minus /> : <Plus />}
+                  {expanded === index ? <Minus /> : <Plus />}
                 </span>
               </button>
-              {selected === index && (
+              {expanded === index && (
                 <div id={`plan-${index}`} className="plan-content">
                   <div>
                     <h4>{plan.title}</h4>
@@ -160,7 +180,7 @@ export function FranchiseAutopilot() {
                   <div className="plan-price">
                     <span>Contoh harga mulai dari</span>
                     <strong>{plan.price}</strong>
-                    <a href="#konsultasi-mitra">
+                    <a href="#konsultasi-mitra" onClick={() => update('model', plan.name)}>
                       Konsultasi pilihan ini
                       <ArrowUpRight size={18} />
                     </a>
@@ -216,11 +236,11 @@ export function FranchiseAutopilot() {
             rel="noopener noreferrer"
             className="deck-link"
           >
-            Baca deck kemitraan
+            Baca deck referensi
             <ArrowUpRight size={20} />
           </a>
           <p className="deck-note">
-            Deck referensi. Minta penawaran terbaru saat konsultasi.
+            PDF · 16 MB · Penawaran Oktober 2025. Harga dan skema dalam dokumen ini perlu dikonfirmasi ulang; minta penawaran terbaru saat konsultasi.
           </p>
         </div>
       </section>
@@ -229,7 +249,7 @@ export function FranchiseAutopilot() {
         className="page-width section-space planner-grid partner-inquiry"
       >
         <Reveal>
-          <p className="eyebrow">Let's start a conversation</p>
+          <p className="eyebrow">Mulai konsultasi kemitraan</p>
           <h2 className="editorial-heading">
             Cerita usaha
             <br />
@@ -243,32 +263,32 @@ export function FranchiseAutopilot() {
           <label>
             Pilihan yang ingin dibahas
             <select
-              value={selected}
-              onChange={(e) => setSelected(Number(e.target.value))}
+              value={model}
+              onChange={(e) => update('model', e.target.value)}
             >
+              <option>Belum menentukan</option>
               {packages.map((plan, index) => (
-                <option value={index} key={plan.name}>
+                <option value={plan.name} key={plan.name}>
                   {plan.name}
                 </option>
               ))}
             </select>
           </label>
           <label>
-            Rencana kota / lokasi
+            Rencana kota / lokasi <span>(opsional)</span>
             <input
               type="text"
               maxLength={180}
-              required
               placeholder="Contoh: Bekasi"
               value={city}
-              onChange={(e) => setCity(e.target.value)}
+              onChange={(e) => update('city', e.target.value)}
             />
           </label>
           <label>
             Keterlibatan operasional
             <select
               value={involvement}
-              onChange={(e) => setInvolvement(e.target.value)}
+              onChange={(e) => update('involvement', e.target.value)}
             >
               <option>Belum menentukan</option>
               <option>Ingin mengelola sehari-hari</option>
@@ -284,6 +304,8 @@ export function FranchiseAutopilot() {
             Rencana kamu akan dibuka sebagai pesan WhatsApp. Periksa sebelum
             mengirim.
           </p>
+          <InquiryFeedback url={preparedUrl} />
+          <div className="draft-controls"><span>Draf tersimpan di tab ini.</span><button type="button" onClick={() => { setDraft(emptyDraft); setPreparedUrl(''); }}>Hapus draf</button></div>
         </form>
       </section>
       <section className="page-width section-space faq-section partner-faq">

@@ -1,15 +1,19 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { ArrowUpRight, MapPin, Search, X } from "lucide-react";
 import { REGIONS_DATA } from "../data/locationsData";
 import { Dumpling, Reveal, Spark } from "./DesignElements";
+import { isStringRecord, useSessionState } from '../lib/useSessionState';
+import { whatsappUrl } from '../lib/business';
 
 const allOutlets = REGIONS_DATA.flatMap((group) =>
   group.outlets.map((outlet) => ({ ...outlet, region: group.region })),
 );
 
 export function StoreLocator() {
-  const [region, setRegion] = useState("All");
-  const [query, setQuery] = useState("");
+  const [draft, setDraft] = useSessionState('locator', { region: 'All', query: '' }, (v): v is { region: string; query: string } => isStringRecord(v, ['region', 'query']) && (v.region === 'All' || REGIONS_DATA.some((r) => r.region === v.region)));
+  const { region, query } = draft;
+  const setRegion = (value: string) => setDraft((previous) => ({ ...previous, region: value }));
+  const setQuery = (value: string) => setDraft((previous) => ({ ...previous, query: value }));
   const filtered = useMemo(
     () =>
       allOutlets.filter(
@@ -26,7 +30,7 @@ export function StoreLocator() {
       <section className="location-hero page-hero">
         <div className="page-width location-hero-grid">
           <Reveal>
-            <p className="eyebrow">04 / Your neighborhood, our dimsum</p>
+            <p className="eyebrow">04 / Alamat & petunjuk gerai</p>
             <h1 className="hero-title">
               HALLO,
               <br />
@@ -37,6 +41,7 @@ export function StoreLocator() {
               <br />
               Cari alamat gerai di sekitar kamu.
             </p>
+            <a className="button button-green locator-jump" href="#locations">Cari alamat gerai <ArrowUpRight size={18} /></a>
           </Reveal>
           <Reveal className="location-hero-art">
             <span className="location-count">
@@ -55,7 +60,7 @@ export function StoreLocator() {
       >
         <aside className="locator-sidebar">
           <p className="eyebrow">
-            <MapPin size={15} /> Find your happy place
+              <MapPin size={15} /> Cari gerai kamu
           </p>
           <h2>
             Di mana
@@ -102,13 +107,12 @@ export function StoreLocator() {
             ))}
           </div>
           <p className="locator-note">
-            Alamat mengikuti daftar gerai. Pastikan jam buka dan ketersediaan
-            langsung sebelum berkunjung.
+            Daftar ini dapat dicari berdasarkan nama dan wilayah; jarak belum dihitung dari lokasimu. Jam buka dan status gerai dikonfirmasi ke tim sebelum berkunjung.
           </p>
         </aside>
         <div className="outlet-results">
           <div className="results-heading">
-            <span aria-live="polite">{filtered.length} gerai ditemukan</span>
+            <span aria-live="polite">{filtered.length} gerai {region === 'All' ? 'di semua wilayah' : `di ${region}`}{query.trim() && ` untuk “${query.trim()}”`}</span>
             <span>ALAMAT / ARAH</span>
           </div>
           {filtered.map((outlet, index) => (
@@ -120,6 +124,7 @@ export function StoreLocator() {
                 <span className="outlet-region">{outlet.region}</span>
                 <h3>{outlet.name}</h3>
                 <p>{outlet.address}</p>
+                <div className="outlet-visit-info"><span>Jam buka: konfirmasi tim</span><a href={whatsappUrl(`Halo Minsum, saya ingin berkunjung ke gerai ${outlet.name} (${outlet.region}). Mohon konfirmasi apakah gerai masih aktif, jam buka, dan ketersediaan menu.`)} target="_blank" rel="noopener noreferrer">Tanya tim tentang {outlet.name} <ArrowUpRight size={14} /></a></div>
               </div>
               <a
                 href={outlet.mapsUrl}
@@ -136,12 +141,12 @@ export function StoreLocator() {
             <div className="locator-empty">
               <Dumpling />
               <h3>Belum ketemu yang cocok.</h3>
-              <p>Coba nama daerah lain atau lihat semua gerai.</p>
+              <p>{region === 'All' ? 'Coba nama gerai atau daerah lain.' : `Pencarian sedang dibatasi ke ${region}. Coba cari di semua wilayah.`}</p>
+              {region !== 'All' && <button type="button" onClick={() => setRegion('All')} className="button button-orange">Cari di semua wilayah <Search size={18} /></button>}
               <button
                 type="button"
                 onClick={() => {
-                  setQuery("");
-                  setRegion("All");
+                  setDraft({ query: '', region: 'All' });
                 }}
                 className="button button-green"
               >

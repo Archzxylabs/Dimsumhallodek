@@ -9,7 +9,11 @@ npm run dev
 
 Website terbuka di `http://localhost:5174`. Tombol **Talk to Minsum** selalu berada di kanan bawah, termasuk saat slide menu berganti. Saat diklik, panel avatar Spatius terbuka di sisi kanan dan sesi suara langsung disiapkan. Tidak ada form chat teks.
 
-Website terdiri dari lima halaman: `/` untuk Menu Favorit dan pengenalan brand, `/produk` untuk Cake/Bouquet/Frozen, `/event` untuk layanan serta rencana acara, `/kemitraan` untuk pilihan kerja sama, dan `/gerai` untuk pencarian alamat. React Router menangani perpindahan halaman tanpa memulai ulang panel Minsum. Menu Favorit mempertahankan desain dan kontrol slide sebelumnya. Form event dan kemitraan menyiapkan pesan WhatsApp yang diperiksa dan dikirim sendiri oleh pengunjung.
+Website terdiri dari lima halaman: `/` untuk Menu Dimsum dan pengenalan brand, `/produk` untuk Hadiah & Frozen, `/event` untuk layanan serta rencana acara, `/kemitraan` untuk pilihan kerja sama, dan `/gerai` untuk pencarian alamat. React Router menangani perpindahan halaman tanpa memulai ulang panel Minsum. Menu Favorit mempertahankan desain dan kontrol slide sebelumnya. Form produk, event, dan kemitraan menyiapkan pesan WhatsApp yang diperiksa dan dikirim sendiri oleh pengunjung. Draf formulir, filter gerai, dan pilihan slide disimpan di sessionStorage tab; pengunjung dapat menghapus draf formulir. Back/Forward memulihkan posisi scroll.
+
+Event dapat dikonsultasikan dengan tanggal yang belum pasti. Membuka detail model kemitraan tidak memilih model konsultasi; pilihan awal adalah “Belum menentukan”. Informasi produk dan gambaran perbandingan kemitraan tetap mengidentifikasi data demo dan detail yang belum dikonfirmasi. Gerai menyediakan tombol konfirmasi ke tim pusat tanpa mengarang jam buka/kontak masing-masing cabang.
+
+Launcher Minsum menghindari posisi yang menutupi tindakan lain. Panel mobile diperkecil, error mikrofon diberi penjelasan, dan status agent LiveKit ditampilkan sebagai mendengarkan/memproses/menjawab. Foto mempunyai versi WebP dan srcset. Avatar dipanaskan setelah halaman utama selesai dimuat saat koneksi mendukung; data saver/koneksi lambat menunggu niat pengguna.
 
 Minsum menjawab berdasarkan `backend/knowledge.json`. Ia mengenalkan menu, produk, event, dan tiga tipe kemitraan, lalu menanyakan detail yang relevan saat pengunjung ingin memesan atau berkonsultasi. Saat detail terkumpul, Minsum menyiapkan ringkasan di bawah avatar. Pengunjung dapat memeriksa dan mengirimnya sendiri melalui tombol WhatsApp; percakapan tidak otomatis dikirim atau disimpan sebagai lead. Jika ringkasan belum ada, tersedia tombol langsung untuk produk/event dan kemitraan.
 
@@ -23,9 +27,11 @@ python -m pip install -r backend/requirements.txt
 npm run avatar:worker
 ```
 
-Browser memerlukan Chrome atau Edge terbaru dan izin mikrofon. Sesi demo berlangsung dua menit. Kredensial tidak boleh dimasukkan ke variabel `VITE_*` atau kode frontend. API dan worker harus tersedia agar avatar live berfungsi.
+Browser memerlukan dukungan RTCRtpScriptTransform dan izin mikrofon; Chrome atau Edge terbaru dapat digunakan. Sesi demo berlangsung dua menit setelah koneksi suara dibuat. Client baru meminta `startOnConnect` saat membuat sesi dan mengaktifkan countdown lewat `/api/archava/start`; server memberi waktu setup maksimal 45 detik dan membersihkan sesi yang tidak tersambung. Client lama tetap mendapat sesi dua menit dari pembuatan sesi. Kredensial tidak boleh dimasukkan ke variabel `VITE_*` atau kode frontend. API dan worker harus tersedia agar avatar live berfungsi.
 
 ## Deployment
+
+Verifikasi lokal: `npm run build` dan `npm run test:avatar-api`. Tes API memakai SDK tiruan dan credential dummy untuk memeriksa aktivasi sesi 120 detik, idempotensi start, kompatibilitas client lama, batas sesi, request tidak valid, dan pembersihan sesi; tidak membuat room live.
 
 Frontend dipublikasikan di `https://dimsumhallodek.vercel.app/` dan terhubung ke branch `main` GitHub. Aturan di `vercel.json` meneruskan `/api/archava/*` ke service `minsum-api` di Railway. Project Railway `dimsumhallodek` menjalankan tiga service dari repo yang sama:
 

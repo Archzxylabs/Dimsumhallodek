@@ -1,7 +1,9 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
 import { Faq, Marquee, Reveal, Spark } from "./DesignElements";
 import { whatsappUrl } from "../lib/business";
+import { isStringRecord, useSessionState } from '../lib/useSessionState';
+import { InquiryFeedback } from './InquiryFeedback';
 
 const events = [
   { name: "Wedding", subtitle: "Hari besar. Sajian yang ikut berkesan." },
@@ -14,12 +16,15 @@ const events = [
   { name: "Lamaran", subtitle: "Dua keluarga. Satu meja. Banyak happy." },
 ];
 
+const emptyDraft = { eventType: 'Belum menentukan', date: '', dateUndecided: 'yes', guests: '', location: '', notes: '', serving: 'Belum menentukan' };
+type EventDraft = typeof emptyDraft;
+
 export function EventServices() {
-  const [eventType, setEventType] = useState("Wedding");
-  const [date, setDate] = useState("");
-  const [guests, setGuests] = useState("");
-  const [location, setLocation] = useState("");
-  const [notes, setNotes] = useState("");
+  const [draft, setDraft] = useSessionState('event', emptyDraft, (v): v is EventDraft => isStringRecord(v, Object.keys(emptyDraft)) && (v.eventType === 'Belum menentukan' || events.some((e) => e.name === v.eventType)));
+  const { eventType, date, dateUndecided, guests, location, notes, serving } = draft;
+  const [preparedUrl, setPreparedUrl] = useState('');
+  useEffect(() => { setPreparedUrl(''); }, [draft]);
+  const update = (field: keyof EventDraft, value: string) => setDraft((previous) => ({ ...previous, [field]: value }));
   const today = new Date();
   const minDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
   const submit = (event: FormEvent) => {
@@ -27,22 +32,25 @@ export function EventServices() {
     const message = [
       "Halo Minsum, saya ingin konsultasi layanan event Dimsum Hallo Dek.",
       `Acara: ${eventType}`,
-      `Tanggal: ${date}`,
-      `Perkiraan tamu: ${guests} orang`,
-      `Lokasi: ${location.trim()}`,
+      `Tanggal: ${date && dateUndecided !== 'yes' ? new Date(`${date}T12:00:00`).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) : 'Belum ditentukan'}`,
+      `Perkiraan tamu: ${guests ? `${guests} orang` : 'Belum ditentukan'}`,
+      `Lokasi: ${location.trim() || 'Belum ditentukan'}`,
+      `Kebutuhan penyajian: ${serving}`,
       notes.trim() ? `Catatan: ${notes.trim()}` : "",
       "Mohon konfirmasi ketersediaan, pilihan sajian, dan penawaran resmi.",
     ]
       .filter(Boolean)
       .join("\n");
-    window.open(whatsappUrl(message), "_blank", "noopener,noreferrer");
+    const url = whatsappUrl(message);
+    setPreparedUrl(url);
+    window.open(url, "_blank", "noopener,noreferrer");
   };
   return (
     <>
       <section className="event-hero page-hero">
         <div className="page-width event-hero-grid">
           <Reveal>
-            <p className="eyebrow">02 / A table full of happy</p>
+            <p className="eyebrow">02 / Dimsum untuk acara kamu</p>
             <h1 className="hero-title">
               RAME
               <br />
@@ -55,7 +63,7 @@ export function EventServices() {
             <p className="hero-description">
               Kamu punya momennya.
               <br />
-              Kita bantu urusan dimsumnya.
+              Kita bantu rencanakan sajian dimsumnya.
             </p>
             <a href="#rencana-event" className="button button-green">
               Ceritakan acaramu
@@ -65,7 +73,10 @@ export function EventServices() {
           <Reveal className="event-hero-art" delay={0.1}>
             <div className="event-photo">
               <img
-                src="/assets/images/dimsum-isi-16-mentai.png"
+                src="/assets/optimized/platter-800.webp"
+                srcSet="/assets/optimized/platter-480.webp 480w, /assets/optimized/platter-800.webp 768w"
+                sizes="(max-width: 767px) calc(100vw - 40px), 45vw"
+                decoding="async"
                 alt="Dimsum mentai untuk sajian bersama"
               />
               <div className="event-photo-caption">
@@ -98,6 +109,11 @@ export function EventServices() {
             Dari kumpul keluarga sampai acara satu kantor. Pilih momennya, lalu
             cerita kebutuhannya.
           </p>
+          <div className="service-explainer">
+            <h3>Mulai dari jumlah tamu dan lokasi.</h3>
+            <p>Tim membantu membahas pilihan dimsum, jumlah pesanan, serta cara menerima sajian. Minimum pesanan, area layanan, dan waktu persiapan dikonfirmasi sebelum memesan.</p>
+            <p>Butuh booth atau penyajian di lokasi? Masukkan kebutuhanmu agar tim memastikan pilihan yang tersedia.</p>
+          </div>
         </Reveal>
         <div className="event-type-list">
           {events.map((event, index) => (
@@ -105,7 +121,7 @@ export function EventServices() {
               type="button"
               key={event.name}
               aria-pressed={eventType === event.name}
-              onClick={() => setEventType(event.name)}
+              onClick={() => update('eventType', event.name)}
               className={eventType === event.name ? "selected" : ""}
             >
               <span className="list-index">0{index + 1}</span>
@@ -122,13 +138,14 @@ export function EventServices() {
               </span>
             </button>
           ))}
+          <a href="#rencana-event" className="event-next button button-green">Lanjut rencana {eventType === 'Belum menentukan' ? 'acara' : eventType} <ArrowDown size={18} /></a>
         </div>
       </section>
       <Marquee text="YOUR MOMENT. OUR DIMSUM." />
       <section id="rencana-event" className="event-planner section-space">
         <div className="page-width planner-grid">
           <Reveal>
-            <p className="eyebrow">Let's make it happen</p>
+            <p className="eyebrow">Rencanakan bersama tim</p>
             <h2 className="editorial-heading">
               Mulai dari
               <br />
@@ -136,7 +153,7 @@ export function EventServices() {
             </h2>
             <p>
               Isi rencana singkatmu. Pesannya akan siap dibuka di WhatsApp untuk
-              dibahas bersama tim.
+              dibahas bersama tim. Tanggal, jumlah tamu, dan lokasi boleh menyusul kalau belum pasti.
             </p>
             <div className="planner-note">
               <Spark />
@@ -152,8 +169,9 @@ export function EventServices() {
               Acara kamu
               <select
                 value={eventType}
-                onChange={(e) => setEventType(e.target.value)}
+                onChange={(e) => update('eventType', e.target.value)}
               >
+                <option>Belum menentukan</option>
                 {events.map((event) => (
                   <option key={event.name}>{event.name}</option>
                 ))}
@@ -161,38 +179,42 @@ export function EventServices() {
             </label>
             <div className="form-pair">
               <label>
-                Tanggal acara
+                Tanggal acara <span>(opsional)</span>
                 <input
                   type="date"
                   min={minDate}
-                  required
+                  disabled={dateUndecided === 'yes'}
                   value={date}
-                  onChange={(e) => setDate(e.target.value)}
+                  onChange={(e) => update('date', e.target.value)}
                 />
               </label>
               <label>
-                Perkiraan tamu
+                Perkiraan tamu <span>(opsional)</span>
                 <input
                   type="number"
                   min="1"
                   max="100000"
                   placeholder="Contoh: 100"
-                  required
                   value={guests}
-                  onChange={(e) => setGuests(e.target.value)}
+                  onChange={(e) => update('guests', e.target.value)}
                 />
               </label>
             </div>
+            <label className="checkbox-label"><input type="checkbox" checked={dateUndecided === 'yes'} onChange={(e) => update('dateUndecided', e.target.checked ? 'yes' : 'no')} />Tanggal belum ditentukan</label>
             <label>
-              Kota / lokasi acara
+              Kota / lokasi acara <span>(opsional)</span>
               <input
                 type="text"
                 maxLength={180}
                 placeholder="Contoh: Cileungsi, Bogor"
-                required
                 value={location}
-                onChange={(e) => setLocation(e.target.value)}
+                onChange={(e) => update('location', e.target.value)}
               />
+            </label>
+            <label>Kebutuhan penyajian
+              <select value={serving} onChange={(e) => update('serving', e.target.value)}>
+                <option>Belum menentukan</option><option>Pesanan untuk dibagikan</option><option>Ingin menanyakan penyajian di lokasi</option><option>Kebutuhan lain, saya tulis di catatan</option>
+              </select>
             </label>
             <label>
               Ada catatan tambahan? <span>(opsional)</span>
@@ -201,7 +223,7 @@ export function EventServices() {
                 placeholder="Preferensi menu, perkiraan budget, atau kebutuhan lain..."
                 rows={3}
                 value={notes}
-                onChange={(e) => setNotes(e.target.value)}
+                onChange={(e) => update('notes', e.target.value)}
               />
             </label>
             <button type="submit" className="button button-green">
@@ -212,6 +234,8 @@ export function EventServices() {
               Pesan bisa kamu periksa sebelum dikirim. Ini belum menjadi
               pemesanan.
             </p>
+            <InquiryFeedback url={preparedUrl} />
+            <div className="draft-controls"><span>Draf tersimpan di tab ini.</span><button type="button" onClick={() => { setDraft(emptyDraft); setPreparedUrl(''); }}>Hapus draf</button></div>
           </form>
         </div>
       </section>

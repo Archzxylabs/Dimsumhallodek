@@ -8,6 +8,7 @@ import {
   Spark,
 } from "./DesignElements";
 import { whatsappUrl } from "../lib/business";
+import { ProductInquiry } from './ProductInquiry';
 
 const products = [
   {
@@ -26,6 +27,7 @@ const products = [
     note: "Bisa tambah dekorasi nama",
     price: "Rp 150.000",
     type: "cake",
+    details: [['Untuk', 'Ulang tahun & perayaan'], ['Personalisasi', 'Dekorasi nama'], ['Isi & ukuran', 'Pilih bersama tim']],
   },
   {
     id: "bouquet",
@@ -43,6 +45,7 @@ const products = [
     note: "Bisa tambah dekorasi nama",
     price: "Rp 120.000",
     type: "bouquet",
+    details: [['Untuk', 'Hadiah ulang tahun, wisuda & ucapan'], ['Personalisasi', 'Dekorasi nama'], ['Isi & desain', 'Pilih bersama tim']],
   },
   {
     id: "frozen",
@@ -60,6 +63,7 @@ const products = [
     note: "Untuk stok di rumah",
     price: "Rp 45.000",
     type: "frozen",
+    details: [['Untuk', 'Stok dimsum di rumah'], ['Isi & varian', 'Minta pilihan kemasan ke tim'], ['Memasak & menyimpan', 'Ikuti petunjuk resmi produk']],
   },
 ];
 
@@ -68,7 +72,7 @@ export function SignatureProducts() {
     <>
       <section className="page-hero product-hero page-width">
         <Reveal>
-          <p className="eyebrow">01 / Everyday & special days</p>
+          <p className="eyebrow">01 / Cake, Bouquet & Frozen</p>
           <h1 className="hero-title">
             SAY IT
             <br />
@@ -81,11 +85,17 @@ export function SignatureProducts() {
             <br />
             atau buat diri sendiri. Semuanya boleh.
           </p>
+          <nav className="product-quick-links" aria-label="Langsung ke produk">
+            {products.map((product) => <a key={product.id} href={`#${product.id}`}>{product.name.replace('Dimsum ', '')} <ArrowDown size={16} /></a>)}
+          </nav>
         </Reveal>
         <Reveal className="product-hero-art" delay={0.1}>
           <div className="product-photo-frame">
             <img
-              src="/assets/images/dimsum-isi-16-mentai.png"
+              src="/assets/optimized/platter-800.webp"
+                srcSet="/assets/optimized/platter-480.webp 480w, /assets/optimized/platter-800.webp 768w"
+                sizes="(max-width: 767px) calc(100vw - 40px), 45vw"
+                decoding="async"
               alt="Sajian dimsum mentai dan nori"
             />
             <span>Gurihnya, punya cerita.</span>
@@ -128,7 +138,10 @@ export function SignatureProducts() {
               ) : product.type === "cake" ? (
                 <>
                   <img
-                    src="/assets/images/ChatGPT-Image-Jun-5-2026-01_22_12-PM-Copy.png"
+                    src="/assets/optimized/cake-800.webp"
+                    srcSet="/assets/optimized/cake-480.webp 480w, /assets/optimized/cake-800.webp 800w, /assets/optimized/cake-1200.webp 930w"
+                    sizes="(max-width: 767px) calc(100vw - 40px), 45vw"
+                    decoding="async"
                     alt="Contoh sajian dimsum dengan beberapa pilihan saus"
                     loading="lazy"
                   />
@@ -155,29 +168,31 @@ export function SignatureProducts() {
               <p className="eyebrow">
                 {product.number} / {product.name}
               </p>
-              <h2 className="editorial-heading">{product.title}</h2>
+              <h2 className="editorial-heading">{product.name}</h2>
+              <div className="product-tagline">{product.title}</div>
               <p>{product.description}</p>
               <span className="product-detail-note">{product.note}</span>
+              <dl className="product-specs">{product.details.map(([label, detail]) => <div key={label}><dt>{label}</dt><dd>{detail}</dd></div>)}<div><dt>Persiapan & pengiriman</dt><dd>Dikonfirmasi sesuai tanggal dan lokasi kamu</dd></div></dl>
               <div className="product-price">
                 <div>
-                  <span>Contoh harga mulai dari</span>
+                  <span className="demo-price-label">Harga demo · mulai dari</span>
                   <strong>{product.price}</strong>
                 </div>
                 <a
                   href={whatsappUrl(
-                    `Halo Minsum, saya ingin tanya ${product.name}. Bisa bantu pilih ukuran, isi, dan harga resminya?`,
+                    `Halo Minsum, saya ingin tanya ${product.name}. Mohon pilihan ukuran, jumlah isi, waktu persiapan, opsi pengiriman, dan harga resminya.`,
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Tanya ${product.name} via WhatsApp`}
                 >
-                  <ArrowUpRight />
+                  Tanya {product.name.replace('Dimsum ', '')} via WhatsApp<ArrowUpRight size={18} />
                 </a>
               </div>
               <p className="price-note">
-                Harga demo. Ukuran, isi, desain, dan harga resmi dikonfirmasi
-                tim.
+                Angka untuk demo, belum menjadi penawaran. Tim memastikan isi, ukuran, harga, dan ketersediaan sebelum kamu memesan.
               </p>
+              <ProductInquiry id={product.id} name={product.name} unit={product.id === 'frozen' ? 'kemasan' : product.id} personalized={product.id !== 'frozen'} />
             </Reveal>
           </div>
         </section>
