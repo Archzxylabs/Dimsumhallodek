@@ -1,49 +1,136 @@
-import React, { useState } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
+import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import { Link, NavLink, useLocation } from "react-router";
+import { sitePages, whatsappUrl } from "../lib/business";
 
-const links = [
-  { href: '#showcase', label: 'Menu Favorit' },
-  { href: '#products', label: 'Produk' },
-  { href: '#events', label: 'Event' },
-  { href: '#franchise', label: 'Jadi Mitra' },
-  { href: '#locations', label: 'Cari Gerai' },
-];
-
-export const Navbar: React.FC = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+export function Navbar() {
+  const [open, setOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const navigationRef = useRef<HTMLElement>(null);
+  const location = useLocation();
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname, location.hash]);
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+      if (event.key === "Tab") {
+        const links =
+          navigationRef.current?.querySelectorAll<HTMLAnchorElement>("a");
+        const first = toggleRef.current;
+        const last = links?.[links.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last?.focus();
+        }
+        if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first?.focus();
+        }
+      }
+    };
+    const desktop = window.matchMedia("(min-width: 768px)");
+    const onResize = () => {
+      if (desktop.matches) setOpen(false);
+    };
+    const frame = requestAnimationFrame(() =>
+      navigationRef.current?.querySelector("a")?.focus(),
+    );
+    window.addEventListener("keydown", onKey);
+    desktop.addEventListener("change", onResize);
+    return () => {
+      document.body.style.overflow = previous;
+      cancelAnimationFrame(frame);
+      window.removeEventListener("keydown", onKey);
+      desktop.removeEventListener("change", onResize);
+    };
+  }, [open]);
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#FFF9ED]/95 border-b border-[#35462B]/10 shadow-[0_4px_24px_rgba(40,57,32,0.07)] backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-[76px] flex items-center justify-between gap-5">
-        <a href="#showcase" className="flex items-center gap-3 shrink-0">
-          <span className="w-11 h-11 rounded-full overflow-hidden bg-[#F6C94B] border-2 border-[#35462B]/15 shadow-sm">
-            <img src="/assets/images/cropped-cropped-Desain-tanpa-judul-2.png" alt="Logo Dimsum Hallo Dek" className="w-full h-full object-cover" />
-          </span>
+    <header className="site-header">
+      <div className="header-inner">
+        <Link
+          to="/"
+          className="brand-lockup"
+          aria-label="Dimsum Hallo Dek — beranda"
+        >
+          <img
+            src="/assets/images/cropped-cropped-Desain-tanpa-judul-2.png"
+            alt=""
+            width="46"
+            height="46"
+          />
           <span>
-            <strong className="block font-display text-lg sm:text-xl font-semibold leading-none text-[#35462B]">Dimsum Hallo Dek</strong>
-            <small className="block text-[10px] sm:text-xs font-extrabold text-[#CB5B25] mt-0.5">#AutoHappy Setiap Hari</small>
+            Dimsum
+            <br />
+            Hallo Dek<span className="brand-dot">.</span>
           </span>
-        </a>
-
-        <nav className="hidden lg:flex items-center gap-7 text-sm font-extrabold text-[#35462B]">
-          {links.map((link) => <a key={link.href} href={link.href} className="hover:text-[#D85D22] transition-colors">{link.label}</a>)}
+        </Link>
+        <nav className="desktop-nav" aria-label="Navigasi utama">
+          {sitePages.map((page) => (
+            <NavLink key={page.path} to={page.path} end={page.path === "/"}>
+              {page.label}
+            </NavLink>
+          ))}
         </nav>
-
-        <a href="https://wa.me/+6285863646267?text=Halo%20Minsum!%20Aku%20mau%20tanya%20menu%20dan%20pesan%20dimsum" target="_blank" rel="noreferrer" className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#E96B2B] hover:bg-[#CF5720] text-white font-extrabold text-sm shadow-[0_5px_0_#B84E20] transition-colors">
-          <Phone className="w-4 h-4" /> Pesan via WhatsApp
+        <a
+          className="header-order"
+          href={whatsappUrl("Halo Minsum, aku mau tanya dan pesan dimsum.")}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Lagi pengin dimsum?
+          <ArrowUpRight size={18} />
         </a>
-
-        <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label={mobileMenuOpen ? 'Tutup menu' : 'Buka menu'} aria-expanded={mobileMenuOpen} className="lg:hidden p-2 rounded-xl border border-[#35462B]/15 text-[#35462B]">
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        <button
+          ref={toggleRef}
+          type="button"
+          className="mobile-menu-toggle"
+          onClick={() => setOpen(!open)}
+          aria-label={open ? "Tutup navigasi" : "Buka navigasi"}
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
+        >
+          {open ? <X /> : <Menu />}
         </button>
       </div>
-
-      {mobileMenuOpen && (
-        <nav className="lg:hidden px-6 pb-6 pt-3 bg-[#FFF9ED] border-t border-[#35462B]/10 flex flex-col gap-4 text-[#35462B] font-extrabold">
-          {links.map((link) => <a key={link.href} href={link.href} onClick={() => setMobileMenuOpen(false)}>{link.label}</a>)}
-          <a href="https://wa.me/+6285863646267?text=Halo%20Minsum!%20Aku%20mau%20pesan%20dimsum" target="_blank" rel="noreferrer" className="text-center rounded-full bg-[#E96B2B] text-white py-3">Pesan via WhatsApp</a>
+      {open && (
+        <nav
+          ref={navigationRef}
+          id="mobile-navigation"
+          className="mobile-navigation"
+          aria-label="Navigasi mobile"
+        >
+          <p className="eyebrow">Pilih jalan happy kamu</p>
+          {sitePages.map((page, i) => (
+            <NavLink
+              key={page.path}
+              to={page.path}
+              end={page.path === "/"}
+              onClick={() => setOpen(false)}
+            >
+              <span className="nav-index">0{i + 1}</span>
+              {page.label}
+              <ArrowUpRight />
+            </NavLink>
+          ))}
+          <a
+            className="button button-orange"
+            href={whatsappUrl("Halo Minsum, aku mau pesan dimsum.")}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Pesan via WhatsApp
+            <ArrowUpRight size={20} />
+          </a>
+          <p className="mobile-nav-note">#AutoHappy Setiap Hari</p>
         </nav>
       )}
     </header>
   );
-};
+}

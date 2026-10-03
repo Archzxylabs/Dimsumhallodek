@@ -9,6 +9,8 @@ npm run dev
 
 Website terbuka di `http://localhost:5174`. Tombol **Talk to Minsum** selalu berada di kanan bawah, termasuk saat slide menu berganti. Saat diklik, panel avatar Spatius terbuka di sisi kanan dan sesi suara langsung disiapkan. Tidak ada form chat teks.
 
+Website terdiri dari lima halaman: `/` untuk Menu Favorit dan pengenalan brand, `/produk` untuk Cake/Bouquet/Frozen, `/event` untuk layanan serta rencana acara, `/kemitraan` untuk pilihan kerja sama, dan `/gerai` untuk pencarian alamat. React Router menangani perpindahan halaman tanpa memulai ulang panel Minsum. Menu Favorit mempertahankan desain dan kontrol slide sebelumnya. Form event dan kemitraan menyiapkan pesan WhatsApp yang diperiksa dan dikirim sendiri oleh pengunjung.
+
 Minsum menjawab berdasarkan `backend/knowledge.json`. Ia mengenalkan menu, produk, event, dan tiga tipe kemitraan, lalu menanyakan detail yang relevan saat pengunjung ingin memesan atau berkonsultasi. Saat detail terkumpul, Minsum menyiapkan ringkasan di bawah avatar. Pengunjung dapat memeriksa dan mengirimnya sendiri melalui tombol WhatsApp; percakapan tidak otomatis dikirim atau disimpan sebagai lead. Jika ringkasan belum ada, tersedia tombol langsung untuk produk/event dan kemitraan.
 
 Perbarui `backend/knowledge.json` hanya dengan informasi bisnis yang sudah dikonfirmasi, lalu deploy ulang `minsum-worker`. Harga demo di website tidak boleh disalin menjadi harga resmi Minsum. Harga, stok, jangkauan, syarat kemitraan, dan ketersediaan masih harus dikonfirmasi oleh tim. Kontak WhatsApp untuk handoff ada di `src/lib/minsumHandoff.ts`; bila nomor berubah, perbarui juga data kontak di `backend/knowledge.json`.

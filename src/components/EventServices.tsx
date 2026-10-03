@@ -1,33 +1,249 @@
-import { CalendarDays, MessageCircle } from 'lucide-react';
+import { useState, type FormEvent } from "react";
+import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
+import { Faq, Marquee, Reveal, Spark } from "./DesignElements";
+import { whatsappUrl } from "../lib/business";
 
 const events = [
-  { title: 'Wedding', detail: 'Sajian dimsum hangat untuk resepsi dan pesta keluarga.' },
-  { title: 'Sekolah', detail: 'Pilihan konsumsi untuk kegiatan, perayaan, dan acara sekolah.' },
-  { title: 'Kantor', detail: 'Snack dan sajian untuk rapat, gathering, atau acara tim.' },
-  { title: 'Khitanan', detail: 'Hidangan praktis yang bisa disesuaikan dengan kebutuhan acara.' },
-  { title: 'Lamaran', detail: 'Pilihan dimsum untuk momen kumpul dua keluarga.' },
+  { name: "Wedding", subtitle: "Hari besar. Sajian yang ikut berkesan." },
+  { name: "Sekolah", subtitle: "Dari perayaan kelas sampai acara sekolah." },
+  { name: "Kantor", subtitle: "Meeting, gathering, dan cerita satu tim." },
+  {
+    name: "Khitanan",
+    subtitle: "Rayakan bersama keluarga dan orang terdekat.",
+  },
+  { name: "Lamaran", subtitle: "Dua keluarga. Satu meja. Banyak happy." },
 ];
 
 export function EventServices() {
+  const [eventType, setEventType] = useState("Wedding");
+  const [date, setDate] = useState("");
+  const [guests, setGuests] = useState("");
+  const [location, setLocation] = useState("");
+  const [notes, setNotes] = useState("");
+  const today = new Date();
+  const minDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+  const submit = (event: FormEvent) => {
+    event.preventDefault();
+    const message = [
+      "Halo Minsum, saya ingin konsultasi layanan event Dimsum Hallo Dek.",
+      `Acara: ${eventType}`,
+      `Tanggal: ${date}`,
+      `Perkiraan tamu: ${guests} orang`,
+      `Lokasi: ${location.trim()}`,
+      notes.trim() ? `Catatan: ${notes.trim()}` : "",
+      "Mohon konfirmasi ketersediaan, pilihan sajian, dan penawaran resmi.",
+    ]
+      .filter(Boolean)
+      .join("\n");
+    window.open(whatsappUrl(message), "_blank", "noopener,noreferrer");
+  };
   return (
-    <section id="events" className="bg-[#FFF9ED] py-20 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-12">
-        <div className="mb-10 max-w-3xl space-y-3">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#F6C94B] px-4 py-1.5 text-xs font-extrabold text-[#35462B]"><CalendarDays className="h-4 w-4" /> Layanan Event</span>
-          <h2 className="font-display text-3xl font-semibold text-[#35462B] sm:text-5xl">Dimsum buat acara apa pun</h2>
-          <p className="text-[#35462B]/70">Ceritakan jumlah tamu, tanggal, dan lokasi. Tim Dimsum Hallo Dek akan bantu pilih sajian yang cocok.</p>
+    <>
+      <section className="event-hero page-hero">
+        <div className="page-width event-hero-grid">
+          <Reveal>
+            <p className="eyebrow">02 / A table full of happy</p>
+            <h1 className="hero-title">
+              RAME
+              <br />
+              RAME
+              <br />
+              MAKIN
+              <br />
+              <span className="text-cream">ENAK.</span>
+            </h1>
+            <p className="hero-description">
+              Kamu punya momennya.
+              <br />
+              Kita bantu urusan dimsumnya.
+            </p>
+            <a href="#rencana-event" className="button button-green">
+              Ceritakan acaramu
+              <ArrowDown size={18} />
+            </a>
+          </Reveal>
+          <Reveal className="event-hero-art" delay={0.1}>
+            <div className="event-photo">
+              <img
+                src="/assets/images/dimsum-isi-16-mentai.png"
+                alt="Dimsum mentai untuk sajian bersama"
+              />
+              <div className="event-photo-caption">
+                <span>GOOD COMPANY.</span>
+                <span>GREAT DIMSUM.</span>
+              </div>
+            </div>
+            <div className="event-ticket">
+              <span>DHD / EVENT</span>
+              <Spark />
+              <strong>
+                LET'S
+                <br />
+                CELEBRATE!
+              </strong>
+              <span>YOUR MOMENT. OUR DIMSUM.</span>
+            </div>
+          </Reveal>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+      </section>
+      <section className="page-width section-space event-types">
+        <Reveal>
+          <p className="eyebrow">Ada acara apa?</p>
+          <h2 className="editorial-heading">
+            Setiap momen
+            <br />
+            punya <span className="handwritten">rasa.</span>
+          </h2>
+          <p>
+            Dari kumpul keluarga sampai acara satu kantor. Pilih momennya, lalu
+            cerita kebutuhannya.
+          </p>
+        </Reveal>
+        <div className="event-type-list">
           {events.map((event, index) => (
-            <article key={event.title} className="rounded-3xl border border-[#35462B]/10 bg-white p-6 shadow-[0_8px_28px_rgba(40,57,32,0.06)]">
-              <span className="font-display text-3xl font-bold text-[#E96B2B]">0{index + 1}</span>
-              <h3 className="mt-3 font-display text-xl font-semibold text-[#35462B]">{event.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#35462B]/70">{event.detail}</p>
-            </article>
+            <button
+              type="button"
+              key={event.name}
+              aria-pressed={eventType === event.name}
+              onClick={() => setEventType(event.name)}
+              className={eventType === event.name ? "selected" : ""}
+            >
+              <span className="list-index">0{index + 1}</span>
+              <span>
+                <strong>{event.name}</strong>
+                <small>{event.subtitle}</small>
+              </span>
+              <span className="selection-circle">
+                {eventType === event.name ? (
+                  <Check size={20} />
+                ) : (
+                  <ArrowUpRight size={20} />
+                )}
+              </span>
+            </button>
           ))}
         </div>
-        <a href="https://wa.me/6285863646267?text=Halo%20Minsum%2C%20saya%20mau%20tanya%20layanan%20event" target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#E96B2B] px-6 py-3.5 text-sm font-extrabold text-white hover:bg-[#C45120]"><MessageCircle className="h-4 w-4" /> Konsultasi event</a>
-      </div>
-    </section>
+      </section>
+      <Marquee text="YOUR MOMENT. OUR DIMSUM." />
+      <section id="rencana-event" className="event-planner section-space">
+        <div className="page-width planner-grid">
+          <Reveal>
+            <p className="eyebrow">Let's make it happen</p>
+            <h2 className="editorial-heading">
+              Mulai dari
+              <br />
+              cerita kamu.
+            </h2>
+            <p>
+              Isi rencana singkatmu. Pesannya akan siap dibuka di WhatsApp untuk
+              dibahas bersama tim.
+            </p>
+            <div className="planner-note">
+              <Spark />
+              <span>
+                Penawaran dan jadwal
+                <br />
+                dikonfirmasi oleh tim.
+              </span>
+            </div>
+          </Reveal>
+          <form onSubmit={submit} className="inquiry-form">
+            <label>
+              Acara kamu
+              <select
+                value={eventType}
+                onChange={(e) => setEventType(e.target.value)}
+              >
+                {events.map((event) => (
+                  <option key={event.name}>{event.name}</option>
+                ))}
+              </select>
+            </label>
+            <div className="form-pair">
+              <label>
+                Tanggal acara
+                <input
+                  type="date"
+                  min={minDate}
+                  required
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                />
+              </label>
+              <label>
+                Perkiraan tamu
+                <input
+                  type="number"
+                  min="1"
+                  max="100000"
+                  placeholder="Contoh: 100"
+                  required
+                  value={guests}
+                  onChange={(e) => setGuests(e.target.value)}
+                />
+              </label>
+            </div>
+            <label>
+              Kota / lokasi acara
+              <input
+                type="text"
+                maxLength={180}
+                placeholder="Contoh: Cileungsi, Bogor"
+                required
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+              />
+            </label>
+            <label>
+              Ada catatan tambahan? <span>(opsional)</span>
+              <textarea
+                maxLength={600}
+                placeholder="Preferensi menu, perkiraan budget, atau kebutuhan lain..."
+                rows={3}
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+              />
+            </label>
+            <button type="submit" className="button button-green">
+              Siapkan pesan WhatsApp
+              <ArrowUpRight size={20} />
+            </button>
+            <p className="form-note">
+              Pesan bisa kamu periksa sebelum dikirim. Ini belum menjadi
+              pemesanan.
+            </p>
+          </form>
+        </div>
+      </section>
+      <section className="page-width section-space faq-section">
+        <Reveal>
+          <p className="eyebrow">Tentang layanan event</p>
+          <h2 className="editorial-heading">
+            Tanya dulu,
+            <br />
+            boleh banget.
+          </h2>
+        </Reveal>
+        <Faq
+          items={[
+            {
+              question: "Berapa minimum pesanan untuk event?",
+              answer:
+                "Minimum pesanan disesuaikan dengan kebutuhan acara dan dikonfirmasi tim saat konsultasi. Ceritakan jumlah tamu atau perkiraan jumlah dimsum yang dibutuhkan.",
+            },
+            {
+              question: "Bisa untuk acara di luar kota?",
+              answer:
+                "Sampaikan lokasi acaramu ke tim. Jangkauan layanan dan opsi penyajian perlu dipastikan sebelum penawaran.",
+            },
+            {
+              question: "Apakah tanggal saya langsung terpesan?",
+              answer:
+                "Belum. Rencana yang dikirim adalah permintaan konsultasi. Tim akan mengonfirmasi jadwal, sajian, harga, serta langkah pemesanan.",
+            },
+          ]}
+        />
+      </section>
+    </>
   );
 }
