@@ -23,6 +23,7 @@ export function ArchavaConcierge() {
   const configPromiseRef = useRef<Promise<AvatarConfig> | null>(null);
   const openRef = useRef(false);
   const attemptRef = useRef(0);
+  const preparationRef = useRef<AbortController | null>(null);
   const launcher = useRef<HTMLButtonElement>(null);
   const bottom = useLauncherPosition(launcher, open);
 
@@ -68,6 +69,8 @@ export function ArchavaConcierge() {
   }, []);
 
   const closeLive = useCallback(() => {
+    preparationRef.current?.abort();
+    preparationRef.current = null;
     const current = sessionRef.current;
     sessionRef.current = null;
     setSession(null);
@@ -96,13 +99,19 @@ export function ArchavaConcierge() {
       } catch (cause) { throw new Error(microphoneErrorMessage(cause)); }
       if (!openRef.current || attempt !== attemptRef.current) return;
       setPhase('Menyiapkan Minsum…');
-      let preparationTimer: ReturnType<typeof setTimeout> | undefined;
+      const preparation = new AbortController();
+      preparationRef.current = preparation;
       try {
-        await Promise.race([
-          import('../lib/spatius').then(({ prepareSpatiusAvatar }) => prepareSpatiusAvatar(config.appId, config.avatarId)),
-          new Promise<never>((_, reject) => { preparationTimer = setTimeout(() => reject(new Error('Avatar belum selesai dimuat. Periksa koneksi, lalu coba lagi atau lanjut via WhatsApp.')), 40000); }),
-        ]);
-      } finally { clearTimeout(preparationTimer); }
+        const { prepareSpatiusAvatar } = await import('../lib/spatius');
+        await prepareSpatiusAvatar(config.appId, config.avatarId, {
+          signal: preparation.signal,
+          onProgress: (progress) => {
+            if (!openRef.current || attempt !== attemptRef.current) return;
+            setPhase(progress.stage === 'initializing' ? 'Menyiapkan Minsum untuk perangkatmu…' :
+              progress.stage === 'downloading' ? `Memuat avatar${progress.progress === undefined ? '' : ` · ${Math.round(progress.progress * 100)}%`}…` : 'Avatar siap. Menghubungkan suara…');
+          },
+        });
+      } finally { if (preparationRef.current === preparation) preparationRef.current = null; }
       if (!openRef.current || attempt !== attemptRef.current) return;
       setPhase('Menghubungkan suara…');
       const response = await fetch('/api/archava/session', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ startOnConnect: true }), signal: AbortSignal.timeout(30000) });

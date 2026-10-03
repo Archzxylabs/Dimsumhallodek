@@ -9,6 +9,7 @@
     "avatar:worker": "python backend/agent.py dev",
     "build": "tsc && vite build",
     "test:avatar-api": "node tests/avatar-api.mjs",
+    "test:avatar-loading": "node --no-warnings --loader ./tests/fixtures/spatius-loader.mjs tests/spatius-loading.mjs",
     "preview": "vite preview --host"
   },
   "keywords": [],

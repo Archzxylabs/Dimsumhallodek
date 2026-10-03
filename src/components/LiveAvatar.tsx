@@ -45,9 +45,9 @@ function AvatarSurface({ session, onError, onHandoff, onConnected, onMicrophoneE
       connectionAttempted = true;
       await room.connect(session.serverUrl, session.token);
       if (cancelled) return;
-      await onConnected();
-      if (cancelled) return;
       try { await room.localParticipant.setMicrophoneEnabled(true); } catch (cause) { if (!cancelled) onMicrophoneError(microphoneErrorMessage(cause)); }
+      if (cancelled) return;
+      await onConnected();
     };
     const dispose = async () => {
       if (disposed) return;

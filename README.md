@@ -13,7 +13,7 @@ Website terdiri dari lima halaman: `/` untuk Menu Dimsum dan pengenalan brand, `
 
 Event dapat dikonsultasikan dengan tanggal yang belum pasti. Membuka detail model kemitraan tidak memilih model konsultasi; pilihan awal adalah “Belum menentukan”. Informasi produk dan gambaran perbandingan kemitraan tetap mengidentifikasi data demo dan detail yang belum dikonfirmasi. Gerai menyediakan tombol konfirmasi ke tim pusat tanpa mengarang jam buka/kontak masing-masing cabang.
 
-Launcher Minsum menghindari posisi yang menutupi tindakan lain. Panel mobile diperkecil, error mikrofon diberi penjelasan, dan status agent LiveKit ditampilkan sebagai mendengarkan/memproses/menjawab. Foto mempunyai versi WebP dan srcset. Avatar dipanaskan setelah halaman utama selesai dimuat saat koneksi mendukung; data saver/koneksi lambat menunggu niat pengguna.
+Launcher Minsum menghindari posisi yang menutupi tindakan lain. Panel mobile diperkecil, error mikrofon diberi penjelasan, dan status agent LiveKit ditampilkan sebagai mendengarkan/memproses/menjawab. Foto mempunyai versi WebP dan srcset. Avatar dipanaskan setelah halaman utama selesai dimuat saat koneksi mendukung; data saver/koneksi lambat menunggu niat pengguna. Pengunduhan avatar menampilkan progres; batas waktu dihitung dari progres terakhir (90 detik inisialisasi, 60 detik unduhan tidak bergerak, maksimal 3 menit keseluruhan). Room baru dibuat setelah model siap, dan countdown dimulai setelah koneksi serta percobaan aktivasi mikrofon selesai.
 
 Minsum menjawab berdasarkan `backend/knowledge.json`. Ia mengenalkan menu, produk, event, dan tiga tipe kemitraan, lalu menanyakan detail yang relevan saat pengunjung ingin memesan atau berkonsultasi. Saat detail terkumpul, Minsum menyiapkan ringkasan di bawah avatar. Pengunjung dapat memeriksa dan mengirimnya sendiri melalui tombol WhatsApp; percakapan tidak otomatis dikirim atau disimpan sebagai lead. Jika ringkasan belum ada, tersedia tombol langsung untuk produk/event dan kemitraan.
 
@@ -31,7 +31,7 @@ Browser memerlukan dukungan RTCRtpScriptTransform dan izin mikrofon; Chrome atau
 
 ## Deployment
 
-Verifikasi lokal: `npm run build` dan `npm run test:avatar-api`. Tes API memakai SDK tiruan dan credential dummy untuk memeriksa aktivasi sesi 120 detik, idempotensi start, kompatibilitas client lama, batas sesi, request tidak valid, dan pembersihan sesi; tidak membuat room live.
+Verifikasi lokal: `npm run build`, `npm run test:avatar-api`, dan `npm run test:avatar-loading` (Node 22.18+ dengan dukungan TypeScript). Tes API memakai SDK tiruan dan credential dummy untuk memeriksa aktivasi sesi 120 detik, idempotensi start, kompatibilitas client lama, batas sesi, request tidak valid, dan pembersihan sesi; tidak membuat room live. Tes loading memakai SDK tiruan dan waktu virtual untuk memeriksa unduhan yang masih bergerak setelah 40 detik, cache prewarm, retry setelah unduhan macet, dan penutupan panel.
 
 Frontend dipublikasikan di `https://dimsumhallodek.vercel.app/` dan terhubung ke branch `main` GitHub. Aturan di `vercel.json` meneruskan `/api/archava/*` ke service `minsum-api` di Railway. Project Railway `dimsumhallodek` menjalankan tiga service dari repo yang sama:
 
