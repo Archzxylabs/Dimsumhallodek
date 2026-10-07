@@ -13,3 +13,6 @@ scratch
 /server
 /hallo
 /*.md
+
+/client-data
+!/data/catalog.json

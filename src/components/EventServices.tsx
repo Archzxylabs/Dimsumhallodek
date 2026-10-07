@@ -30,7 +30,7 @@ export function EventServices() {
   const submit = (event: FormEvent) => {
     event.preventDefault();
     const message = [
-      "Halo Minsum, saya ingin konsultasi layanan event Dimsum Hallo Dek.",
+      "Halo Bang Mus, saya ingin konsultasi layanan event Dimsum Hallo Dek.",
       `Acara: ${eventType}`,
       `Tanggal: ${date && dateUndecided !== 'yes' ? new Date(`${date}T12:00:00`).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) : 'Belum ditentukan'}`,
       `Perkiraan tamu: ${guests ? `${guests} orang` : 'Belum ditentukan'}`,

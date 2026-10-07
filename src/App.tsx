@@ -9,6 +9,7 @@ import { Footer } from "./components/Footer";
 import { SignatureProducts } from "./components/SignatureProducts";
 import { ArchavaConcierge } from "./components/ArchavaConcierge";
 import { HomePage } from "./pages/HomePage";
+import { MembershipPage } from "./pages/MembershipPage";
 import { sitePages } from "./lib/business";
 
 function PageNavigation() {
@@ -76,6 +77,7 @@ export function App() {
               <Route path="/event" element={<EventServices />} />
               <Route path="/kemitraan" element={<FranchiseAutopilot />} />
               <Route path="/gerai" element={<StoreLocator />} />
+              <Route path="/membership" element={<MembershipPage />} />
               <Route
                 path="*"
                 element={

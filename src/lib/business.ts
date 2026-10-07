@@ -32,6 +32,13 @@ export const sitePages = [
       "Kenali pilihan kemitraan Flexible, Collaborative, dan Full Managed Dimsum Hallo Dek.",
   },
   {
+    path: "/membership",
+    label: "Membership",
+    title: "Membership & Poin",
+    description:
+      "Daftar membership Dimsum Hallo Dek melalui tim dan kumpulkan poin 1% dari harga produk. Coba kalkulator poin bersama Bang Mus.",
+  },
+  {
     path: "/gerai",
     label: "Cari Gerai",
     title: "Cari Gerai",

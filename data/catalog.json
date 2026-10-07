@@ -1,0 +1,212 @@
+[
+  {
+    "id": "mentai-3",
+    "name": "Mentai · 3 pcs",
+    "group": "Dimsum siap santap",
+    "price": 10000,
+    "source": "menu/menu-dan-harga.jpg"
+  },
+  {
+    "id": "mentai-6",
+    "name": "Mentai · 6 pcs",
+    "group": "Dimsum siap santap",
+    "price": 20000,
+    "source": "menu/menu-dan-harga.jpg"
+  },
+  {
+    "id": "mentai-16",
+    "name": "Mentai · 16 pcs",
+    "group": "Dimsum siap santap",
+    "price": 50000,
+    "source": "menu/menu-dan-harga.jpg"
+  },
+  {
+    "id": "tartar-3",
+    "name": "Tartar · 3 pcs",
+    "group": "Dimsum siap santap",
+    "price": 10000,
+    "source": "menu/menu-dan-harga.jpg"
+  },
+  {
+    "id": "tartar-6",
+    "name": "Tartar · 6 pcs",
+    "group": "Dimsum siap santap",
+    "price": 20000,
+    "source": "menu/menu-dan-harga.jpg"
+  },
+  {
+    "id": "tartar-16",
+    "name": "Tartar · 16 pcs",
+    "group": "Dimsum siap santap",
+    "price": 50000,
+    "source": "menu/menu-dan-harga.jpg"
+  },
+  {
+    "id": "hot-lava-3",
+    "name": "Hot Lava · 3 pcs",
+    "group": "Dimsum siap santap",
+    "price": 15000,
+    "source": "menu/menu-dan-harga.jpg"
+  },
+  {
+    "id": "hot-lava-6",
+    "name": "Hot Lava · 6 pcs",
+    "group": "Dimsum siap santap",
+    "price": 25000,
+    "source": "menu/menu-dan-harga.jpg"
+  },
+  {
+    "id": "hot-lava-16",
+    "name": "Hot Lava · 16 pcs",
+    "group": "Dimsum siap santap",
+    "price": 70000,
+    "source": "menu/menu-dan-harga.jpg"
+  },
+  {
+    "id": "carbonara-3",
+    "name": "Carbonara · 3 pcs",
+    "group": "Dimsum siap santap",
+    "price": 15000,
+    "source": "menu/menu-dan-harga.jpg"
+  },
+  {
+    "id": "carbonara-6",
+    "name": "Carbonara · 6 pcs",
+    "group": "Dimsum siap santap",
+    "price": 25000,
+    "source": "menu/menu-dan-harga.jpg"
+  },
+  {
+    "id": "carbonara-16",
+    "name": "Carbonara · 16 pcs",
+    "group": "Dimsum siap santap",
+    "price": 70000,
+    "source": "menu/menu-dan-harga.jpg"
+  },
+  {
+    "id": "mix-3",
+    "name": "Mix Sauces · 3 pcs",
+    "group": "Dimsum siap santap",
+    "price": 15000,
+    "source": "menu/menu-dan-harga.jpg"
+  },
+  {
+    "id": "mix-6",
+    "name": "Mix Sauces · 6 pcs",
+    "group": "Dimsum siap santap",
+    "price": 25000,
+    "source": "menu/menu-dan-harga.jpg"
+  },
+  {
+    "id": "mix-16",
+    "name": "Mix Sauces · 16 pcs",
+    "group": "Dimsum siap santap",
+    "price": 60000,
+    "source": "menu/menu-dan-harga.jpg"
+  },
+  {
+    "id": "original-4",
+    "name": "Original kukus · 4 pcs",
+    "group": "Dimsum siap santap",
+    "price": 10000,
+    "source": "menu/menu-dan-harga.jpg"
+  },
+  {
+    "id": "cake-16",
+    "name": "Dimsum 16 pcs + tulisan",
+    "group": "Cake & Bouquet",
+    "price": 65000,
+    "source": "menu/dimsum-cake.jpg"
+  },
+  {
+    "id": "cake-s",
+    "name": "Cake S · 18 pcs",
+    "group": "Cake & Bouquet",
+    "price": 75000,
+    "source": "menu/dimsum-cake.jpg"
+  },
+  {
+    "id": "cake-m",
+    "name": "Cake M · 22 pcs",
+    "group": "Cake & Bouquet",
+    "price": 100000,
+    "source": "menu/dimsum-cake.jpg"
+  },
+  {
+    "id": "cake-l",
+    "name": "Cake L · 26 pcs",
+    "group": "Cake & Bouquet",
+    "price": 130000,
+    "source": "menu/dimsum-cake.jpg"
+  },
+  {
+    "id": "cake-xl",
+    "name": "Wooden Plate XL · 35 pcs",
+    "group": "Cake & Bouquet",
+    "price": 150000,
+    "source": "menu/dimsum-cake.jpg"
+  },
+  {
+    "id": "cake-2xl",
+    "name": "Wooden Plate 2XL · 49 pcs",
+    "group": "Cake & Bouquet",
+    "price": 175000,
+    "source": "menu/dimsum-cake.jpg"
+  },
+  {
+    "id": "cake-3xl",
+    "name": "Wooden Plate 3XL · 62 pcs",
+    "group": "Cake & Bouquet",
+    "price": 250000,
+    "source": "menu/dimsum-cake.jpg"
+  },
+  {
+    "id": "bouquet-m",
+    "name": "Bouquet M · 22 pcs",
+    "group": "Cake & Bouquet",
+    "price": 140000,
+    "source": "menu/dimsum-cake.jpg"
+  },
+  {
+    "id": "frozen-15-25",
+    "name": "Frozen 15 gram · 25 pcs",
+    "group": "Frozen & saus",
+    "price": 35000,
+    "source": "menu/frozen-dan-saus.jpg"
+  },
+  {
+    "id": "frozen-15-50",
+    "name": "Frozen 15 gram · 50 pcs",
+    "group": "Frozen & saus",
+    "price": 65000,
+    "source": "menu/frozen-dan-saus.jpg"
+  },
+  {
+    "id": "frozen-28-25",
+    "name": "Frozen reguler 28 gram · 25 pcs",
+    "group": "Frozen & saus",
+    "price": 60000,
+    "source": "menu/frozen-dan-saus.jpg"
+  },
+  {
+    "id": "chili-100",
+    "name": "Chili oil · 100 ml",
+    "group": "Frozen & saus",
+    "price": 15000,
+    "source": "menu/frozen-dan-saus.jpg"
+  },
+  {
+    "id": "chili-200",
+    "name": "Chili oil · 200 ml",
+    "group": "Frozen & saus",
+    "price": 25000,
+    "source": "menu/frozen-dan-saus.jpg"
+  },
+  {
+    "id": "saus-mentai-100",
+    "name": "Saus mentai · 100 gram",
+    "group": "Frozen & saus",
+    "price": 15000,
+    "source": "menu/frozen-dan-saus.jpg"
+  }
+]

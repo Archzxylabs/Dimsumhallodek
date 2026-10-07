@@ -10,7 +10,7 @@ export function Footer() {
         <div className="footer-top">
           <p className="eyebrow">Perut happy. Hari ikut happy.</p>
           <a
-            href={whatsappUrl("Halo Minsum, aku mau pesan dimsum.")}
+            href={whatsappUrl("Halo Bang Mus, aku mau pesan dimsum.")}
             target="_blank"
             rel="noopener noreferrer"
             className="footer-cta"

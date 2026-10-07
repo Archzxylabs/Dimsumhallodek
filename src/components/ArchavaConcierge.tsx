@@ -4,6 +4,7 @@ import type { AvatarSession } from '../lib/avatarTypes';
 import { getMinsumWhatsappUrl, handoffLabels, type MinsumHandoff } from '../lib/minsumHandoff';
 import { microphoneErrorMessage } from '../lib/microphone';
 import { useLauncherPosition } from '../lib/useLauncherPosition';
+import { BangMusPortrait } from './BangMusPortrait';
 
 const LiveAvatar = lazy(() => import('./LiveAvatar').then((module) => ({ default: module.LiveAvatar })));
 interface AvatarConfig { ready: boolean; appId: string; avatarId: string; durationSeconds: number }
@@ -16,7 +17,7 @@ export function ArchavaConcierge() {
   const [open, setOpen] = useState(false);
   const [session, setSession] = useState<AvatarSession | null>(null);
   const [status, setStatus] = useState<'idle' | 'connecting' | 'live'>('idle');
-  const [phase, setPhase] = useState('Menyambungkan Minsum…');
+  const [phase, setPhase] = useState('Menyambungkan Bang Mus…');
   const [error, setError] = useState('');
   const [handoff, setHandoff] = useState<MinsumHandoff | null>(null);
   const sessionRef = useRef<AvatarSession | null>(null);
@@ -31,7 +32,7 @@ export function ArchavaConcierge() {
     if (!configPromiseRef.current) {
       configPromiseRef.current = fetch('/api/archava/config', { signal: AbortSignal.timeout(15000) })
         .then(async (response) => {
-          if (!response.ok) throw new Error('Minsum belum tersedia. Coba lagi nanti atau lanjut via WhatsApp.');
+          if (!response.ok) throw new Error('Bang Mus belum tersedia. Coba lagi nanti atau lanjut via WhatsApp.');
           return response.json() as Promise<AvatarConfig>;
         }).catch((cause: unknown) => { configPromiseRef.current = null; throw cause; });
     }
@@ -85,11 +86,11 @@ export function ArchavaConcierge() {
     setError('');
     const attempt = ++attemptRef.current;
     setStatus('connecting');
-    setPhase('Memeriksa koneksi Minsum…');
+    setPhase('Memeriksa koneksi Bang Mus…');
     try {
       const config = await getConfig();
       if (!openRef.current || attempt !== attemptRef.current) return;
-      if (!config.ready) { configPromiseRef.current = null; throw new Error('Minsum belum tersedia. Coba lagi nanti atau lanjut via WhatsApp.'); }
+      if (!config.ready) { configPromiseRef.current = null; throw new Error('Bang Mus belum tersedia. Coba lagi nanti atau lanjut via WhatsApp.'); }
       if (!("RTCRtpScriptTransform" in globalThis)) throw new Error('Browser ini belum mendukung avatar live. Coba Chrome atau Edge terbaru, atau lanjut via WhatsApp.');
       if (!navigator.mediaDevices?.getUserMedia) throw new Error('Browser ini belum bisa mengakses mikrofon. Buka lewat koneksi aman atau lanjut via WhatsApp.');
       setPhase('Izinkan mikrofon di browser untuk mulai bicara.');
@@ -98,7 +99,7 @@ export function ArchavaConcierge() {
         permission.getTracks().forEach((track) => track.stop());
       } catch (cause) { throw new Error(microphoneErrorMessage(cause)); }
       if (!openRef.current || attempt !== attemptRef.current) return;
-      setPhase('Menyiapkan Minsum…');
+      setPhase('Menyiapkan Bang Mus…');
       const preparation = new AbortController();
       preparationRef.current = preparation;
       try {
@@ -107,7 +108,7 @@ export function ArchavaConcierge() {
           signal: preparation.signal,
           onProgress: (progress) => {
             if (!openRef.current || attempt !== attemptRef.current) return;
-            setPhase(progress.stage === 'initializing' ? 'Menyiapkan Minsum untuk perangkatmu…' :
+            setPhase(progress.stage === 'initializing' ? 'Menyiapkan Bang Mus untuk perangkatmu…' :
               progress.stage === 'downloading' ? `Memuat avatar${progress.progress === undefined ? '' : ` · ${Math.round(progress.progress * 100)}%`}…` : 'Avatar siap. Menghubungkan suara…');
           },
         });
@@ -116,7 +117,7 @@ export function ArchavaConcierge() {
       setPhase('Menghubungkan suara…');
       const response = await fetch('/api/archava/session', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ startOnConnect: true }), signal: AbortSignal.timeout(30000) });
       const data = await response.json();
-      if (!response.ok) throw new Error(data.error || 'Tidak bisa membuka sesi Minsum.');
+      if (!response.ok) throw new Error(data.error || 'Tidak bisa membuka sesi Bang Mus.');
       if (!openRef.current || attempt !== attemptRef.current) { void endSession(data.ticket); return; }
       sessionRef.current = data as AvatarSession;
       setSession(data as AvatarSession);
@@ -151,17 +152,17 @@ export function ArchavaConcierge() {
   }, [open, closeLive]);
 
   return <div className="minsum-root" id="avatar">
-    {open && <aside id="minsum-panel" aria-label="Percakapan suara dengan Minsum" className="minsum-panel">
+    {open && <aside id="minsum-panel" aria-label="Percakapan suara dengan Bang Mus" className="minsum-panel">
       <div className="minsum-header">
-        <img src="/assets/archava/minsum-concept.webp" alt="" width="36" height="36" />
-        <div><h2>Talk to Minsum</h2><p>Suara langsung · demo 2 menit</p></div>
-        <button type="button" onClick={togglePanel} aria-label="Tutup Minsum" className="minsum-close"><X size={20} /></button>
+        <BangMusPortrait decorative />
+        <div><h2>Talk to Bang Mus</h2><p>Suara langsung · demo 2 menit</p></div>
+        <button type="button" onClick={togglePanel} aria-label="Tutup Bang Mus" className="minsum-close"><X size={20} /></button>
       </div>
       <div className="minsum-panel-content">
         {session ? <Suspense fallback={<div className="minsum-loading" role="status">Menghubungkan suara dan avatar…</div>}>
           <LiveAvatar session={session} onClose={closeLive} onError={handleError} onHandoff={setHandoff} onConnected={handleConnected} />
         </Suspense> : <div className="minsum-idle">
-          <img src="/assets/archava/minsum-concept.webp" alt="Avatar Minsum" className="minsum-idle-image" />
+          <BangMusPortrait className="minsum-idle-image" />
           <div className="minsum-idle-status">
             {status === 'connecting' ? <p role="status"><span className="minsum-spinner" />{phase}</p> : <>
               <p role={error ? 'alert' : 'status'}>{error || 'Sesi selesai. Ringkasan yang sudah dibuat tetap tersedia di bawah. Kamu bisa mulai percakapan baru.'}</p>
@@ -184,6 +185,6 @@ export function ArchavaConcierge() {
         </>}
       </div>
     </aside>}
-    <button ref={launcher} type="button" onClick={togglePanel} onPointerEnter={warmAvatar} onFocus={warmAvatar} aria-expanded={open} aria-controls="minsum-panel" className="minsum-launcher" style={{ bottom }}><MessageCircle size={20} /> {open ? 'Tutup Minsum' : 'Talk to Minsum'}</button>
+    <button ref={launcher} type="button" onClick={togglePanel} onPointerEnter={warmAvatar} onFocus={warmAvatar} aria-expanded={open} aria-controls="minsum-panel" className="minsum-launcher" style={{ bottom }}><MessageCircle size={20} /> {open ? 'Tutup Bang Mus' : 'Talk to Bang Mus'}</button>
   </div>;
 }

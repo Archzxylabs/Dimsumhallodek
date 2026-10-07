@@ -7,6 +7,7 @@ import {
   Reveal,
   Spark,
 } from "./DesignElements";
+import { Link } from 'react-router';
 import { whatsappUrl } from "../lib/business";
 import { ProductInquiry } from './ProductInquiry';
 
@@ -18,9 +19,9 @@ const products = [
     title: 'Make a wish. Take a bite.',
     description:
       "Untuk yang lebih suka gurih daripada manis. Rayakan ulang tahun dan momen spesial dengan dimsum, plus dekorasi nama biar makin personal.",
-    price: "Rp 150.000",
+    price: "Rp 65.000",
     type: "cake",
-    details: [['Untuk', 'Ulang tahun & perayaan'], ['Personalisasi', 'Dekorasi nama'], ['Isi & ukuran', 'Pilih bersama tim']],
+    details: [['Untuk', 'Ulang tahun & perayaan'], ['Personalisasi', 'Dekorasi nama'], ['Isi & ukuran', '16 pcs + tulisan, cake 18–62 pcs']],
   },
   {
     id: "bouquet",
@@ -29,9 +30,9 @@ const products = [
     title: 'Love, wrapped in dimsum.',
     description:
       "Hadiah buat orang yang selalu punya tempat di hati — dan selalu punya ruang buat dimsum. Cocok untuk ulang tahun, wisuda, atau sekadar bilang terima kasih.",
-    price: "Rp 120.000",
+    price: "Rp 140.000",
     type: "bouquet",
-    details: [['Untuk', 'Hadiah ulang tahun, wisuda & ucapan'], ['Personalisasi', 'Dekorasi nama'], ['Isi & desain', 'Pilih bersama tim']],
+    details: [['Untuk', 'Hadiah ulang tahun, wisuda & ucapan'], ['Personalisasi', 'Dekorasi nama'], ['Isi & desain', 'M · 22 pcs, desain bersama tim']],
   },
   {
     id: "frozen",
@@ -40,9 +41,9 @@ const products = [
     title: 'Happy food. Whenever.',
     description:
       "Simpan favoritmu untuk dinikmati di rumah. Tanya tim untuk pilihan isi, petunjuk memasak, penyimpanan, dan ketersediaan produk frozen.",
-    price: "Rp 45.000",
+    price: "Rp 35.000",
     type: "frozen",
-    details: [['Untuk', 'Stok dimsum di rumah'], ['Isi & varian', 'Minta pilihan kemasan ke tim'], ['Memasak & menyimpan', 'Ikuti petunjuk resmi produk']],
+    details: [['Untuk', 'Stok dimsum di rumah'], ['Isi & varian', '15 g: 25/50 pcs · 28 g: 25 pcs'], ['Memasak & menyimpan', 'Ikuti petunjuk resmi produk']],
   },
 ];
 
@@ -153,12 +154,12 @@ export function SignatureProducts() {
               <dl className="product-specs">{product.details.map(([label, detail]) => <div key={label}><dt>{label}</dt><dd>{detail}</dd></div>)}<div><dt>Persiapan & pengiriman</dt><dd>Dikonfirmasi sesuai tanggal dan lokasi kamu</dd></div></dl>
               <div className="product-price">
                 <div>
-                  <span className="demo-price-label">Harga demo · mulai dari</span>
+                  <span className="demo-price-label">Harga katalog · mulai dari</span>
                   <strong>{product.price}</strong>
                 </div>
                 <a
                   href={whatsappUrl(
-                    `Halo Minsum, saya ingin tanya ${product.name}. Mohon pilihan ukuran, jumlah isi, waktu persiapan, opsi pengiriman, dan harga resminya.`,
+                    `Halo Bang Mus, saya ingin tanya ${product.name}. Mohon pilihan ukuran, jumlah isi, waktu persiapan, opsi pengiriman, dan harga resminya.`,
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -168,7 +169,8 @@ export function SignatureProducts() {
                 </a>
               </div>
               <p className="price-note">
-                Angka untuk demo, belum menjadi penawaran. Tim memastikan isi, ukuran, harga, dan ketersediaan sebelum kamu memesan.
+                Harga katalog produk; tim memastikan harga transaksi dan ketersediaan.{' '}
+                <Link className="membership-inline-link" to="/membership#simulasi-poin">Member dapat 1% poin ↗</Link>
               </p>
               <ProductInquiry id={product.id} name={product.name} unit={product.id === 'frozen' ? 'kemasan' : product.id} personalized={product.id !== 'frozen'} />
             </Reveal>
@@ -195,7 +197,7 @@ export function SignatureProducts() {
             {
               question: "Harga di sini sudah final?",
               answer:
-                "Harga yang ditampilkan adalah contoh untuk demo. Tim akan mengonfirmasi harga resmi berdasarkan produk, isi, ukuran, dan kebutuhanmu.",
+                "Harga mengacu pada katalog produk yang diberikan tim. Tim akan mengonfirmasi harga transaksi sesuai isi, ukuran, dekorasi, dan kebutuhanmu.",
             },
             {
               question: "Bisa dikirim ke daerah saya?",

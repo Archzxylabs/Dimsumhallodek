@@ -8,7 +8,7 @@ import { InquiryFeedback } from './InquiryFeedback';
 const packages = [
   {
     name: "Flexible",
-    price: "Rp 10 juta",
+    price: "Rp15.999.999",
     title: "Punya cara sendiri?",
     description:
       "Konsep kerja sama untuk yang ingin terlibat lebih banyak dalam pengelolaan sehari-hari.",
@@ -20,7 +20,7 @@ const packages = [
   },
   {
     name: "Collaborative",
-    price: "Rp 20 juta",
+    price: "Rp27.999.999",
     title: "Jalan bareng, tumbuh bareng.",
     description:
       "Konsep kolaborasi dengan pembagian pengelolaan antara mitra dan tim Dimsum Hallo Dek.",
@@ -32,7 +32,7 @@ const packages = [
   },
   {
     name: "Full Managed",
-    price: "Rp 35 juta",
+    price: "Rp119.999.999",
     title: "Biar tim bantu mengelola.",
     description:
       "Konsep untuk mitra yang ingin pengelolaan operasional lebih banyak ditangani oleh tim.",
@@ -131,15 +131,15 @@ export function FranchiseAutopilot() {
             dan penawaran dibahas langsung bersama tim.
           </p>
         </Reveal>
-        <p className="demo-notice">Gambaran model dan harga untuk demo. Peran, fasilitas, investasi, biaya lanjutan, dan syarat resmi dikonfirmasi oleh tim.</p>
+        <p className="demo-notice">Acuan dari deck kemitraan terbaru. Nilai Full Managed adalah investasi minimum; kebutuhan lokasi dan pembangunan dapat memengaruhi penawaran akhir.</p>
         <div className="partner-comparison" aria-label="Perbandingan gambaran model kemitraan">
           {packages.map((plan, index) => <article key={plan.name}>
-            <p className="eyebrow">0{index + 1} / Gambaran demo</p><h3>{plan.name}</h3>
-            <dl><div><dt>Arah keterlibatan mitra</dt><dd>{['Lebih aktif mengelola sehari-hari', 'Berbagi pengelolaan dengan tim', 'Pengelolaan lebih banyak oleh tim'][index]}</dd></div><div><dt>Contoh investasi</dt><dd>{plan.price} <span>· harga demo</span></dd></div></dl>
+            <p className="eyebrow">0{index + 1} / Model kemitraan</p><h3>{plan.name}</h3>
+            <dl><div><dt>Arah keterlibatan mitra</dt><dd>{['Lebih aktif mengelola sehari-hari', 'Berbagi pengelolaan dengan tim', 'Pengelolaan lebih banyak oleh tim'][index]}</dd></div><div><dt>Investasi acuan</dt><dd>{index === 2 ? 'Mulai ' : ''}{plan.price} <span>· acuan paket</span></dd></div></dl>
             <a className="button button-green" href="#konsultasi-mitra" onClick={() => update('model', plan.name)}>Bahas {plan.name} <ArrowUpRight size={16} /></a>
           </article>)}
         </div>
-        <p className="price-note">Harga dan gambaran model di atas adalah contoh demo, bukan penawaran resmi.</p>
+        <p className="price-note">Tinjau fasilitas, biaya lanjutan, dan perjanjian bersama tim sebelum bergabung.</p>
         <a href="#detail-kemitraan" className="partner-detail-link">Lihat topik konsultasi tiap model <ArrowDown size={16} /></a>
       </section>
       <section id="detail-kemitraan" className="page-width section-space partnership-details">
@@ -171,7 +171,7 @@ export function FranchiseAutopilot() {
                     <h4>{plan.title}</h4>
                     <p>{plan.description}</p>
                     <p className="plan-disclaimer">
-                      Gambaran untuk demo. Ketentuan resmi dikonfirmasi tim.
+                      Detail pelaksanaan dan fasilitas mengikuti perjanjian bersama tim.
                     </p>
                   </div>
                   <div>
@@ -230,16 +230,16 @@ export function FranchiseAutopilot() {
             ))}
           </div>
           <a
-            href="/assets/Bergabunglah_bersama_kemitraan_DHD.pdf"
+            href="/assets/kemitraan/bangun-bisnis-bersama-dhd.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="deck-link"
           >
-            Baca deck referensi
+            Baca deck kemitraan terbaru
             <ArrowUpRight size={20} />
           </a>
           <p className="deck-note">
-            PDF · 16 MB · Penawaran Oktober 2025. Harga dan skema dalam dokumen ini perlu dikonfirmasi ulang; minta penawaran terbaru saat konsultasi.
+            PDF · 25 halaman · Informasi paket kemitraan terbaru. Proyeksi bisnis dalam dokumen bukan jaminan hasil; tinjau penawaran dan perjanjian bersama tim.
           </p>
         </div>
       </section>
@@ -321,7 +321,7 @@ export function FranchiseAutopilot() {
             {
               question: "Apa perbedaan ketiga model kemitraan?",
               answer:
-                "Flexible, Collaborative, dan Full Managed adalah tiga pilihan yang tersedia. Pembagian peran, fasilitas, serta ketentuan masing-masing dijelaskan oleh tim berdasarkan penawaran terbaru.",
+                "Flexible dikelola mitra dengan dukungan DHD, Collaborative dikelola bersama, dan Full Managed dikelola DHD. Masa kontrak pada deck adalah 1, 3, dan 5 tahun. Tim menjelaskan fasilitas serta perjanjian sebelum kamu bergabung.",
             },
             {
               question: "Apakah pendapatan atau balik modal dijamin?",

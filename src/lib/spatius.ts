@@ -19,7 +19,7 @@ export async function prepareSpatiusAvatar(appId: string, avatarId: string, opti
 }): Promise<Avatar> {
   if (!("RTCRtpScriptTransform" in globalThis)) throw new Error('Avatar live perlu Chrome atau Edge versi terbaru.');
   if (!appId || !avatarId) throw new Error('Konfigurasi avatar belum lengkap.');
-  if (options?.signal?.aborted) throw new DOMException('Persiapan Minsum dibatalkan.', 'AbortError');
+  if (options?.signal?.aborted) throw new DOMException('Persiapan Bang Mus dibatalkan.', 'AbortError');
   if (initializedAppId && initializedAppId !== appId) throw new Error('Konfigurasi avatar berubah. Muat ulang halaman.');
   if (!initialization) {
     initializedAppId = appId;
@@ -75,7 +75,7 @@ export async function prepareSpatiusAvatar(appId: string, avatarId: string, opti
       // is shared by the SDK and has no cancellation API.
       if (current.progress.stage === 'downloading') AvatarManager.shared.cancelLoad(avatarId);
     };
-    const abort = () => fail(new DOMException('Persiapan Minsum dibatalkan.', 'AbortError'));
+    const abort = () => fail(new DOMException('Persiapan Bang Mus dibatalkan.', 'AbortError'));
     const report = (progress: AvatarPreparationProgress) => {
       if (settled) return;
       const advanced = !previous || progress.stage !== previous.stage || (progress.progress ?? 0) > (previous.progress ?? 0);

@@ -83,7 +83,7 @@ export function Navbar() {
         </nav>
         <a
           className="header-order"
-          href={whatsappUrl("Halo Minsum, aku mau tanya dan pesan dimsum.")}
+          href={whatsappUrl("Halo Bang Mus, aku mau tanya dan pesan dimsum.")}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -124,7 +124,7 @@ export function Navbar() {
           ))}
           <a
             className="button button-orange"
-            href={whatsappUrl("Halo Minsum, aku mau pesan dimsum.")}
+            href={whatsappUrl("Halo Bang Mus, aku mau pesan dimsum.")}
             target="_blank"
             rel="noopener noreferrer"
           >

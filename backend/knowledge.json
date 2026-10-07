@@ -40,11 +40,10 @@
     "partnership_whatsapp": "+62 858-0285-4744"
   },
   "unconfirmed": [
-    "Harga di website adalah contoh untuk demo, bukan harga resmi.",
-    "Harga, paket, minimum pesanan, stok, jadwal, jangkauan pengiriman, dan ketersediaan event harus dikonfirmasi tim.",
-    "Detail peran, fasilitas, biaya, keuntungan, dan syarat tiap tipe kemitraan harus dikonfirmasi tim.",
+    "Harga transaksi final, paket event, minimum pesanan, stok, jadwal, jangkauan pengiriman, dan ketersediaan event harus dikonfirmasi tim.",
     "Komposisi lengkap, alergen, daya simpan, dan cara memasak produk frozen belum tersedia sebagai informasi resmi.",
-    "Status dan jam buka outlet dapat berubah; arahkan pengunjung ke daftar lokasi di website dan minta mereka memastikan ke tim."
+    "Status dan jam buka outlet dapat berubah; arahkan pengunjung ke daftar lokasi di website dan minta mereka memastikan ke tim.",
+    "Ketentuan penukaran membership, nilai tukar, kedaluwarsa, gerai dan kanal yang berlaku, dan aturan promo belum ditetapkan di website."
   ],
   "outlets_updated_at": "2026-10-07",
   "outlets": [
@@ -317,5 +316,186 @@
     "Wilayah Kampung Tengah dan Pasar Meong belum diberikan secara rinci; pastikan ke tim sebelum menyebut kota atau kabupatennya.",
     "Alamat dan pin Maps yang sudah ada berasal dari katalog sebelumnya dan perlu dikonfirmasi sebelum berkunjung.",
     "Pandu Raya tidak tercantum di daftar terbaru. Jangan menyimpulkan bahwa Pandu Raya tutup atau sama dengan Endu Raya tanpa konfirmasi tim."
-  ]
+  ],
+  "mascot_name": "Bang Mus",
+  "client_materials_updated_at": "2026-10-07",
+  "membership": {
+    "rate_percent": 1,
+    "example": {
+      "product_price_rupiah": 100000,
+      "points": 1000
+    },
+    "signup": "Permintaan pendaftaran melalui WhatsApp tim produk; admin mengonfirmasi aktivasi.",
+    "recording": "Admin mencatat poin transaksi yang sudah dikonfirmasi. Saldo dan riwayat ditanyakan ke admin via WhatsApp. Tidak ada login atau saldo pelanggan di website.",
+    "website": "Halaman /membership menyediakan kalkulator estimasi dan formulir permintaan pendaftaran. Simulasi tidak menambah saldo.",
+    "redemption": "Poin dikumpulkan dulu. Cara penukaran, nilai tukar, hadiah, minimum poin, masa berlaku, gerai/kanal eligible, dan ketentuan promo dikonfirmasi tim.",
+    "simulation_rounding": "Kalkulator membulatkan pecahan poin ke bawah; aturan pembulatan transaksi resmi dikonfirmasi admin.",
+    "basis": "1% dari harga produk; jangan menjanjikan cashback tunai atau menyatakan satu poin sama dengan satu rupiah."
+  },
+  "catalog_prices": [
+    {
+      "name": "Mentai · 3 pcs",
+      "price_rupiah": 10000
+    },
+    {
+      "name": "Mentai · 6 pcs",
+      "price_rupiah": 20000
+    },
+    {
+      "name": "Mentai · 16 pcs",
+      "price_rupiah": 50000
+    },
+    {
+      "name": "Tartar · 3 pcs",
+      "price_rupiah": 10000
+    },
+    {
+      "name": "Tartar · 6 pcs",
+      "price_rupiah": 20000
+    },
+    {
+      "name": "Tartar · 16 pcs",
+      "price_rupiah": 50000
+    },
+    {
+      "name": "Hot Lava · 3 pcs",
+      "price_rupiah": 15000
+    },
+    {
+      "name": "Hot Lava · 6 pcs",
+      "price_rupiah": 25000
+    },
+    {
+      "name": "Hot Lava · 16 pcs",
+      "price_rupiah": 70000
+    },
+    {
+      "name": "Carbonara · 3 pcs",
+      "price_rupiah": 15000
+    },
+    {
+      "name": "Carbonara · 6 pcs",
+      "price_rupiah": 25000
+    },
+    {
+      "name": "Carbonara · 16 pcs",
+      "price_rupiah": 70000
+    },
+    {
+      "name": "Mix Sauces · 3 pcs",
+      "price_rupiah": 15000
+    },
+    {
+      "name": "Mix Sauces · 6 pcs",
+      "price_rupiah": 25000
+    },
+    {
+      "name": "Mix Sauces · 16 pcs",
+      "price_rupiah": 60000
+    },
+    {
+      "name": "Original kukus · 4 pcs",
+      "price_rupiah": 10000
+    },
+    {
+      "name": "Dimsum 16 pcs + tulisan",
+      "price_rupiah": 65000
+    },
+    {
+      "name": "Cake S · 18 pcs",
+      "price_rupiah": 75000
+    },
+    {
+      "name": "Cake M · 22 pcs",
+      "price_rupiah": 100000
+    },
+    {
+      "name": "Cake L · 26 pcs",
+      "price_rupiah": 130000
+    },
+    {
+      "name": "Wooden Plate XL · 35 pcs",
+      "price_rupiah": 150000
+    },
+    {
+      "name": "Wooden Plate 2XL · 49 pcs",
+      "price_rupiah": 175000
+    },
+    {
+      "name": "Wooden Plate 3XL · 62 pcs",
+      "price_rupiah": 250000
+    },
+    {
+      "name": "Bouquet M · 22 pcs",
+      "price_rupiah": 140000
+    },
+    {
+      "name": "Frozen 15 gram · 25 pcs",
+      "price_rupiah": 35000
+    },
+    {
+      "name": "Frozen 15 gram · 50 pcs",
+      "price_rupiah": 65000
+    },
+    {
+      "name": "Frozen reguler 28 gram · 25 pcs",
+      "price_rupiah": 60000
+    },
+    {
+      "name": "Chili oil · 100 ml",
+      "price_rupiah": 15000
+    },
+    {
+      "name": "Chili oil · 200 ml",
+      "price_rupiah": 25000
+    },
+    {
+      "name": "Saus mentai · 100 gram",
+      "price_rupiah": 15000
+    }
+  ],
+  "catalog_price_notes": "Harga acuan dari poster yang diberikan client. Tim mengonfirmasi harga transaksi, stok, dekorasi, dan pengiriman. Poster Year-End tidak otomatis berlaku sebagai promo aktif.",
+  "partnership_offer": {
+    "source": "Deck BANGUN BISNIS BERSAMA DIMSUM HALLO DEK, diberikan client 7 Oktober 2026.",
+    "plans": [
+      {
+        "name": "Flexible",
+        "investment_rupiah": 15999999,
+        "operations": "Mitra",
+        "marketing": "Mitra",
+        "staff": "Mitra",
+        "monitoring": "Berkala",
+        "brand": "DHD Lite",
+        "contract_years": 1,
+        "partner_profit_share_percent": 100
+      },
+      {
+        "name": "Collaborative",
+        "investment_rupiah": 27999999,
+        "operations": "DHD + Mitra",
+        "marketing": "DHD + Mitra",
+        "staff": "Mitra",
+        "monitoring": "Berkala",
+        "brand": "DHD",
+        "contract_years": 3,
+        "partner_profit_share_percent": 70
+      },
+      {
+        "name": "Full Managed",
+        "minimum_investment_rupiah": 119999999,
+        "operations": "DHD",
+        "marketing": "DHD",
+        "staff": "DHD",
+        "monitoring": "Intensive",
+        "brand": "DHD",
+        "contract_years": 5,
+        "partner_profit_share_percent": 30
+      }
+    ],
+    "notes": [
+      "Nilai Full Managed minimum; dapat berbeda sesuai lokasi, kondisi tempat, konsep outlet, dan pembangunan.",
+      "Angka persentase adalah porsi pembagian profit, bukan jaminan keuntungan atau imbal hasil investasi.",
+      "Fasilitas, biaya lanjutan, jadwal, dan ketentuan final mengikuti penawaran dan perjanjian tim."
+    ]
+  }
 }

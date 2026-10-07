@@ -2,6 +2,7 @@ import { useSessionState } from '../lib/useSessionState';
 import { Link } from "react-router";
 import { ArrowUpRight, MapPin } from "lucide-react";
 import { MENU_ITEMS } from "../data/menuData";
+import { BangMusPortrait } from "../components/BangMusPortrait";
 import { KineticShowcase } from "../components/KineticShowcase";
 import {
   ArrowLink,
@@ -110,6 +111,9 @@ export function HomePage() {
           <div><p className="eyebrow">Untuk stok di rumah</p><h3>Dimsum Frozen</h3><p>Kenali pilihan kemasan dan rencanakan pesananmu.</p></div>
           <span>Lihat frozen <ArrowUpRight size={20} /></span>
         </Link>
+      </section>
+      <section className="page-width home-membership">
+        <Link to="/membership"><BangMusPortrait decorative /><div><p className="eyebrow">Membership Hallo Dek</p><h3>Makan enak. Dapat poin.</h3><p>Kumpulkan poin 1% dari harga produk bareng Bang Mus.</p></div><span>Kenali membership <ArrowUpRight size={20} /></span></Link>
       </section>
       <section className="home-event section-space">
         <div className="page-width home-event-layout">

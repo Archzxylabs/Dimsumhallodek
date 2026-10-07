@@ -7,21 +7,21 @@ npm install
 npm run dev
 ```
 
-Website terbuka di `http://localhost:5174`. Tombol **Talk to Minsum** selalu berada di kanan bawah, termasuk saat slide menu berganti. Saat diklik, panel avatar Spatius terbuka di sisi kanan dan sesi suara langsung disiapkan. Tidak ada form chat teks.
+Website terbuka di `http://localhost:5174`. Tombol **Talk to Bang Mus** selalu berada di kanan bawah, termasuk saat slide menu berganti. Saat diklik, panel avatar Spatius terbuka di sisi kanan dan sesi suara langsung disiapkan. Tidak ada form chat teks.
 
-Website terdiri dari lima halaman: `/` untuk Menu Dimsum dan pengenalan brand, `/produk` untuk Hadiah & Frozen, `/event` untuk layanan serta rencana acara, `/kemitraan` untuk pilihan kerja sama, dan `/gerai` untuk pencarian alamat. React Router menangani perpindahan halaman tanpa memulai ulang panel Minsum. Menu Favorit mempertahankan desain dan kontrol slide sebelumnya. Form produk, event, dan kemitraan menyiapkan pesan WhatsApp yang diperiksa dan dikirim sendiri oleh pengunjung. Draf formulir, filter gerai, dan pilihan slide disimpan di sessionStorage tab; pengunjung dapat menghapus draf formulir. Back/Forward memulihkan posisi scroll.
+Website terdiri dari enam halaman: `/` untuk Menu Dimsum dan pengenalan brand, `/produk` untuk Hadiah & Frozen, `/event` untuk layanan serta rencana acara, `/kemitraan` untuk pilihan kerja sama, `/membership` untuk membership dan simulasi poin, dan `/gerai` untuk pencarian alamat. React Router menangani perpindahan halaman tanpa memulai ulang panel Bang Mus. Menu Favorit mempertahankan desain dan kontrol slide sebelumnya. Form produk, event, dan kemitraan menyiapkan pesan WhatsApp yang diperiksa dan dikirim sendiri oleh pengunjung. Draf formulir, filter gerai, dan pilihan slide disimpan di sessionStorage tab; pengunjung dapat menghapus draf formulir. Back/Forward memulihkan posisi scroll.
 
 Section utama memakai ruang di bawah header untuk desktop/laptop; spacing, judul, dan visual mengikuti ukuran viewport. Pada HP konten mengalir lewat scroll dengan teks dan tombol yang tetap terbaca. Rencana pesanan produk memakai dialog yang menyimpan draf, perbandingan dan detail kemitraan berada di section terpisah, dan daftar gerai memakai pagination (3–4 per halaman sesuai viewport). Semua 38 gerai tetap dapat dicari; halaman daftar terakhir ikut tersimpan di tab. Konten dapat bertambah saat feedback/form dibuka atau teks diperbesar, tanpa dipotong dengan tinggi tetap.
 
-Event dapat dikonsultasikan dengan tanggal yang belum pasti. Membuka detail model kemitraan tidak memilih model konsultasi; pilihan awal adalah “Belum menentukan”. Informasi produk dan gambaran perbandingan kemitraan tetap mengidentifikasi data demo dan detail yang belum dikonfirmasi. Gerai menyediakan tombol konfirmasi ke tim pusat tanpa mengarang jam buka/kontak masing-masing cabang.
+Event dapat dikonsultasikan dengan tanggal yang belum pasti. Membuka detail model kemitraan tidak memilih model konsultasi; pilihan awal adalah “Belum menentukan”. Harga produk dan investasi kemitraan mengacu pada materi baru client; harga transaksi, fasilitas, dan ketentuan final tetap dikonfirmasi tim. Gerai menyediakan tombol konfirmasi ke tim pusat tanpa mengarang jam buka/kontak masing-masing cabang.
 
-Daftar gerai mengikuti pembaruan client 7 Oktober 2026: 38 nama, termasuk Bandung. Sumber website ada di `data/locations.json`, diimpor oleh `src/data/locationsData.ts`; pengetahuan Minsum menyimpan salinan gerai di `backend/knowledge.json`. Sinkronkan kedua JSON saat data client berubah. Dayeuh Luhur menjadi Bojong Sampora, Endu Raya menjadi Citra Indah, dan pencarian nama lama menampilkan lokasi baru. Alamat/pin lama tidak dipakai untuk gerai pindahan. Linggar dan Cicalengka mempunyai alamat jalan yang belum lengkap, bukan status belum beroperasi. Gerai tanpa alamat/pin menyediakan konfirmasi WhatsApp. Wilayah Kampung Tengah dan Pasar Meong masih perlu konfirmasi. Rincian alamat dan sumber ada di `LOCATIONS.md`.
+Daftar gerai mengikuti pembaruan client 7 Oktober 2026: 38 nama, termasuk Bandung. Sumber website ada di `data/locations.json`, diimpor oleh `src/data/locationsData.ts`; pengetahuan Bang Mus menyimpan salinan gerai di `backend/knowledge.json`. Sinkronkan kedua JSON saat data client berubah. Dayeuh Luhur menjadi Bojong Sampora, Endu Raya menjadi Citra Indah, dan pencarian nama lama menampilkan lokasi baru. Alamat/pin lama tidak dipakai untuk gerai pindahan. Linggar dan Cicalengka mempunyai alamat jalan yang belum lengkap, bukan status belum beroperasi. Gerai tanpa alamat/pin menyediakan konfirmasi WhatsApp. Wilayah Kampung Tengah dan Pasar Meong masih perlu konfirmasi. Rincian alamat dan sumber ada di `LOCATIONS.md`.
 
-Launcher Minsum menghindari posisi yang menutupi tindakan lain. Panel mobile diperkecil, error mikrofon diberi penjelasan, dan status agent LiveKit ditampilkan sebagai mendengarkan/memproses/menjawab. Foto mempunyai versi WebP dan srcset. Avatar dipanaskan setelah halaman utama selesai dimuat saat koneksi mendukung; data saver/koneksi lambat menunggu niat pengguna. Pengunduhan avatar menampilkan progres; batas waktu dihitung dari progres terakhir (90 detik inisialisasi, 60 detik unduhan tidak bergerak, maksimal 3 menit keseluruhan). Room baru dibuat setelah model siap, dan countdown dimulai setelah koneksi serta percobaan aktivasi mikrofon selesai.
+Launcher Bang Mus menghindari posisi yang menutupi tindakan lain. Panel mobile diperkecil, error mikrofon diberi penjelasan, dan status agent LiveKit ditampilkan sebagai mendengarkan/memproses/menjawab. Foto mempunyai versi WebP dan srcset. Avatar dipanaskan setelah halaman utama selesai dimuat saat koneksi mendukung; data saver/koneksi lambat menunggu niat pengguna. Pengunduhan avatar menampilkan progres; batas waktu dihitung dari progres terakhir (90 detik inisialisasi, 60 detik unduhan tidak bergerak, maksimal 3 menit keseluruhan). Room baru dibuat setelah model siap, dan countdown dimulai setelah koneksi serta percobaan aktivasi mikrofon selesai.
 
-Minsum menjawab berdasarkan `backend/knowledge.json`. Ia mengenalkan menu, produk, event, dan tiga tipe kemitraan, lalu menanyakan detail yang relevan saat pengunjung ingin memesan atau berkonsultasi. Saat detail terkumpul, Minsum menyiapkan ringkasan di bawah avatar. Pengunjung dapat memeriksa dan mengirimnya sendiri melalui tombol WhatsApp; percakapan tidak otomatis dikirim atau disimpan sebagai lead. Jika ringkasan belum ada, tersedia tombol langsung untuk produk/event dan kemitraan.
+Bang Mus menjawab berdasarkan `backend/knowledge.json`. Ia mengenalkan menu, produk, event, dan tiga tipe kemitraan, lalu menanyakan detail yang relevan saat pengunjung ingin memesan atau berkonsultasi. Saat detail terkumpul, Bang Mus menyiapkan ringkasan di bawah avatar. Pengunjung dapat memeriksa dan mengirimnya sendiri melalui tombol WhatsApp; percakapan tidak otomatis dikirim atau disimpan sebagai lead. Jika ringkasan belum ada, tersedia tombol langsung untuk produk/event dan kemitraan.
 
-Perbarui `backend/knowledge.json` hanya dengan informasi bisnis yang sudah dikonfirmasi, lalu deploy ulang `minsum-worker`. Harga demo di website tidak boleh disalin menjadi harga resmi Minsum. Harga, stok, jangkauan, syarat kemitraan, dan ketersediaan masih harus dikonfirmasi oleh tim. Kontak WhatsApp untuk handoff ada di `src/lib/minsumHandoff.ts`; bila nomor berubah, perbarui juga data kontak di `backend/knowledge.json`.
+Perbarui `backend/knowledge.json` hanya dengan informasi bisnis yang sudah dikonfirmasi, lalu deploy ulang `minsum-worker`. Harga katalog dan pembagian peran terbaru sudah tersedia; sinkronkan `data/catalog.json`, tampilan produk, dan pengetahuan saat client memperbaruinya. Harga transaksi, stok, jangkauan, syarat final kemitraan, dan ketersediaan tetap dikonfirmasi tim. Kontak WhatsApp untuk handoff ada di `src/lib/minsumHandoff.ts`; bila nomor berubah, perbarui juga data kontak di `backend/knowledge.json`.
 
 Untuk percakapan suara live, salin `.env.example` menjadi `.env` lalu isi kredensial LiveKit, Gemini, dan Spatius di server. Set `AVATAR_DEMO_ENABLED=true`. Jalankan API dan worker secara terpisah:
 
@@ -33,9 +33,19 @@ npm run avatar:worker
 
 Browser memerlukan dukungan RTCRtpScriptTransform dan izin mikrofon; Chrome atau Edge terbaru dapat digunakan. Sesi demo berlangsung dua menit setelah koneksi suara dibuat. Client baru meminta `startOnConnect` saat membuat sesi dan mengaktifkan countdown lewat `/api/archava/start`; server memberi waktu setup maksimal 45 detik dan membersihkan sesi yang tidak tersambung. Client lama tetap mendapat sesi dua menit dari pembuatan sesi. Kredensial tidak boleh dimasukkan ke variabel `VITE_*` atau kode frontend. API dan worker harus tersedia agar avatar live berfungsi.
 
+## Data client dan membership
+
+31 file unduhan baru dikelompokkan di [`client-data/2026-10-07`](client-data/2026-10-07/README.md). `manifest.json` mencatat nama asli, lokasi baru, ukuran, serta SHA-256. Enam file `.txt` sebenarnya JPEG dan ekstensinya sudah diperbaiki tanpa perubahan byte. File sumber hanya berada di arsip lokal; Git dan deployment membawa indeks, manifest, serta aset web yang digunakan.
+
+Nama yang tampil di UI, pesan WhatsApp, dan prompt suara adalah **Bang Mus**. Header, layar tunggu avatar, dan halaman membership memakai ilustrasi dari sheet client. Model live Spatius masih memakai avatar yang dikonfigurasi provider; sheet PNG belum merupakan model avatar live. Nama service Railway dan protokol `minsum.handoff.v1` dipertahankan agar integrasi kompatibel.
+
+Membership sesuai arahan pemilik: daftar melalui WhatsApp/admin, poin sebesar **1% harga produk**, Rp100.000 = 1.000 poin. Poin dikumpulkan dulu dan penukaran dikonfirmasi tim. Website tidak membuat akun atau saldo; admin menangani aktivasi, pencatatan transaksi, saldo, dan riwayat. Form menyiapkan pesan yang dikirim sendiri oleh pengunjung, serta menyediakan tautan cek saldo ke admin.
+
+Kalkulator di `/membership` mempunyai mode produk (30 pilihan dari poster client, jumlah 1–99) dan nominal harga produk (tanpa ongkir). Estimasi pecahan poin dibulatkan ke bawah; aturan pembulatan transaksi resmi dikonfirmasi admin. Simulasi tidak menambahkan poin dan tidak menyatakan 1 poin = Rp1. Penukaran, masa berlaku, kanal/gerai yang ikut program, dan aturan promo belum ditetapkan. Draf tersimpan per tab dan dapat dihapus. `npm run test:membership` memeriksa hitungan, input tidak valid, harga katalog, jumlah produk, dan pesan pendaftaran.
+
 ## Deployment
 
-Verifikasi lokal: `npm run build`, `npm run test:avatar-api`, dan `npm run test:avatar-loading` (Node 22.18+ dengan dukungan TypeScript). Tes API memakai SDK tiruan dan credential dummy untuk memeriksa aktivasi sesi 120 detik, idempotensi start, kompatibilitas client lama, batas sesi, request tidak valid, dan pembersihan sesi; tidak membuat room live. Tes loading memakai SDK tiruan dan waktu virtual untuk memeriksa unduhan yang masih bergerak setelah 40 detik, cache prewarm, retry setelah unduhan macet, dan penutupan panel.
+Verifikasi lokal: `npm run build`, `npm run test:membership`, `npm run test:avatar-api`, dan `npm run test:avatar-loading` (Node 22.18+ dengan dukungan TypeScript). Tes API memakai SDK tiruan dan credential dummy untuk memeriksa aktivasi sesi 120 detik, idempotensi start, kompatibilitas client lama, batas sesi, request tidak valid, dan pembersihan sesi; tidak membuat room live. Tes loading memakai SDK tiruan dan waktu virtual untuk memeriksa unduhan yang masih bergerak setelah 40 detik, cache prewarm, retry setelah unduhan macet, dan penutupan panel.
 
 Frontend dipublikasikan di `https://dimsumhallodek.vercel.app/` dan terhubung ke branch `main` GitHub. Aturan di `vercel.json` meneruskan `/api/archava/*` ke service `minsum-api` di Railway. Project Railway `dimsumhallodek` menjalankan tiga service dari repo yang sama:
 
@@ -57,7 +67,7 @@ railway up backend --path-as-root --service minsum-worker --detach
 railway up --service minsum-web --detach
 ```
 
-Harga pada kartu produk dan paket kemitraan adalah angka dummy untuk presentasi, bukan penawaran resmi. File video demo tidak disertakan karena akan dibuat terpisah.
+Harga acuan produk mengikuti poster menu/cake/frozen client. Investasi kemitraan mengikuti deck baru 25 halaman: Flexible Rp15.999.999, Collaborative Rp27.999.999, Full Managed minimum Rp119.999.999. Versi PDF web dikompresi menjadi sekitar 4,7 MB; dokumen asli tetap di arsip lokal. File video demo akan dibuat terpisah.
 
 Kit lengkap ekstraksi data, konten, aset media, dan blueprint UI/UX dari domain **`https://merzaperintissukses.com/`**.
 
@@ -96,7 +106,7 @@ Dimsumhallodek/
    - **Nama Brand**: Dimsum Hallo Dek (DHD)
    - **Badan Usaha**: PT Merza Perintis Sukses
    - **Slogan / Tagline**: `#AutoHappy Setiap Hari`
-   - **Tone of Voice**: Ramah, ceria, bersahabat ("Minsum"), menggiurkan (*appetizing*).
+   - **Tone of Voice**: Ramah, ceria, bersahabat ("Bang Mus"), menggiurkan (*appetizing*).
 
 2. **Daftar Menu Unggulan**:
    - Dimsum Mix Mentai Tartar (Signature Torched)

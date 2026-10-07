@@ -1,9 +1,9 @@
 export const HANDOFF_TOPIC = 'minsum.handoff.v1';
 
-export type HandoffCategory = 'event' | 'partnership' | 'cake' | 'bouquet' | 'frozen' | 'menu' | 'other';
+export type HandoffCategory = 'event' | 'partnership' | 'cake' | 'bouquet' | 'frozen' | 'menu' | 'membership' | 'other';
 export interface MinsumHandoff { category: HandoffCategory; summary: string }
 
-const categories: HandoffCategory[] = ['event', 'partnership', 'cake', 'bouquet', 'frozen', 'menu', 'other'];
+const categories: HandoffCategory[] = ['event', 'partnership', 'cake', 'bouquet', 'frozen', 'menu', 'membership', 'other'];
 
 export const handoffLabels: Record<HandoffCategory, string> = {
   event: 'Layanan event',
@@ -12,6 +12,7 @@ export const handoffLabels: Record<HandoffCategory, string> = {
   bouquet: 'Dimsum Bouquet',
   frozen: 'Dimsum Frozen',
   menu: 'Menu dimsum',
+  membership: 'Membership & poin',
   other: 'Dimsum Hallo Dek',
 };
 
@@ -29,7 +30,7 @@ export function getMinsumWhatsappUrl(handoff: MinsumHandoff | null, fallbackCate
   const category = handoff?.category ?? fallbackCategory;
   const number = category === 'partnership' ? '6285802854744' : '6285863646267';
   const lines = [
-    'Halo tim Dimsum Hallo Dek, saya ngobrol dengan Minsum di website.',
+    'Halo tim Dimsum Hallo Dek, saya ngobrol dengan Bang Mus di website.',
     `Saya ingin tanya ${handoffLabels[category].toLowerCase()}.`,
   ];
   if (handoff) lines.push(`Kebutuhan saya: ${handoff.summary}`);

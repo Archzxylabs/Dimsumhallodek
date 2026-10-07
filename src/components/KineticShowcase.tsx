@@ -109,7 +109,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                 {/* Dual Action CTA Buttons */}
                 <div className="pt-4 flex flex-wrap items-center gap-3">
                   <a
-                    href={whatsappUrl(`Halo Minsum, saya ingin tanya dan pesan ${currentItem.name}. Mohon pilihan isi dan harga resminya.`)}
+                    href={whatsappUrl(`Halo Bang Mus, saya ingin tanya dan pesan ${currentItem.name}. Mohon pilihan isi dan harga resminya.`)}
                     target="_blank"
                     rel="noreferrer"
                     style={{ backgroundColor: currentItem.accentColor }}

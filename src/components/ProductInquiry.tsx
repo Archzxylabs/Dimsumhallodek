@@ -19,7 +19,7 @@ export function ProductInquiry({ id, name, unit, personalized }: { id: string; n
   const submit = (event: FormEvent) => {
     event.preventDefault();
     const message = [
-      `Halo Minsum, saya ingin konsultasi pesanan ${name}.`,
+      `Halo Bang Mus, saya ingin konsultasi pesanan ${name}.`,
       draft.quantity ? `Jumlah yang direncanakan: ${draft.quantity} ${unit}` : '',
       draft.date ? `Tanggal kebutuhan: ${new Date(`${draft.date}T12:00:00`).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}` : '',
       draft.city.trim() ? `Kota/lokasi: ${draft.city.trim()}` : '',

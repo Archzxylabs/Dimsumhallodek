@@ -11,7 +11,7 @@ const allOutlets = REGIONS_DATA.flatMap((group) =>
 
 function outletWhatsappUrl(outlet: (typeof allOutlets)[number]) {
   const area = outlet.region === 'Wilayah perlu konfirmasi' ? '' : ` (${outlet.region})`;
-  return whatsappUrl(`Halo Minsum, saya ingin berkunjung ke gerai ${outlet.name}${area}. Mohon konfirmasi ${outlet.address ? 'apakah gerai masih aktif, jam buka, dan ketersediaan menu' : 'alamat lengkap, pin Google Maps terbaru, jam buka, dan ketersediaan menu'}.`);
+  return whatsappUrl(`Halo Bang Mus, saya ingin berkunjung ke gerai ${outlet.name}${area}. Mohon konfirmasi ${outlet.address ? 'apakah gerai masih aktif, jam buka, dan ketersediaan menu' : 'alamat lengkap, pin Google Maps terbaru, jam buka, dan ketersediaan menu'}.`);
 }
 
 type LocatorDraft = { region: string; query: string; page?: number };

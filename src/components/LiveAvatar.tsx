@@ -6,6 +6,7 @@ import { prepareSpatiusAvatar } from '../lib/spatius';
 import type { AvatarSession } from '../lib/avatarTypes';
 import { HANDOFF_TOPIC, parseMinsumHandoff, type MinsumHandoff } from '../lib/minsumHandoff';
 import { microphoneErrorMessage } from '../lib/microphone';
+import { BangMusPortrait } from './BangMusPortrait';
 
 function AvatarSurface({ session, onError, onHandoff, onConnected, onMicrophoneError }: {
   session: AvatarSession; onError: (message: string) => void; onHandoff: (handoff: MinsumHandoff) => void;
@@ -57,7 +58,7 @@ function AvatarSurface({ session, onError, onHandoff, onConnected, onMicrophoneE
       view?.dispose();
     };
     const startup = connect().catch(async () => {
-      if (!cancelled) onError('Minsum belum bisa tersambung. Coba lagi atau lanjut lewat WhatsApp.');
+      if (!cancelled) onError('Bang Mus belum bisa tersambung. Coba lagi atau lanjut lewat WhatsApp.');
       await dispose();
     });
     return () => { cancelled = true; void startup.then(dispose); };
@@ -65,7 +66,7 @@ function AvatarSurface({ session, onError, onHandoff, onConnected, onMicrophoneE
 
   return <div className="minsum-surface">
     <div ref={canvas} className="minsum-canvas" />
-    {!ready && <div className="minsum-surface-loading"><img src="/assets/archava/minsum-concept.webp" alt="Ilustrasi Minsum" width="96" height="96" /><span>Menyiapkan avatar…</span></div>}
+    {!ready && <div className="minsum-surface-loading"><BangMusPortrait /><span>Menyiapkan avatar…</span></div>}
   </div>;
 }
 
@@ -92,8 +93,8 @@ function CallControls({ endsAt, onClose, microphoneError, onMicrophoneError }: {
     try { await localParticipant.setMicrophoneEnabled(muted); onMicrophoneError(''); } catch (cause) { onMicrophoneError(microphoneErrorMessage(cause)); }
   };
   const stateLabel = !connected || !endsAt ? 'Menyambungkan suara…' : muted ? 'Mikrofon mati · nyalakan untuk bicara' :
-    state === 'listening' ? 'Minsum mendengarkan' : state === 'thinking' ? 'Minsum sedang memproses jawaban' :
-    state === 'speaking' ? 'Minsum sedang menjawab' : state === 'idle' ? 'Minsum siap. Silakan bicara.' : 'Menunggu Minsum siap…';
+    state === 'listening' ? 'Bang Mus mendengarkan' : state === 'thinking' ? 'Bang Mus sedang memproses jawaban' :
+    state === 'speaking' ? 'Bang Mus sedang menjawab' : state === 'idle' ? 'Bang Mus siap. Silakan bicara.' : 'Menunggu Bang Mus siap…';
   return <div className="minsum-controls">
     <p className="minsum-conversation-status" role="status"><span className={`conversation-dot state-${state}`} />{stateLabel}</p>
     {microphoneError && <p className="minsum-mic-error" role="alert">{microphoneError}</p>}
@@ -104,7 +105,7 @@ function CallControls({ endsAt, onClose, microphoneError, onMicrophoneError }: {
         <button type="button" onClick={onClose} className="minsum-end"><PhoneOff size={16} /> Akhiri</button>
       </div>
     </div>
-    {connected && <StartAudio label="Aktifkan suara Minsum" className="minsum-start-audio" />}
+    {connected && <StartAudio label="Aktifkan suara Bang Mus" className="minsum-start-audio" />}
     {remaining !== null && remaining > 0 && remaining <= 15 && <p className="minsum-ending-warning" role="status">Sesi segera berakhir. Ringkasan tetap tersedia untuk dilanjutkan via WhatsApp.</p>}
   </div>;
 }

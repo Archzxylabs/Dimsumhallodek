@@ -11,3 +11,9 @@ scratch/
 .vercel
 __pycache__/
 *.pyc
+
+# Client originals stay in the local archive; publish only reviewed web assets.
+client-data/**/*.jpg
+client-data/**/*.png
+client-data/**/*.pdf
+client-data/**/*.txt
