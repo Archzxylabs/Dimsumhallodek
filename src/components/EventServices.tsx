@@ -165,18 +165,30 @@ export function EventServices() {
             </div>
           </Reveal>
           <form onSubmit={submit} className="inquiry-form">
-            <label>
-              Acara kamu
-              <select
-                value={eventType}
-                onChange={(e) => update('eventType', e.target.value)}
-              >
-                <option>Belum menentukan</option>
-                {events.map((event) => (
-                  <option key={event.name}>{event.name}</option>
-                ))}
-              </select>
-            </label>
+            <div className="form-pair">
+              <label>
+                Acara kamu
+                <select
+                  value={eventType}
+                  onChange={(e) => update('eventType', e.target.value)}
+                >
+                  <option>Belum menentukan</option>
+                  {events.map((event) => (
+                    <option key={event.name}>{event.name}</option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                Kota / lokasi acara <span>(opsional)</span>
+                <input
+                  type="text"
+                  maxLength={180}
+                  placeholder="Contoh: Cileungsi, Bogor"
+                  value={location}
+                  onChange={(e) => update('location', e.target.value)}
+                />
+              </label>
+            </div>
             <div className="form-pair">
               <label>
                 Tanggal acara <span>(opsional)</span>
@@ -201,31 +213,23 @@ export function EventServices() {
               </label>
             </div>
             <label className="checkbox-label"><input type="checkbox" checked={dateUndecided === 'yes'} onChange={(e) => update('dateUndecided', e.target.checked ? 'yes' : 'no')} />Tanggal belum ditentukan</label>
-            <label>
-              Kota / lokasi acara <span>(opsional)</span>
-              <input
-                type="text"
-                maxLength={180}
-                placeholder="Contoh: Cileungsi, Bogor"
-                value={location}
-                onChange={(e) => update('location', e.target.value)}
-              />
-            </label>
-            <label>Kebutuhan penyajian
-              <select value={serving} onChange={(e) => update('serving', e.target.value)}>
-                <option>Belum menentukan</option><option>Pesanan untuk dibagikan</option><option>Ingin menanyakan penyajian di lokasi</option><option>Kebutuhan lain, saya tulis di catatan</option>
-              </select>
-            </label>
-            <label>
-              Ada catatan tambahan? <span>(opsional)</span>
-              <textarea
-                maxLength={600}
-                placeholder="Preferensi menu, perkiraan budget, atau kebutuhan lain..."
-                rows={3}
-                value={notes}
-                onChange={(e) => update('notes', e.target.value)}
-              />
-            </label>
+            <div className="form-pair">
+              <label>Kebutuhan penyajian
+                <select value={serving} onChange={(e) => update('serving', e.target.value)}>
+                  <option>Belum menentukan</option><option>Pesanan untuk dibagikan</option><option>Ingin menanyakan penyajian di lokasi</option><option>Kebutuhan lain, saya tulis di catatan</option>
+                </select>
+              </label>
+              <label>
+                Ada catatan tambahan? <span>(opsional)</span>
+                <textarea
+                  maxLength={600}
+                  placeholder="Preferensi menu, perkiraan budget, atau kebutuhan lain..."
+                  rows={2}
+                  value={notes}
+                  onChange={(e) => update('notes', e.target.value)}
+                />
+              </label>
+            </div>
             <button type="submit" className="button button-green">
               Siapkan pesan WhatsApp
               <ArrowUpRight size={20} />

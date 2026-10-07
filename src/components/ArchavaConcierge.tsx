@@ -141,7 +141,7 @@ export function ArchavaConcierge() {
   useEffect(() => {
     if (!open) return;
     const keyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && !document.getElementById('mobile-navigation')) {
+      if (event.key === 'Escape' && !document.getElementById('mobile-navigation') && !document.querySelector('dialog[open]')) {
         openRef.current = false; attemptRef.current += 1; closeLive(); setOpen(false); launcher.current?.focus();
       }
     };

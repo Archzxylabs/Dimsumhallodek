@@ -1,5 +1,5 @@
-import { useEffect, useState, type FormEvent } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
+import { ArrowUpRight, X } from 'lucide-react';
 import { isStringRecord, useSessionState } from '../lib/useSessionState';
 import { whatsappUrl } from '../lib/business';
 import { InquiryFeedback } from './InquiryFeedback';
@@ -8,6 +8,8 @@ const emptyDraft = { quantity: '', city: '', date: '', name: '', notes: '' };
 type ProductDraft = typeof emptyDraft;
 
 export function ProductInquiry({ id, name, unit, personalized }: { id: string; name: string; unit: string; personalized: boolean }) {
+  const dialog = useRef<HTMLDialogElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
   const [draft, setDraft] = useSessionState(`product-${id}`, emptyDraft, (v): v is ProductDraft => isStringRecord(v, Object.keys(emptyDraft)));
   const [preparedUrl, setPreparedUrl] = useState('');
   useEffect(() => { setPreparedUrl(''); }, [draft]);
@@ -29,8 +31,14 @@ export function ProductInquiry({ id, name, unit, personalized }: { id: string; n
     setPreparedUrl(url);
     window.open(url, '_blank', 'noopener,noreferrer');
   };
-  return <details className="product-inquiry">
-    <summary>Rencanakan pesanan {name.replace('Dimsum ', '')}</summary>
+  return <div className="product-inquiry">
+    <button ref={trigger} type="button" className="product-order-trigger" aria-haspopup="dialog" aria-controls={`product-order-${id}`} onClick={() => dialog.current?.showModal()}>Rencanakan pesanan {name.replace('Dimsum ', '')} <ArrowUpRight size={17} /></button>
+    <dialog ref={dialog} id={`product-order-${id}`} className="product-order-dialog" aria-labelledby={`product-order-title-${id}`} onClose={() => trigger.current?.focus({ preventScroll: true })} onClick={(event) => {
+      const bounds = event.currentTarget.getBoundingClientRect();
+      if (event.target === event.currentTarget && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) dialog.current?.close();
+    }}>
+    <div className="product-order-panel">
+      <div className="product-order-header"><h3 id={`product-order-title-${id}`}>Rencana pesanan {name.replace('Dimsum ', '')}</h3><button type="button" aria-label="Tutup rencana pesanan" onClick={() => dialog.current?.close()} autoFocus><X size={22} /></button></div>
     <form className="inquiry-form" onSubmit={submit}>
       <p>Sudah punya rencana? Tambahkan detailnya ke pesan. Semua kolom boleh menyusul.</p>
       <div className="form-pair">
@@ -44,5 +52,6 @@ export function ProductInquiry({ id, name, unit, personalized }: { id: string; n
       <InquiryFeedback url={preparedUrl} />
       <div className="draft-controls"><span>Draf tersimpan di tab ini.</span><button type="button" onClick={() => { setDraft(emptyDraft); setPreparedUrl(''); }}>Hapus draf</button></div>
     </form>
-  </details>;
+    </div></dialog>
+  </div>;
 }

@@ -77,8 +77,8 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-20 max-w-7xl mx-auto w-full px-6 lg:px-12 flex-1 flex flex-col justify-center">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div className="showcase-main relative z-20 max-w-7xl mx-auto w-full px-6 lg:px-12 flex-1 flex flex-col justify-center">
+        <div className="showcase-grid grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left Column: Menu Typography & Specs */}
           <div className="lg:col-span-5 order-1 relative flex flex-col justify-center">
@@ -89,7 +89,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -24, transition: { duration: 0.26, ease: 'easeIn' } }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="space-y-5"
+                className="showcase-copy space-y-5"
               >
                 <p className="font-display text-xl sm:text-2xl text-[#F6C94B]">#AutoHappy Setiap Hari</p>
                 <div className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-extrabold bg-[#F6C94B] text-[#35462B]">
@@ -116,7 +116,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                     className="px-5 py-3.5 rounded-full text-[#283920] font-extrabold text-sm flex items-center gap-2 shadow-[0_5px_0_rgba(22,36,18,0.3)] hover:-translate-y-0.5 active:translate-y-0 transition-all"
                   >
                     <MessageCircle className="w-4 h-4 stroke-[2.5]" />
-                    Tanya & pesan via WhatsApp
+                    Pesan via WhatsApp
                   </a>
 
                   <Link
@@ -132,8 +132,8 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
           </div>
 
           {/* Right Column: Hero Dish 3D Kinetic Plate */}
-          <div className="lg:col-span-7 order-2 flex items-center justify-center relative py-6">
-            <div className="relative w-72 h-72 sm:w-96 sm:h-96 md:w-[460px] md:h-[460px]">
+          <div className="showcase-dish-column lg:col-span-7 order-2 flex items-center justify-center relative py-6">
+            <div className="showcase-dish relative w-72 h-72 sm:w-96 sm:h-96 md:w-[460px] md:h-[460px]">
               <AnimatePresence mode="wait" initial={false} custom={direction}>
                 <motion.div
                   key={currentItem.id}
@@ -208,8 +208,8 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
       </div>
 
       {/* Bottom Bar: Controllers & Pagination Pills */}
-      <div className="relative z-30 max-w-7xl mx-auto w-full px-6 lg:px-12 pt-8">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-[#FFF9ED]/25 pt-6">
+      <div className="showcase-controls relative z-30 max-w-7xl mx-auto w-full px-6 lg:px-12 pt-8">
+        <div className="showcase-controls-row flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-[#FFF9ED]/25 pt-6">
           
           {/* Arrow Controllers & Index Counter */}
           <div className="flex items-center gap-4">
@@ -237,7 +237,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
           </div>
 
           {/* Quick Pagination Tabs (Warmindo Authentic Clean Style) */}
-          <div className="flex items-center gap-2 overflow-x-auto max-w-full pb-2 sm:pb-0 scrollbar-none">
+          <div className="showcase-tabs flex items-center gap-2 overflow-x-auto max-w-full pb-2 sm:pb-0 scrollbar-none">
             {items.map((item, idx) => {
               const isActive = idx === currentIndex;
               return (

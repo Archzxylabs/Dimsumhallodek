@@ -15,16 +15,9 @@ const products = [
     id: "cake",
     number: "01",
     name: "Dimsum Cake",
-    title: (
-      <>
-        Make a wish.
-        <br />
-        Take a bite.
-      </>
-    ),
+    title: 'Make a wish. Take a bite.',
     description:
       "Untuk yang lebih suka gurih daripada manis. Rayakan ulang tahun dan momen spesial dengan dimsum, plus dekorasi nama biar makin personal.",
-    note: "Bisa tambah dekorasi nama",
     price: "Rp 150.000",
     type: "cake",
     details: [['Untuk', 'Ulang tahun & perayaan'], ['Personalisasi', 'Dekorasi nama'], ['Isi & ukuran', 'Pilih bersama tim']],
@@ -33,16 +26,9 @@ const products = [
     id: "bouquet",
     number: "02",
     name: "Dimsum Bouquet",
-    title: (
-      <>
-        Love, wrapped
-        <br />
-        in dimsum.
-      </>
-    ),
+    title: 'Love, wrapped in dimsum.',
     description:
       "Hadiah buat orang yang selalu punya tempat di hati — dan selalu punya ruang buat dimsum. Cocok untuk ulang tahun, wisuda, atau sekadar bilang terima kasih.",
-    note: "Bisa tambah dekorasi nama",
     price: "Rp 120.000",
     type: "bouquet",
     details: [['Untuk', 'Hadiah ulang tahun, wisuda & ucapan'], ['Personalisasi', 'Dekorasi nama'], ['Isi & desain', 'Pilih bersama tim']],
@@ -51,16 +37,9 @@ const products = [
     id: "frozen",
     number: "03",
     name: "Dimsum Frozen",
-    title: (
-      <>
-        Happy food.
-        <br />
-        Whenever.
-      </>
-    ),
+    title: 'Happy food. Whenever.',
     description:
       "Simpan favoritmu untuk dinikmati di rumah. Tanya tim untuk pilihan isi, petunjuk memasak, penyimpanan, dan ketersediaan produk frozen.",
-    note: "Untuk stok di rumah",
     price: "Rp 45.000",
     type: "frozen",
     details: [['Untuk', 'Stok dimsum di rumah'], ['Isi & varian', 'Minta pilihan kemasan ke tim'], ['Memasak & menyimpan', 'Ikuti petunjuk resmi produk']],
@@ -171,7 +150,6 @@ export function SignatureProducts() {
               <h2 className="editorial-heading">{product.name}</h2>
               <div className="product-tagline">{product.title}</div>
               <p>{product.description}</p>
-              <span className="product-detail-note">{product.note}</span>
               <dl className="product-specs">{product.details.map(([label, detail]) => <div key={label}><dt>{label}</dt><dd>{detail}</dd></div>)}<div><dt>Persiapan & pengiriman</dt><dd>Dikonfirmasi sesuai tanggal dan lokasi kamu</dd></div></dl>
               <div className="product-price">
                 <div>

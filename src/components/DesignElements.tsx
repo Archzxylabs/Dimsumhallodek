@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useId, type ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Plus } from "lucide-react";
 import { Link } from "react-router";
@@ -175,10 +175,11 @@ export function Faq({
 }: {
   items: { question: string; answer: string }[];
 }) {
+  const group = useId();
   return (
     <div className="faq-list">
       {items.map((item) => (
-        <details key={item.question}>
+        <details key={item.question} name={group}>
           <summary>
             {item.question}
             <Plus size={21} aria-hidden="true" />

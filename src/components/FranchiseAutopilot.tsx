@@ -122,7 +122,7 @@ export function FranchiseAutopilot() {
             <p className="eyebrow">Temukan cara bermitramu</p>
             <h2 className="editorial-heading">
               Pilih cara
-              <br />
+              {' '}
               bermitramu.
             </h2>
           </div>
@@ -134,12 +134,19 @@ export function FranchiseAutopilot() {
         <p className="demo-notice">Gambaran model dan harga untuk demo. Peran, fasilitas, investasi, biaya lanjutan, dan syarat resmi dikonfirmasi oleh tim.</p>
         <div className="partner-comparison" aria-label="Perbandingan gambaran model kemitraan">
           {packages.map((plan, index) => <article key={plan.name}>
-            <p className="eyebrow">0{index + 1} / Gambaran demo</p><h3>{plan.name}</h3><p>{plan.description}</p>
+            <p className="eyebrow">0{index + 1} / Gambaran demo</p><h3>{plan.name}</h3>
             <dl><div><dt>Arah keterlibatan mitra</dt><dd>{['Lebih aktif mengelola sehari-hari', 'Berbagi pengelolaan dengan tim', 'Pengelolaan lebih banyak oleh tim'][index]}</dd></div><div><dt>Contoh investasi</dt><dd>{plan.price} <span>· harga demo</span></dd></div></dl>
             <a className="button button-green" href="#konsultasi-mitra" onClick={() => update('model', plan.name)}>Bahas {plan.name} <ArrowUpRight size={16} /></a>
           </article>)}
         </div>
-        <h3 className="plan-discussion-heading">Lihat hal yang dibahas bersama tim</h3>
+        <p className="price-note">Harga dan gambaran model di atas adalah contoh demo, bukan penawaran resmi.</p>
+        <a href="#detail-kemitraan" className="partner-detail-link">Lihat topik konsultasi tiap model <ArrowDown size={16} /></a>
+      </section>
+      <section id="detail-kemitraan" className="page-width section-space partnership-details">
+        <div className="section-heading-row">
+          <div><p className="eyebrow">Sebelum memilih</p><h2 className="editorial-heading">Apa yang perlu dibahas?</h2></div>
+          <p>Buka model yang ingin kamu pelajari. Pilihan konsultasi tetap bisa ditentukan nanti.</p>
+        </div>
         <div className="partnership-list">
           {packages.map((plan, index) => (
             <article
@@ -176,11 +183,7 @@ export function FranchiseAutopilot() {
                         <li key={item}>{item}</li>
                       ))}
                     </ul>
-                  </div>
-                  <div className="plan-price">
-                    <span>Contoh harga mulai dari</span>
-                    <strong>{plan.price}</strong>
-                    <a href="#konsultasi-mitra" onClick={() => update('model', plan.name)}>
+                    <a className="plan-consultation-link" href="#konsultasi-mitra" onClick={() => update('model', plan.name)}>
                       Konsultasi pilihan ini
                       <ArrowUpRight size={18} />
                     </a>
@@ -190,10 +193,6 @@ export function FranchiseAutopilot() {
             </article>
           ))}
         </div>
-        <p className="price-note">
-          Harga dan gambaran model di atas adalah contoh demo, bukan penawaran
-          resmi.
-        </p>
       </section>
       <section className="partnership-steps">
         <div className="page-width section-space">

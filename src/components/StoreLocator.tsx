@@ -1,5 +1,5 @@
-import { useMemo } from "react";
-import { ArrowUpRight, MapPin, Search, X } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, MapPin, Search, X } from "lucide-react";
 import { REGIONS_DATA } from "../data/locationsData";
 import { Dumpling, Reveal, Spark } from "./DesignElements";
 import { isStringRecord, useSessionState } from '../lib/useSessionState';
@@ -14,12 +14,23 @@ function outletWhatsappUrl(outlet: (typeof allOutlets)[number]) {
   return whatsappUrl(`Halo Minsum, saya ingin berkunjung ke gerai ${outlet.name}${area}. Mohon konfirmasi ${outlet.address ? 'apakah gerai masih aktif, jam buka, dan ketersediaan menu' : 'alamat lengkap, pin Google Maps terbaru, jam buka, dan ketersediaan menu'}.`);
 }
 
+type LocatorDraft = { region: string; query: string; page?: number };
+function viewportPageSize() {
+  return window.innerWidth >= 1024 && window.innerHeight >= 640 ? (window.innerHeight >= 840 ? 4 : 3) : 4;
+}
+
 export function StoreLocator() {
-  const [draft, setDraft] = useSessionState('locator', { region: 'All', query: '' }, (v): v is { region: string; query: string } => isStringRecord(v, ['region', 'query']) && (v.region === 'All' || v.region === 'Kota Bogor' || REGIONS_DATA.some((r) => r.region === v.region)));
+  const [draft, setDraft] = useSessionState<LocatorDraft>('locator', { region: 'All', query: '', page: 1 }, (v): v is LocatorDraft => isStringRecord(v, ['region', 'query']) && (v.region === 'All' || v.region === 'Kota Bogor' || REGIONS_DATA.some((r) => r.region === v.region)) && (v.page === undefined || (typeof v.page === 'number' && Number.isInteger(v.page) && v.page > 0)));
+  const [pageSize, setPageSize] = useState(viewportPageSize);
+  useEffect(() => {
+    const resize = () => setPageSize(viewportPageSize());
+    window.addEventListener('resize', resize);
+    return () => window.removeEventListener('resize', resize);
+  }, []);
   const { query } = draft;
   const region = draft.region === 'Kota Bogor' ? 'Bogor & sekitarnya' : draft.region;
-  const setRegion = (value: string) => setDraft((previous) => ({ ...previous, region: value }));
-  const setQuery = (value: string) => setDraft((previous) => ({ ...previous, query: value }));
+  const setRegion = (value: string) => setDraft((previous) => ({ ...previous, region: value, page: 1 }));
+  const setQuery = (value: string) => setDraft((previous) => ({ ...previous, query: value, page: 1 }));
   const filtered = useMemo(
     () =>
       allOutlets.filter(
@@ -31,6 +42,14 @@ export function StoreLocator() {
       ),
     [region, query],
   );
+  const pageCount = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const page = Math.min(draft.page ?? 1, pageCount);
+  const start = (page - 1) * pageSize;
+  const visible = filtered.slice(start, start + pageSize);
+  const changePage = (next: number) => {
+    setDraft((previous) => ({ ...previous, page: next }));
+    requestAnimationFrame(() => document.getElementById('locations')?.scrollIntoView({ block: 'start', behavior: 'instant' }));
+  };
   return (
     <>
       <section className="location-hero page-hero">
@@ -118,13 +137,13 @@ export function StoreLocator() {
         </aside>
         <div className="outlet-results">
           <div className="results-heading">
-            <span aria-live="polite">{filtered.length} gerai {region === 'All' ? 'di semua wilayah' : `di ${region}`}{query.trim() && ` untuk “${query.trim()}”`}</span>
+            <span aria-live="polite">{filtered.length > 0 ? `${start + 1}–${start + visible.length} dari ` : ''}{filtered.length} gerai {region === 'All' ? 'di semua wilayah' : `di ${region}`}{query.trim() && ` untuk “${query.trim()}”`}</span>
             <span>ALAMAT / ARAH</span>
           </div>
-          {filtered.map((outlet, index) => (
+          {visible.map((outlet, index) => (
             <article className="outlet-row" key={outlet.name}>
               <span className="outlet-index">
-                {String(index + 1).padStart(2, "0")}
+                {String(start + index + 1).padStart(2, "0")}
               </span>
               <div>
                 <span className="outlet-region">{outlet.region}</span>
@@ -144,6 +163,11 @@ export function StoreLocator() {
               </a>
             </article>
           ))}
+          {pageCount > 1 && <nav className="outlet-pagination" aria-label="Halaman daftar gerai">
+            <button type="button" disabled={page === 1} onClick={() => changePage(page - 1)} aria-label="Halaman gerai sebelumnya"><ArrowLeft size={18} /><span>Sebelumnya</span></button>
+            <span aria-live="polite">{page} / {pageCount}</span>
+            <button type="button" disabled={page === pageCount} onClick={() => changePage(page + 1)} aria-label="Halaman gerai berikutnya"><span>Berikutnya</span><ArrowRight size={18} /></button>
+          </nav>}
           {filtered.length === 0 && (
             <div className="locator-empty">
               <Dumpling />
