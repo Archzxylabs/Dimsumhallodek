@@ -6,7 +6,8 @@ node_modules
 dist
 scratch
 /assets
-/data
+/data/*
+!/data/locations.json
 /raw_content
 /backend
 /server
