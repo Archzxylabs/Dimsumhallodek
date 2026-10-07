@@ -7,6 +7,7 @@ import type { AvatarSession } from '../lib/avatarTypes';
 import { HANDOFF_TOPIC, parseMinsumHandoff, type MinsumHandoff } from '../lib/minsumHandoff';
 import { microphoneErrorMessage } from '../lib/microphone';
 import { BangMusPortrait } from './BangMusPortrait';
+import { AvatarSessionError, avatarWorkerError, parseAvatarWorkerStatus, waitForAvatarWorker } from '../lib/avatarStatus';
 
 function AvatarSurface({ session, onError, onHandoff, onConnected, onMicrophoneError }: {
   session: AvatarSession; onError: (message: string) => void; onHandoff: (handoff: MinsumHandoff) => void;
@@ -21,8 +22,13 @@ function AvatarSurface({ session, onError, onHandoff, onConnected, onMicrophoneE
       try { const handoff = parseMinsumHandoff(JSON.parse(new TextDecoder().decode(payload))); if (handoff) onHandoff(handoff); } catch { /* Ignore malformed packets. */ }
     };
     room.on(RoomEvent.DataReceived, onDataReceived);
-    return () => { room.off(RoomEvent.DataReceived, onDataReceived); };
-  }, [room, onHandoff]);
+    const onMetadata = (metadata: string) => {
+      const error = avatarWorkerError(parseAvatarWorkerStatus(metadata));
+      if (error) onError(error.message);
+    };
+    room.on(RoomEvent.RoomMetadataChanged, onMetadata);
+    return () => { room.off(RoomEvent.DataReceived, onDataReceived); room.off(RoomEvent.RoomMetadataChanged, onMetadata); };
+  }, [room, onHandoff, onError]);
 
   useEffect(() => {
     let cancelled = false;
@@ -30,6 +36,7 @@ function AvatarSurface({ session, onError, onHandoff, onConnected, onMicrophoneE
     let disposed = false;
     let player: { detach: () => Promise<void> } | undefined;
     let view: { dispose: () => void } | undefined;
+    const startupAbort = new AbortController();
     const connect = async () => {
       const [avatar, { AvatarView }, { AvatarPlayer, LiveKitProvider }] = await Promise.all([
         prepareSpatiusAvatar(session.appId, session.avatarId), import('@spatius/avatarkit'), import('@spatius/avatarkit-rtc'),
@@ -46,6 +53,8 @@ function AvatarSurface({ session, onError, onHandoff, onConnected, onMicrophoneE
       connectionAttempted = true;
       await room.connect(session.serverUrl, session.token);
       if (cancelled) return;
+      await waitForAvatarWorker(room, startupAbort.signal);
+      if (cancelled) return;
       try { await room.localParticipant.setMicrophoneEnabled(true); } catch (cause) { if (!cancelled) onMicrophoneError(microphoneErrorMessage(cause)); }
       if (cancelled) return;
       await onConnected();
@@ -57,11 +66,11 @@ function AvatarSurface({ session, onError, onHandoff, onConnected, onMicrophoneE
       if (connectionAttempted) await room.disconnect().catch(() => {});
       view?.dispose();
     };
-    const startup = connect().catch(async () => {
-      if (!cancelled) onError('Bang Mus belum bisa tersambung. Coba lagi atau lanjut lewat WhatsApp.');
+    const startup = connect().catch(async (cause: unknown) => {
+      if (!cancelled) onError(cause instanceof AvatarSessionError ? cause.message : 'Bang Mus belum bisa tersambung. Coba lagi atau lanjut lewat WhatsApp.');
       await dispose();
     });
-    return () => { cancelled = true; void startup.then(dispose); };
+    return () => { cancelled = true; startupAbort.abort(); void startup.then(dispose); };
   }, [room, session, onError, onConnected, onMicrophoneError]);
 
   return <div className="minsum-surface">
@@ -117,7 +126,7 @@ export function LiveAvatar({ session, onClose, onError, onHandoff, onConnected }
     if (session.requiresStart) {
       const response = await fetch('/api/archava/start', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ticket: session.ticket }), signal: AbortSignal.timeout(10000) });
       const result = await response.json();
-      if (!response.ok || typeof result.endsAt !== 'number') throw new Error('Sesi belum bisa dimulai.');
+      if (!response.ok || typeof result.endsAt !== 'number') throw new AvatarSessionError('Sesi belum bisa dimulai. Coba lagi atau lanjut lewat WhatsApp.');
       setEndsAt(result.endsAt);
     }
     onConnected(session.ticket);

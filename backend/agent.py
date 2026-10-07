@@ -3,13 +3,15 @@
 import logging
 import os
 import json
+import asyncio
 from pathlib import Path
 
 from dotenv import load_dotenv
-from livekit import agents, rtc
+from livekit import agents, rtc, api
 from livekit.agents import Agent, AgentSession, RunContext, function_tool, room_io
 from livekit.plugins import google, spatius
 from google.genai import types as genai_types
+from avatar_status import AvatarStatusReporter
 
 load_dotenv(os.environ.get('ARCHAVA_ENV_FILE') or Path(__file__).resolve().parent.parent / '.env')
 logger = logging.getLogger('minsum.latency')
@@ -77,6 +79,24 @@ def make_handoff_tool(room: rtc.Room):
 
 async def entrypoint(ctx: agents.JobContext) -> None:
     await ctx.connect()
+    async def publish_status(metadata):
+        async with api.LiveKitAPI() as client:
+            await asyncio.wait_for(client.room.update_room_metadata(
+                api.UpdateRoomMetadataRequest(room=ctx.room.name, metadata=metadata)
+            ), timeout=5)
+
+    reporter = AvatarStatusReporter(ctx.room.metadata, publish_status)
+    try:
+        await start_voice_session(ctx, reporter)
+    except Exception as error:
+        try:
+            await reporter.fail(error)
+        except Exception:
+            logger.exception('Could not publish voice startup failure')
+        raise
+
+
+async def start_voice_session(ctx: agents.JobContext, reporter: AvatarStatusReporter) -> None:
     model = os.getenv('GEMINI_MODEL', 'gemini-3.8-live')
     model_options = dict(
         model=model,
@@ -92,6 +112,26 @@ async def entrypoint(ctx: agents.JobContext) -> None:
     if model.startswith('gemini-2.5'):
         model_options['thinking_config'] = genai_types.ThinkingConfig(thinking_budget=0)
     session = AgentSession(llm=google.realtime.RealtimeModel(**model_options))
+    pending_errors = set()
+
+    @session.on('error')
+    def publish_runtime_error(event) -> None:
+        if event.error.recoverable:
+            return
+        failure = reporter.fail(event.error)
+        async def report():
+            try:
+                await failure
+            except Exception:
+                logger.exception('Could not publish voice runtime failure')
+        task = asyncio.create_task(report())
+        pending_errors.add(task)
+        task.add_done_callback(pending_errors.discard)
+
+    async def flush_error_status():
+        if pending_errors:
+            await asyncio.gather(*pending_errors, return_exceptions=True)
+    ctx.add_shutdown_callback(flush_error_status)
 
     @session.on('user_state_changed')
     def log_user_state(event) -> None:
@@ -121,6 +161,11 @@ async def entrypoint(ctx: agents.JobContext) -> None:
         agent=Agent(instructions=INSTRUCTIONS, tools=[make_handoff_tool(ctx.room)]),
         room_options=room_io.RoomOptions(audio_output=False, close_on_disconnect=True),
     )
+    try:
+        await reporter.ready()
+    except Exception:
+        logger.exception('Could not publish voice readiness')
+        raise
     session.generate_reply(instructions="Say your short greeting in Bahasa Indonesia now.")
 
 

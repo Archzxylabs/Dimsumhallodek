@@ -33,6 +33,14 @@ npm run avatar:worker
 
 Browser memerlukan dukungan RTCRtpScriptTransform dan izin mikrofon; Chrome atau Edge terbaru dapat digunakan. Sesi demo berlangsung dua menit setelah koneksi suara dibuat. Client baru meminta `startOnConnect` saat membuat sesi dan mengaktifkan countdown lewat `/api/archava/start`; server memberi waktu setup maksimal 45 detik dan membersihkan sesi yang tidak tersambung. Client lama tetap mendapat sesi dua menit dari pembuatan sesi. Kredensial tidak boleh dimasukkan ke variabel `VITE_*` atau kode frontend. API dan worker harus tersedia agar avatar live berfungsi.
 
+## Kegagalan sesi suara
+
+Worker menyimpan status `voice` versi 1 di metadata room LiveKit: `ready` atau `error` dengan kode aman (`provider_credits`, `provider_auth`, `voice_unavailable`). Metadata mempertahankan produk dan waktu akhir sesi. Exception mentah, credential, dan saldo provider tidak dikirim ke pengunjung. Room metadata dapat dibaca pengunjung yang baru tersambung; mekanismenya mengikuti [LiveKit room metadata](https://docs.livekit.io/home/client/data/room-metadata/).
+
+Browser menunggu worker siap sebelum membuka mikrofon room dan mengaktifkan countdown dua menit. Penolakan provider sebelum browser bergabung tetap terbaca dari snapshot metadata. Kegagalan setelah bergabung juga tampil sebagai alert, sesi ditutup lewat API, dan tautan WhatsApp tetap tersedia. Menunggu worker dibatasi 30 detik; menutup panel membatalkan penantian serta melepaskan listener. Tes `npm run test:avatar-status` memeriksa penolakan sebelum/sesudah join, sanitasi exception, readiness, error yang tidak tertimpa status ready, timeout, dan pembatalan.
+
+`ready` pada `/api/archava/config` dan health hanya berarti konfigurasi API tersedia. Nilai itu bukan pemeriksaan saldo Spatius. Kredit provider perlu cukup agar sesi live bisa dimulai.
+
 ## Data client dan membership
 
 31 file unduhan baru dikelompokkan di [`client-data/2026-10-07`](client-data/2026-10-07/README.md). `manifest.json` mencatat nama asli, lokasi baru, ukuran, serta SHA-256. Enam file `.txt` sebenarnya JPEG dan ekstensinya sudah diperbaiki tanpa perubahan byte. File sumber hanya berada di arsip lokal; Git dan deployment membawa indeks, manifest, serta aset web yang digunakan.
