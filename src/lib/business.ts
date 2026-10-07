@@ -36,6 +36,6 @@ export const sitePages = [
     label: "Cari Gerai",
     title: "Cari Gerai",
     description:
-      "Cari alamat dan petunjuk arah gerai Dimsum Hallo Dek di Bogor, Bekasi, dan Sukabumi.",
+      "Temukan gerai Dimsum Hallo Dek di Bogor, Bekasi, Sukabumi, dan Bandung. Konfirmasi alamat dan jam buka sebelum berkunjung.",
   },
 ];

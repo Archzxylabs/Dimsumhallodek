@@ -180,6 +180,8 @@ export function HomePage() {
                 Bekasi.
                 <br />
                 Sukabumi.
+                <br />
+                Bandung.
               </h2>
               <div>
                 <Dumpling />

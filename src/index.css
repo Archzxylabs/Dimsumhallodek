@@ -1563,6 +1563,8 @@ textarea:focus-visible {
   font-size: 9px;
   transition: color 0.2s;
 }
+.outlet-row .outlet-address-pending { font-weight: 600; }
+.outlet-row .outlet-relocation { margin-top: 7px; color: #9d4018; opacity: 1; font-weight: 600; }
 .outlet-row > a > svg {
   width: 43px;
   height: 43px;

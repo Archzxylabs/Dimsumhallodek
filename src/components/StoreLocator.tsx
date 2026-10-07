@@ -9,9 +9,15 @@ const allOutlets = REGIONS_DATA.flatMap((group) =>
   group.outlets.map((outlet) => ({ ...outlet, region: group.region })),
 );
 
+function outletWhatsappUrl(outlet: (typeof allOutlets)[number]) {
+  const area = outlet.region === 'Wilayah perlu konfirmasi' ? '' : ` (${outlet.region})`;
+  return whatsappUrl(`Halo Minsum, saya ingin berkunjung ke gerai ${outlet.name}${area}. Mohon konfirmasi ${outlet.address ? 'apakah gerai masih aktif, jam buka, dan ketersediaan menu' : 'alamat lengkap, pin Google Maps terbaru, jam buka, dan ketersediaan menu'}.`);
+}
+
 export function StoreLocator() {
-  const [draft, setDraft] = useSessionState('locator', { region: 'All', query: '' }, (v): v is { region: string; query: string } => isStringRecord(v, ['region', 'query']) && (v.region === 'All' || REGIONS_DATA.some((r) => r.region === v.region)));
-  const { region, query } = draft;
+  const [draft, setDraft] = useSessionState('locator', { region: 'All', query: '' }, (v): v is { region: string; query: string } => isStringRecord(v, ['region', 'query']) && (v.region === 'All' || v.region === 'Kota Bogor' || REGIONS_DATA.some((r) => r.region === v.region)));
+  const { query } = draft;
+  const region = draft.region === 'Kota Bogor' ? 'Bogor & sekitarnya' : draft.region;
   const setRegion = (value: string) => setDraft((previous) => ({ ...previous, region: value }));
   const setQuery = (value: string) => setDraft((previous) => ({ ...previous, query: value }));
   const filtered = useMemo(
@@ -19,7 +25,7 @@ export function StoreLocator() {
       allOutlets.filter(
         (outlet) =>
           (region === "All" || outlet.region === region) &&
-          `${outlet.name} ${outlet.address} ${outlet.region}`
+          [outlet.name, outlet.address ?? '', outlet.region, ...outlet.aliases, ...outlet.previousNames].join(' ')
             .toLowerCase()
             .includes(query.trim().toLowerCase()),
       ),
@@ -50,7 +56,7 @@ export function StoreLocator() {
             </span>
             <span className="eyebrow">Gerai dalam daftar</span>
             <Dumpling />
-            <p>Bogor · Bekasi · Sukabumi</p>
+            <p>Bogor · Bekasi · Sukabumi · Bandung</p>
           </Reveal>
         </div>
       </section>
@@ -107,7 +113,7 @@ export function StoreLocator() {
             ))}
           </div>
           <p className="locator-note">
-            Daftar ini dapat dicari berdasarkan nama dan wilayah; jarak belum dihitung dari lokasimu. Jam buka dan status gerai dikonfirmasi ke tim sebelum berkunjung.
+            Daftar diperbarui 7 Oktober 2026. Cari nama gerai atau wilayahnya; jarak belum dihitung dari lokasimu. Alamat yang belum lengkap, jam buka, dan status harian dikonfirmasi ke tim sebelum berkunjung.
           </p>
         </aside>
         <div className="outlet-results">
@@ -123,17 +129,18 @@ export function StoreLocator() {
               <div>
                 <span className="outlet-region">{outlet.region}</span>
                 <h3>{outlet.name}</h3>
-                <p>{outlet.address}</p>
-                <div className="outlet-visit-info"><span>Jam buka: konfirmasi tim</span><a href={whatsappUrl(`Halo Minsum, saya ingin berkunjung ke gerai ${outlet.name} (${outlet.region}). Mohon konfirmasi apakah gerai masih aktif, jam buka, dan ketersediaan menu.`)} target="_blank" rel="noopener noreferrer">Tanya tim tentang {outlet.name} <ArrowUpRight size={14} /></a></div>
+                <p className={outlet.address ? undefined : 'outlet-address-pending'}>{outlet.address ?? 'Alamat lengkap perlu dikonfirmasi ke tim.'}</p>
+                {outlet.previousNames.length > 0 && <p className="outlet-relocation">Pindahan dari {outlet.previousNames[0]}.</p>}
+                <div className="outlet-visit-info"><span>Jam buka: konfirmasi tim</span><a href={outletWhatsappUrl(outlet)} target="_blank" rel="noopener noreferrer">Tanya tim tentang {outlet.name} <ArrowUpRight size={14} /></a></div>
               </div>
               <a
-                href={outlet.mapsUrl}
+                href={outlet.mapsUrl ?? outletWhatsappUrl(outlet)}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`Buka petunjuk arah ke ${outlet.name} di Google Maps`}
+                aria-label={outlet.mapsUrl ? `Buka petunjuk arah ke ${outlet.name} di Google Maps` : `Tanya lokasi gerai ${outlet.name} via WhatsApp`}
               >
-                <ArrowUpRight />
-                <span>Google Maps</span>
+                {outlet.mapsUrl ? <ArrowUpRight /> : <MapPin />}
+                <span>{outlet.mapsUrl ? 'Google Maps' : 'Konfirmasi lokasi'}</span>
               </a>
             </article>
           ))}

@@ -23,8 +23,18 @@
     "Dimsum Bouquet dengan pilihan dekorasi nama",
     "Dimsum Frozen"
   ],
-  "events": ["wedding", "acara sekolah", "acara kantor", "khitanan", "lamaran"],
-  "partnership_types": ["Flexible", "Collaborative", "Full Managed"],
+  "events": [
+    "wedding",
+    "acara sekolah",
+    "acara kantor",
+    "khitanan",
+    "lamaran"
+  ],
+  "partnership_types": [
+    "Flexible",
+    "Collaborative",
+    "Full Managed"
+  ],
   "contact": {
     "sales_whatsapp": "+62 858-6364-6267",
     "partnership_whatsapp": "+62 858-0285-4744"
@@ -35,5 +45,277 @@
     "Detail peran, fasilitas, biaya, keuntungan, dan syarat tiap tipe kemitraan harus dikonfirmasi tim.",
     "Komposisi lengkap, alergen, daya simpan, dan cara memasak produk frozen belum tersedia sebagai informasi resmi.",
     "Status dan jam buka outlet dapat berubah; arahkan pengunjung ke daftar lokasi di website dan minta mereka memastikan ke tim."
+  ],
+  "outlets_updated_at": "2026-10-07",
+  "outlets": [
+    {
+      "region": "Cileungsi & Kab. Bogor",
+      "name": "Griya Alam Sentosa",
+      "address": "Jl. Griya Alam Sentosa, Pasir Angin, Cileungsi, Kab. Bogor, Jawa Barat 16820",
+      "maps_url": "https://maps.app.goo.gl/7PXNJwAqPnCCMaAd7"
+    },
+    {
+      "region": "Cileungsi & Kab. Bogor",
+      "name": "Cariu",
+      "address": null,
+      "maps_url": null
+    },
+    {
+      "region": "Cileungsi & Kab. Bogor",
+      "name": "Grand Kahuripan",
+      "address": "Jl. Raya Klapanunggal No.15, Kec. Klapanunggal, Kab. Bogor, Jawa Barat 16710",
+      "maps_url": "https://maps.app.goo.gl/qGzVDSrFCQQUS1qh6",
+      "aliases": [
+        "Grand Kahurpian"
+      ]
+    },
+    {
+      "region": "Cileungsi & Kab. Bogor",
+      "name": "Permata Cibubur",
+      "address": "Ruko Permata Cibubur, Blok G5 no 03, Kec. Cileungsi, Kabupaten Bogor, Jawa Barat 16820",
+      "maps_url": "https://maps.google.com/maps?vet=10CAAQoqAOahcKEwjInNnLo_eUAxUAAAAAHQAAAAAQBg..i&rlz=1C1CHWL_enID1196ID1196&pvq=Cg0vZy8xMXZ4N2ZwODQyIhYKEERpbXN1bSBIYWxsbyBkZWsQAhgD&lqi=ChBEaW1zdW0gSGFsbG8gZGVrSILB6vbwuoCACFosEAAQARACGAAYARgCIhBkaW1zdW0gaGFsbG8gZGVrKggIAhAAEAEQAjICaWSSARVqYXBhbmVzZV9kZWxpY2F0ZXNzZW4&fvr=1&cs=1&um=1&ie=UTF-8&fb=1&gl=id&sa=X&ftid=0x2e699766ce593a65:0x94afe9022ba2a523",
+      "aliases": [
+        "Permata Cibubur (HQ)"
+      ]
+    },
+    {
+      "region": "Cileungsi & Kab. Bogor",
+      "name": "Duta Mekar Asri",
+      "address": "Jl. Duta Mekar Asri, Cileungsi Kidul, Kec. Cileungsi, Kabupaten Bogor, Jawa Barat 16820",
+      "maps_url": "https://maps.app.goo.gl/iPpwG5SfAYhx6t4u7"
+    },
+    {
+      "region": "Cileungsi & Kab. Bogor",
+      "name": "Metland Transyogi",
+      "address": "Jl. Metland Transyogi (Sebrang Alfamidi), Kec. Cileungsi, Kab. Bogor, Jawa Barat 16820",
+      "maps_url": "https://maps.app.goo.gl/odhCGv7mifxKTWUK6",
+      "aliases": [
+        "Metland"
+      ]
+    },
+    {
+      "region": "Cileungsi & Kab. Bogor",
+      "name": "Jonggol",
+      "address": "Alfamidi, Jl. Raya Jonggol, Sukamaju, Kabupaten Bogor, Jawa Barat 16830",
+      "maps_url": "https://maps.app.goo.gl/2bYXnStZpmHPhB7e9"
+    },
+    {
+      "region": "Cileungsi & Kab. Bogor",
+      "name": "Gandoang",
+      "address": "Jl. Raya KH Umar Rw. Ilat, Kec. Cileungsi, Kab. Bogor, Jawa Barat 16820",
+      "maps_url": "https://maps.app.goo.gl/xcxXMKi4S5jmQdLw6"
+    },
+    {
+      "region": "Cileungsi & Kab. Bogor",
+      "name": "Griya Bukit Jaya",
+      "address": "Jl. Tlajung Udik, Kec. Gn. Putri, Kabupaten Bogor, Jawa Barat 16962",
+      "maps_url": "https://maps.app.goo.gl/7sU2HdcpjH2ikDdt5"
+    },
+    {
+      "region": "Cileungsi & Kab. Bogor",
+      "name": "Wanaherang",
+      "address": "Alfamidi, Jl. Raya Cikuda Wanaherang, Gn. Putri, Kab. Bogor, Jawa Barat 16965",
+      "maps_url": "https://maps.app.goo.gl/VYpdYv29Wei2jd2TA"
+    },
+    {
+      "region": "Cileungsi & Kab. Bogor",
+      "name": "Bojong Klapanunggal",
+      "address": "Jl. Raya Bojong, Kec. Klapanunggal, Kabupaten Bogor, Jawa Barat 16710",
+      "maps_url": "https://maps.app.goo.gl/NcrzTFYcD8bbR6Ja9"
+    },
+    {
+      "region": "Cileungsi & Kab. Bogor",
+      "name": "Kota Wisata",
+      "address": "Jl. Boulevard Kota Wisata, Kec. Gn. Putri, Kabupaten Bogor, Jawa Barat 16968",
+      "maps_url": "https://maps.app.goo.gl/MryWTyk2rrtXLe518",
+      "aliases": [
+        "Kotwis"
+      ]
+    },
+    {
+      "region": "Cileungsi & Kab. Bogor",
+      "name": "Ciangsana",
+      "address": "Ruko Orange, Jl. Raya Ciangsana (Depan Alfamart), Kab. Bogor, Jawa Barat 16968",
+      "maps_url": "https://maps.app.goo.gl/iT3hXKoySrFGi5rS9"
+    },
+    {
+      "region": "Cileungsi & Kab. Bogor",
+      "name": "Babakan Dayeuh",
+      "address": "Jl. Pamugaran, Dayeuh, Kec. Cileungsi, Kabupaten Bogor, Jawa Barat 16820",
+      "maps_url": "https://maps.app.goo.gl/ZrBGW7tuVhzKN6rr5"
+    },
+    {
+      "region": "Cileungsi & Kab. Bogor",
+      "name": "Puri Harmoni 1",
+      "address": "Jl. Puri Harmoni 1 Raya, Dayeuh, Kec. Cileungsi, Kab. Bogor, Jawa Barat 16820",
+      "maps_url": "https://maps.app.goo.gl/8EGq1eSDRQDN8SKw6",
+      "aliases": [
+        "Puri Harmoni"
+      ]
+    },
+    {
+      "region": "Cileungsi & Kab. Bogor",
+      "name": "Citra Indah",
+      "address": null,
+      "maps_url": null,
+      "previous_names": [
+        "Endu Raya"
+      ]
+    },
+    {
+      "region": "Kota & Kab. Bekasi",
+      "name": "Kranggan",
+      "address": "Jl. Wijaya Kusuma, Kec. Jatisampurna, Kota Bekasi, Jawa Barat 17433",
+      "maps_url": "https://maps.app.goo.gl/pwkQnkDrBZKqtCcc9"
+    },
+    {
+      "region": "Kota & Kab. Bekasi",
+      "name": "Armed",
+      "address": null,
+      "maps_url": null
+    },
+    {
+      "region": "Kota & Kab. Bekasi",
+      "name": "Setu",
+      "address": "Alfamidi Setu, Jl. MT. Haryono, Taman Rahayu, Kab. Bekasi, Jawa Barat 17320",
+      "maps_url": "https://maps.app.goo.gl/7F1bsvaTs58SFoBF9",
+      "aliases": [
+        "Setu Bekasi"
+      ]
+    },
+    {
+      "region": "Bogor & sekitarnya",
+      "name": "Pasir Kuda",
+      "address": "Jl. Aria Surialaga, Pasirkuda, Bogor Barat, Kota Bogor, Jawa Barat 16119",
+      "maps_url": "https://maps.app.goo.gl/P5CsjaHpRzWsp8g36",
+      "aliases": [
+        "Pasirkuda"
+      ]
+    },
+    {
+      "region": "Bogor & sekitarnya",
+      "name": "Ciomas",
+      "address": "Pertigaan Ciomas Permai, Pagelaran, Kab. Bogor, Jawa Barat 16610",
+      "maps_url": "https://maps.app.goo.gl/d7uVwQM5NGS9epMK9"
+    },
+    {
+      "region": "Bogor & sekitarnya",
+      "name": "Cimanggu",
+      "address": "Dan+Dan Jl. Tentara Pelajar, Tanah Sareal, Kota Bogor, Jawa Barat 16161",
+      "maps_url": "https://maps.app.goo.gl/brdMoRKw1VwEFkg39"
+    },
+    {
+      "region": "Bogor & sekitarnya",
+      "name": "Ciapus",
+      "address": null,
+      "maps_url": null
+    },
+    {
+      "region": "Bogor & sekitarnya",
+      "name": "Kebon Pedes",
+      "address": null,
+      "maps_url": null
+    },
+    {
+      "region": "Bogor & sekitarnya",
+      "name": "Cibanteng",
+      "address": null,
+      "maps_url": null
+    },
+    {
+      "region": "Bogor & sekitarnya",
+      "name": "Bogor Nirwana Residence",
+      "address": null,
+      "maps_url": null,
+      "aliases": [
+        "BNR"
+      ]
+    },
+    {
+      "region": "Kota & Kab. Sukabumi",
+      "name": "Cisaat",
+      "address": "Jl. Raya Cisaat, Kec. Cisaat, Kabupaten Sukabumi, Jawa Barat 43152",
+      "maps_url": "https://maps.app.goo.gl/aU63h8G6ub1TTrj1A"
+    },
+    {
+      "region": "Kota & Kab. Sukabumi",
+      "name": "Lembursitu",
+      "address": "Jl. Pelabuhan II, Kecamatan Lembursitu, Kota Sukabumi, Jawa Barat 43169",
+      "maps_url": "https://maps.app.goo.gl/JtqBWcNfCnwBgtzA6"
+    },
+    {
+      "region": "Kota & Kab. Sukabumi",
+      "name": "Nyomplong",
+      "address": "Jl. Nyomplong, Kecamatan Warudoyong, Kota Sukabumi, Jawa Barat 43131",
+      "maps_url": "https://maps.app.goo.gl/3mbFg6tUjYoxdD7w5"
+    },
+    {
+      "region": "Kota & Kab. Sukabumi",
+      "name": "Sukaraja",
+      "address": "Jl. R.A. Kosasih, Kecamatan Sukaraja, Kab. Sukabumi, Jawa Barat 43142",
+      "maps_url": "https://maps.app.goo.gl/DQGKf8M7A5EoiyQEA"
+    },
+    {
+      "region": "Kota & Kab. Sukabumi",
+      "name": "Karamat",
+      "address": "Jl. Karamat, Kecamatan Gunungpuyuh, Kota Sukabumi, Jawa Barat 43122",
+      "maps_url": "https://maps.app.goo.gl/SwiFtptRYLdCgpeA8"
+    },
+    {
+      "region": "Kota & Kab. Sukabumi",
+      "name": "Gedong Panjang",
+      "address": "Jl. RH. Didi Sukardi, Kec. Citamiang, Kota Sukabumi, Jawa Barat 43143",
+      "maps_url": "https://maps.app.goo.gl/ZqFbLqY6TNv3fLfY7"
+    },
+    {
+      "region": "Kota & Kab. Sukabumi",
+      "name": "Bojong Sampora",
+      "address": null,
+      "maps_url": null,
+      "previous_names": [
+        "Dayeuh Luhur",
+        "Dayeuh Luhur (Cabang ke-29)"
+      ]
+    },
+    {
+      "region": "Bandung & sekitarnya",
+      "name": "Rancaekek Kencana",
+      "address": null,
+      "maps_url": null
+    },
+    {
+      "region": "Bandung & sekitarnya",
+      "name": "Linggar",
+      "address": null,
+      "maps_url": null
+    },
+    {
+      "region": "Bandung & sekitarnya",
+      "name": "Cicalengka",
+      "address": null,
+      "maps_url": null
+    },
+    {
+      "region": "Wilayah perlu konfirmasi",
+      "name": "Kampung Tengah",
+      "address": null,
+      "maps_url": null
+    },
+    {
+      "region": "Wilayah perlu konfirmasi",
+      "name": "Pasar Meong",
+      "address": null,
+      "maps_url": null
+    }
+  ],
+  "outlet_notes": [
+    "Daftar terbaru dari client memuat 38 nama gerai. Ini bukan informasi jam buka real-time.",
+    "Dayeuh Luhur dipindah ke Bojong Sampora. Alamat dan pin Maps lama Dayeuh Luhur tidak boleh dipakai untuk Bojong Sampora.",
+    "Endu Raya dipindah ke Citra Indah. Alamat dan pin Maps lokasi lama tidak boleh dipakai untuk Citra Indah.",
+    "Linggar dan Cicalengka masuk daftar gerai; yang belum lengkap adalah alamat jalannya. Jangan mengatakan keduanya belum beroperasi atau segera buka.",
+    "Nilai address atau maps_url null berarti alamat lengkap atau pin Maps belum tersedia. Minta pengunjung konfirmasi ke tim lewat WhatsApp dan jangan mengarang titik lokasi.",
+    "Wilayah Kampung Tengah dan Pasar Meong belum diberikan secara rinci; pastikan ke tim sebelum menyebut kota atau kabupatennya.",
+    "Alamat dan pin Maps yang sudah ada berasal dari katalog sebelumnya dan perlu dikonfirmasi sebelum berkunjung.",
+    "Pandu Raya tidak tercantum di daftar terbaru. Jangan menyimpulkan bahwa Pandu Raya tutup atau sama dengan Endu Raya tanpa konfirmasi tim."
   ]
 }

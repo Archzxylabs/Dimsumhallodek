@@ -13,6 +13,8 @@ Website terdiri dari lima halaman: `/` untuk Menu Dimsum dan pengenalan brand, `
 
 Event dapat dikonsultasikan dengan tanggal yang belum pasti. Membuka detail model kemitraan tidak memilih model konsultasi; pilihan awal adalah “Belum menentukan”. Informasi produk dan gambaran perbandingan kemitraan tetap mengidentifikasi data demo dan detail yang belum dikonfirmasi. Gerai menyediakan tombol konfirmasi ke tim pusat tanpa mengarang jam buka/kontak masing-masing cabang.
 
+Daftar gerai mengikuti pembaruan client 7 Oktober 2026: 38 nama, termasuk Bandung. Sumber website ada di `data/locations.json`, diimpor oleh `src/data/locationsData.ts`; pengetahuan Minsum menyimpan salinan gerai di `backend/knowledge.json`. Sinkronkan kedua JSON saat data client berubah. Dayeuh Luhur menjadi Bojong Sampora, Endu Raya menjadi Citra Indah, dan pencarian nama lama menampilkan lokasi baru. Alamat/pin lama tidak dipakai untuk gerai pindahan. Linggar dan Cicalengka mempunyai alamat jalan yang belum lengkap, bukan status belum beroperasi. Gerai tanpa alamat/pin menyediakan konfirmasi WhatsApp. Wilayah Kampung Tengah dan Pasar Meong masih perlu konfirmasi. Rincian alamat dan sumber ada di `LOCATIONS.md`.
+
 Launcher Minsum menghindari posisi yang menutupi tindakan lain. Panel mobile diperkecil, error mikrofon diberi penjelasan, dan status agent LiveKit ditampilkan sebagai mendengarkan/memproses/menjawab. Foto mempunyai versi WebP dan srcset. Avatar dipanaskan setelah halaman utama selesai dimuat saat koneksi mendukung; data saver/koneksi lambat menunggu niat pengguna. Pengunduhan avatar menampilkan progres; batas waktu dihitung dari progres terakhir (90 detik inisialisasi, 60 detik unduhan tidak bergerak, maksimal 3 menit keseluruhan). Room baru dibuat setelah model siap, dan countdown dimulai setelah koneksi serta percobaan aktivasi mikrofon selesai.
 
 Minsum menjawab berdasarkan `backend/knowledge.json`. Ia mengenalkan menu, produk, event, dan tiga tipe kemitraan, lalu menanyakan detail yang relevan saat pengunjung ingin memesan atau berkonsultasi. Saat detail terkumpul, Minsum menyiapkan ringkasan di bawah avatar. Pengunjung dapat memeriksa dan mengirimnya sendiri melalui tombol WhatsApp; percakapan tidak otomatis dikirim atau disimpan sebagai lead. Jika ringkasan belum ada, tersedia tombol langsung untuk produk/event dan kemitraan.
@@ -70,7 +72,7 @@ Dimsumhallodek/
 │   └── ASSET_CATALOG.md                       # Katalog mapping fungsi UI tiap file gambar
 │
 ├── data/
-│   ├── locations.json                         # 27+ Data gerai (Alamat & Google Maps URL)
+│   ├── locations.json                         # 38 gerai, alamat/pin yang tersedia, alias dan perpindahan
 │   ├── menu.json                              # Data menu unggulan, rasa & deskripsi
 │   └── kemitraan.json                         # Data paket franchise, simulasi ROI, SOP
 │
@@ -101,11 +103,13 @@ Dimsumhallodek/
    - Dimsum Cake / Birthday Tower (Special Event / Alternatif Tart)
    - Dimsum Platter 16 pcs Full Mentai (Sharing Box)
 
-3. **Database Jaringan Cabang (27+ Gerai)**:
-   - **Cileungsi & Kab. Bogor**: 14 Gerai (termasuk Kitchen Pusat di Permata Cibubur)
-   - **Kota Bogor**: 4 Gerai (Pasirkuda, Cimanggu, Ciomas, Pandu Raya)
-   - **Kota & Kab. Bekasi**: 2 Gerai (Kranggan, Setu)
-   - **Sukabumi**: 7 Gerai (Cisaat, Lembursitu, Nyomplong, Karamat, Sukaraja, Dayeuh Luhur, Gedong Panjang)
+3. **Database Jaringan Cabang (38 Gerai dalam daftar client, 7 Oktober 2026)**:
+   - **Cileungsi & Kab. Bogor**: 16 Gerai, termasuk Cariu dan Citra Indah
+   - **Bogor & sekitarnya**: 7 Gerai (Pasir Kuda, Ciomas, Cimanggu, Ciapus, Kebon Pedes, Cibanteng, Bogor Nirwana Residence)
+   - **Kota & Kab. Bekasi**: 3 Gerai (Kranggan, Armed, Setu)
+   - **Sukabumi**: 7 Gerai, termasuk Bojong Sampora sebagai lokasi baru Dayeuh Luhur
+   - **Bandung & sekitarnya**: 3 Gerai (Rancaekek Kencana, Linggar, Cicalengka)
+   - **Wilayah perlu konfirmasi**: Kampung Tengah dan Pasar Meong
 
 4. **Program Kemitraan (Franchise Autopilot)**:
    - Sistem **100% Autopilot** (Semua operasional, staf, stok, dan kontrol di-handle pusat).
