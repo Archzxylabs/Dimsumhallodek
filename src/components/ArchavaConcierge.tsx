@@ -3,7 +3,6 @@ import { MessageCircle, X } from 'lucide-react';
 import type { AvatarSession } from '../lib/avatarTypes';
 import { getMinsumWhatsappUrl, handoffLabels, type MinsumHandoff } from '../lib/minsumHandoff';
 import { microphoneErrorMessage } from '../lib/microphone';
-import { useLauncherPosition } from '../lib/useLauncherPosition';
 import { BangMusPortrait } from './BangMusPortrait';
 
 const LiveAvatar = lazy(() => import('./LiveAvatar').then((module) => ({ default: module.LiveAvatar })));
@@ -26,7 +25,6 @@ export function ArchavaConcierge() {
   const attemptRef = useRef(0);
   const preparationRef = useRef<AbortController | null>(null);
   const launcher = useRef<HTMLButtonElement>(null);
-  const bottom = useLauncherPosition(launcher, open);
 
   const getConfig = useCallback(() => {
     if (!configPromiseRef.current) {
@@ -185,6 +183,6 @@ export function ArchavaConcierge() {
         </>}
       </div>
     </aside>}
-    <button ref={launcher} type="button" onClick={togglePanel} onPointerEnter={warmAvatar} onFocus={warmAvatar} aria-expanded={open} aria-controls="minsum-panel" className="minsum-launcher" style={{ bottom }}><MessageCircle size={20} /> {open ? 'Tutup Bang Mus' : 'Talk to Bang Mus'}</button>
+    <button ref={launcher} type="button" onClick={togglePanel} onPointerEnter={warmAvatar} onFocus={warmAvatar} aria-expanded={open} aria-controls="minsum-panel" className="minsum-launcher"><MessageCircle size={20} /> {open ? 'Tutup Bang Mus' : 'Talk to Bang Mus'}</button>
   </div>;
 }

@@ -2314,11 +2314,11 @@ html { scroll-padding-top: 100px; scroll-padding-bottom: 90px; }
 .button-orange { color:#172312; }
 
 /* Bang Mus stays to the right, with visible instructions in short viewports. */
-.minsum-root { position:fixed; inset:0; pointer-events:none; z-index:80; }
+.minsum-root { --avatar-bottom: max(20px, env(safe-area-inset-bottom, 0px)); position:fixed; inset:0; pointer-events:none; z-index:80; }
 body:has(#mobile-navigation) .minsum-root { visibility:hidden; }
-.minsum-launcher { position:absolute; right:24px; pointer-events:auto; display:flex; align-items:center; gap:8px; min-height:48px; padding:13px 17px; border-radius:50px; background:var(--orange); color:#172312; font:600 14px 'Fredoka',sans-serif; box-shadow:0 10px 28px rgb(120 52 22 / .25); cursor:pointer; transition:bottom .16s ease,background .2s; }
+.minsum-launcher { position:fixed; bottom:var(--avatar-bottom); right:max(24px, env(safe-area-inset-right, 0px)); pointer-events:auto; display:flex; align-items:center; gap:8px; min-height:48px; padding:13px 17px; border-radius:50px; background:var(--orange); color:#172312; font:600 14px 'Fredoka',sans-serif; box-shadow:0 10px 28px rgb(120 52 22 / .25); cursor:pointer; transition:background .2s; }
 .minsum-launcher:hover { background:var(--yellow); }
-.minsum-panel { position:absolute; bottom:84px; right:24px; width:min(370px,calc(100vw - 32px)); height:min(620px,calc(100dvh - 108px)); display:flex; flex-direction:column; pointer-events:auto; overflow:hidden; border-radius:24px; background:var(--cream); border:1px solid rgb(53 70 43 / .2); box-shadow:0 22px 70px rgb(22 36 18 / .28); }
+.minsum-panel { position:absolute; bottom:calc(var(--avatar-bottom) + 64px); right:24px; width:min(370px,calc(100vw - 32px)); height:min(620px,calc(100dvh - var(--avatar-bottom) - 88px)); display:flex; flex-direction:column; pointer-events:auto; overflow:hidden; border-radius:24px; background:var(--cream); border:1px solid rgb(53 70 43 / .2); box-shadow:0 22px 70px rgb(22 36 18 / .28); }
 .minsum-header { flex-shrink:0; display:flex; align-items:center; gap:10px; padding:13px 16px; background:var(--army); color:var(--cream); }
 .minsum-header > img { width:36px; height:36px; object-fit:cover; object-position:top; border-radius:50%; border:2px solid var(--yellow); }
 .minsum-header h2 { font:600 18px 'Fredoka',sans-serif; line-height:1.2; }
@@ -2399,7 +2399,7 @@ body:has(#mobile-navigation) .minsum-root { visibility:hidden; }
   .outlet-row > a > svg { width:44px; height:44px; padding:10px; }
   .outlet-row p { font-size:13px; }
   .outlet-visit-info { font-size:12px; }
-  .minsum-launcher { right:16px; }
+  .minsum-launcher { right:max(16px, env(safe-area-inset-right, 0px)); }
   .minsum-panel { right:12px; width:min(320px,calc(100vw - 24px)); height:min(480px,58dvh); }
   .minsum-header { padding:10px 12px; }
   .minsum-header h2 { font-size:17px; }
@@ -2409,7 +2409,7 @@ body:has(#mobile-navigation) .minsum-root { visibility:hidden; }
   .minsum-live { padding:10px; }
 }
 @media (max-height:500px) {
-  .minsum-panel { height:calc(100dvh - 100px); }
+  .minsum-panel { height:calc(100dvh - var(--avatar-bottom) - 80px); }
   .minsum-idle-image { display:none; }
   .minsum-idle-status { padding:12px 16px; }
   .minsum-header { padding:8px 12px; }
@@ -2580,6 +2580,9 @@ body:has(dialog[open]) { overflow-y: hidden; }
 .footer-wordmark { font-size: clamp(48px, min(10.5vw, 14svh), 150px); margin-block: 30px; }
 .footer-grid { gap: 28px; padding-top: 24px; }
 .footer-bottom { margin-top: 28px; }
+@media (min-width: 768px) {
+  .footer-bottom { padding-right: 200px; }
+}
 #showcase { min-height: var(--section-budget); padding-top: 28px; padding-bottom: 24px; }
 .showcase-grid > div { grid-column: auto; }
 .showcase-copy > :not(:last-child) { margin-block: 0 14px; }
