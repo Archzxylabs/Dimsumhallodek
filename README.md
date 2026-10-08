@@ -31,6 +31,8 @@ python -m pip install -r backend/requirements.txt
 npm run avatar:worker
 ```
 
+Suara Bang Mus memakai `GEMINI_VOICE=Charon`, suara laki-laki dari [katalog suara Gemini](https://docs.cloud.google.com/text-to-speech/docs/gemini-tts). Variabel ini dibaca `minsum-worker`. Saat mengganti avatar, samakan `SPATIUS_AVATAR_ID` pada `minsum-api` dan `minsum-worker`, deploy ulang kedua layanan, lalu muat ulang website agar SDK memakai konfigurasi baru.
+
 Browser memerlukan dukungan RTCRtpScriptTransform dan izin mikrofon; Chrome atau Edge terbaru dapat digunakan. Sesi demo berlangsung dua menit setelah koneksi suara dibuat. Client baru meminta `startOnConnect` saat membuat sesi dan mengaktifkan countdown lewat `/api/archava/start`; server memberi waktu setup maksimal 45 detik dan membersihkan sesi yang tidak tersambung. Client lama tetap mendapat sesi dua menit dari pembuatan sesi. Kredensial tidak boleh dimasukkan ke variabel `VITE_*` atau kode frontend. API dan worker harus tersedia agar avatar live berfungsi.
 
 ## Kegagalan sesi suara

@@ -100,7 +100,7 @@ async def start_voice_session(ctx: agents.JobContext, reporter: AvatarStatusRepo
     model = os.getenv('GEMINI_MODEL', 'gemini-3.8-live')
     model_options = dict(
         model=model,
-        voice=os.getenv('GEMINI_VOICE', 'Kore'),
+        voice=os.getenv('GEMINI_VOICE', 'Charon'),
         api_key=os.environ['GEMINI_API_KEY'],
         realtime_input_config=genai_types.RealtimeInputConfig(
             automatic_activity_detection=genai_types.AutomaticActivityDetection(
