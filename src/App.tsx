@@ -7,7 +7,7 @@ import { StoreLocator } from "./components/StoreLocator";
 import { FranchiseAutopilot } from "./components/FranchiseAutopilot";
 import { Footer } from "./components/Footer";
 import { SignatureProducts } from "./components/SignatureProducts";
-import { ArchavaConcierge } from "./components/ArchavaConcierge";
+import { WhatsAppFloating } from "./components/WhatsAppFloating";
 import { HomePage } from "./pages/HomePage";
 import { MembershipPage } from "./pages/MembershipPage";
 import { sitePages } from "./lib/business";
@@ -97,7 +97,7 @@ export function App() {
             </Routes>
           </main>
           <Footer />
-          <ArchavaConcierge />
+          <WhatsAppFloating />
         </div>
       </MotionConfig>
     </BrowserRouter>
