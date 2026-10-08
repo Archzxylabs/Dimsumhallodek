@@ -66,7 +66,7 @@ export function HomePage() {
               <img
                 src="/assets/optimized/cake-800.webp"
                     srcSet="/assets/optimized/cake-480.webp 480w, /assets/optimized/cake-800.webp 800w, /assets/optimized/cake-1200.webp 930w"
-                    sizes="(max-width: 767px) calc(100vw - 40px), 45vw"
+                    sizes="(max-width: 359px) calc(100vw - 40px), (max-width: 767px) calc((100vw - 52px) / 2), 45vw"
                     decoding="async"
                 alt="Sajian dimsum dengan aneka saus"
                 loading="lazy"

@@ -81,7 +81,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
         <div className="showcase-grid grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left Column: Menu Typography & Specs */}
-          <div className="lg:col-span-5 order-1 relative flex flex-col justify-center">
+          <div className="showcase-copy-column lg:col-span-5 order-1 relative flex flex-col justify-center">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={currentItem.id}
@@ -89,10 +89,10 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -24, transition: { duration: 0.26, ease: 'easeIn' } }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="showcase-copy space-y-5"
+                className="showcase-copy showcase-heading space-y-5"
               >
-                <p className="font-display text-xl sm:text-2xl text-[#F6C94B]">#AutoHappy Setiap Hari</p>
-                <div className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-extrabold bg-[#F6C94B] text-[#35462B]">
+                <p className="showcase-kicker font-display text-xl sm:text-2xl text-[#F6C94B]">#AutoHappy Setiap Hari</p>
+                <div className="showcase-label inline-flex items-center px-4 py-1.5 rounded-full text-xs font-extrabold bg-[#F6C94B] text-[#35462B]">
                   Menu Unggulan
                 </div>
 
@@ -100,14 +100,24 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                 <h1 className="font-display font-semibold text-5xl sm:text-6xl lg:text-7xl text-[#FFF9ED] tracking-tight leading-[1.02]">
                   {currentItem.name}
                 </h1>
+              </motion.div>
+            </AnimatePresence>
 
-                {/* Tagline */}
-                <p className="text-[#FFF9ED]/85 font-semibold text-lg leading-relaxed max-w-md">
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={`details-${currentItem.id}`}
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -24, transition: { duration: 0.26, ease: 'easeIn' } }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="showcase-copy showcase-details space-y-5"
+              >
+                <p className="showcase-description text-[#FFF9ED]/85 font-semibold text-lg leading-relaxed max-w-md">
                   {currentItem.description}
                 </p>
 
                 {/* Dual Action CTA Buttons */}
-                <div className="pt-4 flex flex-wrap items-center gap-3">
+                <div className="showcase-actions pt-4 flex flex-wrap items-center gap-3">
                   <a
                     href={whatsappUrl(`Halo Bang Mus, saya ingin tanya dan pesan ${currentItem.name}. Mohon pilihan isi dan harga resminya.`)}
                     target="_blank"
@@ -175,7 +185,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                       repeat: Infinity,
                       ease: 'easeInOut',
                     }}
-                    className="relative w-full h-full rounded-full shadow-[0_24px_45px_-22px_rgba(11,25,9,0.55)] border-[10px] border-[#FFF9ED] p-1 bg-[#FFF9ED] z-10"
+                    className="showcase-plate relative w-full h-full rounded-full shadow-[0_24px_45px_-22px_rgba(11,25,9,0.55)] border-[10px] border-[#FFF9ED] p-1 bg-[#FFF9ED] z-10"
                   >
                     <img
                       src={currentItem.image}
@@ -190,7 +200,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
 
                     {/* Torched Floating Badge on Plate */}
                     {currentItem.torched && (
-                      <div className="absolute top-3 right-1 bg-[#E96B2B] text-white text-xs font-extrabold px-3 py-2 rounded-full shadow-md flex items-center gap-1">
+                      <div className="showcase-torched absolute top-3 right-1 bg-[#E96B2B] text-white text-xs font-extrabold px-3 py-2 rounded-full shadow-md flex items-center gap-1">
                         <Flame className="w-3.5 h-3.5 fill-[#F6C94B]" />
                         Panggang harum
                       </div>
@@ -212,7 +222,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
         <div className="showcase-controls-row flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-[#FFF9ED]/25 pt-6">
           
           {/* Arrow Controllers & Index Counter */}
-          <div className="flex items-center gap-4">
+          <div className="showcase-pagination flex items-center gap-4">
             <button
               onClick={handlePrev}
               aria-label="Menu sebelumnya"

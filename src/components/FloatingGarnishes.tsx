@@ -380,7 +380,7 @@ export const FloatingGarnishes: React.FC<FloatingGarnishesProps> = ({
   const garnishes = getGarnishesForMenu(menuId);
 
   return (
-    <div className="absolute inset-0 pointer-events-none z-20 select-none">
+    <div className="showcase-garnishes absolute inset-0 pointer-events-none z-20 select-none">
       {garnishes.map((item) => (
         <motion.div
           key={item.id}
