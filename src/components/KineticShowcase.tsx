@@ -45,7 +45,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
       id="showcase"
       className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-[#283920] pt-28 pb-10"
     >
-      <AnimatePresence initial={false}>
+      <AnimatePresence>
         <motion.div
           key={`background-${currentItem.id}`}
           initial={{ opacity: 0, scale: 1.06 }}
@@ -60,7 +60,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
       <div className="absolute -left-32 bottom-2 w-80 h-80 rounded-full border-[40px] border-[#F6C94B]/10 pointer-events-none" />
 
       <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden pointer-events-none" aria-hidden="true">
-        <AnimatePresence mode="wait" initial={false} custom={direction}>
+        <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={currentItem.watermark}
             custom={direction}
@@ -81,7 +81,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
           
           {/* Left Column: Menu Typography & Specs */}
           <div className="showcase-copy-column lg:col-span-5 order-1 relative flex flex-col justify-center">
-            <AnimatePresence mode="wait" initial={false}>
+            <AnimatePresence mode="wait">
               <motion.div
                 key={currentItem.id}
                 initial={{ opacity: 0, y: 24 }}
@@ -102,7 +102,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
               </motion.div>
             </AnimatePresence>
 
-            <AnimatePresence mode="wait" initial={false}>
+            <AnimatePresence mode="wait">
               <motion.div
                 key={`details-${currentItem.id}`}
                 initial={{ opacity: 0, y: 24 }}
@@ -132,7 +132,8 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
           {/* Right Column: Hero Dish 3D Kinetic Plate */}
           <div className="showcase-dish-column lg:col-span-7 order-2 flex items-center justify-center relative py-6">
             <div className="showcase-dish relative w-72 h-72 sm:w-96 sm:h-96 md:w-[460px] md:h-[460px]">
-              <AnimatePresence mode="wait" initial={false} custom={direction}>
+              {/* Keep the first entrance enabled so nested floating loops start on page load. */}
+              <AnimatePresence mode="wait" custom={direction}>
                 <motion.div
                   key={currentItem.id}
                   custom={direction}
