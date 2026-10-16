@@ -175,10 +175,6 @@
 .mascot-guide .bang-mus-portrait { flex: 0 0 76px; width: 76px; height: 114px; object-fit: contain; }
 .nearby-host { display: flex; align-items: center; gap: 24px; min-width: 0; }
 .nearby-host > .bang-mus-portrait { width: 100px; height: 150px; object-fit: contain; flex-shrink: 0; }
-.mascot-photo-scene { display: grid; grid-template-columns: minmax(84px, .32fr) minmax(0, 1fr); align-items: end; gap: 0 12px; }
-.mascot-photo-scene > .bang-mus-portrait { width: 100%; height: auto; max-height: 250px; object-fit: contain; align-self: center; }
-.mascot-photo-scene > .product-art-caption, .mascot-photo-scene > .event-art-caption { grid-column: 2; }
-.mascot-photo-scene .product-photo-frame img { width: 100%; }
 .planner-note { display: flex; align-items: center; gap: 20px; padding: 16px 20px; }
 .planner-note > .bang-mus-portrait { width: 88px; height: 110px; object-fit: contain; flex-shrink: 0; }
 .planner-note strong { display: block; margin-bottom: 8px; font-size: 13px; }
@@ -218,8 +214,6 @@
   .nearby-host > .bang-mus-portrait { width: 74px; height: 111px; }
   .nearby-host .eyebrow { font-size: 9px; }
   .nearby-host .editorial-heading { font-size: clamp(28px, 6.8vw, 38px); }
-  .mascot-photo-scene { grid-template-columns: minmax(70px, .32fr) minmax(0, 1fr); gap: 0 10px; }
-  .mascot-photo-scene > .bang-mus-portrait { max-height: 200px; }
   .planner-note { padding: 14px 16px; gap: 16px; }
   .planner-note > .bang-mus-portrait { width: 72px; height: 90px; }
   .location-mascot-scene { grid-template-columns: minmax(70px, .7fr) minmax(0, 1fr); gap: 18px; padding: 18px 22px; }

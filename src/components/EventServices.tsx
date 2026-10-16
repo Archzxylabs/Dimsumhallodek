@@ -67,8 +67,7 @@ export function EventServices() {
               <ArrowDown size={18} />
             </a>
           </Reveal>
-          <Reveal className="event-hero-art mascot-photo-scene" delay={0.1}>
-            <BangMusPortrait full decorative pose="idea" />
+          <Reveal className="event-hero-art" delay={0.1}>
             <div className="event-photo">
               <img
                 src="/assets/client/mix-16.webp"
