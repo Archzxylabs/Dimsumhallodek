@@ -7,6 +7,7 @@ import {
 import { Link } from 'react-router';
 import { whatsappUrl } from "../lib/business";
 import { ProductInquiry } from './ProductInquiry';
+import { BangMusPortrait } from './BangMusPortrait';
 
 const products = [
   {
@@ -64,7 +65,8 @@ export function SignatureProducts() {
             {products.map((product) => <a key={product.id} href={`#${product.id}`}>{product.name.replace('Dimsum ', '')} <ArrowDown size={16} /></a>)}
           </nav>
         </Reveal>
-        <Reveal className="product-hero-art" delay={0.1}>
+        <Reveal className="product-hero-art mascot-photo-scene" delay={0.1}>
+          <BangMusPortrait full decorative pose="shopping" />
           <div className="product-photo-frame">
             <img
               src="/assets/optimized/platter-800.webp"

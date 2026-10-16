@@ -4,6 +4,7 @@ import { REGIONS_DATA } from "../data/locationsData";
 import { Reveal } from "./DesignElements";
 import { isStringRecord, useSessionState } from '../lib/useSessionState';
 import { whatsappUrl } from '../lib/business';
+import { BangMusPortrait } from './BangMusPortrait';
 
 const allOutlets = REGIONS_DATA.flatMap((group) =>
   group.outlets.map((outlet) => ({ ...outlet, region: group.region })),
@@ -68,12 +69,13 @@ export function StoreLocator() {
             </p>
             <a className="button button-green locator-jump" href="#locations">Cari alamat gerai <ArrowUpRight size={18} /></a>
           </Reveal>
-          <Reveal className="location-hero-art">
-            <span className="location-count">
-              {allOutlets.length}
-            </span>
-            <span className="eyebrow">Gerai dalam daftar</span>
-            <p>Bogor · Bekasi · Sukabumi · Bandung</p>
+          <Reveal className="location-hero-art location-mascot-scene">
+            <BangMusPortrait full decorative pose="explore" />
+            <div className="location-hero-stat">
+              <span className="location-count">{allOutlets.length}</span>
+              <span className="eyebrow">Gerai dalam daftar</span>
+              <p>Bogor · Bekasi · Sukabumi · Bandung</p>
+            </div>
           </Reveal>
         </div>
       </section>

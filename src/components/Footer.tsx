@@ -1,13 +1,17 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
 import { sitePages, whatsappUrl } from "../lib/business";
+import { BangMusPortrait } from './BangMusPortrait';
 
 export function Footer() {
   return (
     <footer className="site-footer">
       <div className="page-width">
         <div className="footer-top">
-          <p className="eyebrow">Perut happy. Hari ikut happy.</p>
+          <div className="footer-host">
+            <BangMusPortrait full decorative />
+            <div><p className="eyebrow">Sampai ketemu, Dek!</p><p>Perut happy. Hari ikut happy.</p></div>
+          </div>
           <a
             href={whatsappUrl("Halo Bang Mus, aku mau pesan dimsum.")}
             target="_blank"

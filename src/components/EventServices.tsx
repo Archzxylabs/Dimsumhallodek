@@ -4,6 +4,7 @@ import { Faq, Marquee, Reveal } from "./DesignElements";
 import { whatsappUrl } from "../lib/business";
 import { isStringRecord, useSessionState } from '../lib/useSessionState';
 import { InquiryFeedback } from './InquiryFeedback';
+import { BangMusPortrait } from './BangMusPortrait';
 
 const events = [
   { name: "Wedding", subtitle: "Hari besar. Sajian yang ikut berkesan." },
@@ -66,7 +67,8 @@ export function EventServices() {
               <ArrowDown size={18} />
             </a>
           </Reveal>
-          <Reveal className="event-hero-art" delay={0.1}>
+          <Reveal className="event-hero-art mascot-photo-scene" delay={0.1}>
+            <BangMusPortrait full decorative pose="idea" />
             <div className="event-photo">
               <img
                 src="/assets/client/mix-16.webp"
@@ -143,7 +145,9 @@ export function EventServices() {
               dibahas bersama tim. Tanggal, jumlah tamu, dan lokasi boleh menyusul kalau belum pasti.
             </p>
             <div className="planner-note">
+              <BangMusPortrait full decorative pose="planning" />
               <span>
+                <strong>Rencanakan bareng tim.</strong>
                 Penawaran dan jadwal
                 <br />
                 dikonfirmasi oleh tim.
