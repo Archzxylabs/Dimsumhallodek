@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, Plus } from 'lucide-react';
 import catalog from '../../data/catalog.json';
 import { BangMusPortrait } from './BangMusPortrait';
+import { Headline, StaggerCard } from './MotionElements';
 
 const flavors = [
   { id: 'mentai', name: 'Mentai', description: 'Creamy, gurih, jadi favorit.', portions: [3, 6] },
@@ -26,7 +27,7 @@ export function FlavorCollection() {
   };
   return <section id="pilihan-rasa" className="flavor-collection page-width section-space" aria-labelledby="flavors-title">
     <div className="collection-heading">
-      <div><p className="eyebrow">01 / Temukan rasa kamu</p><h2 id="flavors-title" className="editorial-heading">Beda saus.<br /><span className="text-orange">Sama-sama nagih.</span></h2></div>
+      <div><p className="eyebrow">01 / Temukan rasa kamu</p><Headline id="flavors-title" className="editorial-heading" lines={[{ text: 'Beda saus.' }, { text: 'Sama-sama nagih.', accent: 'orange' }]} /></div>
       <aside className="mascot-guide" aria-label="Tips dari Bang Mus">
         <div><span>Bang Mus bantu pilih</span><p>Tim creamy atau pedas? Kenalan sama rasanya, lalu pilih isi yang pas buat kamu.</p></div>
         <BangMusPortrait full decorative pose="idea" />
@@ -34,10 +35,10 @@ export function FlavorCollection() {
     </div>
     <div className="flavor-browse"><span>6 rasa untuk ditemukan · geser untuk lihat lainnya</span><div><button type="button" onClick={() => browse(-1)} disabled={edge.start} aria-label="Pilihan rasa sebelumnya"><ArrowLeft size={18} /></button><button type="button" onClick={() => browse(1)} disabled={edge.end} aria-label="Pilihan rasa berikutnya"><ArrowRight size={18} /></button></div></div>
     <div className="flavor-grid" ref={galleryRef} onScroll={updateEdges} role="region" aria-label="Galeri pilihan rasa dimsum" tabIndex={0} onKeyDown={event => { if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') event.stopPropagation(); }}>
-      {flavors.map(flavor => {
+      {flavors.map((flavor, index) => {
         const options = catalog.filter(product => product.id.startsWith(`${flavor.id}-`));
         const first = options[0];
-        return <article className="flavor-card" key={flavor.id}>
+        return <StaggerCard className="flavor-card" key={flavor.id} index={index}>
           <figure className="flavor-photo">
             <img src={`/assets/client/${flavor.id}-16.webp`} alt={`Dimsum ${flavor.name}, contoh sajian 16 pcs`} width={800} height={640} loading="lazy" decoding="async" />
             <figcaption>Contoh sajian · 16 pcs</figcaption>
@@ -52,7 +53,7 @@ export function FlavorCollection() {
               {flavor.id === 'original' && <p>Harga katalog Original untuk 4 pcs. Foto menunjukkan contoh isi 6 dan 16 pcs; harga pilihan isi lain dikonfirmasi tim.</p>}
             </details>
           </div>
-        </article>;
+        </StaggerCard>;
       })}
     </div>
     <div className="collection-footnote"><p>Harga acuan katalog. Pilihan isi, harga transaksi, dan ketersediaan dikonfirmasi gerai.</p><a href="/assets/client/menu.webp" target="_blank" rel="noopener noreferrer">Buka katalog menu ↗</a></div>

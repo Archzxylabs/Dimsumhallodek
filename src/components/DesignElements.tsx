@@ -2,6 +2,8 @@ import { useId, type ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Plus } from "lucide-react";
 import { Link } from "react-router";
+import { ScrollRibbon } from './MotionElements';
+import { motionTokens } from '../lib/motionTokens';
 
 export function Reveal({
   children,
@@ -15,11 +17,11 @@ export function Reveal({
   const reduced = useReducedMotion();
   return (
     <motion.div
-      className={className}
-      initial={reduced ? false : { opacity: 0, y: 28 }}
+      className={`motion-reveal ${className}`}
+      initial={reduced ? false : { opacity: 0.65, y: motionTokens.distance }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.12 }}
-      transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: reduced ? motionTokens.duration.fast : motionTokens.duration.scene, delay: reduced ? 0 : delay, ease: motionTokens.ease }}
     >
       {children}
     </motion.div>
@@ -33,18 +35,7 @@ export function Marquee({
   text?: string;
   variant?: string;
 }) {
-  return (
-    <div className={`brand-marquee ${variant}`} aria-label={text}>
-      <div className="marquee-track" aria-hidden="true">
-        {Array.from({ length: 6 }, (_, i) => (
-          <span key={i}>
-            {text}
-            <span className="marquee-separator">/</span>
-          </span>
-        ))}
-      </div>
-    </div>
-  );
+  return <ScrollRibbon text={text} variant={variant} />;
 }
 
 export function ArrowLink({

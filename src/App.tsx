@@ -60,7 +60,6 @@ function PageNavigation() {
 }
 
 export function App() {
-  // Apply navigation promptly while the voice room sends frequent updates.
   return (
     <BrowserRouter useTransitions={false}>
       <MotionConfig reducedMotion="user">

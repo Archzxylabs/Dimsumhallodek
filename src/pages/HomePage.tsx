@@ -6,7 +6,8 @@ import { REGIONS_DATA } from '../data/locationsData';
 import { BangMusPortrait } from '../components/BangMusPortrait';
 import { KineticShowcase } from '../components/KineticShowcase';
 import { FlavorCollection } from '../components/FlavorCollection';
-import { ArrowLink, Reveal } from '../components/DesignElements';
+import { ArrowLink, Marquee, Reveal } from '../components/DesignElements';
+import { Headline, ScrollScene } from '../components/MotionElements';
 
 export function HomePage() {
   const [currentIndex, setCurrentIndex] = useSessionState('menu-slide', 0, (v): v is number => Number.isInteger(v) && typeof v === 'number' && v >= 0 && v < MENU_ITEMS.length);
@@ -21,13 +22,14 @@ export function HomePage() {
     </nav>
 
     <FlavorCollection />
+    <Marquee text="GURIHNYA NYAMBUNG. HAPPYNYA NULAR." variant="marquee-yellow home-motion-ribbon" />
 
     <section className="occasion-section page-width section-space" aria-labelledby="occasions-title">
-      <Reveal className="collection-heading">
-        <div><p className="eyebrow">02 / Lebih dari camilan</p><h2 id="occasions-title" className="editorial-heading">Ada dimsum untuk<br /><span className="text-orange">setiap cerita.</span></h2></div>
+      <Reveal className="collection-heading occasion-heading">
+        <div><p className="eyebrow">02 / Lebih dari camilan</p><Headline id="occasions-title" className="editorial-heading" lines={[{ text: 'Ada dimsum untuk' }, { text: 'setiap cerita.', accent: 'orange' }]} /></div>
         <p>Buat bilang selamat, buat orang tersayang, atau buat stok di rumah. Tinggal pilih momennya.</p>
       </Reveal>
-      <div className="occasion-grid">
+      <Reveal className="occasion-grid">
         <Link to="/produk#cake" className="occasion-card occasion-cake">
           <div><p className="eyebrow">Rayakan dengan yang gurih</p><h3>Dimsum Cake</h3><p>Dekorasi nama untuk momen yang lebih personal.</p><span className="occasion-price">Mulai Rp65.000 <ArrowUpRight size={20} /></span></div>
           <img src="/assets/client/cake-personal.webp" width={192} height={198} alt="Contoh cake dimsum di wooden plate dari katalog produk" loading="lazy" decoding="async" />
@@ -36,14 +38,17 @@ export function HomePage() {
           <div><p className="eyebrow">Hadiah yang bisa dinikmati</p><h3>Dimsum Bouquet</h3><p>22 pcs, dengan dekorasi nama untuk si penerima.</p><span className="occasion-price">Rp140.000 <ArrowUpRight size={20} /></span></div>
           <img src="/assets/client/bouquet.webp" width={195} height={182} alt="Dimsum Bouquet M dengan dekorasi dari katalog produk" loading="lazy" decoding="async" />
         </Link>
-      </div>
+      </Reveal>
       <Link to="/produk#frozen" className="frozen-strip"><img src="/assets/client/frozen-15g.webp" width={198} height={152} alt="Kemasan Dimsum Frozen" loading="lazy" decoding="async" /><div><span className="eyebrow">Simpan untuk nanti</span><h3>Dimsum Frozen</h3><p>Mulai Rp35.000 / 25 pcs · Pilihan saus tersedia.</p></div><span>Kenali pilihan frozen <ArrowUpRight size={19} /></span></Link>
     </section>
 
     <section className="home-event section-space">
       <div className="page-width home-event-layout">
-        <Reveal><p className="eyebrow">03 / Momen kamu, sajian kita</p><h2 className="editorial-heading">Meja yang ramai.<br /><span className="text-yellow">Momen yang hangat.</span></h2><p className="section-description">Wedding, acara sekolah, kantor, khitanan, atau lamaran. Ceritakan acaranya, kita bantu bahas kebutuhan dimsumnya.</p><div className="event-labels"><span>Wedding</span><span>Sekolah</span><span>Kantor</span><span>Khitanan</span><span>Lamaran</span></div><ArrowLink to="/event" className="light-link">Rencanakan acara kamu</ArrowLink></Reveal>
-        <Reveal className="event-catalog-preview" delay={0.08}><a href="/assets/client/wedding-catalog.webp" target="_blank" rel="noopener noreferrer"><img src="/assets/client/wedding-catalog.webp" alt="Katalog paket wedding Dimsum Hallo Dek" width={1024} height={1280} loading="lazy" decoding="async" /><span>Lihat katalog wedding <ArrowUpRight size={16} /></span></a><a href="/assets/client/birthday-catalog.webp" target="_blank" rel="noopener noreferrer"><img src="/assets/client/birthday-catalog.webp" alt="Katalog paket birthday Dimsum Hallo Dek" width={1024} height={1280} loading="lazy" decoding="async" /><span>Lihat katalog birthday <ArrowUpRight size={16} /></span></a></Reveal>
+        <Reveal><p className="eyebrow">03 / Momen kamu, sajian kita</p><Headline className="editorial-heading" lines={[{ text: 'Meja yang ramai.' }, { text: 'Momen yang hangat.', accent: 'yellow' }]} /><p className="section-description">Wedding, acara sekolah, kantor, khitanan, atau lamaran. Ceritakan acaranya, kita bantu bahas kebutuhan dimsumnya.</p><div className="event-labels"><span>Wedding</span><span>Sekolah</span><span>Kantor</span><span>Khitanan</span><span>Lamaran</span></div><ArrowLink to="/event" className="light-link">Rencanakan acara kamu</ArrowLink></Reveal>
+        <div className="event-catalog-preview">
+          <ScrollScene className="event-catalog-sheet" turn={-4} depth={26}><a href="/assets/client/wedding-catalog.webp" target="_blank" rel="noopener noreferrer"><img src="/assets/client/wedding-catalog.webp" alt="Katalog paket wedding Dimsum Hallo Dek" width={1024} height={1280} loading="lazy" decoding="async" /><span>Lihat katalog wedding <ArrowUpRight size={16} /></span></a></ScrollScene>
+          <ScrollScene className="event-catalog-sheet" turn={4} depth={-22}><a href="/assets/client/birthday-catalog.webp" target="_blank" rel="noopener noreferrer"><img src="/assets/client/birthday-catalog.webp" alt="Katalog paket birthday Dimsum Hallo Dek" width={1024} height={1280} loading="lazy" decoding="async" /><span>Lihat katalog birthday <ArrowUpRight size={16} /></span></a></ScrollScene>
+        </div>
       </div>
     </section>
 

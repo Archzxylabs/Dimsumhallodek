@@ -8,6 +8,7 @@ import { InquiryFeedback } from '../components/InquiryFeedback';
 import { whatsappUrl } from '../lib/business';
 import { calculateMembershipPoints, membershipRegistrationMessage, parseMembershipAmount } from '../lib/membership';
 import { isStringRecord, useSessionState } from '../lib/useSessionState';
+import { Headline, ScrollScene, TiltCard } from '../components/MotionElements';
 
 const rupiah = (value: number) => `Rp${value.toLocaleString('id-ID')}`;
 const groups = [...new Set(catalog.map(product => product.group))];
@@ -35,25 +36,25 @@ export function MembershipPage() {
   };
 
   return <>
-    <section className="page-hero page-width membership-hero">
+    <section className="page-hero membership-hero"><div className="page-width membership-hero-grid">
       <Reveal>
         <p className="eyebrow">Membership / Happy yang terkumpul</p>
-        <h1 className="hero-title">Makan enak.<br /><span className="text-orange">Dapat poin.</span></h1>
+        <Headline as="h1" className="hero-title" lines={[{ text: 'Makan enak.' }, { text: 'Dapat poin.', accent: 'orange' }]} />
         <p className="hero-description">Favoritmu punya bonus. Kumpulkan poin<br className="membership-desktop-break" /> sebesar 1% dari harga produk.</p>
         <div className="membership-hero-actions">
           <a href="#daftar-member" className="button button-green">Daftar membership <ArrowUpRight size={18} /></a>
           <a href="#simulasi-poin" className="membership-text-link">Hitung poinmu <ArrowDown size={17} /></a>
         </div>
       </Reveal>
-      <Reveal className="membership-card-scene" delay={0.1}>
-        <div className="membership-card">
+      <ScrollScene className="membership-card-scene" turn={-2.4}>
+        <TiltCard className="membership-card">
           <div className="membership-card-top"><span>HALLO DEK<br /><small>MEMBERSHIP</small></span><img src="/assets/optimized/logo-192.webp" alt="" width={40} height={40} /></div>
           <div className="membership-card-body"><div><span className="membership-card-rate">1<span>%</span></span><p>DARI HARGA PRODUK<br />JADI POIN KAMU.</p></div><BangMusPortrait full /></div>
           <div className="membership-card-bottom"><span>Happy bites. Happy points.</span><Gift size={21} /></div>
-        </div>
+        </TiltCard>
         <p className="membership-card-caption">Bang Mus siap nemenin kamu ngumpulin happy.</p>
-      </Reveal>
-    </section>
+      </ScrollScene>
+    </div></section>
 
     <section id="simulasi-poin" className="membership-simulator section-space">
       <div className="page-width membership-simulator-grid">

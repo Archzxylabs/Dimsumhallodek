@@ -7,6 +7,7 @@ import {
 import { Link } from 'react-router';
 import { whatsappUrl } from "../lib/business";
 import { ProductInquiry } from './ProductInquiry';
+import { Headline, ScrollScene } from './MotionElements';
 
 const products = [
   {
@@ -50,11 +51,7 @@ export function SignatureProducts() {
       <section className="page-hero product-hero page-width">
         <Reveal>
           <p className="eyebrow">01 / Cake, Bouquet & Frozen</p>
-          <h1 className="hero-title">
-            Hadiah gurih.
-            <br />
-            <span className="text-orange">Stok bahagia.</span>
-          </h1>
+          <Headline as="h1" className="hero-title" lines={[{ text: 'Hadiah gurih.' }, { text: 'Stok bahagia.', accent: 'orange' }]} />
           <p className="hero-description">
             Buat hadiah, buat perayaan,
             <br />
@@ -64,7 +61,7 @@ export function SignatureProducts() {
             {products.map((product) => <a key={product.id} href={`#${product.id}`}>{product.name.replace('Dimsum ', '')} <ArrowDown size={16} /></a>)}
           </nav>
         </Reveal>
-        <Reveal className="product-hero-art" delay={0.1}>
+        <ScrollScene className="product-hero-art" turn={-1.4}>
           <div className="product-photo-frame">
             <img
               src="/assets/optimized/platter-800.webp"
@@ -76,7 +73,7 @@ export function SignatureProducts() {
             <span>Gurihnya, punya cerita.</span>
           </div>
           <span className="product-art-caption">Cake · Bouquet · Frozen</span>
-        </Reveal>
+        </ScrollScene>
       </section>
       <nav className="product-index page-width" aria-label="Pilihan produk">
         {products.map((product) => (
@@ -94,7 +91,7 @@ export function SignatureProducts() {
           className={`product-story product-story-${product.type}`}
         >
           <div className="page-width product-story-grid">
-            <Reveal className="product-visual">
+            <ScrollScene className="product-visual" depth={12} turn={product.type === 'bouquet' ? -1.8 : 1.2}>
               {product.type === "bouquet" ? (
                 <>
                   <img className="catalog-bouquet-photo" src="/assets/client/bouquet.webp" width={195} height={182} alt="Contoh Dimsum Bouquet M dari katalog produk" loading="lazy" decoding="async" />
@@ -121,7 +118,7 @@ export function SignatureProducts() {
                   <div className="frozen-packages"><figure><img src="/assets/client/frozen-15g.webp" width={198} height={152} alt="Kemasan Dimsum Frozen 15 gram dari katalog produk" loading="lazy" decoding="async" /><figcaption>Dimsum Frozen · 15 gram</figcaption></figure><figure><img src="/assets/client/frozen-28g.webp" width={195} height={152} alt="Kemasan Dimsum Frozen reguler 28 gram dari katalog produk" loading="lazy" decoding="async" /><figcaption>Frozen reguler · 28 gram</figcaption></figure><a href="/assets/client/frozen-catalog.webp" target="_blank" rel="noopener noreferrer">Buka katalog frozen & saus <ArrowUpRight size={16} /></a></div>
                 </>
               )}
-            </Reveal>
+            </ScrollScene>
             <Reveal className="product-story-copy" delay={0.08}>
               <p className="eyebrow">
                 {product.number} / {product.name}

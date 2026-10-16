@@ -27,7 +27,7 @@ export function Footer() {
           className="footer-wordmark"
           aria-label="Dimsum Hallo Dek — beranda"
         >
-          HALLO DEK
+          <span className="footer-wordmark-text" aria-hidden="true">{Array.from('HALLO DEK').map((letter, index) => <span className="wordmark-letter" key={index}>{letter === ' ' ? '\u00a0' : letter}</span>)}</span>
           <span>
             <img src="/assets/optimized/logo-192.webp" alt="" width={72} height={72} loading="lazy" />
           </span>

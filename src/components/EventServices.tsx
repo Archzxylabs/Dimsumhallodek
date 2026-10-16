@@ -5,6 +5,7 @@ import { whatsappUrl } from "../lib/business";
 import { isStringRecord, useSessionState } from '../lib/useSessionState';
 import { InquiryFeedback } from './InquiryFeedback';
 import { BangMusPortrait } from './BangMusPortrait';
+import { Headline, ScrollScene } from './MotionElements';
 
 const events = [
   { name: "Wedding", subtitle: "Hari besar. Sajian yang ikut berkesan." },
@@ -52,11 +53,7 @@ export function EventServices() {
         <div className="page-width event-hero-grid">
           <Reveal>
             <p className="eyebrow">02 / Dimsum untuk acara kamu</p>
-            <h1 className="hero-title">
-              Acara kamu.
-              <br />
-              <span className="text-orange">Dimsum kita.</span>
-            </h1>
+            <Headline as="h1" className="hero-title" lines={[{ text: 'Acara kamu.' }, { text: 'Dimsum kita.', accent: 'yellow' }]} />
             <p className="hero-description">
               Kamu punya momennya.
               <br />
@@ -67,8 +64,9 @@ export function EventServices() {
               <ArrowDown size={18} />
             </a>
           </Reveal>
-          <Reveal className="event-hero-art" delay={0.1}>
+          <ScrollScene className="event-hero-art" turn={1.6}>
             <div className="event-photo">
+              <span className="photo-index">01—05 / Setiap momen</span>
               <img
                 src="/assets/client/mix-16.webp"
                 width={800}
@@ -82,7 +80,7 @@ export function EventServices() {
               </div>
             </div>
             <p className="event-art-caption">Dari kumpul kecil sampai momen besar.</p>
-          </Reveal>
+          </ScrollScene>
         </div>
       </section>
       <section className="page-width section-space event-types">

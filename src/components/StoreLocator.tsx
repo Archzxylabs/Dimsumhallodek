@@ -5,6 +5,7 @@ import { Reveal } from "./DesignElements";
 import { isStringRecord, useSessionState } from '../lib/useSessionState';
 import { whatsappUrl } from '../lib/business';
 import { BangMusPortrait } from './BangMusPortrait';
+import { Headline, ScrollScene } from './MotionElements';
 
 const allOutlets = REGIONS_DATA.flatMap((group) =>
   group.outlets.map((outlet) => ({ ...outlet, region: group.region })),
@@ -57,11 +58,7 @@ export function StoreLocator() {
         <div className="page-width location-hero-grid">
           <Reveal>
             <p className="eyebrow">04 / Alamat & petunjuk gerai</p>
-            <h1 className="hero-title">
-              Hallo,
-              <br />
-              <span className="text-orange">tetangga.</span>
-            </h1>
+            <Headline as="h1" className="hero-title" lines={[{ text: 'Hallo,' }, { text: 'tetangga.', accent: 'orange' }]} />
             <p className="hero-description">
               Mampir, bawa pulang, atau nikmati bareng.
               <br />
@@ -69,14 +66,14 @@ export function StoreLocator() {
             </p>
             <a className="button button-green locator-jump" href="#locations">Cari alamat gerai <ArrowUpRight size={18} /></a>
           </Reveal>
-          <Reveal className="location-hero-art location-mascot-scene">
+          <ScrollScene className="location-hero-art location-mascot-scene" turn={-1.2} depth={12}>
             <BangMusPortrait full decorative pose="explore" />
             <div className="location-hero-stat">
               <span className="location-count">{allOutlets.length}</span>
               <span className="eyebrow">Gerai dalam daftar</span>
               <p>Bogor · Bekasi · Sukabumi · Bandung</p>
             </div>
-          </Reveal>
+          </ScrollScene>
         </div>
       </section>
       <section

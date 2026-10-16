@@ -1,0 +1,146 @@
+/* A food-poster rhythm: type, photographic spreads, and movement share the same axes. */
+.motion-heading { position: relative; }
+.motion-line { display: block; overflow: clip; padding-block: .07em; margin-block: -.07em; }
+.motion-line-inner { display: block; }
+.scroll-scene { position: relative; min-width: 0; transform-origin: 50% 50%; }
+.motion-ribbon { padding-block: 19px; border: 0; }
+.motion-ribbon .marquee-track { animation: none; }
+.motion-ribbon .marquee-track > span { font-size: clamp(26px, 3.4vw, 44px); gap: 32px; padding-inline: 16px; }
+.motion-ribbon .marquee-separator { color: currentColor; opacity: .55; }
+.home-motion-ribbon { color: var(--army-deep); }
+.reading-progress { position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: var(--orange); transform-origin: 0 50%; pointer-events: none; }
+.nav-active-line { position: absolute; bottom: 16px; left: 0; height: 3px; width: 100%; background: var(--orange); }
+.desktop-nav a.active::after { transform: scaleX(0); }
+.desktop-nav a:hover::after { height: 1px; bottom: 12px; opacity: .5; }
+.mobile-navigation > a { animation: menu-line-in .42s cubic-bezier(.22, 1, .36, 1) both; animation-delay: var(--nav-delay, 0s); }
+@keyframes menu-line-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+/* The useful catalog remains a native gallery. Its photographs do the talking. */
+.flavor-card { border: 0; border-radius: 0; background: transparent; }
+.flavor-photo { border-radius: 10px 10px 2px 2px; }
+.flavor-content { padding-inline: 2px; }
+.flavor-content > p { min-height: 21px; }
+.flavor-options { border-bottom: 1px solid var(--detail-line); }
+.occasion-section { border-top: 0; }
+.occasion-heading .editorial-heading { font-size: clamp(38px, 4.8vw, 64px); }
+.occasion-grid { grid-template-columns: 1.15fr 1fr; gap: 0; border-block: 1px solid var(--army); }
+.occasion-card { grid-template-columns: minmax(0, 1fr) minmax(120px, .7fr); border-radius: 0; padding: 28px 32px 28px 0; background: transparent; }
+.occasion-card + .occasion-card { border-left: 1px solid var(--detail-line); padding-left: 32px; padding-right: 0; }
+.occasion-card h3 { font-size: clamp(30px, 3.1vw, 44px); }
+.occasion-card img { border-radius: 8px; transform: rotate(-5deg); }
+.occasion-bouquet img { transform: rotate(5deg); }
+.occasion-price { justify-content: flex-start; gap: 16px; }
+.frozen-strip { background: var(--army); color: var(--cream); border: 0; border-radius: 0 0 18px 0; margin-top: 16px; }
+.frozen-strip .eyebrow { color: var(--yellow); }
+.home-event { position: relative; overflow: clip; }
+.home-event .section-description { max-width: 400px; }
+.event-catalog-preview { padding: 20px 8px; gap: 24px; }
+.event-catalog-sheet:first-child { margin-top: -24px; }
+.event-catalog-sheet:last-child { margin-top: 36px; }
+.event-catalog-preview img { border-radius: 3px; }
+.event-catalog-preview a > span { padding-bottom: 10px; border-bottom: 1px solid #fff9ed50; }
+.member-invitation { border-radius: 0 24px 0 24px; }
+.partner-invitation { border: 0; border-top: 1px solid var(--army); border-bottom: 1px solid var(--army); border-radius: 0; padding-inline: 0; }
+.partner-invitation figure img { border-radius: 3px; }
+
+/* Each page opens with a different photographic composition. */
+.product-hero { grid-template-columns: .95fr 1.05fr; }
+.product-hero .hero-title, .event-hero .hero-title, .membership-hero .hero-title { font-size: clamp(44px, 5.5vw, 80px); }
+.product-photo-frame { border-radius: 3px; clip-path: polygon(0 0, 100% 0, 100% 87%, 91% 100%, 0 100%); }
+.product-quick-links { gap: 22px; }
+.product-quick-links a { border: 0; border-bottom: 1px solid var(--army); border-radius: 0; padding-inline: 0; min-width: 84px; justify-content: space-between; background: transparent; }
+.product-art-caption, .event-art-caption { font-size: 10px; letter-spacing: .04em; }
+.product-story .product-visual > img { border-radius: 3px 28px 3px 3px; }
+.product-story-bouquet .product-visual > .catalog-bouquet-photo { border-radius: 8px; }
+.product-story .product-story-copy .eyebrow { border-bottom: 1px solid var(--detail-line); padding-bottom: 12px; }
+.event-hero { background: var(--army-deep); color: var(--cream); }
+.event-hero .hero-description { color: var(--cream); }
+.event-hero .eyebrow { color: var(--yellow); }
+.event-hero .button { background: var(--yellow); color: var(--army-deep); }
+.event-hero .event-photo > img { border-radius: 40px 4px 4px 4px; }
+.event-photo-caption { color: var(--cream); }
+.photo-index { position: absolute; top: 14px; left: 14px; z-index: 1; background: var(--cream); color: var(--army); font-size: 9px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 8px 12px; border-radius: 20px; }
+.event-type-list button { transition: background .25s; }
+.event-type-list button.selected { background: #f6df9f; }
+.event-type-list .selection-circle { transition: transform .35s cubic-bezier(.22, 1, .36, 1); }
+.event-type-list button.selected .selection-circle { transform: rotate(-8deg); }
+.partnership-art figure img { border-radius: 2px 30px 2px 2px; }
+.partnership-model-labels span { border-radius: 0; border-width: 0 0 1px; padding-inline: 0; margin-right: 12px; }
+.partner-comparison article { border-radius: 2px; border-top: 3px solid var(--army); }
+.partner-comparison article:nth-child(2) { border-top-color: var(--orange); }
+.partner-comparison article:nth-child(3) { border-top-color: #ad6c0e; }
+.membership-hero { display: block; background: #f6df9f; }
+.membership-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(28px, 5vw, 70px); }
+.membership-card { border-radius: 12px 12px 40px 12px; }
+.membership-card-scene { perspective: 1000px; }
+.membership-simulator { background: var(--cream); }
+.membership-formula { padding-block: 18px; border-block: 1px solid var(--army); }
+.membership-calculator { border-radius: 2px 24px 2px 2px; }
+.location-mascot-scene { border-radius: 2px 28px 2px 2px; }
+.outlet-row { transition: background .25s; }
+
+/* Tactile feedback stays inside a stable hit area. */
+.arrow-circle, .arrow-link > span:first-child, .occasion-card img, .occasion-price svg, .frozen-strip > span > svg, .flavor-photo img, .region-directory > a > svg, .product-quick-links svg { transition: transform .5s cubic-bezier(.22, 1, .36, 1); }
+.footer-wordmark > .footer-wordmark-text { display: inline-flex; margin-left: 0; }
+.wordmark-letter { display: inline-block; transition: transform .5s cubic-bezier(.22, 1, .36, 1); }
+.wordmark-letter:nth-child(2n) { transition-delay: .04s; }
+.wordmark-letter:nth-child(3n) { transition-delay: .08s; }
+
+@media (hover: hover) and (pointer: fine) {
+  .arrow-link:hover .arrow-circle, .arrow-link:focus-visible .arrow-circle { transform: rotate(-35deg); }
+  .arrow-link:hover > span:first-child { transform: translateX(3px); }
+  .occasion-card:hover { background: transparent; }
+  .occasion-card:hover img, .occasion-card:focus-visible img { transform: rotate(0) scale(1.04); }
+  .occasion-card:hover .occasion-price svg { transform: translate(4px, -4px); }
+  .frozen-strip:hover > span > svg { transform: translate(4px, -4px); }
+  .flavor-card:hover .flavor-photo img, .flavor-card:focus-within .flavor-photo img { transform: scale(1.055); }
+  .event-type-list button:hover { background: #f1e7cf; }
+  .event-type-list button:hover .selection-circle { transform: rotate(-35deg); }
+  .region-directory > a:hover > svg { transform: translate(4px, -4px); }
+  .product-quick-links a:hover svg { transform: translateY(4px); }
+  .outlet-row:hover { background: #f2edde; }
+  .footer-wordmark:hover .wordmark-letter, .footer-wordmark:focus-visible .wordmark-letter { transform: translateY(-.07em); }
+  .footer-wordmark:hover .wordmark-letter:nth-child(2n) { transform: translateY(.04em); }
+}
+@media (max-width: 767px) {
+  .motion-ribbon { padding-block: 16px; }
+  .motion-ribbon .marquee-track > span { font-size: 26px; }
+  .occasion-heading .editorial-heading { font-size: clamp(34px, 8.2vw, 44px); }
+  .occasion-grid { grid-template-columns: 1fr 1fr; }
+  .occasion-card { grid-template-columns: 1fr; padding: 22px 16px 22px 0; }
+  .occasion-card + .occasion-card { padding: 22px 0 22px 16px; }
+  .occasion-card h3 { font-size: clamp(25px, 6.5vw, 34px); }
+  .occasion-card img { width: min(136px, 92%); }
+  .occasion-price { justify-content: space-between; gap: 8px; }
+  .event-catalog-preview { gap: 18px; padding: 14px 8px; }
+  .event-catalog-sheet:first-child { margin-top: 0; }
+  .event-catalog-sheet:last-child { margin-top: 28px; }
+  .flavor-content > p { min-height: 38px; }
+  .product-hero, .membership-hero-grid { grid-template-columns: minmax(0, 1fr); }
+  .product-hero .hero-title, .event-hero .hero-title, .membership-hero .hero-title { font-size: clamp(38px, 9.5vw, 54px); }
+  .product-quick-links { gap: 20px; }
+  .product-hero .product-quick-links a { min-width: 0; flex: 1; gap: 10px; }
+  .membership-card { border-radius: 10px 10px 30px 10px; }
+  .membership-hero-grid { gap: 28px; }
+  .photo-index { top: 12px; left: 12px; font-size: 8px; padding: 7px 10px; }
+  .product-story .product-visual > img { border-radius: 3px 20px 3px 3px; }
+}
+@media (max-width: 359px) {
+  .occasion-grid { grid-template-columns: minmax(0, 1fr); }
+  .occasion-card { grid-template-columns: 1fr 100px; padding: 24px 0; }
+  .occasion-card + .occasion-card { border-left: 0; border-top: 1px solid var(--detail-line); padding: 24px 0; }
+  .flavor-content > p { min-height: 0; }
+}
+@media (min-width: 1024px) and (max-height: 800px) {
+  .occasion-heading .editorial-heading { font-size: 48px; }
+  .occasion-card { padding-block: 24px; }
+  .event-catalog-preview { padding-block: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-navigation > a { animation: none; }
+  .motion-line-inner, .scroll-scene, .motion-ribbon .marquee-track, .motion-reveal, .motion-card, .motion-tilt { transform: none !important; }
+  .arrow-circle, .arrow-link > span:first-child, .occasion-card img, .occasion-price svg, .frozen-strip > span > svg, .flavor-photo img, .region-directory > a > svg, .product-quick-links svg, .wordmark-letter, .selection-circle { transition: none; transform: none !important; }
+}
+@media (hover: none), (pointer: coarse) {
+  .motion-tilt { transform: none !important; }
+}

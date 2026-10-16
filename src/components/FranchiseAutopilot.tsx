@@ -5,6 +5,7 @@ import { BangMusPortrait } from './BangMusPortrait';
 import { whatsappUrl } from "../lib/business";
 import { isStringRecord, useSessionState } from '../lib/useSessionState';
 import { InquiryFeedback } from './InquiryFeedback';
+import { Headline, ScrollScene, StaggerCard } from './MotionElements';
 
 const packages = [
   {
@@ -73,11 +74,7 @@ export function FranchiseAutopilot() {
       <section className="page-hero page-width partnership-hero">
         <Reveal>
           <p className="eyebrow">03 / Tiga pilihan kemitraan</p>
-          <h1 className="hero-title">
-            Bikin happy.
-            <br />
-            <span className="text-orange">Bangun usaha.</span>
-          </h1>
+          <Headline as="h1" className="hero-title" lines={[{ text: 'Bikin happy.' }, { text: 'Bangun usaha.', accent: 'orange' }]} />
           <p className="hero-description">
             Satu brand, tiga pilihan kemitraan.
             <br />
@@ -89,10 +86,10 @@ export function FranchiseAutopilot() {
           </a>
           <a href="#konsultasi-mitra" className="partner-direct-link">Belum yakin? Konsultasi dulu <ArrowUpRight size={16} /></a>
         </Reveal>
-        <Reveal className="partnership-art" delay={0.1}>
+        <ScrollScene className="partnership-art" turn={-1}>
           <figure><img src="/assets/client/store-concept.webp" width={610} height={421} alt="Referensi konsep gerai dari deck kemitraan Dimsum Hallo Dek" decoding="async" /><figcaption>Konsep gerai · deck kemitraan</figcaption></figure>
           <div className="partnership-model-labels"><span>Flexible</span><span>Collaborative</span><span>Full Managed</span></div>
-        </Reveal>
+        </ScrollScene>
       </section>
       <Marquee text="LET'S GROW SOMETHING GOOD." variant="marquee-yellow" />
       <section
@@ -115,11 +112,11 @@ export function FranchiseAutopilot() {
         </Reveal>
         <p className="demo-notice">Acuan dari deck kemitraan terbaru. Nilai Full Managed adalah investasi minimum; kebutuhan lokasi dan pembangunan dapat memengaruhi penawaran akhir.</p>
         <div className="partner-comparison" aria-label="Perbandingan gambaran model kemitraan">
-          {packages.map((plan, index) => <article key={plan.name}>
+          {packages.map((plan, index) => <StaggerCard key={plan.name} index={index}>
             <p className="eyebrow">0{index + 1} / Model kemitraan</p><h3>{plan.name}</h3>
             <dl><div><dt>Arah keterlibatan mitra</dt><dd>{['Lebih aktif mengelola sehari-hari', 'Berbagi pengelolaan dengan tim', 'Pengelolaan lebih banyak oleh tim'][index]}</dd></div><div><dt>Investasi acuan</dt><dd>{index === 2 ? 'Mulai ' : ''}{plan.price} <span>· acuan paket</span></dd></div></dl>
             <a className="button button-green" href="#konsultasi-mitra" onClick={() => update('model', plan.name)}>Bahas {plan.name} <ArrowUpRight size={16} /></a>
-          </article>)}
+          </StaggerCard>)}
         </div>
         <p className="price-note">Tinjau fasilitas, biaya lanjutan, dan perjanjian bersama tim sebelum bergabung.</p>
         <a href="#detail-kemitraan" className="partner-detail-link">Lihat topik konsultasi tiap model <ArrowDown size={16} /></a>

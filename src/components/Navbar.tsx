@@ -1,10 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Link, NavLink, useLocation } from "react-router";
 import { sitePages } from "../lib/business";
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { PageProgress } from './MotionElements';
+import { motionSprings, motionTokens } from '../lib/motionTokens';
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const reduced = useReducedMotion();
   const toggleRef = useRef<HTMLButtonElement>(null);
   const navigationRef = useRef<HTMLElement>(null);
   const location = useLocation();
@@ -77,7 +81,7 @@ export function Navbar() {
         <nav className="desktop-nav" aria-label="Navigasi utama">
           {sitePages.map((page) => (
             <NavLink key={page.path} to={page.path} end={page.path === "/"}>
-              {page.label}
+              {({ isActive }) => <>{page.label}{isActive && <motion.span className="nav-active-line" layoutId="nav-active-line" transition={motionSprings.navigation} />}</>}
             </NavLink>
           ))}
         </nav>
@@ -93,12 +97,19 @@ export function Navbar() {
           {open ? <X /> : <Menu />}
         </button>
       </div>
+      <PageProgress key={location.pathname} />
+      <AnimatePresence>
       {open && (
-        <nav
+        <motion.nav
+          key="mobile-menu"
           ref={navigationRef}
           id="mobile-navigation"
           className="mobile-navigation"
           aria-label="Navigasi mobile"
+          initial={reduced ? false : { opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: reduced ? 0 : -8 }}
+          transition={{ duration: reduced ? motionTokens.duration.fast : motionTokens.duration.normal, ease: motionTokens.ease }}
         >
           <p className="eyebrow">Pilih jalan happy kamu</p>
           {sitePages.map((page, i) => (
@@ -107,6 +118,7 @@ export function Navbar() {
               to={page.path}
               end={page.path === "/"}
               onClick={() => setOpen(false)}
+              style={{ '--nav-delay': `${i * motionTokens.stagger}s` } as CSSProperties}
             >
               <span className="nav-index">0{i + 1}</span>
               {page.label}
@@ -114,8 +126,9 @@ export function Navbar() {
             </NavLink>
           ))}
           <p className="mobile-nav-note">#AutoHappy Setiap Hari</p>
-        </nav>
+        </motion.nav>
       )}
+      </AnimatePresence>
     </header>
   );
 }
