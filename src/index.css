@@ -280,6 +280,15 @@ textarea:focus-visible {
   align-items: center;
   gap: 30px;
 }
+@media (min-width: 1024px) {
+  .header-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  }
+  .header-inner .brand-lockup {
+    justify-self: start;
+  }
+}
 .desktop-nav a {
   position: relative;
   font-size: 12px;
