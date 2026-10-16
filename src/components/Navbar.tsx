@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Link, NavLink, useLocation } from "react-router";
-import { sitePages, whatsappUrl } from "../lib/business";
+import { sitePages } from "../lib/business";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -81,15 +81,6 @@ export function Navbar() {
             </NavLink>
           ))}
         </nav>
-        <a
-          className="header-order"
-          href={whatsappUrl("Halo Bang Mus, aku mau tanya dan pesan dimsum.")}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Pesan via WhatsApp
-          <ArrowUpRight size={18} />
-        </a>
         <button
           ref={toggleRef}
           type="button"
@@ -122,15 +113,6 @@ export function Navbar() {
               <ArrowUpRight />
             </NavLink>
           ))}
-          <a
-            className="button button-orange"
-            href={whatsappUrl("Halo Bang Mus, aku mau pesan dimsum.")}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Pesan via WhatsApp
-            <ArrowUpRight size={20} />
-          </a>
           <p className="mobile-nav-note">#AutoHappy Setiap Hari</p>
         </nav>
       )}

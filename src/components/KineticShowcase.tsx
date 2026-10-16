@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ArrowRight, MessageCircle, MapPin, Flame } from 'lucide-react';
+import { ArrowLeft, ArrowRight, MapPin, Flame } from 'lucide-react';
 import { MenuItem } from '../data/menuData';
 import { FloatingGarnishes } from './FloatingGarnishes';
 import { Link } from 'react-router';
-import { whatsappUrl } from '../lib/business';
 
 interface KineticShowcaseProps {
   items: MenuItem[];
@@ -116,19 +115,8 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                   {currentItem.description}
                 </p>
 
-                {/* Dual Action CTA Buttons */}
+                {/* Store locator */}
                 <div className="showcase-actions pt-4 flex flex-wrap items-center gap-3">
-                  <a
-                    href={whatsappUrl(`Halo Bang Mus, saya ingin tanya dan pesan ${currentItem.name}. Mohon pilihan isi dan harga resminya.`)}
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ backgroundColor: currentItem.accentColor }}
-                    className="px-5 py-3.5 rounded-full text-[#283920] font-extrabold text-sm flex items-center gap-2 shadow-[0_5px_0_rgba(22,36,18,0.3)] hover:-translate-y-0.5 active:translate-y-0 transition-all"
-                  >
-                    <MessageCircle className="w-4 h-4 stroke-[2.5]" />
-                    Pesan via WhatsApp
-                  </a>
-
                   <Link
                     to="/gerai#locations"
                     className="px-4 py-3.5 rounded-full bg-[#FFF9ED]/10 hover:bg-[#FFF9ED]/20 text-[#FFF9ED] font-bold text-sm border border-[#FFF9ED]/35 flex items-center gap-2 transition-all"
