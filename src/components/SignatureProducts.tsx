@@ -1,11 +1,8 @@
-import { ArrowDown, ArrowUpRight, Snowflake } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import {
-  BouquetArt,
-  Dumpling,
   Faq,
   Marquee,
   Reveal,
-  Spark,
 } from "./DesignElements";
 import { Link } from 'react-router';
 import { whatsappUrl } from "../lib/business";
@@ -54,11 +51,9 @@ export function SignatureProducts() {
         <Reveal>
           <p className="eyebrow">01 / Cake, Bouquet & Frozen</p>
           <h1 className="hero-title">
-            SAY IT
+            Hadiah gurih.
             <br />
-            WITH
-            <br />
-            <span className="text-orange">DIMSUM.</span>
+            <span className="text-orange">Stok bahagia.</span>
           </h1>
           <p className="hero-description">
             Buat hadiah, buat perayaan,
@@ -80,15 +75,7 @@ export function SignatureProducts() {
             />
             <span>Gurihnya, punya cerita.</span>
           </div>
-          <div className="round-stamp">
-            <Spark />
-            <span>
-              GOOD FOOD
-              <br />
-              GOOD MOOD
-            </span>
-          </div>
-          <Dumpling className="product-hero-dumpling" />
+          <span className="product-art-caption">Cake · Bouquet · Frozen</span>
         </Reveal>
       </section>
       <nav className="product-index page-width" aria-label="Pilihan produk">
@@ -110,9 +97,9 @@ export function SignatureProducts() {
             <Reveal className="product-visual">
               {product.type === "bouquet" ? (
                 <>
-                  <BouquetArt />
+                  <img className="catalog-bouquet-photo" src="/assets/client/bouquet.webp" width={195} height={182} alt="Contoh Dimsum Bouquet M dari katalog produk" loading="lazy" decoding="async" />
                   <span className="visual-caption">
-                    Ilustrasi bouquet · desain final dikonsultasikan
+                    Foto katalog Bouquet M · desain dikonsultasikan
                   </span>
                 </>
               ) : product.type === "cake" ? (
@@ -131,16 +118,7 @@ export function SignatureProducts() {
                 </>
               ) : (
                 <>
-                  <div className="frozen-illustration">
-                    <Snowflake />
-                    <Dumpling />
-                    <span>
-                      READY FOR
-                      <br />
-                      YOUR HAPPY DAY.
-                    </span>
-                  </div>
-                  <span className="visual-caption">Dimsum Frozen</span>
+                  <div className="frozen-packages"><figure><img src="/assets/client/frozen-15g.webp" width={198} height={152} alt="Kemasan Dimsum Frozen 15 gram dari katalog produk" loading="lazy" decoding="async" /><figcaption>Dimsum Frozen · 15 gram</figcaption></figure><figure><img src="/assets/client/frozen-28g.webp" width={195} height={152} alt="Kemasan Dimsum Frozen reguler 28 gram dari katalog produk" loading="lazy" decoding="async" /><figcaption>Frozen reguler · 28 gram</figcaption></figure><a href="/assets/client/frozen-catalog.webp" target="_blank" rel="noopener noreferrer">Buka katalog frozen & saus <ArrowUpRight size={16} /></a></div>
                 </>
               )}
             </Reveal>
@@ -172,6 +150,7 @@ export function SignatureProducts() {
                 Harga katalog produk; tim memastikan harga transaksi dan ketersediaan.{' '}
                 <Link className="membership-inline-link" to="/membership#simulasi-poin">Member dapat 1% poin ↗</Link>
               </p>
+              {product.type === 'cake' && <a className="catalog-text-link" href="/assets/client/cake-catalog.webp" target="_blank" rel="noopener noreferrer">Lihat ukuran & katalog cake <ArrowUpRight size={15} /></a>}
               <ProductInquiry id={product.id} name={product.name} unit={product.id === 'frozen' ? 'kemasan' : product.id} personalized={product.id !== 'frozen'} />
             </Reveal>
           </div>

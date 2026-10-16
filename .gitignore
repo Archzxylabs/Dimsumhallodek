@@ -1,6 +1,8 @@
 node_modules/
 dist/
 scratch/
+output/
+.playwright-cli/
 
 .env
 .env.*

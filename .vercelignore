@@ -2,4 +2,6 @@
 /assets/
 /raw_content/
 /scratch/
+/output/
+/.playwright-cli/
 /hallo

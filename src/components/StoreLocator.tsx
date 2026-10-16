@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, MapPin, Search, X } from "lucide-react";
 import { REGIONS_DATA } from "../data/locationsData";
-import { Dumpling, Reveal, Spark } from "./DesignElements";
+import { Reveal } from "./DesignElements";
 import { isStringRecord, useSessionState } from '../lib/useSessionState';
 import { whatsappUrl } from '../lib/business';
 
@@ -57,9 +57,9 @@ export function StoreLocator() {
           <Reveal>
             <p className="eyebrow">04 / Alamat & petunjuk gerai</p>
             <h1 className="hero-title">
-              HALLO,
+              Hallo,
               <br />
-              <span className="text-orange">TETANGGA.</span>
+              <span className="text-orange">tetangga.</span>
             </h1>
             <p className="hero-description">
               Mampir, bawa pulang, atau nikmati bareng.
@@ -71,10 +71,8 @@ export function StoreLocator() {
           <Reveal className="location-hero-art">
             <span className="location-count">
               {allOutlets.length}
-              <Spark />
             </span>
             <span className="eyebrow">Gerai dalam daftar</span>
-            <Dumpling />
             <p>Bogor · Bekasi · Sukabumi · Bandung</p>
           </Reveal>
         </div>
@@ -170,7 +168,7 @@ export function StoreLocator() {
           </nav>}
           {filtered.length === 0 && (
             <div className="locator-empty">
-              <Dumpling />
+              <Search size={30} aria-hidden="true" />
               <h3>Belum ketemu yang cocok.</h3>
               <p>{region === 'All' ? 'Coba nama gerai atau daerah lain.' : `Pencarian sedang dibatasi ke ${region}. Coba cari di semua wilayah.`}</p>
               {region !== 'All' && <button type="button" onClick={() => setRegion('All')} className="button button-orange">Cari di semua wilayah <Search size={18} /></button>}

@@ -1,0 +1,365 @@
+[
+  {
+    "asset": "/assets/client/carbonara-16.webp",
+    "source": "client-data/2026-10-07/produk/carbonara-16.jpg",
+    "dimensions": [
+      800,
+      640
+    ],
+    "bytes": 41990,
+    "crop": [
+      0,
+      60,
+      1000,
+      860
+    ]
+  },
+  {
+    "asset": "/assets/client/carbonara-3.webp",
+    "source": "client-data/2026-10-07/produk/carbonara-3.jpg",
+    "dimensions": [
+      800,
+      640
+    ],
+    "bytes": 36070,
+    "crop": [
+      0,
+      60,
+      1000,
+      860
+    ]
+  },
+  {
+    "asset": "/assets/client/carbonara-6.webp",
+    "source": "client-data/2026-10-07/produk/carbonara-6.jpg",
+    "dimensions": [
+      800,
+      640
+    ],
+    "bytes": 34034,
+    "crop": [
+      0,
+      60,
+      1000,
+      860
+    ]
+  },
+  {
+    "asset": "/assets/client/hot-lava-16.webp",
+    "source": "client-data/2026-10-07/produk/hot-lava-16.jpg",
+    "dimensions": [
+      800,
+      640
+    ],
+    "bytes": 42286,
+    "crop": [
+      0,
+      60,
+      1000,
+      860
+    ]
+  },
+  {
+    "asset": "/assets/client/hot-lava-3.webp",
+    "source": "client-data/2026-10-07/produk/hot-lava-3.jpg",
+    "dimensions": [
+      800,
+      640
+    ],
+    "bytes": 37778,
+    "crop": [
+      0,
+      60,
+      1000,
+      860
+    ]
+  },
+  {
+    "asset": "/assets/client/hot-lava-6.webp",
+    "source": "client-data/2026-10-07/produk/hot-lava-6.jpg",
+    "dimensions": [
+      800,
+      640
+    ],
+    "bytes": 36746,
+    "crop": [
+      0,
+      60,
+      1000,
+      860
+    ]
+  },
+  {
+    "asset": "/assets/client/mentai-16.webp",
+    "source": "client-data/2026-10-07/produk/mentai-16.jpg",
+    "dimensions": [
+      800,
+      640
+    ],
+    "bytes": 49980,
+    "crop": [
+      0,
+      60,
+      1000,
+      860
+    ]
+  },
+  {
+    "asset": "/assets/client/mentai-3.webp",
+    "source": "client-data/2026-10-07/produk/mentai-3.jpg",
+    "dimensions": [
+      800,
+      640
+    ],
+    "bytes": 40460,
+    "crop": [
+      0,
+      60,
+      1000,
+      860
+    ]
+  },
+  {
+    "asset": "/assets/client/mentai-6.webp",
+    "source": "client-data/2026-10-07/produk/mentai-6.jpg",
+    "dimensions": [
+      800,
+      640
+    ],
+    "bytes": 36770,
+    "crop": [
+      0,
+      60,
+      1000,
+      860
+    ]
+  },
+  {
+    "asset": "/assets/client/mix-16.webp",
+    "source": "client-data/2026-10-07/produk/mix-16.jpg",
+    "dimensions": [
+      800,
+      640
+    ],
+    "bytes": 43822,
+    "crop": [
+      0,
+      60,
+      1000,
+      860
+    ]
+  },
+  {
+    "asset": "/assets/client/mix-3.webp",
+    "source": "client-data/2026-10-07/produk/mix-3.jpg",
+    "dimensions": [
+      800,
+      640
+    ],
+    "bytes": 35192,
+    "crop": [
+      0,
+      60,
+      1000,
+      860
+    ]
+  },
+  {
+    "asset": "/assets/client/mix-6.webp",
+    "source": "client-data/2026-10-07/produk/mix-6.jpg",
+    "dimensions": [
+      800,
+      640
+    ],
+    "bytes": 36160,
+    "crop": [
+      0,
+      60,
+      1000,
+      860
+    ]
+  },
+  {
+    "asset": "/assets/client/original-16.webp",
+    "source": "client-data/2026-10-07/produk/original-16.jpg",
+    "dimensions": [
+      800,
+      640
+    ],
+    "bytes": 39348,
+    "crop": [
+      0,
+      60,
+      1000,
+      860
+    ]
+  },
+  {
+    "asset": "/assets/client/original-6.webp",
+    "source": "client-data/2026-10-07/produk/original-6.jpg",
+    "dimensions": [
+      800,
+      640
+    ],
+    "bytes": 35374,
+    "crop": [
+      0,
+      60,
+      1000,
+      860
+    ]
+  },
+  {
+    "asset": "/assets/client/tartar-16.webp",
+    "source": "client-data/2026-10-07/produk/tartar-16.jpg",
+    "dimensions": [
+      800,
+      640
+    ],
+    "bytes": 41710,
+    "crop": [
+      0,
+      60,
+      1000,
+      860
+    ]
+  },
+  {
+    "asset": "/assets/client/tartar-3.webp",
+    "source": "client-data/2026-10-07/produk/tartar-3.jpg",
+    "dimensions": [
+      800,
+      640
+    ],
+    "bytes": 36126,
+    "crop": [
+      0,
+      60,
+      1000,
+      860
+    ]
+  },
+  {
+    "asset": "/assets/client/tartar-6.webp",
+    "source": "client-data/2026-10-07/produk/tartar-6.jpg",
+    "dimensions": [
+      800,
+      640
+    ],
+    "bytes": 35146,
+    "crop": [
+      0,
+      60,
+      1000,
+      860
+    ]
+  },
+  {
+    "asset": "/assets/client/menu.webp",
+    "source": "client-data/2026-10-07/menu/menu-dan-harga.jpg",
+    "dimensions": [
+      1131,
+      1600
+    ],
+    "bytes": 242734
+  },
+  {
+    "asset": "/assets/client/cake-catalog.webp",
+    "source": "client-data/2026-10-07/menu/dimsum-cake.jpg",
+    "dimensions": [
+      1131,
+      1600
+    ],
+    "bytes": 194166
+  },
+  {
+    "asset": "/assets/client/frozen-catalog.webp",
+    "source": "client-data/2026-10-07/menu/frozen-dan-saus.jpg",
+    "dimensions": [
+      720,
+      1280
+    ],
+    "bytes": 154114
+  },
+  {
+    "asset": "/assets/client/birthday-catalog.webp",
+    "source": "client-data/2026-10-07/paket-event/birthday.jpg",
+    "dimensions": [
+      1024,
+      1280
+    ],
+    "bytes": 171502
+  },
+  {
+    "asset": "/assets/client/wedding-catalog.webp",
+    "source": "client-data/2026-10-07/paket-event/wedding.jpg",
+    "dimensions": [
+      1024,
+      1280
+    ],
+    "bytes": 169330
+  },
+  {
+    "asset": "/assets/client/cake-personal.webp",
+    "source": "client-data/2026-10-07/menu/dimsum-cake.jpg · photo of Wooden Plate XL",
+    "dimensions": [
+      192,
+      198
+    ],
+    "bytes": 11430
+  },
+  {
+    "asset": "/assets/client/bouquet.webp",
+    "source": "client-data/2026-10-07/menu/dimsum-cake.jpg · photo of Bouquet M",
+    "dimensions": [
+      195,
+      182
+    ],
+    "bytes": 10176
+  },
+  {
+    "asset": "/assets/client/bang-mus-welcome.webp",
+    "source": "public/assets/kemitraan/bangun-bisnis-bersama-dhd.pdf · page 1, original image + transparency",
+    "dimensions": [
+      566,
+      850
+    ],
+    "bytes": 115166
+  },
+  {
+    "asset": "/assets/client/bang-mus-pointing.webp",
+    "source": "public/assets/kemitraan/bangun-bisnis-bersama-dhd.pdf · page 5, original image + transparency",
+    "dimensions": [
+      410,
+      615
+    ],
+    "bytes": 42680
+  },
+  {
+    "asset": "/assets/client/store-concept.webp",
+    "source": "public/assets/kemitraan/bangun-bisnis-bersama-dhd.pdf · page 5, storefront concept",
+    "dimensions": [
+      610,
+      421
+    ],
+    "bytes": 46772
+  },
+  {
+    "asset": "/assets/client/frozen-15g.webp",
+    "source": "client-data/2026-10-17/menu/frozen-catalog-compact.jpg · packaging photo",
+    "dimensions": [
+      198,
+      152
+    ],
+    "bytes": 11486
+  },
+  {
+    "asset": "/assets/client/frozen-28g.webp",
+    "source": "client-data/2026-10-17/menu/frozen-catalog-compact.jpg · packaging photo",
+    "dimensions": [
+      195,
+      152
+    ],
+    "bytes": 9996
+  }
+]

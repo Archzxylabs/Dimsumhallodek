@@ -1,205 +1,57 @@
+import { Link } from 'react-router';
+import { ArrowUpRight, MapPin } from 'lucide-react';
 import { useSessionState } from '../lib/useSessionState';
-import { Link } from "react-router";
-import { ArrowUpRight, MapPin } from "lucide-react";
-import { MENU_ITEMS } from "../data/menuData";
-import { BangMusPortrait } from "../components/BangMusPortrait";
-import { KineticShowcase } from "../components/KineticShowcase";
-import {
-  ArrowLink,
-  BouquetArt,
-  Dumpling,
-  Marquee,
-  Reveal,
-  Spark,
-} from "../components/DesignElements";
+import { MENU_ITEMS } from '../data/menuData';
+import { REGIONS_DATA } from '../data/locationsData';
+import { BangMusPortrait } from '../components/BangMusPortrait';
+import { KineticShowcase } from '../components/KineticShowcase';
+import { FlavorCollection } from '../components/FlavorCollection';
+import { ArrowLink, Reveal } from '../components/DesignElements';
 
 export function HomePage() {
   const [currentIndex, setCurrentIndex] = useSessionState('menu-slide', 0, (v): v is number => Number.isInteger(v) && typeof v === 'number' && v >= 0 && v < MENU_ITEMS.length);
-  return (
-    <>
-      <KineticShowcase
-        items={MENU_ITEMS}
-        currentIndex={currentIndex}
-        onSelectIndex={setCurrentIndex}
-      />
-      <nav className="home-shortcuts page-width" aria-label="Jelajahi Dimsum Hallo Dek">
-        <span>Mau cari apa?</span>
-        <Link to="/produk#cake">Cake & Bouquet <ArrowUpRight size={16} /></Link>
-        <Link to="/produk#frozen">Dimsum Frozen <ArrowUpRight size={16} /></Link>
-        <Link to="/event">Dimsum untuk event <ArrowUpRight size={16} /></Link>
-        <Link to="/kemitraan">Jadi mitra <ArrowUpRight size={16} /></Link>
-      </nav>
-      <Marquee />
-      <section className="home-intro page-width section-space">
-        <Reveal>
-          <p className="eyebrow">
-            <span className="mini-dot" /> Lebih dari dimsum harian
-          </p>
-          <h2 className="editorial-heading">
-            Sedikit dimsum.
-            <br />
-            Banyak alasan
-            <br />
-            buat <span className="handwritten">happy.</span>
-          </h2>
-        </Reveal>
-        <Reveal className="home-intro-aside" delay={0.1}>
-          <Dumpling className="intro-dumpling" />
-          <p>
-            Ada yang buat nemenin hari. Ada yang buat hadiah. Ada juga yang
-            bikin satu acara ikut happy.
-          </p>
-          <ArrowLink to="/produk">Temukan favorit barumu</ArrowLink>
-        </Reveal>
-      </section>
-      <section
-        className="home-product-grid page-width"
-        aria-label="Pilihan produk"
-      >
-        <Reveal>
-          <Link to="/produk#cake" className="feature-tile cake-tile">
-            <div className="tile-top">
-              <span>01 / BUAT PERAYAAN</span>
-              <ArrowUpRight />
-            </div>
-            <div className="tile-photo">
-              <img
-                src="/assets/optimized/cake-800.webp"
-                    srcSet="/assets/optimized/cake-480.webp 480w, /assets/optimized/cake-800.webp 800w, /assets/optimized/cake-1200.webp 930w"
-                    sizes="(max-width: 359px) calc(100vw - 40px), (max-width: 767px) calc((100vw - 52px) / 2), 45vw"
-                    decoding="async"
-                alt="Sajian dimsum dengan aneka saus"
-                loading="lazy"
-              />
-            </div>
-            <div className="tile-caption">
-              <h3>
-                Make a wish.
-                <br />
-                Take a bite.
-              </h3>
-              <span>Dimsum Cake</span>
-            </div>
-            <div className="tile-stamp">
-              HAPPY
-              <br />
-              BIRTHDAY!
-            </div>
-          </Link>
-        </Reveal>
-        <Reveal delay={0.12}>
-          <Link to="/produk#bouquet" className="feature-tile bouquet-tile">
-            <div className="tile-top">
-              <span>02 / BUAT ORANG SPESIAL</span>
-              <ArrowUpRight />
-            </div>
-            <BouquetArt />
-            <div className="tile-caption">
-              <h3>
-                Kasih sayang,
-                <br />
-                dibungkus gurih.
-              </h3>
-              <span>Dimsum Bouquet</span>
-            </div>
-          </Link>
-        </Reveal>
-      </section>
-      <section className="page-width home-frozen">
-        <Link to="/produk#frozen">
-          <Dumpling />
-          <div><p className="eyebrow">Untuk stok di rumah</p><h3>Dimsum Frozen</h3><p>Kenali pilihan kemasan dan rencanakan pesananmu.</p></div>
-          <span>Lihat frozen <ArrowUpRight size={20} /></span>
+  return <>
+    <KineticShowcase items={MENU_ITEMS} currentIndex={currentIndex} onSelectIndex={setCurrentIndex} />
+    <nav className="home-shortcuts page-width" aria-label="Jelajahi Dimsum Hallo Dek">
+      <span>Hari ini mau yang mana?</span>
+      <a href="#pilihan-rasa">Pilihan rasa <ArrowUpRight size={15} /></a>
+      <Link to="/produk">Hadiah & frozen <ArrowUpRight size={15} /></Link>
+      <Link to="/event">Untuk acara <ArrowUpRight size={15} /></Link>
+      <Link to="/kemitraan">Jadi mitra <ArrowUpRight size={15} /></Link>
+    </nav>
+
+    <FlavorCollection />
+
+    <section className="occasion-section page-width section-space" aria-labelledby="occasions-title">
+      <Reveal className="collection-heading">
+        <div><p className="eyebrow">02 / Lebih dari camilan</p><h2 id="occasions-title" className="editorial-heading">Ada dimsum untuk<br /><span className="text-orange">setiap cerita.</span></h2></div>
+        <p>Buat bilang selamat, buat orang tersayang, atau buat stok di rumah. Tinggal pilih momennya.</p>
+      </Reveal>
+      <div className="occasion-grid">
+        <Link to="/produk#cake" className="occasion-card occasion-cake">
+          <div><p className="eyebrow">Rayakan dengan yang gurih</p><h3>Dimsum Cake</h3><p>Dekorasi nama untuk momen yang lebih personal.</p><span className="occasion-price">Mulai Rp65.000 <ArrowUpRight size={20} /></span></div>
+          <img src="/assets/client/cake-personal.webp" width={192} height={198} alt="Contoh cake dimsum di wooden plate dari katalog produk" loading="lazy" decoding="async" />
         </Link>
-      </section>
-      <section className="page-width home-membership">
-        <Link to="/membership"><BangMusPortrait decorative /><div><p className="eyebrow">Membership Hallo Dek</p><h3>Makan enak. Dapat poin.</h3><p>Kumpulkan poin 1% dari harga produk bareng Bang Mus.</p></div><span>Kenali membership <ArrowUpRight size={20} /></span></Link>
-      </section>
-      <section className="home-event section-space">
-        <div className="page-width home-event-layout">
-          <Reveal>
-            <p className="eyebrow">Momen kamu, sajian kita</p>
-            <h2 className="editorial-heading">
-              MOMEN
-              <br />
-              BESAR.
-              <br />
-              <span className="text-yellow">
-                GIGITAN
-                <br />
-                KECIL.
-              </span>
-            </h2>
-            <ArrowLink to="/event" className="light-link">
-              Bikin acara makin happy
-            </ArrowLink>
-          </Reveal>
-          <Reveal className="home-event-photo" delay={0.1}>
-            <img
-              src="/assets/optimized/platter-800.webp"
-                srcSet="/assets/optimized/platter-480.webp 480w, /assets/optimized/platter-800.webp 768w"
-                sizes="(max-width: 767px) calc(100vw - 40px), 45vw"
-                decoding="async"
-              alt="Dimsum mentai untuk dinikmati bersama"
-              loading="lazy"
-            />
-            <div className="photo-note">
-              <Spark />
-              Wedding, sekolah, kantor,
-              <br />
-              khitanan, sampai lamaran.
-            </div>
-          </Reveal>
-        </div>
-      </section>
-      <section className="home-partner page-width section-space">
-        <Reveal className="partner-note">
-          <p className="eyebrow">Growing together</p>
-          <span className="partner-serial">DHD / 03</span>
-          <Spark />
-        </Reveal>
-        <Reveal className="home-partner-copy">
-          <h2 className="editorial-heading">
-            Satu rasa.
-            <br />
-            Banyak peluang.
-          </h2>
-          <p>
-            Mulai cerita usahamu bersama Dimsum Hallo Dek. Kenali tiga pilihan
-            kerja sama dan temukan yang cocok dengan rencanamu.
-          </p>
-          <ArrowLink to="/kemitraan">Kenalan dengan kemitraan</ArrowLink>
-        </Reveal>
-      </section>
-      <section id="locations" className="home-locations">
-        <div className="page-width">
-          <Reveal>
-            <p className="eyebrow">
-              <MapPin size={16} /> Dekat kamu, dekat happy
-            </p>
-            <div className="home-location-heading">
-              <h2>
-                Bogor.
-                <br />
-                Bekasi.
-                <br />
-                Sukabumi.
-                <br />
-                Bandung.
-              </h2>
-              <div>
-                <Dumpling />
-                <p>
-                  Udah ketemu
-                  <br />
-                  gerai favoritmu?
-                </p>
-                <ArrowLink to="/gerai#locations">Cari alamat gerai</ArrowLink>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-    </>
-  );
+        <Link to="/produk#bouquet" className="occasion-card occasion-bouquet">
+          <div><p className="eyebrow">Hadiah yang bisa dinikmati</p><h3>Dimsum Bouquet</h3><p>22 pcs, dengan dekorasi nama untuk si penerima.</p><span className="occasion-price">Rp140.000 <ArrowUpRight size={20} /></span></div>
+          <img src="/assets/client/bouquet.webp" width={195} height={182} alt="Dimsum Bouquet M dengan dekorasi dari katalog produk" loading="lazy" decoding="async" />
+        </Link>
+      </div>
+      <Link to="/produk#frozen" className="frozen-strip"><img src="/assets/client/frozen-15g.webp" width={198} height={152} alt="Kemasan Dimsum Frozen" loading="lazy" decoding="async" /><div><span className="eyebrow">Simpan untuk nanti</span><h3>Dimsum Frozen</h3><p>Mulai Rp35.000 / 25 pcs · Pilihan saus tersedia.</p></div><span>Kenali pilihan frozen <ArrowUpRight size={19} /></span></Link>
+    </section>
+
+    <section className="home-event section-space">
+      <div className="page-width home-event-layout">
+        <Reveal><p className="eyebrow">03 / Momen kamu, sajian kita</p><h2 className="editorial-heading">Meja yang ramai.<br /><span className="text-yellow">Momen yang hangat.</span></h2><p className="section-description">Wedding, acara sekolah, kantor, khitanan, atau lamaran. Ceritakan acaranya, kita bantu bahas kebutuhan dimsumnya.</p><div className="event-labels"><span>Wedding</span><span>Sekolah</span><span>Kantor</span><span>Khitanan</span><span>Lamaran</span></div><ArrowLink to="/event" className="light-link">Rencanakan acara kamu</ArrowLink></Reveal>
+        <Reveal className="event-catalog-preview" delay={0.08}><a href="/assets/client/wedding-catalog.webp" target="_blank" rel="noopener noreferrer"><img src="/assets/client/wedding-catalog.webp" alt="Katalog paket wedding Dimsum Hallo Dek" width={1024} height={1280} loading="lazy" decoding="async" /><span>Lihat katalog wedding <ArrowUpRight size={16} /></span></a><a href="/assets/client/birthday-catalog.webp" target="_blank" rel="noopener noreferrer"><img src="/assets/client/birthday-catalog.webp" alt="Katalog paket birthday Dimsum Hallo Dek" width={1024} height={1280} loading="lazy" decoding="async" /><span>Lihat katalog birthday <ArrowUpRight size={16} /></span></a></Reveal>
+      </div>
+    </section>
+
+    <section className="home-benefits page-width section-space">
+      <Reveal className="member-invitation"><div><p className="eyebrow">Membership Hallo Dek</p><h2>Makan enak.<br />Happynya terkumpul.</h2><p>Dapat poin sebesar 1% dari harga produk. Daftar dan cek poin lewat admin.</p><ArrowLink to="/membership">Kenali membership</ArrowLink></div><BangMusPortrait full decorative /></Reveal>
+      <Reveal className="partner-invitation" delay={0.08}><figure><img src="/assets/client/store-concept.webp" width={610} height={421} alt="Referensi konsep gerai Dimsum Hallo Dek dari deck kemitraan" loading="lazy" decoding="async" /><figcaption>Konsep gerai · deck kemitraan</figcaption></figure><div><p className="eyebrow">Tumbuh bareng Hallo Dek</p><h2>Satu brand.<br />Tiga cara bermitra.</h2><p>Flexible, Collaborative, atau Full Managed. Temukan peran yang pas buat rencana usahamu.</p><ArrowLink to="/kemitraan">Lihat pilihan kemitraan</ArrowLink></div></Reveal>
+    </section>
+
+    <section className="nearby-section section-space"><div className="page-width"><div className="collection-heading"><div><p className="eyebrow"><MapPin size={15} /> Lebih dekat dari yang kamu kira</p><h2 className="editorial-heading">Mampir ke<br />gerai favoritmu.</h2></div><ArrowLink to="/gerai#locations">Cari alamat gerai</ArrowLink></div><div className="region-directory">{REGIONS_DATA.map(group => <Link to="/gerai#locations" key={group.region}><div><h3>{group.region}</h3><span>{group.count} gerai dalam daftar</span></div><ArrowUpRight size={22} /></Link>)}</div></div></section>
+  </>;
 }

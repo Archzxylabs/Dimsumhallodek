@@ -1,6 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
-import { Spark } from "./DesignElements";
 import { sitePages, whatsappUrl } from "../lib/business";
 
 export function Footer() {
@@ -26,7 +25,7 @@ export function Footer() {
         >
           HALLO DEK
           <span>
-            <Spark />
+            <img src="/assets/optimized/logo-192.webp" alt="" width={72} height={72} loading="lazy" />
           </span>
         </Link>
         <div className="footer-grid">

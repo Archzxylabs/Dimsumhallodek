@@ -1,9 +1,9 @@
 import { useEffect, useState, type FormEvent } from 'react';
-import { ArrowDown, ArrowUpRight, Gift, MessageCircle, Sparkles } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Gift, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router';
 import catalog from '../../data/catalog.json';
 import { BangMusPortrait } from '../components/BangMusPortrait';
-import { Faq, Reveal, Spark } from '../components/DesignElements';
+import { Faq, Reveal } from '../components/DesignElements';
 import { InquiryFeedback } from '../components/InquiryFeedback';
 import { whatsappUrl } from '../lib/business';
 import { calculateMembershipPoints, membershipRegistrationMessage, parseMembershipAmount } from '../lib/membership';
@@ -38,7 +38,7 @@ export function MembershipPage() {
     <section className="page-hero page-width membership-hero">
       <Reveal>
         <p className="eyebrow">Membership / Happy yang terkumpul</p>
-        <h1 className="hero-title">MAKAN<br />ENAK.<br /><span className="text-orange">DAPAT POIN.</span></h1>
+        <h1 className="hero-title">Makan enak.<br /><span className="text-orange">Dapat poin.</span></h1>
         <p className="hero-description">Favoritmu punya bonus. Kumpulkan poin<br className="membership-desktop-break" /> sebesar 1% dari harga produk.</p>
         <div className="membership-hero-actions">
           <a href="#daftar-member" className="button button-green">Daftar membership <ArrowUpRight size={18} /></a>
@@ -47,11 +47,11 @@ export function MembershipPage() {
       </Reveal>
       <Reveal className="membership-card-scene" delay={0.1}>
         <div className="membership-card">
-          <div className="membership-card-top"><span>HALLO DEK<br /><small>MEMBERSHIP</small></span><Spark /></div>
+          <div className="membership-card-top"><span>HALLO DEK<br /><small>MEMBERSHIP</small></span><img src="/assets/optimized/logo-192.webp" alt="" width={40} height={40} /></div>
           <div className="membership-card-body"><div><span className="membership-card-rate">1<span>%</span></span><p>DARI HARGA PRODUK<br />JADI POIN KAMU.</p></div><BangMusPortrait full /></div>
           <div className="membership-card-bottom"><span>Happy bites. Happy points.</span><Gift size={21} /></div>
         </div>
-        <p className="membership-card-caption"><Sparkles size={15} /> Bang Mus siap nemenin kamu ngumpulin happy.</p>
+        <p className="membership-card-caption">Bang Mus siap nemenin kamu ngumpulin happy.</p>
       </Reveal>
     </section>
 

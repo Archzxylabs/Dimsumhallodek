@@ -1,6 +1,6 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
-import { Faq, Marquee, Reveal, Spark } from "./DesignElements";
+import { Faq, Marquee, Reveal } from "./DesignElements";
 import { whatsappUrl } from "../lib/business";
 import { isStringRecord, useSessionState } from '../lib/useSessionState';
 import { InquiryFeedback } from './InquiryFeedback';
@@ -52,13 +52,9 @@ export function EventServices() {
           <Reveal>
             <p className="eyebrow">02 / Dimsum untuk acara kamu</p>
             <h1 className="hero-title">
-              RAME
+              Acara kamu.
               <br />
-              RAME
-              <br />
-              MAKIN
-              <br />
-              <span className="text-cream">ENAK.</span>
+              <span className="text-orange">Dimsum kita.</span>
             </h1>
             <p className="hero-description">
               Kamu punya momennya.
@@ -73,27 +69,18 @@ export function EventServices() {
           <Reveal className="event-hero-art" delay={0.1}>
             <div className="event-photo">
               <img
-                src="/assets/optimized/platter-800.webp"
-                srcSet="/assets/optimized/platter-480.webp 480w, /assets/optimized/platter-800.webp 768w"
-                sizes="(max-width: 767px) calc(100vw - 40px), 45vw"
+                src="/assets/client/mix-16.webp"
+                width={800}
+                height={640}
                 decoding="async"
-                alt="Dimsum mentai untuk sajian bersama"
+                alt="Dimsum Mix Sauces isi 16 pcs, foto katalog produk"
               />
               <div className="event-photo-caption">
                 <span>GOOD COMPANY.</span>
                 <span>GREAT DIMSUM.</span>
               </div>
             </div>
-            <div className="event-ticket">
-              <span>DHD / EVENT</span>
-              <Spark />
-              <strong>
-                LET'S
-                <br />
-                CELEBRATE!
-              </strong>
-              <span>YOUR MOMENT. OUR DIMSUM.</span>
-            </div>
+            <p className="event-art-caption">Dari kumpul kecil sampai momen besar.</p>
           </Reveal>
         </div>
       </section>
@@ -156,13 +143,13 @@ export function EventServices() {
               dibahas bersama tim. Tanggal, jumlah tamu, dan lokasi boleh menyusul kalau belum pasti.
             </p>
             <div className="planner-note">
-              <Spark />
               <span>
                 Penawaran dan jadwal
                 <br />
                 dikonfirmasi oleh tim.
               </span>
             </div>
+            <div className="event-source-links"><a href="/assets/client/wedding-catalog.webp" target="_blank" rel="noopener noreferrer">Katalog wedding <ArrowUpRight size={16} /></a><a href="/assets/client/birthday-catalog.webp" target="_blank" rel="noopener noreferrer">Katalog birthday <ArrowUpRight size={16} /></a></div>
           </Reveal>
           <form onSubmit={submit} className="inquiry-form">
             <div className="form-pair">

@@ -1,6 +1,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { ArrowDown, ArrowUpRight, Minus, Plus } from "lucide-react";
-import { Dumpling, Faq, Marquee, Reveal, Spark } from "./DesignElements";
+import { Faq, Marquee, Reveal } from "./DesignElements";
+import { BangMusPortrait } from './BangMusPortrait';
 import { whatsappUrl } from "../lib/business";
 import { isStringRecord, useSessionState } from '../lib/useSessionState';
 import { InquiryFeedback } from './InquiryFeedback';
@@ -73,15 +74,9 @@ export function FranchiseAutopilot() {
         <Reveal>
           <p className="eyebrow">03 / Tiga pilihan kemitraan</p>
           <h1 className="hero-title">
-            BIKIN
+            Bikin happy.
             <br />
-            HAPPY.
-            <br />
-            <span className="text-orange">
-              BIKIN
-              <br />
-              USAHA.
-            </span>
+            <span className="text-orange">Bangun usaha.</span>
           </h1>
           <p className="hero-description">
             Satu brand, tiga pilihan kemitraan.
@@ -95,21 +90,8 @@ export function FranchiseAutopilot() {
           <a href="#konsultasi-mitra" className="partner-direct-link">Belum yakin? Konsultasi dulu <ArrowUpRight size={16} /></a>
         </Reveal>
         <Reveal className="partnership-art" delay={0.1}>
-          <div className="partner-orbit orbit-one" />
-          <div className="partner-orbit orbit-two" />
-          <img
-            src="/assets/optimized/logo-192.webp"
-            alt="Dimsum Hallo Dek"
-          />
-          <span className="orbit-label label-one">Flexible</span>
-          <span className="orbit-label label-two">Collaborative</span>
-          <span className="orbit-label label-three">Full Managed</span>
-          <Spark className="partner-spark" />
-          <p>
-            SATU RASA.
-            <br />
-            BANYAK PELUANG.
-          </p>
+          <figure><img src="/assets/client/store-concept.webp" width={610} height={421} alt="Referensi konsep gerai dari deck kemitraan Dimsum Hallo Dek" decoding="async" /><figcaption>Konsep gerai · deck kemitraan</figcaption></figure>
+          <div className="partnership-model-labels"><span>Flexible</span><span>Collaborative</span><span>Full Managed</span></div>
         </Reveal>
       </section>
       <Marquee text="LET'S GROW SOMETHING GOOD." variant="marquee-yellow" />
@@ -256,7 +238,7 @@ export function FranchiseAutopilot() {
             <br />
             <span className="handwritten">di sini.</span>
           </h2>
-          <Dumpling className="partner-inquiry-dumpling" />
+          <BangMusPortrait full pose="pointing" className="partner-inquiry-mascot" decorative />
         </Reveal>
         <form className="inquiry-form" onSubmit={submit}>
           <label>

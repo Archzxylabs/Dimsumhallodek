@@ -1,10 +1,19 @@
 import { useId } from 'react';
 
 // Display a window of the supplied reference sheet without altering the original artwork.
-export function BangMusPortrait({ className = '', full = false, decorative = false }: {
-  className?: string; full?: boolean; decorative?: boolean;
+export function BangMusPortrait({ className = '', full = false, decorative = false, pose = 'welcome' }: {
+  className?: string; full?: boolean; decorative?: boolean; pose?: 'welcome' | 'pointing';
 }) {
   const clip = useId();
+  if (full) return <img
+    className={`bang-mus-portrait ${className}`}
+    src={`/assets/client/bang-mus-${pose}.webp`}
+    width={pose === 'welcome' ? 566 : 410}
+    height={pose === 'welcome' ? 850 : 615}
+    alt={decorative ? '' : 'Bang Mus, maskot Dimsum Hallo Dek'}
+    loading="lazy"
+    decoding="async"
+  />;
   return <svg
     className={`bang-mus-portrait ${className}`}
     viewBox={full ? '280 140 248 408' : '35 254 265 307'}
