@@ -5,6 +5,23 @@ import { MenuItem } from '../data/menuData';
 import { FloatingGarnishes } from './FloatingGarnishes';
 import { Link } from 'react-router';
 
+// Retain decoded images so a new slide can paint its photo on its first frame.
+const preparedImages = new Map<string, Promise<HTMLImageElement>>();
+
+function prepareMenuImage(src: string): Promise<HTMLImageElement> {
+  const cached = preparedImages.get(src);
+  if (cached) return cached;
+
+  const image = new Image();
+  image.src = src;
+  const prepared = image.decode().then(() => image).catch((error) => {
+    preparedImages.delete(src);
+    throw error;
+  });
+  preparedImages.set(src, prepared);
+  return prepared;
+}
+
 interface KineticShowcaseProps {
   items: MenuItem[];
   currentIndex: number;
@@ -16,8 +33,24 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
   currentIndex,
   onSelectIndex,
 }) => {
-  const currentItem = items[currentIndex];
+  const [visibleSlide, setVisibleSlide] = useState({ index: currentIndex, ready: false, failed: false });
+  const currentItem = items[visibleSlide.index];
   const [direction, setDirection] = useState<number>(1);
+
+  useEffect(() => {
+    let active = true;
+
+    // Keep the previous slide intact until the requested photo is fully decoded.
+    prepareMenuImage(items[currentIndex].image).then(
+      () => { if (active) setVisibleSlide({ index: currentIndex, ready: true, failed: false }); },
+      () => { if (active) setVisibleSlide({ index: currentIndex, ready: false, failed: true }); },
+    );
+    for (const item of items) {
+      void prepareMenuImage(item.image).catch(() => { /* Retry on selection if warming fails. */ });
+    }
+
+    return () => { active = false; };
+  }, [items, currentIndex]);
 
   const handleNext = () => {
     setDirection(1);
@@ -134,6 +167,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
             <div className="showcase-dish relative w-72 h-72 sm:w-96 sm:h-96 md:w-[460px] md:h-[460px]">
               {/* Keep the first entrance enabled so nested floating loops start on page load. */}
               <AnimatePresence mode="wait" custom={direction}>
+                {visibleSlide.ready && (
                 <motion.div
                   key={currentItem.id}
                   custom={direction}
@@ -182,7 +216,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                       width={846}
                       height={699}
                       loading="eager"
-                      decoding="async"
+                      decoding="sync"
                       fetchPriority="high"
                       className="w-full h-full object-cover rounded-full drop-shadow-2xl select-none"
                     />
@@ -199,7 +233,13 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                   {/* Floating Garnishes Orbiting the Plate (100% Synchronized With Plate Entrance) */}
                   <FloatingGarnishes menuId={currentItem.id} direction={direction} />
                 </motion.div>
+                )}
               </AnimatePresence>
+              {visibleSlide.failed && (
+                <p role="status" className="absolute inset-0 flex items-center justify-center text-center text-sm font-semibold text-[#FFF9ED]">
+                  Foto menu belum bisa dimuat. Coba pilih menu lain.
+                </p>
+              )}
             </div>
           </div>
 
@@ -238,7 +278,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
           {/* Quick Pagination Tabs (Warmindo Authentic Clean Style) */}
           <div className="showcase-tabs flex items-center gap-2 overflow-x-auto max-w-full pb-2 sm:pb-0 scrollbar-none">
             {items.map((item, idx) => {
-              const isActive = idx === currentIndex;
+              const isActive = idx === visibleSlide.index;
               return (
                 <button
                   key={item.id}
