@@ -65,7 +65,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
   // Keyboard navigation support
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.target as HTMLElement)?.closest('input, textarea, select, button, a, [contenteditable], #avatar') || document.getElementById('mobile-navigation')) return;
+      if ((e.target as HTMLElement)?.closest('input, textarea, select, button, a, [contenteditable]') || document.getElementById('mobile-navigation')) return;
       if (e.key === 'ArrowRight') handleNext();
       if (e.key === 'ArrowLeft') handlePrev();
     };

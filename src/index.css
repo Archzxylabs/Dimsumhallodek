@@ -2306,12 +2306,12 @@ html { scroll-padding-top: 100px; scroll-padding-bottom: 90px; }
 .button-orange { color:#172312; }
 
 /* Floating WhatsApp action button */
-.minsum-root { --avatar-bottom: max(20px, env(safe-area-inset-bottom, 0px)); position:fixed; inset:0; pointer-events:none; z-index:80; }
-body:has(#mobile-navigation) .minsum-root { visibility:hidden; }
-.minsum-launcher { position:fixed; bottom:var(--avatar-bottom); right:max(24px, env(safe-area-inset-right, 0px)); pointer-events:auto; display:flex; align-items:center; gap:8px; min-height:48px; padding:12px 18px; border-radius:50px; background:#25D366; color:#0b2b11; font:700 14px 'Fredoka',sans-serif; text-decoration:none; box-shadow:0 10px 26px rgba(37, 211, 102, 0.35); cursor:pointer; transition:transform .2s ease, background-color .2s ease, box-shadow .2s ease; }
-.minsum-launcher:hover { background:#20bd5a; color:#061c0a; transform:translateY(-2px); box-shadow:0 14px 30px rgba(37, 211, 102, 0.45); }
-.minsum-launcher:active { transform:translateY(0); }
-.minsum-launcher svg { flex-shrink:0; }
+.wa-root { --wa-bottom: max(20px, env(safe-area-inset-bottom, 0px)); position:fixed; inset:0; pointer-events:none; z-index:80; }
+body:has(#mobile-navigation) .wa-root { visibility:hidden; }
+.wa-launcher { position:fixed; bottom:var(--wa-bottom); right:max(24px, env(safe-area-inset-right, 0px)); pointer-events:auto; display:flex; align-items:center; gap:8px; min-height:48px; padding:12px 18px; border-radius:50px; background:#25D366; color:#0b2b11; font:700 14px 'Fredoka',sans-serif; text-decoration:none; box-shadow:0 10px 26px rgba(37, 211, 102, 0.35); cursor:pointer; transition:transform .2s ease, background-color .2s ease, box-shadow .2s ease; }
+.wa-launcher:hover { background:#20bd5a; color:#061c0a; transform:translateY(-2px); box-shadow:0 14px 30px rgba(37, 211, 102, 0.45); }
+.wa-launcher:active { transform:translateY(0); }
+.wa-launcher svg { flex-shrink:0; }
 
 @media (max-width:1023px) {
   .desktop-nav { display:none; }
@@ -2350,10 +2350,10 @@ body:has(#mobile-navigation) .minsum-root { visibility:hidden; }
   .outlet-row > a > svg { width:44px; height:44px; padding:10px; }
   .outlet-row p { font-size:13px; }
   .outlet-visit-info { font-size:12px; }
-  .minsum-launcher { right:max(16px, env(safe-area-inset-right, 0px)); }
+  .wa-launcher { right:max(16px, env(safe-area-inset-right, 0px)); }
 }
 @media (prefers-reduced-motion:reduce) {
-  .minsum-launcher { transition:none; }
+  .wa-launcher { transition:none; }
 }
 .product-price > a { display:inline-flex; align-items:center; justify-content:center; }
 .product-price > a svg { flex-shrink:0; }

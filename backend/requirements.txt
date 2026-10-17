@@ -1,4 +1,0 @@
-livekit-agents==1.8.3
-livekit-plugins-google==1.8.3
-livekit-plugins-spatius==1.8.3
-python-dotenv

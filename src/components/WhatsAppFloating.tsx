@@ -6,12 +6,12 @@ export function WhatsAppFloating() {
   );
 
   return (
-    <div className="minsum-root" id="whatsapp-launcher-root">
+    <div className="wa-root" id="whatsapp-launcher-root">
       <a
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="minsum-launcher"
+        className="wa-launcher"
         aria-label="Chat WhatsApp Dimsum Hallo Dek"
       >
         <svg
