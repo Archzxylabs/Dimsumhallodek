@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router';
 import { ArrowUpRight, MapPin } from 'lucide-react';
 import { useSessionState } from '../lib/useSessionState';
@@ -6,11 +7,13 @@ import { REGIONS_DATA } from '../data/locationsData';
 import { BangMusPortrait } from '../components/BangMusPortrait';
 import { KineticShowcase } from '../components/KineticShowcase';
 import { FlavorCollection } from '../components/FlavorCollection';
+import { CatalogModal, type CatalogKind } from '../components/CatalogModal';
 import { ArrowLink, Marquee, Reveal } from '../components/DesignElements';
 import { Headline, ScrollScene } from '../components/MotionElements';
 
 export function HomePage() {
   const [currentIndex, setCurrentIndex] = useSessionState('menu-slide', 0, (v): v is number => Number.isInteger(v) && typeof v === 'number' && v >= 0 && v < MENU_ITEMS.length);
+  const [catalog, setCatalog] = useState<CatalogKind | null>(null);
   return <>
     <KineticShowcase items={MENU_ITEMS} currentIndex={currentIndex} onSelectIndex={setCurrentIndex} />
     <nav className="home-shortcuts page-width" aria-label="Jelajahi Dimsum Hallo Dek">
@@ -46,8 +49,8 @@ export function HomePage() {
       <div className="page-width home-event-layout">
         <Reveal><p className="eyebrow">03 / Momen kamu, sajian kita</p><Headline className="editorial-heading" lines={[{ text: 'Meja yang ramai.' }, { text: 'Momen yang hangat.', accent: 'yellow' }]} /><p className="section-description">Wedding, acara sekolah, kantor, khitanan, atau lamaran. Ceritakan acaranya, kita bantu bahas kebutuhan dimsumnya.</p><div className="event-labels"><span>Wedding</span><span>Sekolah</span><span>Kantor</span><span>Khitanan</span><span>Lamaran</span></div><ArrowLink to="/event" className="light-link">Rencanakan acara kamu</ArrowLink></Reveal>
         <div className="event-catalog-preview">
-          <ScrollScene className="event-catalog-sheet" turn={-4} depth={26}><a href="/assets/client/wedding-catalog.webp" target="_blank" rel="noopener noreferrer"><img src="/assets/client/wedding-catalog.webp" alt="Katalog paket wedding Dimsum Hallo Dek" width={1024} height={1280} loading="lazy" decoding="async" /><span>Lihat katalog wedding <ArrowUpRight size={16} /></span></a></ScrollScene>
-          <ScrollScene className="event-catalog-sheet" turn={4} depth={-22}><a href="/assets/client/birthday-catalog.webp" target="_blank" rel="noopener noreferrer"><img src="/assets/client/birthday-catalog.webp" alt="Katalog paket birthday Dimsum Hallo Dek" width={1024} height={1280} loading="lazy" decoding="async" /><span>Lihat katalog birthday <ArrowUpRight size={16} /></span></a></ScrollScene>
+          <ScrollScene className="event-catalog-sheet" turn={-4} depth={26}><button type="button" onClick={() => setCatalog('wedding')} className="brochure-button"><img src="/assets/client/wedding-catalog.webp" alt="Katalog paket wedding Dimsum Hallo Dek" width={1024} height={1280} loading="lazy" decoding="async" /><span>Lihat katalog wedding</span></button></ScrollScene>
+          <ScrollScene className="event-catalog-sheet" turn={4} depth={-22}><button type="button" onClick={() => setCatalog('birthday')} className="brochure-button"><img src="/assets/client/birthday-catalog.webp" alt="Katalog paket birthday Dimsum Hallo Dek" width={1024} height={1280} loading="lazy" decoding="async" /><span>Lihat katalog birthday</span></button></ScrollScene>
         </div>
       </div>
     </section>
@@ -58,5 +61,6 @@ export function HomePage() {
     </section>
 
     <section className="nearby-section section-space"><div className="page-width"><div className="collection-heading"><div className="nearby-host"><BangMusPortrait full decorative pose="explore" /><div><p className="eyebrow"><MapPin size={15} /> Lebih dekat dari yang kamu kira</p><h2 className="editorial-heading">Mampir ke<br />gerai favoritmu.</h2></div></div><ArrowLink to="/gerai#locations">Cari alamat gerai</ArrowLink></div><div className="region-directory">{REGIONS_DATA.map(group => <Link to="/gerai#locations" key={group.region}><div><h3>{group.region}</h3><span>{group.count} gerai dalam daftar</span></div><ArrowUpRight size={22} /></Link>)}</div></div></section>
+    {catalog && <CatalogModal kind={catalog} onClose={() => setCatalog(null)} />}
   </>;
 }

@@ -5,6 +5,7 @@ import { BangMusPortrait } from './BangMusPortrait';
 import { whatsappUrl } from "../lib/business";
 import { isStringRecord, useSessionState } from '../lib/useSessionState';
 import { InquiryFeedback } from './InquiryFeedback';
+import { CatalogModal } from './CatalogModal';
 import { Headline, ScrollScene, StaggerCard } from './MotionElements';
 
 const packages = [
@@ -51,6 +52,7 @@ type PartnerDraft = typeof emptyDraft;
 
 export function FranchiseAutopilot() {
   const [expanded, setExpanded] = useState<number | null>(null);
+  const [deckOpen, setDeckOpen] = useState(false);
   const [draft, setDraft] = useSessionState('partnership', emptyDraft, (v): v is PartnerDraft => isStringRecord(v, Object.keys(emptyDraft)) && (v.model === 'Belum menentukan' || packages.some((p) => p.name === v.model)));
   const { model, city, involvement } = draft;
   const [preparedUrl, setPreparedUrl] = useState('');
@@ -208,15 +210,13 @@ export function FranchiseAutopilot() {
               </Reveal>
             ))}
           </div>
-          <a
-            href="/assets/kemitraan/bangun-bisnis-bersama-dhd.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
             className="deck-link"
+            onClick={() => setDeckOpen(true)}
           >
             Baca deck kemitraan terbaru
-            <ArrowUpRight size={20} />
-          </a>
+          </button>
           <p className="deck-note">
             PDF · 25 halaman · Informasi paket kemitraan terbaru. Proyeksi bisnis dalam dokumen bukan jaminan hasil; tinjau penawaran dan perjanjian bersama tim.
           </p>
@@ -315,6 +315,7 @@ export function FranchiseAutopilot() {
           ]}
         />
       </section>
+      {deckOpen && <CatalogModal kind="kemitraan" onClose={() => setDeckOpen(false)} />}
     </>
   );
 }

@@ -44,7 +44,7 @@
 .portion-photos figcaption { font-size: 10px; margin-top: 4px; }
 .flavor-options > p { font-size: 11px; line-height: 1.6; padding-bottom: 14px; }
 .collection-footnote { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 28px; margin-top: 20px; font-size: 11px; line-height: 1.6; }
-.collection-footnote a { font-weight: 800; text-decoration: underline; text-underline-offset: 4px; }
+.collection-footnote a, .collection-footnote button { font-weight: 800; text-decoration: underline; text-underline-offset: 4px; }
 .occasion-section { border-top: 1px solid var(--detail-line); }
 .occasion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .occasion-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(140px, .7fr); align-items: center; gap: 18px; padding: 28px; border-radius: 16px; transition: background .2s; }
@@ -66,9 +66,9 @@
 .event-labels { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
 .event-labels span { font-size: 11px; padding: 6px 10px; border: 1px solid #c9ceba70; border-radius: 30px; }
 .event-catalog-preview { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 18px; }
-.event-catalog-preview a { display: block; min-width: 0; }
+.event-catalog-preview a, .event-catalog-preview button { display: block; min-width: 0; }
 .event-catalog-preview img { width: 100%; height: auto; border-radius: 8px; }
-.event-catalog-preview a > span { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 11px; line-height: 1.4; font-weight: 700; margin-top: 12px; min-height: 32px; }
+.event-catalog-preview a > span, .event-catalog-preview button > span { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 11px; line-height: 1.4; font-weight: 700; margin-top: 12px; min-height: 32px; }
 .home-benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
 .member-invitation { position: relative; display: flex; align-items: flex-end; gap: 10px; padding: 32px; border-radius: 16px; background: #f6df9f; overflow: hidden; }
 .member-invitation > div { position: relative; z-index: 1; width: 72%; }
@@ -125,7 +125,7 @@
 .event-type-list small { font-size: 12px; line-height: 1.6; }
 .planner-note { padding: 18px; font-size: 13px; }
 .event-source-links { display: flex; flex-wrap: wrap; gap: 12px 22px; margin-top: 20px; }
-.event-source-links a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 12px; font-weight: 800; text-decoration: underline; text-underline-offset: 4px; }
+.event-source-links a, .event-source-links button { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 12px; font-weight: 800; text-decoration: underline; text-underline-offset: 4px; }
 .partnership-art { display: block; width: 100%; height: auto; aspect-ratio: auto; padding: 0; background: transparent; border-radius: 0; overflow: visible; }
 .partnership-art figure img { width: 100%; height: min(330px, 38svh); object-fit: cover; border-radius: 16px; }
 .partnership-art figcaption { font-size: 10px; line-height: 1.6; margin-top: 10px; }
@@ -341,7 +341,7 @@
 .flavor-browse > div { display: flex; gap: 8px; flex-shrink: 0; }
 .flavor-browse button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--army); border-radius: 50%; cursor: pointer; }
 .flavor-browse button:disabled { opacity: .35; cursor: default; }
-.catalog-text-link { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; font-size: 12px; font-weight: 800; text-decoration: underline; text-underline-offset: 4px; }
+.catalog-text-link { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; font-size: 12px; font-weight: 800; text-decoration: underline; text-underline-offset: 4px; font-family: inherit; color: inherit; cursor: pointer; }
 .frozen-strip > img { width: 70px; height: 70px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
 .frozen-strip > div { margin-right: auto; }
 .frozen-packages { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; width: 100%; padding: 22px; background: #fffdf7; border: 1px solid var(--detail-line); border-radius: 14px; }

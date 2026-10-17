@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import {
   Faq,
@@ -7,6 +8,7 @@ import {
 import { Link } from 'react-router';
 import { whatsappUrl } from "../lib/business";
 import { ProductInquiry } from './ProductInquiry';
+import { CatalogModal, type CatalogKind } from './CatalogModal';
 import { Headline, ScrollScene } from './MotionElements';
 
 const products = [
@@ -46,6 +48,7 @@ const products = [
 ];
 
 export function SignatureProducts() {
+  const [catalog, setCatalog] = useState<CatalogKind | null>(null);
   return (
     <>
       <section className="page-hero product-hero page-width">
@@ -115,7 +118,7 @@ export function SignatureProducts() {
                 </>
               ) : (
                 <>
-                  <div className="frozen-packages"><figure><img src="/assets/client/frozen-15g.webp" width={198} height={152} alt="Kemasan Dimsum Frozen 15 gram dari katalog produk" loading="lazy" decoding="async" /><figcaption>Dimsum Frozen · 15 gram</figcaption></figure><figure><img src="/assets/client/frozen-28g.webp" width={195} height={152} alt="Kemasan Dimsum Frozen reguler 28 gram dari katalog produk" loading="lazy" decoding="async" /><figcaption>Frozen reguler · 28 gram</figcaption></figure><a href="/assets/client/frozen-catalog.webp" target="_blank" rel="noopener noreferrer">Buka katalog frozen & saus <ArrowUpRight size={16} /></a></div>
+                  <div className="frozen-packages"><figure><img src="/assets/client/frozen-15g.webp" width={198} height={152} alt="Kemasan Dimsum Frozen 15 gram dari katalog produk" loading="lazy" decoding="async" /><figcaption>Dimsum Frozen · 15 gram</figcaption></figure><figure><img src="/assets/client/frozen-28g.webp" width={195} height={152} alt="Kemasan Dimsum Frozen reguler 28 gram dari katalog produk" loading="lazy" decoding="async" /><figcaption>Frozen reguler · 28 gram</figcaption></figure><button type="button" onClick={() => setCatalog('frozen')}>Buka katalog frozen & saus</button></div>
                 </>
               )}
             </ScrollScene>
@@ -147,7 +150,7 @@ export function SignatureProducts() {
                 Harga katalog produk; tim memastikan harga transaksi dan ketersediaan.{' '}
                 <Link className="membership-inline-link" to="/membership#simulasi-poin">Member dapat 1% poin ↗</Link>
               </p>
-              {product.type === 'cake' && <a className="catalog-text-link" href="/assets/client/cake-catalog.webp" target="_blank" rel="noopener noreferrer">Lihat ukuran & katalog cake <ArrowUpRight size={15} /></a>}
+              {product.type === 'cake' && <button type="button" className="catalog-text-link" onClick={() => setCatalog('cake')}>Lihat ukuran & katalog cake</button>}
               <ProductInquiry id={product.id} name={product.name} unit={product.id === 'frozen' ? 'kemasan' : product.id} personalized={product.id !== 'frozen'} />
             </Reveal>
           </div>
@@ -188,6 +191,7 @@ export function SignatureProducts() {
           ]}
         />
       </section>
+      {catalog && <CatalogModal kind={catalog} onClose={() => setCatalog(null)} />}
     </>
   );
 }

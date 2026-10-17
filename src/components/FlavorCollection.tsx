@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, Plus } from 'lucide-react';
 import catalog from '../../data/catalog.json';
 import { BangMusPortrait } from './BangMusPortrait';
+import { CatalogModal, type CatalogKind } from './CatalogModal';
 import { Headline, StaggerCard } from './MotionElements';
 
 const flavors = [
@@ -17,6 +18,7 @@ const rupiah = (price: number) => `Rp${price.toLocaleString('id-ID')}`;
 export function FlavorCollection() {
   const galleryRef = useRef<HTMLDivElement>(null);
   const [edge, setEdge] = useState({ start: true, end: false });
+  const [activeCatalog, setActiveCatalog] = useState<CatalogKind | null>(null);
   const updateEdges = () => {
     const gallery = galleryRef.current;
     if (gallery) setEdge({ start: gallery.scrollLeft < 2, end: gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 2 });
@@ -55,6 +57,7 @@ export function FlavorCollection() {
         </StaggerCard>;
       })}
     </div>
-    <div className="collection-footnote"><p>Harga acuan katalog. Pilihan isi, harga transaksi, dan ketersediaan dikonfirmasi gerai.</p><a href="/assets/client/menu.webp" target="_blank" rel="noopener noreferrer">Buka katalog menu ↗</a></div>
+    <div className="collection-footnote"><p>Harga acuan katalog. Pilihan isi, harga transaksi, dan ketersediaan dikonfirmasi gerai.</p><button type="button" onClick={() => setActiveCatalog('menu')}>Buka katalog menu</button></div>
+    {activeCatalog && <CatalogModal kind={activeCatalog} onClose={() => setActiveCatalog(null)} />}
   </section>;
 }

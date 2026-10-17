@@ -2756,3 +2756,88 @@ body:has(dialog[open]) { overflow-y: hidden; }
   .membership-hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
   .membership-card-body > .bang-mus-portrait { height: 120px; }
 }
+
+/* ==== Katalog native — brosur didesain ulang di dalam situs (tanpa buka tab baru) ==== */
+.event-catalog-preview button,
+.collection-footnote button,
+.event-source-links button,
+.deck-link {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.event-catalog-preview button { display: block; min-width: 0; width: 100%; text-align: left; }
+
+.catalog-modal { position: fixed; inset: 0; z-index: 96; display: grid; place-items: center; padding: clamp(10px, 3vw, 32px); }
+.catalog-modal-backdrop { position: absolute; inset: 0; background: rgba(31, 45, 22, .66); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); cursor: pointer; animation: catalog-fade .22s ease-out both; }
+.catalog-modal-panel { position: relative; z-index: 1; width: min(920px, 100%); max-height: min(88svh, 900px); display: flex; flex-direction: column; background: var(--cream); border: 1px solid var(--army); border-radius: 26px; box-shadow: 0 40px 90px rgba(23, 35, 18, .45); overflow: hidden; animation: catalog-pop .3s cubic-bezier(.2, .85, .25, 1.15) both; }
+.catalog-modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; padding: 22px 26px 16px; border-bottom: 1px solid color-mix(in srgb, var(--army) 16%, transparent); }
+.catalog-modal-kicker { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; font-weight: 800; color: var(--orange); }
+.catalog-modal-title { font-family: var(--font-display); font-size: clamp(26px, 4vw, 40px); line-height: 1.05; color: var(--army); margin-top: 6px; }
+.catalog-modal-subtitle { margin-top: 6px; font-size: 12px; font-weight: 600; color: color-mix(in srgb, var(--army) 70%, var(--cream)); }
+.catalog-modal-close { flex: 0 0 auto; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--yellow); color: var(--army); transition: transform .18s ease; }
+.catalog-modal-close:hover { transform: rotate(90deg); }
+.catalog-modal-body { overflow-y: auto; overscroll-behavior: contain; padding: 22px 26px 30px; }
+
+@keyframes catalog-fade { from { opacity: 0; } }
+@keyframes catalog-pop { from { opacity: 0; transform: translateY(18px) scale(.97); } }
+
+.brochure-packages { display: grid; gap: 18px; }
+.brochure-lead { font-size: 13px; line-height: 1.65; color: color-mix(in srgb, var(--army) 78%, var(--cream)); max-width: 62ch; }
+.brochure-tiers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.brochure-tier { display: grid; gap: 10px; align-content: start; padding: 18px 16px 16px; border: 1px solid color-mix(in srgb, var(--army) 22%, transparent); border-top: 6px solid var(--tier-accent, var(--army)); border-radius: 16px; background: #fffdf7; }
+.brochure-tier:nth-child(1) { --tier-accent: #84994f; }
+.brochure-tier:nth-child(2) { --tier-accent: #f4991a; }
+.brochure-tier:nth-child(3) { --tier-accent: #f7b610; }
+.brochure-tier h3 { font-family: var(--font-display); font-size: 17px; color: var(--army); }
+.brochure-tier strong { font-size: 26px; font-weight: 800; letter-spacing: -.03em; color: var(--army); }
+.brochure-tier ul { display: grid; gap: 7px; font-size: 12px; line-height: 1.5; color: var(--army); }
+.brochure-tier li { display: flex; gap: 8px; align-items: flex-start; }
+.brochure-tier svg { flex: 0 0 auto; margin-top: 2px; color: var(--tier-accent, var(--army)); }
+
+.brochure-menu-list { display: grid; gap: 12px; }
+.brochure-menu-row { display: grid; gap: 8px; padding: 14px 16px; border: 1px solid color-mix(in srgb, var(--army) 18%, transparent); border-radius: 14px; background: #fffdf7; }
+.brochure-menu-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.brochure-menu-head h3 { font-family: var(--font-display); font-size: 19px; color: var(--army); }
+.brochure-badge { padding: 4px 10px; border-radius: 99px; font-size: 9.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; background: var(--army); color: var(--cream); }
+.brochure-badge-new { background: var(--orange); color: #fff9ed; }
+.brochure-menu-row > p { font-size: 12px; line-height: 1.6; color: color-mix(in srgb, var(--army) 72%, var(--cream)); }
+.brochure-rows { display: grid; gap: 4px; font-size: 12.5px; color: var(--army); }
+.brochure-rows > div { display: flex; align-items: baseline; gap: 8px; }
+.brochure-rows-dots { flex: 1; border-bottom: 2px dotted color-mix(in srgb, var(--army) 30%, transparent); transform: translateY(-3px); min-width: 14px; }
+.brochure-rows strong { font-weight: 800; }
+
+.brochure-cake-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.brochure-cake-card { display: grid; gap: 8px; align-content: start; padding: 16px 14px; border: 1px solid color-mix(in srgb, var(--army) 18%, transparent); border-radius: 14px; background: #fffdf7; }
+.brochure-cake-card h3 { font-family: var(--font-display); font-size: 16.5px; color: var(--army); }
+.brochure-cake-card ul { display: grid; gap: 6px; font-size: 11.5px; color: var(--army); }
+.brochure-cake-card li { display: flex; gap: 7px; align-items: flex-start; }
+.brochure-cake-card svg { color: #84994f; flex: 0 0 auto; margin-top: 2px; }
+.brochure-cake-card strong { font-size: 19px; }
+
+.brochure-addons { display: grid; gap: 8px; padding: 16px; border: 1px dashed color-mix(in srgb, var(--army) 40%, transparent); border-radius: 14px; }
+.brochure-addons h3 { font-family: var(--font-display); font-size: 17px; color: var(--army); }
+.brochure-addons ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 6px 16px; font-size: 12.5px; color: var(--army); }
+.brochure-addons li { display: flex; justify-content: space-between; gap: 10px; }
+.brochure-addons em { font-style: normal; color: color-mix(in srgb, var(--army) 60%, var(--cream)); font-size: 10px; }
+
+.brochure-note { font-size: 11px; line-height: 1.65; color: color-mix(in srgb, var(--army) 66%, var(--cream)); }
+.brochure-wa { justify-self: start; display: inline-flex; align-items: center; gap: 8px; min-height: 46px; padding: 0 22px; border-radius: 99px; background: var(--army); color: var(--cream); font-weight: 800; font-size: 13px; transition: transform .18s ease, background .18s ease; }
+.brochure-wa:hover { background: color-mix(in srgb, var(--army) 88%, #000); transform: translateY(-1px); }
+.brochure-pdf { width: 100%; height: min(66svh, 760px); border: 1px solid color-mix(in srgb, var(--army) 25%, transparent); border-radius: 14px; background: #fff; }
+
+@media (max-width: 767px) {
+  .catalog-modal-panel { max-height: 94svh; border-radius: 20px; }
+  .catalog-modal-head { padding: 18px 18px 12px; }
+  .catalog-modal-body { padding: 16px 18px 24px; }
+  .brochure-tiers { grid-template-columns: 1fr; }
+  .brochure-pdf { height: 72svh; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .catalog-modal-backdrop, .catalog-modal-panel { animation: none; }
+}
