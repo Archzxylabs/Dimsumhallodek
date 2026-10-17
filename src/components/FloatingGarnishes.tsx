@@ -286,6 +286,50 @@ export const FloatingGarnishes: React.FC<FloatingGarnishesProps> = ({
           }
         ];
 
+      case 'dimsum-big-melt':
+        return [
+          {
+            id: 'melt-nori-1',
+            element: <NoriStrip />,
+            positionClass: '-top-6 -right-6 sm:-top-8 sm:-right-10 md:-top-10 md:-right-12',
+            floatDuration: 5.4,
+            floatY: [-12, 12, -12],
+            floatRotate: [16, -16, 16],
+          },
+          {
+            id: 'melt-nori-2',
+            element: <NoriStrip className="scale-85" />,
+            positionClass: 'bottom-4 -right-6 sm:bottom-6 sm:-right-10 md:bottom-8 md:-right-12',
+            floatDuration: 6.4,
+            floatY: [12, -14, 12],
+            floatRotate: [-16, 14, -16],
+          },
+          {
+            id: 'melt-shallot-1',
+            element: <FriedShallot />,
+            positionClass: '-top-6 -left-6 sm:-top-8 sm:-left-8 md:-top-10 md:-left-10',
+            floatDuration: 5.6,
+            floatY: [-10, 10, -10],
+            floatRotate: [14, -12, 14],
+          },
+          {
+            id: 'melt-scallion-1',
+            element: <ScallionSlice />,
+            positionClass: '-bottom-6 left-6 sm:-bottom-8 sm:left-8 md:-bottom-10 md:left-12',
+            floatDuration: 5.9,
+            floatY: [10, -12, 10],
+            floatRotate: [-14, 16, -14],
+          },
+          {
+            id: 'melt-steam-1',
+            element: <SteamWisp className="opacity-55" />,
+            positionClass: '-top-18 sm:-top-24 md:-top-28 left-[52%] -translate-x-1/2',
+            floatDuration: 3.2,
+            floatY: [0, -24, 0],
+            floatRotate: [0, 0, 0],
+          }
+        ];
+
       case 'dimsum-cake-tower':
         return [
           {

@@ -45,4 +45,15 @@ export const MENU_ITEMS: MenuItem[] = [
     accentColor: '#e96b2b',
     torched: false,
   },
+  {
+    id: 'dimsum-big-melt',
+    index: '04',
+    name: 'Dimsum Big Melt',
+    watermark: 'LUMER.',
+    description: 'Dimsum full daging ayam dengan isian mozarella lumer, cheesy dan kaya rasa umami. Ukurannya lebih besar, lebih juicy dan lebih yummy! Disajikan dengan free topping saus pilihan, mentai, tartar, carbonara, atau hot lava, serta taburan nori bubuk.',
+    image: '/assets/optimized/bigmelt-800.webp',
+    bgGradient: { from: '#a6772c', via: '#5e5c2e', to: '#283920' },
+    accentColor: '#f2b03c',
+    torched: false,
+  },
 ];
