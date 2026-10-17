@@ -49,7 +49,7 @@
     "Status dan jam buka outlet dapat berubah; arahkan pengunjung ke daftar lokasi di website dan minta mereka memastikan ke tim.",
     "Ketentuan penukaran membership, nilai tukar, kedaluwarsa, gerai dan kanal yang berlaku, dan aturan promo belum ditetapkan di website."
   ],
-  "outlets_updated_at": "2026-10-07",
+  "outlets_updated_at": "2026-10-17",
   "outlets": [
     {
       "region": "Cileungsi & Kab. Bogor",
@@ -60,7 +60,7 @@
     {
       "region": "Cileungsi & Kab. Bogor",
       "name": "Cariu",
-      "address": null,
+      "address": "Jl. Brigjen. Darsono, Cariu, Kec. Cariu, Kabupaten Bogor, Jawa Barat 16840",
       "maps_url": null
     },
     {
@@ -159,11 +159,23 @@
     {
       "region": "Cileungsi & Kab. Bogor",
       "name": "Citra Indah",
-      "address": null,
+      "address": "Komplek Citra Indah Blok AGAVE I00 No.17, Jl. Citra Indah, Sukamaju, Kec. Jonggol, Kabupaten Bogor, Jawa Barat 16830",
       "maps_url": null,
       "previous_names": [
         "Endu Raya"
       ]
+    },
+    {
+      "region": "Cileungsi & Kab. Bogor",
+      "name": "Kampung Tengah",
+      "address": "Jl. Pahlawan, Cileungsi, Kec. Cileungsi, Kab. Bogor, Jawa Barat 16820",
+      "maps_url": null
+    },
+    {
+      "region": "Cileungsi & Kab. Bogor",
+      "name": "Pasar Meong",
+      "address": "Jl. Pasar Meong, Dayeuh, Kab. Bogor, Jawa Barat 16820",
+      "maps_url": null
     },
     {
       "region": "Kota & Kab. Bekasi",
@@ -174,7 +186,7 @@
     {
       "region": "Kota & Kab. Bekasi",
       "name": "Armed",
-      "address": null,
+      "address": "Jl. Yon Armed, RT.001/RW.005, Cikiwul, Kec. Bantar Gebang, Kota Bks, Jawa Barat 17152",
       "maps_url": null
     },
     {
@@ -210,25 +222,25 @@
     {
       "region": "Bogor & sekitarnya",
       "name": "Ciapus",
-      "address": null,
+      "address": "Jl. Kapten Yusuf, Kab. Bogor, Jawa Barat 16820",
       "maps_url": null
     },
     {
       "region": "Bogor & sekitarnya",
       "name": "Kebon Pedes",
-      "address": null,
+      "address": "RT.04/RW.03, Kb. Pedes, Tanah Sareal, Kota Bogor, Jawa Barat 16162",
       "maps_url": null
     },
     {
       "region": "Bogor & sekitarnya",
       "name": "Cibanteng",
-      "address": null,
+      "address": "Cibanteng, Kec. Ciampea, Kabupaten Bogor, Jawa Barat 16620",
       "maps_url": null
     },
     {
       "region": "Bogor & sekitarnya",
       "name": "Bogor Nirwana Residence",
-      "address": null,
+      "address": "RT.01/RW.07, Empang, Kec. Bogor Sel., Kota Bogor, Jawa Barat 16132",
       "maps_url": null,
       "aliases": [
         "BNR"
@@ -273,7 +285,7 @@
     {
       "region": "Kota & Kab. Sukabumi",
       "name": "Bojong Sampora",
-      "address": null,
+      "address": "Bojong, Kec. Cikembar, Kabupaten Sukabumi, Jawa Barat 43157",
       "maps_url": null,
       "previous_names": [
         "Dayeuh Luhur",
@@ -283,30 +295,18 @@
     {
       "region": "Bandung & sekitarnya",
       "name": "Rancaekek Kencana",
-      "address": null,
+      "address": "Jl. Teratai Raya, Rancaekek Wetan, Kec. Rancaekek, Kabupaten Bandung, Jawa Barat 40394",
       "maps_url": null
     },
     {
       "region": "Bandung & sekitarnya",
       "name": "Linggar",
-      "address": null,
+      "address": "Jl. Wr. Cina, Linggar, Kec. Rancaekek, Kabupaten Bandung, Jawa Barat 40394",
       "maps_url": null
     },
     {
       "region": "Bandung & sekitarnya",
       "name": "Cicalengka",
-      "address": null,
-      "maps_url": null
-    },
-    {
-      "region": "Wilayah perlu konfirmasi",
-      "name": "Kampung Tengah",
-      "address": null,
-      "maps_url": null
-    },
-    {
-      "region": "Wilayah perlu konfirmasi",
-      "name": "Pasar Meong",
       "address": null,
       "maps_url": null
     }
@@ -315,10 +315,10 @@
     "Daftar terbaru dari client memuat 38 nama gerai. Ini bukan informasi jam buka real-time.",
     "Dayeuh Luhur dipindah ke Bojong Sampora. Alamat dan pin Maps lama Dayeuh Luhur tidak boleh dipakai untuk Bojong Sampora.",
     "Endu Raya dipindah ke Citra Indah. Alamat dan pin Maps lokasi lama tidak boleh dipakai untuk Citra Indah.",
-    "Linggar dan Cicalengka masuk daftar gerai; yang belum lengkap adalah alamat jalannya. Jangan mengatakan keduanya belum beroperasi atau segera buka.",
+    "Cicalengka masuk daftar gerai; yang belum lengkap adalah alamat jalannya. Jangan mengatakan gerai tersebut belum beroperasi atau segera buka.",
     "Nilai address atau maps_url null berarti alamat lengkap atau pin Maps belum tersedia. Minta pengunjung konfirmasi ke tim lewat WhatsApp dan jangan mengarang titik lokasi.",
-    "Wilayah Kampung Tengah dan Pasar Meong belum diberikan secara rinci; pastikan ke tim sebelum menyebut kota atau kabupatennya.",
-    "Alamat dan pin Maps yang sudah ada berasal dari katalog sebelumnya dan perlu dikonfirmasi sebelum berkunjung.",
+    "Kampung Tengah dan Pasar Meong masuk wilayah Cileungsi & Kab. Bogor per pembaruan 17 Oktober 2026; alamat barunya belum punya pin Maps.",
+    "Alamat dan pin Maps yang ada berasal dari materi client dan perlu dikonfirmasi sebelum berkunjung.",
     "Pandu Raya tidak tercantum di daftar terbaru. Jangan menyimpulkan bahwa Pandu Raya tutup atau sama dengan Endu Raya tanpa konfirmasi tim."
   ],
   "mascot_name": "Bang Musmid",

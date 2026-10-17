@@ -7,7 +7,7 @@
     },
     {
       "name": "Cariu",
-      "address": null,
+      "address": "Jl. Brigjen. Darsono, Cariu, Kec. Cariu, Kabupaten Bogor, Jawa Barat 16840",
       "maps_url": null
     },
     {
@@ -92,11 +92,21 @@
     },
     {
       "name": "Citra Indah",
-      "address": null,
+      "address": "Komplek Citra Indah Blok AGAVE I00 No.17, Jl. Citra Indah, Sukamaju, Kec. Jonggol, Kabupaten Bogor, Jawa Barat 16830",
       "maps_url": null,
       "previous_names": [
         "Endu Raya"
       ]
+    },
+    {
+      "name": "Kampung Tengah",
+      "address": "Jl. Pahlawan, Cileungsi, Kec. Cileungsi, Kab. Bogor, Jawa Barat 16820",
+      "maps_url": null
+    },
+    {
+      "name": "Pasar Meong",
+      "address": "Jl. Pasar Meong, Dayeuh, Kab. Bogor, Jawa Barat 16820",
+      "maps_url": null
     }
   ],
   "Kota & Kab. Bekasi": [
@@ -107,7 +117,7 @@
     },
     {
       "name": "Armed",
-      "address": null,
+      "address": "Jl. Yon Armed, RT.001/RW.005, Cikiwul, Kec. Bantar Gebang, Kota Bks, Jawa Barat 17152",
       "maps_url": null
     },
     {
@@ -140,22 +150,22 @@
     },
     {
       "name": "Ciapus",
-      "address": null,
+      "address": "Jl. Kapten Yusuf, Kab. Bogor, Jawa Barat 16820",
       "maps_url": null
     },
     {
       "name": "Kebon Pedes",
-      "address": null,
+      "address": "RT.04/RW.03, Kb. Pedes, Tanah Sareal, Kota Bogor, Jawa Barat 16162",
       "maps_url": null
     },
     {
       "name": "Cibanteng",
-      "address": null,
+      "address": "Cibanteng, Kec. Ciampea, Kabupaten Bogor, Jawa Barat 16620",
       "maps_url": null
     },
     {
       "name": "Bogor Nirwana Residence",
-      "address": null,
+      "address": "RT.01/RW.07, Empang, Kec. Bogor Sel., Kota Bogor, Jawa Barat 16132",
       "maps_url": null,
       "aliases": [
         "BNR"
@@ -195,7 +205,7 @@
     },
     {
       "name": "Bojong Sampora",
-      "address": null,
+      "address": "Bojong, Kec. Cikembar, Kabupaten Sukabumi, Jawa Barat 43157",
       "maps_url": null,
       "previous_names": [
         "Dayeuh Luhur",
@@ -206,28 +216,16 @@
   "Bandung & sekitarnya": [
     {
       "name": "Rancaekek Kencana",
-      "address": null,
+      "address": "Jl. Teratai Raya, Rancaekek Wetan, Kec. Rancaekek, Kabupaten Bandung, Jawa Barat 40394",
       "maps_url": null
     },
     {
       "name": "Linggar",
-      "address": null,
+      "address": "Jl. Wr. Cina, Linggar, Kec. Rancaekek, Kabupaten Bandung, Jawa Barat 40394",
       "maps_url": null
     },
     {
       "name": "Cicalengka",
-      "address": null,
-      "maps_url": null
-    }
-  ],
-  "Wilayah perlu konfirmasi": [
-    {
-      "name": "Kampung Tengah",
-      "address": null,
-      "maps_url": null
-    },
-    {
-      "name": "Pasar Meong",
       "address": null,
       "maps_url": null
     }

@@ -15,7 +15,7 @@ Section utama memakai ruang di bawah header untuk desktop/laptop; spacing, judul
 
 Event dapat dikonsultasikan dengan tanggal yang belum pasti. Membuka detail model kemitraan tidak memilih model konsultasi; pilihan awal adalah “Belum menentukan”. Harga produk dan investasi kemitraan mengacu pada materi baru client; harga transaksi, fasilitas, dan ketentuan final tetap dikonfirmasi tim. Gerai menyediakan tombol konfirmasi ke tim pusat tanpa mengarang jam buka/kontak masing-masing cabang.
 
-Daftar gerai mengikuti pembaruan client 7 Oktober 2026: 38 nama, termasuk Bandung. Sumber website ada di `data/locations.json`, diimpor oleh `src/data/locationsData.ts`; salinan gerai juga tersimpan di `data/knowledge.json` sebagai referensi pengetahuan bisnis. Sinkronkan kedua JSON saat data client berubah. Dayeuh Luhur menjadi Bojong Sampora, Endu Raya menjadi Citra Indah, dan pencarian nama lama menampilkan lokasi baru. Alamat/pin lama tidak dipakai untuk gerai pindahan. Linggar dan Cicalengka mempunyai alamat jalan yang belum lengkap, bukan status belum beroperasi. Gerai tanpa alamat/pin menyediakan konfirmasi WhatsApp. Wilayah Kampung Tengah dan Pasar Meong masih perlu konfirmasi. Rincian alamat dan sumber ada di `LOCATIONS.md`.
+Daftar gerai mengikuti pembaruan client **17 Oktober 2026**: 38 nama, termasuk Bandung. Sumber website ada di `data/locations.json`, diimpor oleh `src/data/locationsData.ts`; salinan gerai juga tersimpan di `data/knowledge.json` sebagai referensi pengetahuan bisnis. Sinkronkan kedua JSON saat data client berubah. Dayeuh Luhur menjadi Bojong Sampora, Endu Raya menjadi Citra Indah, dan pencarian nama lama menampilkan lokasi baru. Alamat/pin lama tidak dipakai untuk gerai pindahan. Cicalengka mempunyai alamat jalan yang belum lengkap, bukan status belum beroperasi. Gerai tanpa alamat/pin menyediakan konfirmasi WhatsApp. Kampung Tengah dan Pasar Meong masuk wilayah Cileungsi & Kab. Bogor per pembaruan 17 Oktober 2026 (alamat baru belum punya pin Maps). Rincian alamat dan sumber ada di `LOCATIONS.md`.
 
 `data/knowledge.json` menyimpan pengetahuan bisnis yang sudah dikonfirmasi: menu, produk, event, tiga tipe kemitraan, membership, harga katalog, dan 38 gerai beserta catatan batasannya. Perbarui hanya dengan informasi yang sudah dikonfirmasi. Harga katalog terbaru sudah tersedia; sinkronkan `data/catalog.json`, tampilan produk, dan `data/knowledge.json` saat client memperbarinya. Harga transaksi, stok, jangkauan, syarat final kemitraan, dan ketersediaan tetap dikonfirmasi tim. Kontak WhatsApp untuk pesan dan konsultasi ada di `src/lib/business.ts`; bila nomor berubah, perbarui juga data kontak di `data/knowledge.json`.
 
@@ -86,13 +86,12 @@ Dimsumhallodek/
    - Dimsum Cake / Birthday Tower (Special Event / Alternatif Tart)
    - Dimsum Platter 16 pcs Full Mentai (Sharing Box)
 
-3. **Database Jaringan Cabang (38 Gerai dalam daftar client, 7 Oktober 2026)**:
-   - **Cileungsi & Kab. Bogor**: 16 Gerai, termasuk Cariu dan Citra Indah
+3. **Database Jaringan Cabang (38 Gerai dalam daftar client, 17 Oktober 2026)**:
+   - **Cileungsi & Kab. Bogor**: 18 Gerai, termasuk Cariu, Citra Indah, Kampung Tengah, dan Pasar Meong
    - **Bogor & sekitarnya**: 7 Gerai (Pasir Kuda, Ciomas, Cimanggu, Ciapus, Kebon Pedes, Cibanteng, Bogor Nirwana Residence)
    - **Kota & Kab. Bekasi**: 3 Gerai (Kranggan, Armed, Setu)
    - **Sukabumi**: 7 Gerai, termasuk Bojong Sampora sebagai lokasi baru Dayeuh Luhur
    - **Bandung & sekitarnya**: 3 Gerai (Rancaekek Kencana, Linggar, Cicalengka)
-   - **Wilayah perlu konfirmasi**: Kampung Tengah dan Pasar Meong
 
 4. **Program Kemitraan (Franchise Autopilot)**:
    - Sistem **100% Autopilot** (Semua operasional, staf, stok, dan kontrol di-handle pusat).
