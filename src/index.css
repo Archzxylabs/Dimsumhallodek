@@ -2628,8 +2628,7 @@ body:has(dialog[open]) { overflow-y: hidden; }
   .showcase-dish { width: 100%; max-width: 260px; }
   .showcase-dish-column { grid-area: dish; padding: 16px 6px; }
   .showcase-plate { border-width: 6px; padding: 2px; }
-  .showcase-torched { top: 6px; right: -6px; font-size: 8px; padding: 5px 6px; gap: 3px; }
-  .showcase-torched svg { width: 11px; height: 11px; }
+
   .showcase-garnishes { inset: 14px; }
   .showcase-garnishes > div > svg { width: 24px; }
   .showcase-controls { padding-inline: 20px; padding-top: 12px; }

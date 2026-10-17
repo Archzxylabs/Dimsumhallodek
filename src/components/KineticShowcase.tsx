@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ArrowRight, MapPin, Flame } from 'lucide-react';
+import { ArrowLeft, ArrowRight, MapPin } from 'lucide-react';
 import { MenuItem } from '../data/menuData';
 import { FloatingGarnishes } from './FloatingGarnishes';
 import { Link } from 'react-router';
@@ -221,13 +221,6 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                       className="w-full h-full object-cover rounded-full drop-shadow-2xl select-none"
                     />
 
-                    {/* Torched Floating Badge on Plate */}
-                    {currentItem.torched && (
-                      <div className="showcase-torched absolute top-3 right-1 bg-[#f4991a] text-white text-xs font-extrabold px-3 py-2 rounded-full shadow-md flex items-center gap-1">
-                        <Flame className="w-3.5 h-3.5 fill-[#f7b610]" />
-                        Panggang harum
-                      </div>
-                    )}
                   </motion.div>
 
                   {/* Floating Garnishes Orbiting the Plate (100% Synchronized With Plate Entrance) */}

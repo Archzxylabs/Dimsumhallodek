@@ -7,7 +7,6 @@ export interface MenuItem {
   image: string;
   bgGradient: { from: string; via: string; to: string };
   accentColor: string;
-  torched: boolean;
 }
 
 // Names and descriptions follow the official site's Menu Unggulan section.
@@ -22,7 +21,6 @@ export const MENU_ITEMS: MenuItem[] = [
     // Gradasi memakai palet resmi: Energetic Orange → Olive Fresh → Dek Green.
     bgGradient: { from: '#f4991a', via: '#84994f', to: '#344f1f' },
     accentColor: '#f7b610',
-    torched: true,
   },
   {
     id: 'dimsum-carbonara',
@@ -33,7 +31,6 @@ export const MENU_ITEMS: MenuItem[] = [
     image: '/assets/optimized/carbonara-800.webp',
     bgGradient: { from: '#f7b610', via: '#84994f', to: '#344f1f' },
     accentColor: '#f4991a',
-    torched: false,
   },
   {
     id: 'dimsum-hot-lava-mentai',
@@ -44,7 +41,6 @@ export const MENU_ITEMS: MenuItem[] = [
     image: '/assets/optimized/hot-lava-800.webp',
     bgGradient: { from: '#f4991a', via: '#84994f', to: '#344f1f' },
     accentColor: '#f7b610',
-    torched: false,
   },
   {
     id: 'dimsum-big-melt',
@@ -55,6 +51,5 @@ export const MENU_ITEMS: MenuItem[] = [
     image: '/assets/optimized/bigmelt-800.webp',
     bgGradient: { from: '#f7b610', via: '#84994f', to: '#344f1f' },
     accentColor: '#f4991a',
-    torched: false,
   },
 ];
