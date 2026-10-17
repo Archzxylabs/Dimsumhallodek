@@ -143,3 +143,46 @@
 @media (hover: none), (pointer: coarse) {
   .motion-tilt { transform: none !important; }
 }
+
+/* Flavor glide: pins the taste flight to the viewport and drives it straight
+   from vertical scroll; pan exhausts exactly when the rail runs out. */
+.flavor-rail { position: relative; }
+.flavor-viewport {
+  position: sticky;
+  top: 0;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(12px, 2.6svh, 40px);
+}
+.flavor-viewport { overflow: visible; }
+.flavor-glide .flavor-grid {
+  overflow-x: visible;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+  padding-bottom: 0;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+.flavor-glide .flavor-browse { gap: 14px; }
+.flavor-progress { display: none; }
+.flavor-glide .flavor-progress { display: block; flex: 1; height: 3px; min-width: 120px; border-radius: 99px; background: #dbdccd; overflow: hidden; }
+.flavor-progress > span { display: block; height: 100%; width: 100%; background: var(--orange); transform: scaleX(0); transform-origin: 0 50%; border-radius: inherit; }
+@media (max-width: 1023px) {
+  .flavor-viewport { justify-content: flex-start; padding-top: clamp(64px, 9svh, 110px); }
+  .flavor-viewport > .collection-footnote { flex-direction: column; align-items: flex-start; margin-top: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flavor-glide .flavor-viewport { position: static; min-height: 0; padding: 0; }
+  .flavor-glide .flavor-grid { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #bfc5ae transparent; padding-bottom: 12px; transform: none; }
+}
+@media (max-width: 767px) {
+  .flavor-glide .mascot-guide { display: none; }
+  .flavor-glide .collection-heading { margin-bottom: 10px; }
+  .flavor-glide .collection-heading .editorial-heading { font-size: clamp(30px, 8.6vw, 40px); }
+  .flavor-glide .collection-heading > div > p:not(.eyebrow) { margin-top: 0; }
+  .flavor-glide .flavor-browse { gap: 10px; margin-bottom: 12px; }
+  .flavor-glide .flavor-browse > span { font-size: 10px; }
+  .flavor-glide .flavor-progress { min-width: 70px; }
+}
