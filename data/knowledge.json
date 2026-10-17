@@ -307,7 +307,7 @@
     {
       "region": "Bandung & sekitarnya",
       "name": "Cicalengka",
-      "address": null,
+      "address": "Jl. Raya Barat Cicalengka, Panenjoan, Kec. Cicalengka, Kabupaten Bandung, Jawa Barat 40395",
       "maps_url": null
     }
   ],
@@ -315,7 +315,6 @@
     "Daftar terbaru dari client memuat 38 nama gerai. Ini bukan informasi jam buka real-time.",
     "Dayeuh Luhur dipindah ke Bojong Sampora. Alamat dan pin Maps lama Dayeuh Luhur tidak boleh dipakai untuk Bojong Sampora.",
     "Endu Raya dipindah ke Citra Indah. Alamat dan pin Maps lokasi lama tidak boleh dipakai untuk Citra Indah.",
-    "Cicalengka masuk daftar gerai; yang belum lengkap adalah alamat jalannya. Jangan mengatakan gerai tersebut belum beroperasi atau segera buka.",
     "Nilai address atau maps_url null berarti alamat lengkap atau pin Maps belum tersedia. Minta pengunjung konfirmasi ke tim lewat WhatsApp dan jangan mengarang titik lokasi.",
     "Kampung Tengah dan Pasar Meong masuk wilayah Cileungsi & Kab. Bogor per pembaruan 17 Oktober 2026; alamat barunya belum punya pin Maps.",
     "Alamat dan pin Maps yang ada berasal dari materi client dan perlu dikonfirmasi sebelum berkunjung.",

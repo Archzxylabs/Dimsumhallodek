@@ -1,8 +1,8 @@
 # Daftar gerai Dimsum Hallo Dek
 
-Pembaruan client: **7 Oktober 2026** (daftar gerai) dan **17 Oktober 2026** ( penetapan wilayah Kampung Tengah, Pasar Meong, serta alamat lengkap 12 gerai). Total: **38 gerai dalam daftar**. Jam buka dan status harian dikonfirmasi ke tim.
+Pembaruan client: **7 Oktober 2026** (daftar gerai) dan **17 Oktober 2026** (penetapan wilayah Kampung Tengah, Pasar Meong, serta alamat lengkap 13 gerai). Total: **38 gerai dalam daftar**. Jam buka dan status harian dikonfirmasi ke tim.
 
-Dayeuh Luhur dipindah ke **Bojong Sampora**; Endu Raya dipindah ke **Citra Indah**. Alamat dan pin lama tidak dipakai untuk dua lokasi baru. **Kampung Tengah dan Pasar Meong masuk wilayah Cileungsi & Kab. Bogor per pembaruan 17 Oktober 2026.** Alamat baru dari client belum memiliki pin Maps; kolom petunjuk arahnya menunggu konfirmasi titik lokasi. **Cicalengka belum memiliki alamat jalan lengkap**, bukan keterangan belum beroperasi.
+Dayeuh Luhur dipindah ke **Bojong Sampora**; Endu Raya dipindah ke **Citra Indah**. Alamat dan pin lama tidak dipakai untuk dua lokasi baru. **Kampung Tengah dan Pasar Meong masuk wilayah Cileungsi & Kab. Bogor per pembaruan 17 Oktober 2026.** Alamat baru dari client belum memiliki pin Maps; kolom petunjuk arahnya menunggu konfirmasi titik lokasi. **Seluruh 38 gerai kini memiliki alamat jalan; yang masih menunggu adalah pin Maps beberapa gerai**, bukan status belum beroperasi.
 
 Alamat/pin yang tersedia di bawah berasal dari katalog sebelumnya. Nilai yang belum tersedia perlu dikonfirmasi kepada tim. Pandu Raya tidak tercantum dalam daftar terbaru; statusnya tidak disimpulkan dari ketidakhadiran tersebut.
 
@@ -67,4 +67,4 @@ Alamat/pin yang tersedia di bawah berasal dari katalog sebelumnya. Nilai yang be
 | --- | --- | --- |
 | Rancaekek Kencana | Jl. Teratai Raya, Rancaekek Wetan, Kec. Rancaekek, Kabupaten Bandung, Jawa Barat 40394 | Konfirmasi titik lokasi ke tim |
 | Linggar | Jl. Wr. Cina, Linggar, Kec. Rancaekek, Kabupaten Bandung, Jawa Barat 40394 | Konfirmasi titik lokasi ke tim |
-| Cicalengka | Alamat lengkap perlu konfirmasi tim | Konfirmasi titik lokasi ke tim |
+| Cicalengka | Jl. Raya Barat Cicalengka, Panenjoan, Kec. Cicalengka, Kabupaten Bandung, Jawa Barat 40395 | Konfirmasi titik lokasi ke tim |
