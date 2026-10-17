@@ -112,6 +112,13 @@
     "source": "menu/menu-dan-harga.jpg"
   },
   {
+    "id": "original-16",
+    "name": "Original kukus · 16 pcs",
+    "group": "Dimsum siap santap",
+    "price": 45000,
+    "source": "Konfirmasi client 2026-10-17"
+  },
+  {
     "id": "bigmelt-6",
     "name": "Big Melt · 6 pcs",
     "group": "Dimsum siap santap",

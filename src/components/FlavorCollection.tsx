@@ -10,7 +10,7 @@ const flavors = [
   { id: 'carbonara', name: 'Carbonara', description: 'Cheesy dan creamy dalam satu gigitan.', portions: [3, 6] },
   { id: 'hot-lava', name: 'Hot Lava', description: 'Buat yang suka sentuhan pedas.', portions: [3, 6] },
   { id: 'mix', name: 'Mix Sauces', description: 'Beberapa rasa, satu pilihan.', portions: [3, 6] },
-  { id: 'original', name: 'Original Kukus', description: 'Rasa klasik tanpa tambahan saus.', portions: [6] },
+  { id: 'original', name: 'Original Kukus', description: 'Rasa klasik tanpa tambahan saus.', portions: [4] },
 ];
 const rupiah = (price: number) => `Rp${price.toLocaleString('id-ID')}`;
 
@@ -50,7 +50,6 @@ export function FlavorCollection() {
               <summary>Pilihan isi & harga <Plus size={16} /></summary>
               <ul>{options.map(option => <li key={option.id}><span>{option.id.split('-').pop()} pcs</span><strong>{rupiah(option.price)}</strong></li>)}</ul>
               <div className="portion-photos">{flavor.portions.map(portion => <figure key={portion}><img src={`/assets/client/${flavor.id}-${portion}.webp`} width={800} height={640} alt={`Contoh dimsum ${flavor.name} isi ${portion} pcs`} loading="lazy" decoding="async" /><figcaption>Foto {portion} pcs</figcaption></figure>)}</div>
-              {flavor.id === 'original' && <p>Harga katalog Original untuk 4 pcs. Foto menunjukkan contoh isi 6 dan 16 pcs; harga pilihan isi lain dikonfirmasi tim.</p>}
             </details>
           </div>
         </StaggerCard>;
