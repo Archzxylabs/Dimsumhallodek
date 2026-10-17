@@ -37,7 +37,7 @@
 .flavor-options summary { display: flex; align-items: center; justify-content: space-between; min-height: 44px; font-size: 12px; font-weight: 800; list-style: none; cursor: pointer; }
 .flavor-options summary::-webkit-details-marker { display: none; }
 .flavor-options[open] summary svg { transform: rotate(45deg); }
-.flavor-options ul { display: grid; gap: 8px; font-size: 12px; padding-block: 6px 14px; }
+.flavor-options ul { display: grid; gap: 8px; font-size: 12px; padding-block: 6px 14px; min-height: 90px; }
 .flavor-options li { display: flex; justify-content: space-between; gap: 12px; }
 .portion-photos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding-bottom: 16px; }
 .portion-photos img { width: 100%; height: auto; aspect-ratio: 1.12; object-fit: cover; object-position: top; border-radius: 6px; }
