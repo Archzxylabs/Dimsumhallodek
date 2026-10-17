@@ -14,6 +14,10 @@
       "description": "Dimsum ayam dengan saus hot lava pedas dan mentai creamy, ditambah nori."
     },
     {
+      "name": "Dimsum Big Melt",
+      "description": "Dimsum full daging ayam berisian mozzarella lumer, cheesy, dan kaya rasa umami; ukurannya lebih besar dan lebih juicy. Free topping saus pilihan (mentai, tartar, carbonara, atau hot lava) plus taburan nori bubuk."
+    },
+    {
       "name": "Dimsum Platter Isi 16 Mentai",
       "description": "Paket berbagi isi 16 dimsum dengan saus mentai dan nori; tercantum di katalog website."
     }
@@ -317,7 +321,7 @@
     "Alamat dan pin Maps yang sudah ada berasal dari katalog sebelumnya dan perlu dikonfirmasi sebelum berkunjung.",
     "Pandu Raya tidak tercantum di daftar terbaru. Jangan menyimpulkan bahwa Pandu Raya tutup atau sama dengan Endu Raya tanpa konfirmasi tim."
   ],
-  "mascot_name": "Bang Mus",
+  "mascot_name": "Bang Musmid",
   "client_materials_updated_at": "2026-10-07",
   "membership": {
     "rate_percent": 1,

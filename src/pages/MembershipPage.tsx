@@ -52,7 +52,7 @@ export function MembershipPage() {
           <div className="membership-card-body"><div><span className="membership-card-rate">1<span>%</span></span><p>DARI HARGA PRODUK<br />JADI POIN KAMU.</p></div><BangMusPortrait full /></div>
           <div className="membership-card-bottom"><span>Happy bites. Happy points.</span><Gift size={21} /></div>
         </TiltCard>
-        <p className="membership-card-caption">Bang Mus siap nemenin kamu ngumpulin happy.</p>
+        <p className="membership-card-caption">Bang Musmid siap nemenin kamu ngumpulin happy.</p>
       </ScrollScene>
     </div></section>
 
@@ -98,7 +98,7 @@ export function MembershipPage() {
         </ol>
       </Reveal>
       <form className="inquiry-form membership-signup-form" onSubmit={submit}>
-        <div className="membership-form-heading"><BangMusPortrait decorative /><div><h3>Hallo, calon member!</h3><p>Kenalan dulu sama Bang Mus.</p></div></div>
+        <div className="membership-form-heading"><BangMusPortrait decorative /><div><h3>Hallo, calon member!</h3><p>Kenalan dulu sama Bang Musmid.</p></div></div>
         <div className="form-pair">
           <label>Nama panggilan <span>(opsional)</span><input type="text" autoComplete="given-name" maxLength={80} placeholder="Nama panggilanmu" value={registration.name} onChange={event => setRegistration(previous => ({ ...previous, name: event.target.value }))} /></label>
           <label>Kota / gerai langganan <span>(opsional)</span><input type="text" maxLength={120} placeholder="Contoh: Cileungsi" value={registration.city} onChange={event => setRegistration(previous => ({ ...previous, city: event.target.value }))} /></label>

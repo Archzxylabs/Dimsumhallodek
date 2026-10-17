@@ -76,7 +76,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
   return (
     <section
       id="showcase"
-      className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-[#283920] pt-28 pb-10"
+      className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-[#293f19] pt-28 pb-10"
     >
       <AnimatePresence>
         <motion.div
@@ -90,7 +90,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
         />
       </AnimatePresence>
       <div className="absolute -right-24 top-16 w-[520px] h-[520px] rounded-full bg-[#FFF9ED]/[0.07] pointer-events-none" />
-      <div className="absolute -left-32 bottom-2 w-80 h-80 rounded-full border-[40px] border-[#F6C94B]/10 pointer-events-none" />
+      <div className="absolute -left-32 bottom-2 w-80 h-80 rounded-full border-[40px] border-[#f7b610]/10 pointer-events-none" />
 
       <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden pointer-events-none" aria-hidden="true">
         <AnimatePresence mode="wait" custom={direction}>
@@ -123,8 +123,8 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 className="showcase-copy showcase-heading space-y-5"
               >
-                <p className="showcase-kicker font-display text-xl sm:text-2xl text-[#F6C94B]">#AutoHappy Setiap Hari</p>
-                <div className="showcase-label inline-flex items-center px-4 py-1.5 rounded-full text-xs font-extrabold bg-[#F6C94B] text-[#35462B]">
+                <p className="showcase-kicker font-display text-xl sm:text-2xl text-[#f7b610]">Enak & Gurih Bikin Nagih</p>
+                <div className="showcase-label inline-flex items-center px-4 py-1.5 rounded-full text-xs font-extrabold bg-[#f7b610] text-[#344f1f]">
                   Menu Unggulan
                 </div>
 
@@ -154,7 +154,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                     to="/gerai#locations"
                     className="px-4 py-3.5 rounded-full bg-[#FFF9ED]/10 hover:bg-[#FFF9ED]/20 text-[#FFF9ED] font-bold text-sm border border-[#FFF9ED]/35 flex items-center gap-2 transition-all"
                   >
-                    <MapPin className="w-4 h-4 text-[#F6C94B]" />
+                    <MapPin className="w-4 h-4 text-[#f7b610]" />
                     Cari gerai
                   </Link>
                 </div>
@@ -196,7 +196,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                   }}
                   className="absolute inset-0 flex items-center justify-center"
                 >
-                  <div className="absolute inset-1 rounded-full bg-[#F6C94B]/80 scale-105" />
+                  <div className="absolute inset-1 rounded-full bg-[#f7b610]/80 scale-105" />
 
                   {/* Circular Plate Presentation */}
                   <motion.div
@@ -223,8 +223,8 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
 
                     {/* Torched Floating Badge on Plate */}
                     {currentItem.torched && (
-                      <div className="showcase-torched absolute top-3 right-1 bg-[#E96B2B] text-white text-xs font-extrabold px-3 py-2 rounded-full shadow-md flex items-center gap-1">
-                        <Flame className="w-3.5 h-3.5 fill-[#F6C94B]" />
+                      <div className="showcase-torched absolute top-3 right-1 bg-[#f4991a] text-white text-xs font-extrabold px-3 py-2 rounded-full shadow-md flex items-center gap-1">
+                        <Flame className="w-3.5 h-3.5 fill-[#f7b610]" />
                         Panggang harum
                       </div>
                     )}
@@ -270,7 +270,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
 
             {/* Numerical Counter */}
             <div className="font-display font-semibold text-sm text-[#FFF9ED]/80 pl-2">
-              <span className="text-[#F6C94B] text-lg">{currentItem.index}</span>
+              <span className="text-[#f7b610] text-lg">{currentItem.index}</span>
               <span> / 0{items.length}</span>
             </div>
           </div>
@@ -290,7 +290,7 @@ export const KineticShowcase: React.FC<KineticShowcaseProps> = ({
                   }}
                   className={`px-3 py-2 text-xs font-extrabold transition-all whitespace-nowrap flex items-center gap-1.5 ${
                     isActive
-                      ? 'text-[#F6C94B] border-b-2'
+                      ? 'text-[#f7b610] border-b-2'
                       : 'text-[#FFF9ED]/65 hover:text-[#FFF9ED] border-b-2 border-transparent'
                   }`}
                   style={isActive ? { borderColor: currentItem.accentColor } : {}}

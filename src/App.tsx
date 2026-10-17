@@ -63,7 +63,7 @@ export function App() {
   return (
     <BrowserRouter useTransitions={false}>
       <MotionConfig reducedMotion="user">
-        <div id="top" className="min-h-screen bg-[#FFF9ED] text-[#35462B]">
+        <div id="top" className="min-h-screen bg-[#FFF9ED] text-[#344f1f]">
           <PageNavigation />
           <a href="#main-content" className="skip-link">
             Langsung ke konten

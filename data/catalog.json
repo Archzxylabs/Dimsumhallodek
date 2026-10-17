@@ -112,6 +112,20 @@
     "source": "menu/menu-dan-harga.jpg"
   },
   {
+    "id": "bigmelt-6",
+    "name": "Big Melt · 6 pcs",
+    "group": "Dimsum siap santap",
+    "price": 35000,
+    "source": "Brand Guidline DHD.pdf (Product Highlight)"
+  },
+  {
+    "id": "bigmelt-12",
+    "name": "Big Melt · 12 pcs",
+    "group": "Dimsum siap santap",
+    "price": 70000,
+    "source": "Brand Guidline DHD.pdf (Product Highlight)"
+  },
+  {
     "id": "cake-16",
     "name": "Dimsum 16 pcs + tulisan",
     "group": "Cake & Bouquet",

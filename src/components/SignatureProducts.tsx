@@ -134,7 +134,7 @@ export function SignatureProducts() {
                 </div>
                 <a
                   href={whatsappUrl(
-                    `Halo Bang Mus, saya ingin tanya ${product.name}. Mohon pilihan ukuran, jumlah isi, waktu persiapan, opsi pengiriman, dan harga resminya.`,
+                    `Halo Bang Musmid, saya ingin tanya ${product.name}. Mohon pilihan ukuran, jumlah isi, waktu persiapan, opsi pengiriman, dan harga resminya.`,
                   )}
                   target="_blank"
                   rel="noopener noreferrer"

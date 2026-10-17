@@ -25,7 +25,7 @@ Frontend tidak memakai variabel lingkungan; tidak ada kredensial yang perlu dise
 
 31 file unduhan baru dikelompokkan di [`client-data/2026-10-07`](client-data/2026-10-07/README.md). `manifest.json` mencatat nama asli, lokasi baru, ukuran, serta SHA-256. Enam file `.txt` sebenarnya JPEG dan ekstensinya sudah diperbaiki tanpa perubahan byte. File sumber hanya berada di arsip lokal; Git dan deployment membawa indeks, manifest, serta aset web yang digunakan.
 
-Nama yang tampil di UI dan pesan WhatsApp adalah **Bang Mus**. Header, layar, dan halaman membership memakai ilustrasi dari sheet client.
+Nama yang tampil di UI dan pesan WhatsApp adalah **Bang Musmid**. Header, layar, dan halaman membership memakai ilustrasi dari sheet client.
 
 Membership sesuai arahan pemilik: daftar melalui WhatsApp/admin, poin sebesar **1% harga produk**, Rp100.000 = 1.000 poin. Poin dikumpulkan dulu dan penukaran dikonfirmasi tim. Website tidak membuat akun atau saldo; admin menangani aktivasi, pencatatan transaksi, saldo, dan riwayat. Form menyiapkan pesan yang dikirim sendiri oleh pengunjung, serta menyediakan tautan cek saldo ke admin.
 
@@ -75,13 +75,14 @@ Dimsumhallodek/
 1. **Brand Identity**:
    - **Nama Brand**: Dimsum Hallo Dek (DHD)
    - **Badan Usaha**: PT Merza Perintis Sukses
-   - **Slogan / Tagline**: `#AutoHappy Setiap Hari`
-   - **Tone of Voice**: Ramah, ceria, bersahabat ("Bang Mus"), menggiurkan (*appetizing*).
+   - **Slogan / Tagline**: `Enak & Gurih Bikin Nagih`
+   - **Tone of Voice**: Ramah, ceria, bersahabat ("Bang Musmid"), menggiurkan (*appetizing*).
 
 2. **Daftar Menu Unggulan**:
    - Dimsum Mix Mentai Tartar (Signature Torched)
    - Dimsum Carbonara (Cheesy Creamy)
    - Dimsum Hot Lava Mentai (Spicy Creamy)
+  - Dimsum Big Melt (Isian Mozzarella Lumer — Cheese Pull)
    - Dimsum Cake / Birthday Tower (Special Event / Alternatif Tart)
    - Dimsum Platter 16 pcs Full Mentai (Sharing Box)
 

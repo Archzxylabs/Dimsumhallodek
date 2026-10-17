@@ -13,7 +13,7 @@ export function Footer() {
             <div><p className="eyebrow">Sampai ketemu, Dek!</p><p>Perut happy. Hari ikut happy.</p></div>
           </div>
           <a
-            href={whatsappUrl("Halo Bang Mus, aku mau pesan dimsum.")}
+            href={whatsappUrl("Halo Bang Musmid, aku mau pesan dimsum.")}
             target="_blank"
             rel="noopener noreferrer"
             className="footer-cta"
@@ -86,7 +86,7 @@ export function Footer() {
         </div>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Dimsum Hallo Dek</span>
-          <span>#AutoHappy Setiap Hari</span>
+          <span>Enak & Gurih Bikin Nagih</span>
           <a href="#top">Balik ke atas ↑</a>
         </div>
       </div>

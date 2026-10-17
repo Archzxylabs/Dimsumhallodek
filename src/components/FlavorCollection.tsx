@@ -28,8 +28,8 @@ export function FlavorCollection() {
   return <section id="pilihan-rasa" className="flavor-collection page-width section-space" aria-labelledby="flavors-title">
     <div className="collection-heading">
       <div><p className="eyebrow">01 / Temukan rasa kamu</p><Headline id="flavors-title" className="editorial-heading" lines={[{ text: 'Beda saus.' }, { text: 'Sama-sama nagih.', accent: 'orange' }]} /></div>
-      <aside className="mascot-guide" aria-label="Tips dari Bang Mus">
-        <div><span>Bang Mus bantu pilih</span><p>Tim creamy atau pedas? Kenalan sama rasanya, lalu pilih isi yang pas buat kamu.</p></div>
+      <aside className="mascot-guide" aria-label="Tips dari Bang Musmid">
+        <div><span>Bang Musmid bantu pilih</span><p>Tim creamy atau pedas? Kenalan sama rasanya, lalu pilih isi yang pas buat kamu.</p></div>
         <BangMusPortrait full decorative pose="idea" />
       </aside>
     </div>

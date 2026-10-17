@@ -19,8 +19,9 @@ export const MENU_ITEMS: MenuItem[] = [
     watermark: 'MENTAI.',
     description: 'Dimsum full daging ayam disajikan dengan saus mentai dan saus tartar yang gurih, creamy, lembut, dan segar. Ditorch ringan hingga harum.',
     image: '/assets/optimized/mentai-800.webp',
-    bgGradient: { from: '#a65c2a', via: '#5e572e', to: '#283920' },
-    accentColor: '#e96b2b',
+    // Gradasi memakai palet resmi: Energetic Orange → Olive Fresh → Dek Green.
+    bgGradient: { from: '#f4991a', via: '#84994f', to: '#344f1f' },
+    accentColor: '#f7b610',
     torched: true,
   },
   {
@@ -30,8 +31,8 @@ export const MENU_ITEMS: MenuItem[] = [
     watermark: 'CHEESY.',
     description: 'Dimsum full daging ayam disajikan dengan saus carbonara yang cheesy, gurih, dan creamy lembut, ditambah taburan nori dan aroma smoky.',
     image: '/assets/optimized/carbonara-800.webp',
-    bgGradient: { from: '#a68a37', via: '#5c642f', to: '#283920' },
-    accentColor: '#f6c94b',
+    bgGradient: { from: '#f7b610', via: '#84994f', to: '#344f1f' },
+    accentColor: '#f4991a',
     torched: false,
   },
   {
@@ -41,8 +42,8 @@ export const MENU_ITEMS: MenuItem[] = [
     watermark: 'PEDAS.',
     description: 'Dimsum full daging ayam dengan saus hot lava pedas, saus mentai yang creamy dan gurih, serta taburan nori.',
     image: '/assets/optimized/hot-lava-800.webp',
-    bgGradient: { from: '#b65627', via: '#69472c', to: '#283920' },
-    accentColor: '#e96b2b',
+    bgGradient: { from: '#f4991a', via: '#84994f', to: '#344f1f' },
+    accentColor: '#f7b610',
     torched: false,
   },
   {
@@ -52,8 +53,8 @@ export const MENU_ITEMS: MenuItem[] = [
     watermark: 'LUMER.',
     description: 'Dimsum full daging ayam dengan isian mozarella lumer, cheesy dan kaya rasa umami. Ukurannya lebih besar, lebih juicy dan lebih yummy! Disajikan dengan free topping saus pilihan, mentai, tartar, carbonara, atau hot lava, serta taburan nori bubuk.',
     image: '/assets/optimized/bigmelt-800.webp',
-    bgGradient: { from: '#a6772c', via: '#5e5c2e', to: '#283920' },
-    accentColor: '#f2b03c',
+    bgGradient: { from: '#f7b610', via: '#84994f', to: '#344f1f' },
+    accentColor: '#f4991a',
     torched: false,
   },
 ];

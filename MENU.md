@@ -1,6 +1,6 @@
 # 🥟 Katalog Menu & Produk - Dimsum Hallo Dek
 
-> **Brand Slogan**: `#AutoHappy Setiap Hari`  
+> **Brand Slogan**: `Enak & Gurih Bikin Nagih`  
 > **Karakter Produk**: 100% Full Daging Ayam, Tekstur Lembut & Padat, Saus Khas Melimpah, Torched Smoky Aroma.
 
 ---
@@ -25,17 +25,24 @@
 - **Profil Rasa**: Pedas membakar selera, seimbang dengan saus mentai creamy manis-gurih.
 - **Aset Gambar**: [`WhatsApp-Image-2026-01-20-at-23.14.04-1-1.jpeg`](file:///home/haikaru/Archverse/Lab/Client/Dimsumhallodek/assets/images/WhatsApp-Image-2026-01-20-at-23.14.04-1-1.jpeg)
 
+### 4. Dimsum Big Melt 🧀 (Menu Baru)
+- **Tagline / Category**: `Menu Baru / Cheese Pull`
+- **Deskripsi**: Dimsum full daging ayam dengan isian mozzarella yang lumer, cheesy, dan kaya rasa umami. Ukurannya lebih besar, teksturnya lebih juicy, dan rasanya lebih yummy! Disajikan dengan free topping saus pilihan — Mentai, Tartar, Carbonara, atau Hot Lava — plus taburan nori yang bikin makin gurih. Lengkap dengan aroma smoky yang menggoda.
+- **Profil Rasa**: Kaya umami, cheesy pekat, juicy, aroma smoky.
+- **Harga**: 6 pcs → 35.000 · 12 pcs → 70.000 (free pilih saus).
+- **Aset Gambar**: [`bigmelt.jpeg`](file:///home/haikaru/Archverse/Lab/Client/Dimsumhallodek/assets/images/bigmelt.jpeg)
+
 ---
 
 ## 2. Menu Party & Event (Special Activation)
 
-### 4. Dimsum Cake / Birthday Tower 🎂
+### 5. Dimsum Cake / Birthday Tower 🎂
 - **Tagline / Category**: `Special Event / Party Size`
 - **Deskripsi**: Alternatif kue ulang tahun kekinian! Susunan dimsum hangat bertingkat dihiasi lilin ulang tahun, saus mentai lumer, dan ornamen perayaan.
 - **Target Event**: Wedding, Birthday Party, Anniversary, Graduation.
 - **Aset Gambar**: [`ChatGPT-Image-Jun-5-2026-01_22_12-PM-Copy.png`](file:///home/haikaru/Archverse/Lab/Client/Dimsumhallodek/assets/images/ChatGPT-Image-Jun-5-2026-01_22_12-PM-Copy.png)
 
-### 5. Dimsum Platter Isi 16 Mentai 🍱
+### 6. Dimsum Platter Isi 16 Mentai 🍱
 - **Tagline / Category**: `Sharing Platter / Rame-Rame`
 - **Deskripsi**: 1 box besar isi 16 pcs dimsum kukus hangat dengan baluran saus mentai penuh, di-torch merata dan ditaburi rumput laut.
 - **Target Segmen**: Makan bareng keluarga, teman kantor, hampers, atau arisan.

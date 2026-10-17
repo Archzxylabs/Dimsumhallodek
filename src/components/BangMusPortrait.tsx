@@ -19,7 +19,7 @@ export function BangMusPortrait({ className = '', full = false, decorative = fal
     src={`/assets/client/bang-mus-${pose}.webp`}
     width={poses[pose][0]}
     height={poses[pose][1]}
-    alt={decorative ? '' : 'Bang Mus, maskot Dimsum Hallo Dek'}
+    alt={decorative ? '' : 'Bang Musmid, maskot Dimsum Hallo Dek'}
     loading="lazy"
     decoding="async"
   />;
@@ -27,7 +27,7 @@ export function BangMusPortrait({ className = '', full = false, decorative = fal
     className={`bang-mus-portrait ${className}`}
     viewBox="35 254 265 307"
     role={decorative ? undefined : 'img'}
-    aria-label={decorative ? undefined : 'Bang Mus, maskot Dimsum Hallo Dek'}
+    aria-label={decorative ? undefined : 'Bang Musmid, maskot Dimsum Hallo Dek'}
     aria-hidden={decorative || undefined}
     focusable="false"
   >

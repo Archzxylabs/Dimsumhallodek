@@ -125,7 +125,7 @@ export function Navbar() {
               <ArrowUpRight />
             </NavLink>
           ))}
-          <p className="mobile-nav-note">#AutoHappy Setiap Hari</p>
+          <p className="mobile-nav-note">Enak & Gurih Bikin Nagih</p>
         </motion.nav>
       )}
       </AnimatePresence>

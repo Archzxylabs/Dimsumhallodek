@@ -167,7 +167,7 @@
 .footer-grid { padding-top: 24px; gap: 28px; }
 .footer-bottom { margin-top: 28px; }
 
-/* Bang Mus hosts the visit, with a different client-supplied pose for each context. */
+/* Bang Musmid hosts the visit, with a different client-supplied pose for each context. */
 .mascot-guide { display: flex; align-items: center; gap: 18px; width: min(370px, 38%); }
 .mascot-guide > div { min-width: 0; }
 .mascot-guide span { display: block; font-size: 10px; font-weight: 800; letter-spacing: .04em; color: var(--accent-ink); margin-bottom: 8px; }

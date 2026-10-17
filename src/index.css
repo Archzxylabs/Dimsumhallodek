@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Fredoka", sans-serif;
-  --font-sans: "Nunito Sans", sans-serif;
+  --font-display: "DynaPuff", sans-serif;
+  --font-sans: "Poppins", sans-serif;
 }
 
 :root {
   color-scheme: light;
-  --army: #35462b;
-  --army-deep: #283920;
+  --army: #344f1f;
+  --army-deep: #293f19;
   --cream: #fff9ed;
-  --orange: #e96b2b;
-  --yellow: #f6c94b;
+  --orange: #f4991a;
+  --yellow: #f7b610;
 }
 
 body {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
   overflow-x: hidden;
   background: var(--cream);
 }
@@ -55,7 +55,7 @@ section {
 
 /* Editorial system. Menu Favorit keeps its own typography and layout. */
 :root {
-  --font-editorial: "Bricolage Grotesque", sans-serif;
+  --font-editorial: "Fredoka", sans-serif;
 }
 .page-width {
   width: min(1320px, calc(100% - 96px));
@@ -344,7 +344,7 @@ textarea:focus-visible {
   width: 23px;
 }
 .nav-index {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 10px;
   opacity: 0.65;
 }
@@ -741,7 +741,7 @@ textarea:focus-visible {
   letter-spacing: -0.035em;
 }
 .product-index a > span {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 10px;
   color: #b44c1d;
 }
@@ -2654,7 +2654,7 @@ body:has(dialog[open]) { overflow-y: hidden; }
   .product-story-copy { order: -1; }
 }
 
-/* Bang Mus and the membership journey use the same brand and section budget. */
+/* Bang Musmid and the membership journey use the same brand and section budget. */
 .bang-mus-portrait { display: block; overflow: hidden; flex-shrink: 0; }
 .header-inner { gap: 20px; }
 .desktop-nav { gap: clamp(14px, 1.5vw, 26px); }
@@ -2667,7 +2667,7 @@ body:has(dialog[open]) { overflow-y: hidden; }
 .membership-card { padding: clamp(20px, 3vw, 34px); color: var(--cream); background: var(--army-deep); border-radius: 22px; box-shadow: 10px 12px 0 var(--yellow); transform: rotate(-3deg); }
 .membership-card-top, .membership-card-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .membership-card-top > span { font-family: var(--font-editorial); font-size: clamp(18px, 2vw, 26px); font-weight: 800; line-height: 1.05; letter-spacing: -.04em; }
-.membership-card-top small { font: 700 9px 'Nunito Sans', sans-serif; letter-spacing: .18em; }
+.membership-card-top small { font: 700 9px 'Poppins', sans-serif; letter-spacing: .18em; }
 .membership-card-top > svg { width: 38px; height: 38px; color: var(--yellow); }
 .membership-card-body { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 8px; margin-block: 22px; }
 .membership-card-rate { font-family: var(--font-editorial); font-weight: 800; font-size: clamp(68px, min(10vw, 14svh), 144px); letter-spacing: -.08em; line-height: 1; color: var(--yellow); }

@@ -36,7 +36,7 @@ export const sitePages = [
     label: "Membership",
     title: "Membership & Poin",
     description:
-      "Daftar membership Dimsum Hallo Dek melalui tim dan kumpulkan poin 1% dari harga produk. Coba kalkulator poin bersama Bang Mus.",
+      "Daftar membership Dimsum Hallo Dek melalui tim dan kumpulkan poin 1% dari harga produk. Coba kalkulator poin bersama Bang Musmid.",
   },
   {
     path: "/gerai",
