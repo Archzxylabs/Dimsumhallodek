@@ -98,9 +98,6 @@ export function SignatureProducts() {
               {product.type === "bouquet" ? (
                 <>
                   <img className="catalog-bouquet-photo" src="/assets/client/bouquet.webp" width={195} height={182} alt="Contoh Dimsum Bouquet M dari katalog produk" loading="lazy" decoding="async" />
-                  <span className="visual-caption">
-                    Foto katalog Bouquet M · desain dikonsultasikan
-                  </span>
                 </>
               ) : product.type === "cake" ? (
                 <>
