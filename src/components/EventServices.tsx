@@ -5,6 +5,7 @@ import { whatsappUrl } from "../lib/business";
 import { isStringRecord, useSessionState } from '../lib/useSessionState';
 import { InquiryFeedback } from './InquiryFeedback';
 import { BangMusPortrait } from './BangMusPortrait';
+import { CatalogModal, type CatalogKind } from './CatalogModal';
 import { Headline, ScrollScene } from './MotionElements';
 
 const events = [
@@ -25,6 +26,7 @@ export function EventServices() {
   const [draft, setDraft] = useSessionState('event', emptyDraft, (v): v is EventDraft => isStringRecord(v, Object.keys(emptyDraft)) && (v.eventType === 'Belum menentukan' || events.some((e) => e.name === v.eventType)));
   const { eventType, date, dateUndecided, guests, location, notes, serving } = draft;
   const [preparedUrl, setPreparedUrl] = useState('');
+  const [catalog, setCatalog] = useState<CatalogKind | null>(null);
   useEffect(() => { setPreparedUrl(''); }, [draft]);
   const update = (field: keyof EventDraft, value: string) => setDraft((previous) => ({ ...previous, [field]: value }));
   const today = new Date();
@@ -68,11 +70,11 @@ export function EventServices() {
             <div className="event-photo">
               <span className="photo-index">01—05 / Setiap momen</span>
               <img
-                src="/assets/client/mix-16.webp"
-                width={800}
-                height={640}
+                src="/assets/client/event-serving.webp"
+                width={1000}
+                height={1333}
                 decoding="async"
-                alt="Dimsum Mix Sauces isi 16 pcs, foto katalog produk"
+                alt="Tim Dimsum Hallo Dek siap melayani pesanan dimsum untuk acara di lokasi"
               />
               <div className="event-photo-caption">
                 <span>GOOD COMPANY.</span>
@@ -150,7 +152,7 @@ export function EventServices() {
                 dikonfirmasi oleh tim.
               </span>
             </div>
-            <div className="event-source-links"><a href="/assets/client/wedding-catalog.webp" target="_blank" rel="noopener noreferrer">Katalog wedding <ArrowUpRight size={16} /></a><a href="/assets/client/birthday-catalog.webp" target="_blank" rel="noopener noreferrer">Katalog birthday <ArrowUpRight size={16} /></a></div>
+            <div className="event-source-links"><button type="button" onClick={() => setCatalog('wedding')}>Katalog wedding</button><button type="button" onClick={() => setCatalog('birthday')}>Katalog birthday</button></div>
           </Reveal>
           <form onSubmit={submit} className="inquiry-form">
             <div className="form-pair">
@@ -260,6 +262,7 @@ export function EventServices() {
           ]}
         />
       </section>
+      {catalog && <CatalogModal kind={catalog} onClose={() => setCatalog(null)} />}
     </>
   );
 }
