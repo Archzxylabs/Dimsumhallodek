@@ -127,7 +127,7 @@
 .event-source-links { display: flex; flex-wrap: wrap; gap: 12px 22px; margin-top: 20px; }
 .event-source-links a, .event-source-links button { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 12px; font-weight: 800; text-decoration: underline; text-underline-offset: 4px; }
 .partnership-art { display: block; width: 100%; height: auto; aspect-ratio: auto; padding: 0; background: transparent; border-radius: 0; overflow: visible; }
-.partnership-art figure img { width: 100%; height: min(330px, 38svh); object-fit: cover; border-radius: 16px; }
+.partnership-art figure img { width: 100%; height: auto; max-height: min(420px, 46svh); object-fit: contain; border-radius: 16px; }
 .partnership-art figcaption { font-size: 10px; line-height: 1.6; margin-top: 10px; }
 .partnership-model-labels { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .partnership-model-labels span { font-size: 11px; padding: 6px 10px; border: 1px solid #bfc5ae; border-radius: 30px; }
