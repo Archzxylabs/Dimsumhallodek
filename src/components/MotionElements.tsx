@@ -64,14 +64,13 @@ export function TiltCard({ children, className = '' }: { children: ReactNode; cl
 }
 
 export function ScrollRibbon({ text, variant = '' }: { text: string; variant?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const reduced = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const x = useTransform(scrollYProgress, [0, 1], ['-5%', '-24%']);
-  return <div ref={ref} className={`brand-marquee motion-ribbon ${variant}`} aria-label={text}>
-    <motion.div className="marquee-track" aria-hidden="true" style={reduced ? undefined : { x }}>
+  // Ribbon ini sekarang loop waktu-murni (CSS keyframes "marquee") — bergerak
+  // terus tanpa menunggu scroll; lebih rendah motion lewat prefers-reduced-motion
+  // mematikan animasi ini di index.css.
+  return <div className={`brand-marquee motion-ribbon ${variant}`} aria-label={text}>
+    <div className="marquee-track" aria-hidden="true">
       {Array.from({ length: 4 }, (_, index) => <span key={index}>{text}<span className="marquee-separator">/</span></span>)}
-    </motion.div>
+    </div>
   </div>;
 }
 

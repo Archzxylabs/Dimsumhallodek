@@ -4,7 +4,6 @@
 .motion-line-inner { display: block; }
 .scroll-scene { position: relative; min-width: 0; transform-origin: 50% 50%; }
 .motion-ribbon { padding-block: 19px; border: 0; }
-.motion-ribbon .marquee-track { animation: none; }
 .motion-ribbon .marquee-track > span { font-size: clamp(26px, 3.4vw, 44px); gap: 32px; padding-inline: 16px; }
 .motion-ribbon .marquee-separator { color: currentColor; opacity: .55; }
 .home-motion-ribbon { color: var(--army-deep); }
