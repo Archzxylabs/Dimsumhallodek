@@ -148,7 +148,6 @@ export function StoreLocator() {
                 <span className="outlet-region">{outlet.region}</span>
                 <h3>{outlet.name}</h3>
                 <p className={outlet.address ? undefined : 'outlet-address-pending'}>{outlet.address ?? 'Alamat lengkap perlu dikonfirmasi ke tim.'}</p>
-                {outlet.previousNames.length > 0 && <p className="outlet-relocation">Pindahan dari {outlet.previousNames[0]}.</p>}
                 <div className="outlet-visit-info"><span>Jam buka: konfirmasi tim</span><a href={outletWhatsappUrl(outlet)} target="_blank" rel="noopener noreferrer">Tanya tim tentang {outlet.name} <ArrowUpRight size={14} /></a></div>
               </div>
               <a
