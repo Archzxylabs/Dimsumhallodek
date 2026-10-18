@@ -63,7 +63,6 @@
 .event-type-list .selection-circle { transition: transform .35s cubic-bezier(.22, 1, .36, 1); }
 .event-type-list button.selected .selection-circle { transform: rotate(-8deg); }
 .partnership-art figure img { border-radius: 2px 30px 2px 2px; }
-.partnership-model-labels span { border-radius: 0; border-width: 0 0 1px; padding-inline: 0; margin-right: 12px; }
 .partner-comparison article { border-radius: 2px; border-top: 3px solid var(--army); }
 .partner-comparison article:nth-child(2) { border-top-color: var(--orange); }
 .partner-comparison article:nth-child(3) { border-top-color: #ad6c0e; }

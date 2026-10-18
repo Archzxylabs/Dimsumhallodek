@@ -89,8 +89,7 @@ export function FranchiseAutopilot() {
           <a href="#konsultasi-mitra" className="partner-direct-link">Belum yakin? Konsultasi dulu <ArrowUpRight size={16} /></a>
         </Reveal>
         <ScrollScene className="partnership-art" turn={-1}>
-          <figure><img src="/assets/client/store-concept.webp" width={610} height={421} alt="Referensi konsep gerai dari deck kemitraan Dimsum Hallo Dek" decoding="async" /><figcaption>Konsep gerai · deck kemitraan</figcaption></figure>
-          <div className="partnership-model-labels"><span>Flexible</span><span>Collaborative</span><span>Full Managed</span></div>
+          <figure><img src="/assets/client/store-concept.webp" width={610} height={421} alt="Referensi konsep gerai dari deck kemitraan Dimsum Hallo Dek" decoding="async" /></figure>
         </ScrollScene>
       </section>
       <Marquee text="LET'S GROW SOMETHING GOOD." variant="marquee-yellow" />
