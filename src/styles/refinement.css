@@ -78,7 +78,6 @@
 .member-invitation .bang-mus-portrait { position: absolute; right: -15px; bottom: 18px; width: 38%; height: auto; max-height: 260px; object-fit: contain; }
 .partner-invitation { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 24px; align-items: center; padding: 28px; border: 1px solid var(--detail-line); border-radius: 16px; }
 .partner-invitation figure img { width: 100%; aspect-ratio: .82; object-fit: cover; border-radius: 10px; }
-.partner-invitation figcaption { font-size: 9px; line-height: 1.5; margin-top: 8px; }
 .partner-invitation .arrow-link, .member-invitation .arrow-link { font-size: 12px; gap: 10px; }
 .partner-invitation .arrow-circle, .member-invitation .arrow-circle { width: 32px; height: 32px; }
 .nearby-section { background: var(--detail-surface); }
