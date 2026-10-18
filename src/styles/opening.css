@@ -1,0 +1,40 @@
+/* One opening scene below the navbar; longer content can still grow naturally. */
+.site-header .header-inner {
+  height: calc(var(--header-height) - 1px);
+}
+
+#main-content > .page-hero {
+  --opening-padding: clamp(28px, 5svh, 64px);
+  min-height: var(--section-budget);
+  padding-block: var(--opening-padding);
+  align-content: center;
+}
+
+#main-content > :is(.event-hero, .membership-hero, .location-hero) {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  /* Scale whole photographs to the available height, including their captions. */
+  .page-hero .product-photo-frame {
+    width: min(100%, 430px, calc((var(--section-budget) - 2 * var(--opening-padding) - 48px) * 768 / 899));
+  }
+
+  .page-hero .event-photo {
+    width: min(100%, calc((var(--section-budget) - 2 * var(--opening-padding) - 48px) * 1000 / 1333));
+    margin-inline: auto;
+  }
+
+  .page-hero .event-photo > img {
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 767px) {
+  #main-content > .page-hero {
+    --opening-padding: 36px;
+  }
+}
