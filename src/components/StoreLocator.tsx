@@ -75,11 +75,6 @@ export function StoreLocator() {
               alt="Gerobak gerai Dimsum Hallo Dek berbranding kuning lengkap dengan spanduk menu"
               fetchPriority="high"
             />
-            <div className="location-hero-stat">
-              <span className="location-count">{allOutlets.length}</span>
-              <span className="eyebrow">Gerai dalam daftar</span>
-              <p>Bogor · Bekasi · Sukabumi · Bandung</p>
-            </div>
           </ScrollScene>
         </div>
       </section>
