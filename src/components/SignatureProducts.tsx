@@ -75,7 +75,6 @@ export function SignatureProducts() {
             />
             <span>Gurihnya, punya cerita.</span>
           </div>
-          <span className="product-art-caption">Cake · Bouquet · Frozen</span>
         </ScrollScene>
       </section>
       <nav className="product-index page-width" aria-label="Pilihan produk">
