@@ -150,7 +150,13 @@
 .location-hero { background: var(--detail-surface); }
 .location-hero-grid { grid-template-columns: minmax(0, 1fr) minmax(340px, .75fr); align-items: center; }
 .location-hero-art { padding: 28px; background: var(--army); color: var(--cream); border-radius: 16px; transform: none; }
-.location-hero-art > img { width: 100%; height: auto; border-radius: 12px; }
+.location-hero-art > img { width: 100%; height: auto; border-radius: 12px; max-height: calc(100svh - 204px); object-fit: cover; object-position: center 55%; }
+.location-hero-art { position: relative; }
+.location-hero-stat { position: absolute; left: 46px; bottom: 46px; padding: 14px 20px 16px; background: var(--cream); color: var(--army); border-radius: 14px; box-shadow: 0 16px 38px rgba(23, 42, 23, 0.28); }
+.location-hero-stat .location-count { font-size: 54px; }
+.location-hero-stat .location-count > svg { width: 30px; margin-top: 8px; }
+.location-hero-stat .eyebrow { margin-block: 6px 3px; }
+.location-hero-stat > p { font-size: 10px; line-height: 1.5; }
 .location-count { font-size: 96px; line-height: 1; }
 .location-hero-art .eyebrow { margin-block: 12px 20px; }
 .location-hero-art > p { font-size: 12px; line-height: 1.7; }
@@ -373,6 +379,10 @@
   .occasion-card { padding: 24px; }
 }
 @media (max-width: 767px) {
+  #main-content > .location-hero.location-hero { --opening-padding: 26px; }
+  .location-hero-grid { gap: 24px; }
   .location-hero-art { display: block; }
-  .location-hero-art > img { width: 100%; height: auto; margin-bottom: 16px; }
+  .location-hero-art > img { width: 100%; height: auto; margin-bottom: 0; }
+  .location-hero-stat { left: 40px; bottom: 40px; padding: 12px 16px 14px; }
+  .location-hero-stat .location-count { font-size: 44px; }
 }
