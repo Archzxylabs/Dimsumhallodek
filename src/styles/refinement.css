@@ -129,9 +129,6 @@
 .event-source-links a, .event-source-links button { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 12px; font-weight: 800; text-decoration: underline; text-underline-offset: 4px; }
 .partnership-art { display: block; width: 100%; height: auto; aspect-ratio: auto; padding: 0; background: transparent; border-radius: 0; overflow: visible; }
 .partnership-art figure img { width: 100%; height: auto; max-height: min(420px, 46svh); object-fit: contain; border-radius: 16px; }
-.partnership-art figcaption { font-size: 10px; line-height: 1.6; margin-top: 10px; }
-.partnership-model-labels { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-.partnership-model-labels span { font-size: 11px; padding: 6px 10px; border: 1px solid #bfc5ae; border-radius: 30px; }
 .partner-comparison article { border-radius: 12px; padding: 24px; }
 .partner-comparison h3 { font-size: 30px; }
 .partner-comparison dl { font-size: 13px; }
@@ -151,6 +148,8 @@
 .location-hero-grid { grid-template-columns: minmax(0, 1fr) minmax(340px, .75fr); align-items: center; }
 .location-hero-art { padding: 28px; background: var(--army); color: var(--cream); border-radius: 16px; transform: none; }
 .location-hero-art > img { width: 100%; height: auto; border-radius: 12px; max-height: calc(100svh - 204px); object-fit: cover; object-position: center 55%; }
+.location-hero .motion-heading { display: flex; gap: 0.26em; }
+.location-hero .hero-title { font-size: clamp(30px, min(6vw, 8.6svh), 64px); }
 .location-hero-art { position: relative; }
 .location-count { font-size: 96px; line-height: 1; }
 .location-hero-art .eyebrow { margin-block: 12px 20px; }
