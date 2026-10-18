@@ -45,7 +45,7 @@
 /* Each page opens with a different photographic composition. */
 .product-hero { grid-template-columns: .95fr 1.05fr; }
 .product-hero .hero-title, .event-hero .hero-title, .membership-hero .hero-title { font-size: clamp(44px, 5.5vw, 80px); }
-.product-photo-frame { border-radius: 3px; clip-path: polygon(0 0, 100% 0, 100% 87%, 91% 100%, 0 100%); }
+.product-photo-frame { border-radius: 3px; }
 .product-quick-links { gap: 22px; }
 .product-quick-links a { border: 0; border-bottom: 1px solid var(--army); border-radius: 0; padding-inline: 0; min-width: 84px; justify-content: space-between; background: transparent; }
 .product-art-caption, .event-art-caption { font-size: 10px; letter-spacing: .04em; }

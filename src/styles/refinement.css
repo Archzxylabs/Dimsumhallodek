@@ -90,7 +90,7 @@
 /* Detail pages share the same type and spacing, with different useful visual subjects. */
 .product-hero, .partnership-hero, .membership-hero { gap: clamp(30px, 5vw, 70px); }
 .product-hero-art { padding: 0; }
-.product-photo-frame { padding: 0; background: var(--army); border-radius: 16px; box-shadow: none; transform: none; overflow: hidden; }
+.product-photo-frame { padding: 0; background: var(--army); border-radius: 16px; box-shadow: none; transform: none; overflow: hidden; max-width: min(100%, 430px); margin-inline: auto; }
 .product-photo-frame img { height: auto; aspect-ratio: 768 / 899; object-position: center 50%; }
 .product-photo-frame > span { color: var(--cream); padding: 12px; font-size: 11px; }
 .product-art-caption { display: block; text-align: right; margin-top: 12px; font-size: 11px; }
@@ -274,7 +274,8 @@
   .region-directory span { font-size: 10px; }
   .region-directory svg { width: 18px; }
   .product-hero, .membership-hero, .partnership-hero, .event-hero-grid, .location-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
-  .product-photo-frame img { height: 240px; }
+  .product-photo-frame img { height: auto; }
+  .product-photo-frame { max-width: min(100%, 300px); }
   .product-index { grid-template-columns: 1fr; }
   .product-index a { font-size: 17px; padding-block: 12px; min-height: 48px; }
   .product-index a:not(:last-child) { border-bottom: 1px solid var(--detail-line); }
