@@ -81,7 +81,6 @@ export function EventServices() {
                 <span>GREAT DIMSUM.</span>
               </div>
             </div>
-            <p className="event-art-caption">Dari kumpul kecil sampai momen besar.</p>
           </ScrollScene>
         </div>
       </section>
