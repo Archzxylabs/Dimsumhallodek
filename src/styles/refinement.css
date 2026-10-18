@@ -275,7 +275,7 @@
   .region-directory h3 { font-size: 18px; }
   .region-directory span { font-size: 10px; }
   .region-directory svg { width: 18px; }
-  .product-hero, .membership-hero, .partnership-hero, .event-hero-grid, .location-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .product-hero, .partnership-hero, .event-hero-grid, .location-hero-grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 14px; align-items: center; }
   .product-photo-frame img { height: auto; }
   .product-photo-frame { max-width: min(100%, 300px); }
   .product-index { grid-template-columns: 1fr; }
@@ -309,12 +309,16 @@
   .partnership-list h3 { font-size: 26px; }
   .partner-inquiry-mascot { width: 100px; height: 150px; margin-top: 20px; }
   .membership-card-scene { max-width: 440px; }
-  .membership-card { padding: 24px; }
-  .membership-card-body > .bang-mus-portrait { height: 190px; }
-  .membership-card-rate { font-size: 90px; }
-  .membership-card-caption { font-size: 10px; line-height: 1.7; text-align: center; }
+  .membership-card { padding: 12px 14px; box-shadow: 3px 4px 0 var(--yellow); }
+  .membership-card, .membership-hero-grid > * { min-width: 0; }
+  .membership-card-body { margin-block: 8px; gap: 6px; }
+  .membership-card-body > .bang-mus-portrait { height: 120px; }
+  .membership-card-rate { font-size: 44px; }
+  .membership-card-caption { font-size: 9px; line-height: 1.6; text-align: center; margin-top: 10px; }
+  .membership-card { overflow: hidden; }
+  .membership-hero-actions .button { min-width: 0; padding: 10px 12px; font-size: 11px; white-space: normal; }
   .membership-steps { gap: 20px; }
-  .location-hero-art { padding: 24px; }
+  .location-hero-art { padding: 10px; }
   .location-count { font-size: 76px; }
   .location-hero-art .eyebrow { margin-block: 8px 12px; }
   .footer-wordmark { font-size: 11vw; margin-block: 24px; }

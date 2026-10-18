@@ -2729,7 +2729,12 @@ body:has(dialog[open]) { overflow-y: hidden; }
   .membership-hero .hero-description { font-size: 13px; margin-top: 12px; }
   .membership-hero-actions { gap: 12px; margin-top: 14px; }
   .membership-hero-actions .button { padding: 12px 17px; font-size: 12px; }
-  .membership-card { padding: 18px 22px; box-shadow: 5px 7px 0 var(--yellow); transform: rotate(-2deg); }
+  .membership-card { padding: 12px 14px; box-shadow: 3px 4px 0 var(--yellow); }
+  .membership-card, .membership-hero-grid > * { min-width: 0; }
+  .membership-card-body { margin-block: 8px; gap: 6px; }
+  .membership-card-body p { font-size: 8.5px; }
+  .membership-card-rate { font-size: 44px; }
+  .membership-card-caption { font-size: 9px; line-height: 1.6; text-align: center; margin-top: 10px; }
   .membership-card-body { margin-block: 8px; }
   .membership-card-body > .bang-mus-portrait { height: min(146px, 18svh); }
   .membership-card-top > svg { width: 24px; height: 24px; }
