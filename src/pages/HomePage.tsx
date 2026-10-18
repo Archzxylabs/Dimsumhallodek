@@ -7,6 +7,7 @@ import { REGIONS_DATA } from '../data/locationsData';
 import { BangMusPortrait } from '../components/BangMusPortrait';
 import { KineticShowcase } from '../components/KineticShowcase';
 import { FlavorCollection } from '../components/FlavorCollection';
+import { FrozenPackagePhoto } from '../components/FrozenPackagePhoto';
 import { CatalogModal, type CatalogKind } from '../components/CatalogModal';
 import { ArrowLink, Marquee, Reveal } from '../components/DesignElements';
 import { Headline, ScrollScene } from '../components/MotionElements';
@@ -35,14 +36,14 @@ export function HomePage() {
       <Reveal className="occasion-grid">
         <Link to="/produk#cake" className="occasion-card occasion-cake">
           <div><p className="eyebrow">Rayakan dengan yang gurih</p><h3>Dimsum Cake</h3><p>Dekorasi nama untuk momen yang lebih personal.</p><span className="occasion-price">Mulai Rp65.000 <ArrowUpRight size={20} /></span></div>
-          <img src="/assets/client/cake-personal.webp" width={192} height={198} alt="Contoh cake dimsum di wooden plate dari katalog produk" loading="lazy" decoding="async" />
+          <img className="product-cutout" src="/assets/client/cake-personal-cutout-400.webp" srcSet="/assets/client/cake-personal-cutout-400.webp 400w, /assets/client/cake-personal-cutout.webp 800w" sizes="(max-width: 767px) 160px, 220px" width={800} height={800} alt="Dimsum Cake di wooden plate dengan pita dan dekorasi ulang tahun" loading="lazy" decoding="async" />
         </Link>
         <Link to="/produk#bouquet" className="occasion-card occasion-bouquet">
           <div><p className="eyebrow">Hadiah yang bisa dinikmati</p><h3>Dimsum Bouquet</h3><p>22 pcs, dengan dekorasi nama untuk si penerima.</p><span className="occasion-price">Rp140.000 <ArrowUpRight size={20} /></span></div>
-          <img src="/assets/client/bouquet.webp" width={195} height={182} alt="Dimsum Bouquet M dengan dekorasi dari katalog produk" loading="lazy" decoding="async" />
+          <img className="product-cutout" src="/assets/client/bouquet-cutout-400.webp" srcSet="/assets/client/bouquet-cutout-400.webp 400w, /assets/client/bouquet-cutout.webp 800w" sizes="(max-width: 767px) 160px, 220px" width={800} height={800} alt="Dimsum Bouquet M dengan dekorasi ulang tahun" loading="lazy" decoding="async" />
         </Link>
       </Reveal>
-      <Link to="/produk#frozen" className="frozen-strip"><img src="/assets/client/frozen-15g.webp" width={198} height={152} alt="Kemasan Dimsum Frozen" loading="lazy" decoding="async" /><div><span className="eyebrow">Simpan untuk nanti</span><h3>Dimsum Frozen</h3><p>Mulai Rp35.000 / 25 pcs · Pilihan saus tersedia.</p></div><span>Kenali pilihan frozen <ArrowUpRight size={19} /></span></Link>
+      <Link to="/produk#frozen" className="frozen-strip"><FrozenPackagePhoto variant="15g" /><div><span className="eyebrow">Simpan untuk nanti</span><h3>Dimsum Frozen</h3><p>Mulai Rp35.000 / 25 pcs · Pilihan saus tersedia.</p></div><span>Kenali pilihan frozen <ArrowUpRight size={19} /></span></Link>
     </section>
 
     <section className="home-event section-space">

@@ -8,6 +8,7 @@ import {
 import { Link } from 'react-router';
 import { whatsappUrl } from "../lib/business";
 import { ProductInquiry } from './ProductInquiry';
+import { FrozenPackagePhoto } from './FrozenPackagePhoto';
 import { CatalogModal, type CatalogKind } from './CatalogModal';
 import { Headline, ScrollScene } from './MotionElements';
 
@@ -96,7 +97,7 @@ export function SignatureProducts() {
             <ScrollScene className="product-visual" depth={12} turn={product.type === 'bouquet' ? -1.8 : 1.2}>
               {product.type === "bouquet" ? (
                 <>
-                  <img className="catalog-bouquet-photo" src="/assets/client/bouquet.webp" width={195} height={182} alt="Contoh Dimsum Bouquet M dari katalog produk" loading="lazy" decoding="async" />
+                  <img className="catalog-bouquet-photo product-cutout" src="/assets/client/bouquet-cutout.webp" srcSet="/assets/client/bouquet-cutout-400.webp 400w, /assets/client/bouquet-cutout.webp 800w" sizes="(max-width: 767px) 300px, 400px" width={800} height={800} alt="Dimsum Bouquet M dengan dekorasi ulang tahun" loading="lazy" decoding="async" />
                 </>
               ) : product.type === "cake" ? (
                 <>
@@ -114,7 +115,7 @@ export function SignatureProducts() {
                 </>
               ) : (
                 <>
-                  <div className="frozen-packages"><figure><img src="/assets/client/frozen-15g.webp" width={198} height={152} alt="Kemasan Dimsum Frozen 15 gram dari katalog produk" loading="lazy" decoding="async" /><figcaption>Dimsum Frozen · 15 gram</figcaption></figure><figure><img src="/assets/client/frozen-28g.webp" width={195} height={152} alt="Kemasan Dimsum Frozen reguler 28 gram dari katalog produk" loading="lazy" decoding="async" /><figcaption>Frozen reguler · 28 gram</figcaption></figure><button type="button" onClick={() => setCatalog('frozen')}>Buka katalog frozen & saus</button></div>
+                  <div className="frozen-packages"><figure><FrozenPackagePhoto variant="15g" /><figcaption>Dimsum Frozen · 15 gram</figcaption></figure><figure><FrozenPackagePhoto variant="28g" /><figcaption>Frozen reguler · 28 gram</figcaption></figure><button type="button" onClick={() => setCatalog('frozen')}>Buka katalog frozen & saus <ArrowUpRight size={16} /></button></div>
                 </>
               )}
             </ScrollScene>

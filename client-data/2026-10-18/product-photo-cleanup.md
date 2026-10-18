@@ -1,0 +1,26 @@
+# Product photograph cleanup — 18 October 2026
+
+The approved visual treatment removes the white catalogue rectangles and yellow circular frames from Cake and Bouquet, keeps the current page layouts, and removes the white panel behind Frozen. The supplied sources remain unchanged.
+
+## Assets and provenance
+
+- `public/assets/client/cake-personal-cutout.webp` — 800 × 800 RGBA WebP, built-in `image_gen` edit of `public/assets/client/cake-personal.webp`.
+- `public/assets/client/bouquet-cutout.webp` — 800 × 800 RGBA WebP, built-in `image_gen` edit of `public/assets/client/bouquet.webp`.
+- Matching `cake-personal-cutout-400.webp` and `bouquet-cutout-400.webp` serve 400 × 400 versions through responsive image sources.
+- Cake and Bouquet are AI-restored product illustrations based on the low-resolution client catalogue photographs; they are not new photographs of the client's actual products. The existing full-size Cake photograph on `/produk` stays in use.
+- Bouquet received a final serving-size refinement to use smaller dumplings. The image is illustrative and partly obscured by decorations; the catalogue, not the render, establishes the sold quantity.
+- Frozen uses the existing 720 × 1280 `public/assets/client/frozen-catalog.webp`, sourced from `client-data/2026-10-07/menu/frozen-dan-saus.jpg`. `FrozenPackagePhoto.tsx` frames its original packaging photographs in CSS at 294 × 226 source pixels, starting at (36, 366) and (390, 366). This improves on the previous 198/195 × 152 crops and keeps the packaging/label pixels unchanged. The panel background and catalogue border are outside the displayed photo.
+
+## Final imagegen prompts
+
+### cakeCutout
+
+Use case: background-extraction. Asset type: isolated product photograph for the Dimsum Hallo Dek website. Edit target: supplied low-resolution catalogue photo of the personalized rectangular dimsum cake in a wooden tray. Remove the white catalogue background, printed yellow circular frame, grey drop-shadow and the room background. Keep only the photographed actual product: the rectangular light wood tray of orange mentai-topped chicken shumai with dark green nori, the slender gold Happy Birthday topper, the transparent gift handle and its blue ribbon bow. Restore clean photographic detail using the supplied product as the identity reference, keep its recognizable proportions, arrangement, toppings and decorations; do not redesign the product. The gold topper should read Happy Birthday without adding a recipient name. Complete natural product edges previously obscured by the catalogue circle. Center the full product within a square canvas with about 6 percent transparent breathing room, all decorations inside the frame. True transparent alpha background, no white or colored backdrop, no circle, no border, no watermark, no poster copy or prices. Soft neutral light, realistic appetizing food texture, no heavy ground shadow.
+
+### bouquetCutout — initial restoration
+
+Use case: background-extraction. Asset type: isolated product photograph for the Dimsum Hallo Dek website. Edit target: supplied low-resolution catalogue photo of the round dimsum bouquet. Remove the white catalogue background, printed yellow circular frame, grey drop-shadow and the wall background. Keep only the actual product: the round shallow arrangement of orange mentai-topped chicken shumai with dark green nori, the white and pale blue ruffled wrapping around the base, slender gold Happy Birthday topper and pastel butterfly decorations. This is a round dimsum bouquet, not flowers or a multi-tier cake. Restore clean photographic detail using the supplied product as the identity reference; preserve its shape, sauce color, arrangement and decorations rather than redesigning it. The gold topper should read Happy Birthday with no added recipient name. Complete natural product edges obscured by the catalogue circle. Center the full product within a square canvas with about 6 percent transparent breathing room, the full topper and wrapping visible. True transparent alpha background, no white or colored backdrop, no circle, no border, no watermark, no catalogue text or prices. Soft neutral light, realistic food photography, no heavy ground shadow.
+
+### bouquetCutout — final serving refinement
+
+Use case: precise-object-edit. Edit target: supplied transparent product photo of a Dimsum Hallo Dek birthday bouquet. Correct only the serving size: replace the ten large dumplings with EXACTLY TWENTY-TWO (22) smaller individual chicken shumai dumplings in the same round bouquet. The 22 distinct orange mentai and nori topped dumplings must fit tightly in one layer, arranged in five staggered horizontal rows of 4, 5, 4, 5, and 4 dumplings, giving 22 total. Use smaller dumplings to fit the same overall bouquet footprint, maintaining realistic proportions. Keep the same pale blue and white ruffled wrapping, two pastel butterflies at the edges, gold Happy Birthday topper, camera angle, realistic food textures and lighting. All 22 dumpling tops should be clearly separable. Retain a true transparent alpha background and the full product silhouette with a little transparent margin. No white rectangle, no yellow catalogue circle, no backdrop, no new props, no extra text or watermark. The bouquet is the existing 22-piece product, not a redesigned cake.

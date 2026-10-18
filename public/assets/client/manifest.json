@@ -397,5 +397,31 @@
       600
     ],
     "bytes": 28416
+  },
+  {
+    "asset": "/assets/client/cake-personal-cutout.webp",
+    "source": "public/assets/client/cake-personal.webp · imagegen restoration and transparent background",
+    "dimensions": [800, 800],
+    "bytes": 238374,
+    "prompt_record": "client-data/2026-10-18/product-photo-cleanup.md"
+  },
+  {
+    "asset": "/assets/client/cake-personal-cutout-400.webp",
+    "source": "public/assets/client/cake-personal-cutout.webp · responsive export",
+    "dimensions": [400, 400],
+    "bytes": 64030
+  },
+  {
+    "asset": "/assets/client/bouquet-cutout.webp",
+    "source": "public/assets/client/bouquet.webp · imagegen restoration and transparent background, with serving-size refinement",
+    "dimensions": [800, 800],
+    "bytes": 190584,
+    "prompt_record": "client-data/2026-10-18/product-photo-cleanup.md"
+  },
+  {
+    "asset": "/assets/client/bouquet-cutout-400.webp",
+    "source": "public/assets/client/bouquet-cutout.webp · responsive export",
+    "dimensions": [400, 400],
+    "bytes": 52600
   }
 ]
