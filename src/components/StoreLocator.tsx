@@ -58,7 +58,7 @@ export function StoreLocator() {
         <div className="page-width location-hero-grid">
           <Reveal>
             <p className="eyebrow">04 / Alamat & petunjuk gerai</p>
-            <Headline as="h1" className="hero-title" lines={[{ text: 'Hallo,' }, { text: 'tetangga.', accent: 'orange' }]} />
+            <Headline as="h1" className="hero-title" lines={[{ text: 'Hallo tetangga.', accent: 'orange' }]} />
             <p className="hero-description">
               Mampir, bawa pulang, atau nikmati bareng.
               <br />
