@@ -150,6 +150,7 @@
 .location-hero { background: var(--detail-surface); }
 .location-hero-grid { grid-template-columns: minmax(0, 1fr) minmax(340px, .75fr); align-items: center; }
 .location-hero-art { padding: 28px; background: var(--army); color: var(--cream); border-radius: 16px; transform: none; }
+.location-hero-art > img { width: 100%; height: auto; border-radius: 12px; }
 .location-count { font-size: 96px; line-height: 1; }
 .location-hero-art .eyebrow { margin-block: 12px 20px; }
 .location-hero-art > p { font-size: 12px; line-height: 1.7; }
@@ -370,4 +371,8 @@
   .flavor-collection .collection-heading { margin-bottom: 18px; }
   .flavor-photo { height: 200px; }
   .occasion-card { padding: 24px; }
+}
+@media (max-width: 767px) {
+  .location-hero-art { display: block; }
+  .location-hero-art > img { width: 100%; height: auto; margin-bottom: 16px; }
 }

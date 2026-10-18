@@ -66,8 +66,15 @@ export function StoreLocator() {
             </p>
             <a className="button button-green locator-jump" href="#locations">Cari alamat gerai <ArrowUpRight size={18} /></a>
           </Reveal>
-          <ScrollScene className="location-hero-art location-mascot-scene" turn={-1.2} depth={12}>
-            <BangMusPortrait full decorative pose="explore" />
+          <ScrollScene className="location-hero-art" turn={-1.2} depth={12}>
+            <img
+              src="/assets/client/gerai-booth.webp"
+              width={565}
+              height={753}
+              decoding="async"
+              alt="Gerobak gerai Dimsum Hallo Dek berbranding kuning lengkap dengan spanduk menu"
+              fetchPriority="high"
+            />
             <div className="location-hero-stat">
               <span className="location-count">{allOutlets.length}</span>
               <span className="eyebrow">Gerai dalam daftar</span>
