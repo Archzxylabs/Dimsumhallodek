@@ -1,6 +1,6 @@
 # 🤝 Program Kemitraan & Franchise - Dimsum Hallo Dek (DHD)
 
-> **Entitas**: PT Merza Perintis Sukses  
+> **Entitas**: CV Merza Perintis Sukses  
 > **Konsep Bisnis**: 100% Autopilot Franchise Kuliner Modern  
 > **Value Proposition**: Bangun usaha kuliner menguntungkan tanpa repot branding, marketing, dan operasional harian.
 

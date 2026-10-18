@@ -13,7 +13,7 @@ Website saat ini menggunakan template WordPress generic (**Theme Hestia** + WPFo
 | **Dual-Audience Confusion** | Pengunjung umum (yang mau jajan dimsum) dan calon investor (kemitraan franchise) dicampur aduk tanpa funnel yang jelas. | Bounce rate tinggi. Calon pembeli bingung cara order, calon mitra malas nyari info. | **Clear Dual-Conversion Hero & Navigation**: Split funnel antara `Jelajah Menu & Gerai` (B2C) vs `Peluang Franchise Autopilot` (B2B). |
 | **Menu Showcase Miskin Interaksi** | Menu cuma ditampilkan 3 biji di dalam section *testimonial* bawaan Hestia. | Pelanggan tidak tahu varian lengkap, harga, atau keunikan saus torched-nya. | **Interactive Food Catalog**: Filter kategori (Mentai, Cheesy/Carbonara, Hot Lava, Party/Cake), badge promo, aroma description, tombol order. |
 | **Store Locator Primitif** | Halaman `/sample-page/` cuma berisi tabel HTML mentah tanpa peta, tanpa pencarian, tanpa filter kota. | User di HP malas scroll tabel panjang untuk cari cabang terdekat. | **Smart Store Locator**: Search box, filter pill per kota (Bogor, Bekasi, Sukabumi), tombol langsung buka Google Maps navigation, deteksi lokasi terdekat via Geolocation. |
-| **Franchise Deck Tersembunyi** | Info kemitraan cuma diselipin berupa link Google Drive di section tim. Padahal ini revenue driver utama PT Merza Perintis Sukses! | Kehilangan prospek kemitraan bernilai puluhan juta rupiah. | **High-Converting Franchise Section & Landing Page**: Showcase booth container, simulasi hitung profit interaktif (ROI calculator), rincian paket 28jt vs 35jt, dan instant WA consultation. |
+| **Franchise Deck Tersembunyi** | Info kemitraan cuma diselipin berupa link Google Drive di section tim. Padahal ini revenue driver utama CV Merza Perintis Sukses! | Kehilangan prospek kemitraan bernilai puluhan juta rupiah. | **High-Converting Franchise Section & Landing Page**: Showcase booth container, simulasi hitung profit interaktif (ROI calculator), rincian paket 28jt vs 35jt, dan instant WA consultation. |
 | **Performance & Mobile Responsiveness** | Bloated WP scripts, unoptimized CSS dari berbagai plugin lama. | Loading lambat di jaringan HP 4G/3G pinggiran kota. | **Next.js / Tailwind / Static Export**: Instant 100 PageSpeed score, gambar WebP optimized, ultra responsive. |
 
 ---
@@ -82,7 +82,7 @@ flowchart TD
 ## 4. 📐 Wireframe & Section Architecture (One-Page / Multi-Section)
 
 ### Section 1: Header / Sticky Glassmorphism Navbar
-- **Left**: Logo Dimsum Hallo Dek + PT Merza Perintis Sukses badge.
+- **Left**: Logo Dimsum Hallo Dek + CV Merza Perintis Sukses badge.
 - **Center**: Nav Links (`Menu`, `Party & Event`, `Lokasi 29+ Gerai`, `Kemitraan Franchise`, `Tentang Kami`).
 - **Right Action Buttons**:
   - `Cari Gerai Terdekat` (Outline button dengan icon MapPin)
@@ -159,7 +159,7 @@ flowchart TD
 - Jam Operasional Kantor & Layanan CS (08.00 - 22.00 WIB).
 
 ### Section 10: Modern Footer
-- Logo, deskripsi singkat PT Merza Perintis Sukses, legalitas brand, copyright, dan floating WhatsApp button di pojok kanan bawah.
+- Logo, deskripsi singkat CV Merza Perintis Sukses, legalitas brand, copyright, dan floating WhatsApp button di pojok kanan bawah.
 
 ---
 

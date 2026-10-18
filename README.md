@@ -1,4 +1,4 @@
-# 🥟 Dimsum Hallo Dek (PT Merza Perintis Sukses) - Web Content & UI/UX Rebuild Kit
+# 🥟 Dimsum Hallo Dek (CV Merza Perintis Sukses) - Web Content & UI/UX Rebuild Kit
 
 ## Jalankan website
 
@@ -74,7 +74,7 @@ Dimsumhallodek/
 
 1. **Brand Identity**:
    - **Nama Brand**: Dimsum Hallo Dek (DHD)
-   - **Badan Usaha**: PT Merza Perintis Sukses
+   - **Badan Usaha**: CV Merza Perintis Sukses
    - **Slogan / Tagline**: `Enak & Gurih Bikin Nagih`
    - **Tone of Voice**: Ramah, ceria, bersahabat ("Bang Musmid"), menggiurkan (*appetizing*).
 

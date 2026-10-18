@@ -40,7 +40,7 @@ export function Footer() {
               <br />
               Happynya buat semua.
             </p>
-            <p className="footer-company">PT Merza Perintis Sukses</p>
+            <p className="footer-company">CV Merza Perintis Sukses</p>
           </div>
           <nav aria-label="Navigasi footer">
             <p className="footer-label">Jelajahi</p>

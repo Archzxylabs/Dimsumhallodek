@@ -1,6 +1,6 @@
 # 🥟 PRODUCT REQUIREMENT DOCUMENT (PRD)
 ## Project: Dimsum Hallo Dek (DHD) - Interactive Kinetic Showcase & Brand Experience
-**Entity:** PT Merza Perintis Sukses  
+**Entity:** CV Merza Perintis Sukses  
 **Reference Interaction Architecture:** [Warmindo Showcase by Wildan Niam](https://wildan-niam.myr.id/catalog/warmindo-showcase-source-code-website-react/)  
 **Document Version:** 1.0.0 (Master Release)  
 **Status:** Approved for Engineering & Design  
