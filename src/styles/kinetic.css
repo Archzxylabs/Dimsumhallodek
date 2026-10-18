@@ -58,7 +58,6 @@
 .event-hero .button { background: var(--yellow); color: var(--army-deep); }
 .event-hero .event-photo > img { border-radius: 40px 4px 4px 4px; }
 .event-photo-caption { color: var(--cream); }
-.photo-index { position: absolute; top: 14px; left: 14px; z-index: 1; background: var(--cream); color: var(--army); font-size: 9px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 8px 12px; border-radius: 20px; }
 .event-type-list button { transition: background .25s; }
 .event-type-list button.selected { background: #f6df9f; }
 .event-type-list .selection-circle { transition: transform .35s cubic-bezier(.22, 1, .36, 1); }
@@ -121,7 +120,6 @@
   .product-hero .product-quick-links a { min-width: 0; flex: 1; gap: 10px; }
   .membership-card { border-radius: 10px 10px 30px 10px; }
   .membership-hero-grid { gap: 28px; }
-  .photo-index { top: 12px; left: 12px; font-size: 8px; padding: 7px 10px; }
   .product-story .product-visual > img { border-radius: 3px 20px 3px 3px; }
 }
 @media (max-width: 359px) {

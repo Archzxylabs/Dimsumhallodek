@@ -68,7 +68,6 @@ export function EventServices() {
           </Reveal>
           <ScrollScene className="event-hero-art" turn={1.6}>
             <div className="event-photo">
-              <span className="photo-index">01—05 / Setiap momen</span>
               <img
                 src="/assets/client/event-serving.webp"
                 width={1000}
